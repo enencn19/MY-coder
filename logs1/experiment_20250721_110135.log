@@ -1,0 +1,928 @@
+2025-07-21 11:01:35,424 - INFO - 日志系统初始化完成，日志文件: /mnt/nvme0n1/tyj/TKGQA/MY/logs/experiment_20250721_110135.log
+2025-07-21 11:01:35,456 - INFO - TemporalKGQASystem 初始化完成
+2025-07-21 11:01:35,456 - INFO - 加载知识图谱: MY/data/output/full_df.txt
+2025-07-21 11:01:35,836 - INFO - 数据形状: (461329, 4)
+2025-07-21 11:01:35,836 - INFO - 列名: ['head', 'relation', 'tail', 'timestamp']
+2025-07-21 11:01:35,873 - INFO - 知识图谱加载完成，共 461329 条记录
+2025-07-21 11:01:35,873 - INFO - 时间范围: 2005-01-01 00:00:00 到 2015-12-31 00:00:00
+2025-07-21 11:01:35,873 - INFO - 加载问题数据: MY/data/multitq/questions/question_6.json
+2025-07-21 11:01:35,873 - INFO - 问题数据加载完成，共 6 个问题
+2025-07-21 11:01:35,873 - INFO - 处理问题 1: 2056020
+2025-07-21 11:01:35,874 - INFO - 问题: When did Walker San Miguel first express interest in working with Bolivia?
+2025-07-21 11:01:35,874 - INFO - 标准答案: ['2007-07-24']
+2025-07-21 11:01:35,874 - INFO - 步骤1: 问题分析
+2025-07-21 11:01:36,270 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-07-21 11:01:44,603 - INFO - 问题分析完成: {'question_type': 'time_query', 'key_entities': ['Walker San Miguel', 'Bolivia'], 'target_relations': ['express interest in working with'], 'time_constraints': '', 'answer_type': 'time', 'query_strategy': "查询Walker San Miguel与Bolivia之间'express interest in working with'关系的最早时间点"}
+2025-07-21 11:01:44,603 - INFO - 分析结果: {'question_type': 'time_query', 'key_entities': ['Walker San Miguel', 'Bolivia'], 'target_relations': ['express interest in working with'], 'time_constraints': '', 'answer_type': 'time', 'query_strategy': "查询Walker San Miguel与Bolivia之间'express interest in working with'关系的最早时间点"}
+2025-07-21 11:01:44,603 - INFO - === KG实体和关系检查 ===
+2025-07-21 11:01:44,604 - INFO - 检查实体: 'Walker San Miguel'
+2025-07-21 11:01:45,022 - INFO -   模式 'Walker_San_Miguel' 匹配成功:
+2025-07-21 11:01:45,022 - INFO -     作为head: 27 条记录
+2025-07-21 11:01:45,023 - INFO -       Walker_San_Miguel -> Make_a_visit -> China (2006-08-30)
+2025-07-21 11:01:45,023 - INFO -       Walker_San_Miguel -> Praise_or_endorse -> China (2006-08-30)
+2025-07-21 11:01:45,023 - INFO -       Walker_San_Miguel -> Make_statement -> Evo_Morales (2006-09-19)
+2025-07-21 11:01:45,023 - INFO -     作为tail: 14 条记录
+2025-07-21 11:01:45,023 - INFO -       China -> Host_a_visit -> Walker_San_Miguel (2006-08-30)
+2025-07-21 11:01:45,023 - INFO -       Walker_San_Miguel -> Make_statement -> Walker_San_Miguel (2006-11-02)
+2025-07-21 11:01:45,023 - INFO -       Bolivia -> Consult -> Walker_San_Miguel (2006-11-04)
+2025-07-21 11:01:45,023 - INFO - 检查实体: 'Bolivia'
+2025-07-21 11:01:45,214 - INFO -   模式 'Bolivia' 匹配成功:
+2025-07-21 11:01:45,214 - INFO -     作为head: 945 条记录
+2025-07-21 11:01:45,214 - INFO -       Bolivia -> Host_a_visit -> Combatant_(Argentina) (2005-01-06)
+2025-07-21 11:01:45,214 - INFO -       Bolivia -> Rally_opposition_against -> France (2005-01-11)
+2025-07-21 11:01:45,214 - INFO -       Bolivia -> Consult -> China (2005-01-27)
+2025-07-21 11:01:45,214 - INFO -     作为tail: 1335 条记录
+2025-07-21 11:01:45,215 - INFO -       Combatant_(Argentina) -> Make_a_visit -> Bolivia (2005-01-06)
+2025-07-21 11:01:45,215 - INFO -       Rodrigo_Rato -> Express_intent_to_meet_or_negotiate -> Bolivia (2005-01-14)
+2025-07-21 11:01:45,215 - INFO -       China -> Consult -> Bolivia (2005-01-27)
+2025-07-21 11:01:45,215 - INFO - 检查目标关系:
+2025-07-21 11:01:45,239 - INFO - KG中的关系类型示例: ['Express_intent_to_engage_in_diplomatic_cooperation_(such_as_policy_support)', 'Make_statement', 'Praise_or_endorse', 'Consult', 'Discuss_by_telephone', 'Make_pessimistic_comment', 'Make_an_appeal_or_request', 'Express_intent_to_provide_economic_aid', 'Provide_aid', 'Reject', 'Use_unconventional_violence', 'Engage_in_diplomatic_cooperation', 'fight_with_small_arms_and_light_weapons', 'Express_intent_to_provide_material_aid', 'Express_intent_to_meet_or_negotiate', 'Accuse', 'Arrest,_detain,_or_charge_with_legal_action', 'Use_conventional_military_force', 'Provide_humanitarian_aid', 'Criticize_or_denounce']
+2025-07-21 11:01:45,239 - INFO -   关系 'express interest in working with' 模糊匹配: ['Express_intent_to_engage_in_diplomatic_cooperation_(such_as_policy_support)', 'Express_intent_to_provide_economic_aid', 'fight_with_small_arms_and_light_weapons', 'Express_intent_to_provide_material_aid', 'Express_intent_to_meet_or_negotiate', 'Arrest,_detain,_or_charge_with_legal_action', 'Express_intent_to_cooperate_economically', 'Express_intent_to_cooperate', 'Express_intent_to_provide_humanitarian_aid', 'Express_accord']
+2025-07-21 11:01:45,269 - INFO -     'Express_intent_to_engage_in_diplomatic_cooperation_(such_as_policy_support)': 9704 条记录
+2025-07-21 11:01:45,296 - INFO -     'Express_intent_to_provide_economic_aid': 576 条记录
+2025-07-21 11:01:45,324 - INFO -     'fight_with_small_arms_and_light_weapons': 5386 条记录
+2025-07-21 11:01:45,324 - INFO - === KG检查完成 ===
+2025-07-21 11:01:45,324 - INFO - 步骤2: 代码生成
+2025-07-21 11:01:45,324 - INFO - 代码生成成功
+2025-07-21 11:01:45,324 - INFO - 生成的代码长度: 1688 字符
+2025-07-21 11:01:45,324 - INFO - 生成的代码:
+def query_kg(df):
+    import pandas as pd
+    try:
+        entities = ['Walker San Miguel', 'Bolivia']
+        relations = ['express interest in working with']
+        
+        results = []
+        
+        # 确保所有列都是字符串类型
+        for col in ['head', 'relation', 'tail', 'timestamp']:
+            if col in df.columns:
+                df[col] = df[col].astype(str)
+        
+        # 对于"first time"类型的查询，需要找到特定关系的最早记录
+        if len(entities) >= 2:
+            entity1, entity2 = entities[0], entities[1]
+            
+            # 尝试多种实体名称格式
+            entity1_patterns = [entity1, entity1.replace(' ', '_'), entity1.replace('_', ' ')]
+            entity2_patterns = [entity2, entity2.replace(' ', '_'), entity2.replace('_', ' ')]
+            
+            for e1_pattern in entity1_patterns:
+                for e2_pattern in entity2_patterns:
+                    # 查找 entity1 -> relation -> entity2 的记录
+                    mask = (
+                        (df['head'].str.contains(e1_pattern, case=False, na=False)) &
+                        (df['tail'].str.contains(e2_pattern, case=False, na=False)) &
+                        (df['relation'].isin(relations))
+                    )
+                    
+                    if mask.any():
+                        filtered_df = df[mask]
+                        for _, row in filtered_df.iterrows():
+                            year = row['timestamp'][:4]
+                            results.append(year)
+        
+        # 返回最早的年份
+        if results:
+            earliest_year = min(results)
+            return [earliest_year]
+        else:
+            return []
+            
+    except Exception as e:
+        return [f"查询错误: {str(e)}"]
+2025-07-21 11:01:45,324 - INFO - 步骤3: 执行查询
+2025-07-21 11:01:45,385 - INFO - 执行代码:
+2025-07-21 11:01:45,385 - INFO - def query_kg(df):
+    import pandas as pd
+    try:
+        entities = ['Walker San Miguel', 'Bolivia']
+        relations = ['express interest in working with']
+        
+        results = []
+        
+        # 确保所有列都是字符串类型
+        for col in ['head', 'relation', 'tail', 'timestamp']:
+            if col in df.columns:
+                df[col] = df[col].astype(str)
+        
+        # 对于"first time"类型的查询，需要找到特定关系的最早记录
+        if len(entities) >= 2:
+            entity1, entity2 = entities[0], entities[1]
+            
+            # 尝试多种实体名称格式
+            entity1_patterns = [entity1, entity1.replace(' ', '_'), entity1.replace('_', ' ')]
+            entity2_patterns = [entity2, entity2.replace(' ', '_'), entity2.replace('_', ' ')]
+            
+            for e1_pattern in entity1_patterns:
+                for e2_pattern in entity2_patterns:
+                    # 查找 entity1 -> relation -> entity2 的记录
+                    mask = (
+                        (df['head'].str.contains(e1_pattern, case=False, na=False)) &
+                        (df['tail'].str.contains(e2_pattern, case=False, na=False)) &
+                        (df['relation'].isin(relations))
+                    )
+                    
+                    if mask.any():
+                        filtered_df = df[mask]
+                        for _, row in filtered_df.iterrows():
+                            year = row['timestamp'][:4]
+                            results.append(year)
+        
+        # 返回最早的年份
+        if results:
+            earliest_year = min(results)
+            return [earliest_year]
+        else:
+            return []
+            
+    except Exception as e:
+        return [f"查询错误: {str(e)}"]
+2025-07-21 11:01:48,315 - INFO - 查询返回 0 个结果: []
+2025-07-21 11:01:48,316 - INFO - 查询执行完成
+2025-07-21 11:01:48,316 - INFO - 查询结果数量: 0
+2025-07-21 11:01:48,316 - INFO - 查询结果: []
+2025-07-21 11:01:48,316 - INFO - 步骤4: 评估结果
+2025-07-21 11:01:48,316 - INFO - 评估结果:
+2025-07-21 11:01:48,316 - INFO -   预测答案: []
+2025-07-21 11:01:48,316 - INFO -   标准答案: ['2007-07-24']
+2025-07-21 11:01:48,316 - INFO -   精确匹配: False
+2025-07-21 11:01:48,316 - INFO -   精度: 0.000, 召回率: 0.000, F1: 0.000
+2025-07-21 11:01:48,316 - INFO -   处理时间: 12.443秒
+2025-07-21 11:01:48,316 - INFO - 处理问题 2: 2027657
+2025-07-21 11:01:48,316 - INFO - 问题: Who wanted to cooperate with Japan on 23 August 2006?
+2025-07-21 11:01:48,317 - INFO - 标准答案: ['Association of Southeast Asian Nations']
+2025-07-21 11:01:48,317 - INFO - 步骤1: 问题分析
+2025-07-21 11:01:48,371 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-07-21 11:01:56,759 - INFO - 问题分析完成: {'question_type': 'relation_query', 'key_entities': ['Japan'], 'target_relations': ['wanted to cooperate with'], 'time_constraints': '2006-08-23', 'answer_type': 'entity', 'query_strategy': "首先在时序知识图谱中查找2006年8月23日与Japan存在'wanted to cooperate with'关系的实体，然后返回该实体作为答案。"}
+2025-07-21 11:01:56,759 - INFO - 分析结果: {'question_type': 'relation_query', 'key_entities': ['Japan'], 'target_relations': ['wanted to cooperate with'], 'time_constraints': '2006-08-23', 'answer_type': 'entity', 'query_strategy': "首先在时序知识图谱中查找2006年8月23日与Japan存在'wanted to cooperate with'关系的实体，然后返回该实体作为答案。"}
+2025-07-21 11:01:56,759 - INFO - === KG实体和关系检查 ===
+2025-07-21 11:01:56,759 - INFO - 检查实体: 'Japan'
+2025-07-21 11:01:56,953 - INFO -   模式 'Japan' 匹配成功:
+2025-07-21 11:01:56,953 - INFO -     作为head: 15572 条记录
+2025-07-21 11:01:56,954 - INFO -       Government_Official_(Japan) -> Consult -> Emperor_Akihito (2005-01-01)
+2025-07-21 11:01:56,954 - INFO -       Japan -> Express_intent_to_provide_material_aid -> International_Government_Organizations (2005-01-01)
+2025-07-21 11:01:56,954 - INFO -       Japan -> Consult -> China (2005-01-03)
+2025-07-21 11:01:56,954 - INFO -     作为tail: 18845 条记录
+2025-07-21 11:01:56,954 - INFO -       Emperor_Akihito -> Consult -> Government_Official_(Japan) (2005-01-01)
+2025-07-21 11:01:56,954 - INFO -       China -> Threaten -> Japan (2005-01-02)
+2025-07-21 11:01:56,955 - INFO -       China -> Consult -> Japan (2005-01-03)
+2025-07-21 11:01:56,955 - INFO - 检查目标关系:
+2025-07-21 11:01:56,979 - INFO - KG中的关系类型示例: ['Express_intent_to_engage_in_diplomatic_cooperation_(such_as_policy_support)', 'Make_statement', 'Praise_or_endorse', 'Consult', 'Discuss_by_telephone', 'Make_pessimistic_comment', 'Make_an_appeal_or_request', 'Express_intent_to_provide_economic_aid', 'Provide_aid', 'Reject', 'Use_unconventional_violence', 'Engage_in_diplomatic_cooperation', 'fight_with_small_arms_and_light_weapons', 'Express_intent_to_provide_material_aid', 'Express_intent_to_meet_or_negotiate', 'Accuse', 'Arrest,_detain,_or_charge_with_legal_action', 'Use_conventional_military_force', 'Provide_humanitarian_aid', 'Criticize_or_denounce']
+2025-07-21 11:01:56,980 - INFO -   关系 'wanted to cooperate with' 模糊匹配: ['fight_with_small_arms_and_light_weapons', 'Arrest,_detain,_or_charge_with_legal_action', 'Express_intent_to_cooperate_economically', 'Express_intent_to_cooperate', 'Threaten_with_military_force', 'Cooperate_militarily', 'Cooperate_economically', 'fight_with_artillery_and_tanks', 'Express_intent_to_cooperate_on_judicial_matters', 'Threaten_with_sanctions,_boycott,_embargo']
+2025-07-21 11:01:57,006 - INFO -     'fight_with_small_arms_and_light_weapons': 5386 条记录
+2025-07-21 11:01:57,034 - INFO -     'Arrest,_detain,_or_charge_with_legal_action': 22069 条记录
+2025-07-21 11:01:57,059 - INFO -     'Express_intent_to_cooperate_economically': 744 条记录
+2025-07-21 11:01:57,059 - INFO - === KG检查完成 ===
+2025-07-21 11:01:57,059 - INFO - 步骤2: 代码生成
+2025-07-21 11:01:57,059 - INFO - 代码生成成功
+2025-07-21 11:01:57,059 - INFO - 生成的代码长度: 2008 字符
+2025-07-21 11:01:57,059 - INFO - 生成的代码:
+def query_kg(df):
+    import pandas as pd
+    
+    try:
+        results = []
+        entities = ['Japan']
+        relations = ['wanted to cooperate with']
+        time_constraint = "2006-08-23"
+        
+        # 确保数据类型
+        for col in ['head', 'relation', 'tail', 'timestamp']:
+            if col in df.columns:
+                df[col] = df[col].astype(str)
+        
+        # 时间过滤
+        filtered_df = df.copy()
+        if time_constraint:
+            if "july" in time_constraint.lower() and "2007" in time_constraint:
+                filtered_df = filtered_df[filtered_df['timestamp'].str.startswith('2007-07')]
+            elif "2007" in time_constraint:
+                filtered_df = filtered_df[filtered_df['timestamp'].str.startswith('2007')]
+        
+        # 查询逻辑
+        if entities:
+            target_entity = entities[0]
+            
+            for relation in relations:
+                # 模式1: X -> relation -> target_entity
+                mask1 = (
+                    (filtered_df['tail'] == target_entity) & 
+                    (filtered_df['relation'] == relation)
+                )
+                
+                if mask1.any():
+                    for _, row in filtered_df[mask1].iterrows():
+                        result = row['head'].replace('_', ' ')
+                        if result not in results:
+                            results.append(result)
+                
+                # 模式2: target_entity -> relation -> X
+                mask2 = (
+                    (filtered_df['head'] == target_entity) & 
+                    (filtered_df['relation'] == relation)
+                )
+                
+                if mask2.any():
+                    for _, row in filtered_df[mask2].iterrows():
+                        result = row['tail'].replace('_', ' ')
+                        if result not in results:
+                            results.append(result)
+        
+        return results[:15]
+        
+    except Exception as e:
+        return [f"查询错误: {str(e)}"]
+2025-07-21 11:01:57,059 - INFO - 步骤3: 执行查询
+2025-07-21 11:01:57,118 - INFO - 执行代码:
+2025-07-21 11:01:57,119 - INFO - def query_kg(df):
+    import pandas as pd
+    
+    try:
+        results = []
+        entities = ['Japan']
+        relations = ['wanted to cooperate with']
+        time_constraint = "2006-08-23"
+        
+        # 确保数据类型
+        for col in ['head', 'relation', 'tail', 'timestamp']:
+            if col in df.columns:
+                df[col] = df[col].astype(str)
+        
+        # 时间过滤
+        filtered_df = df.copy()
+        if time_constraint:
+            if "july" in time_constraint.lower() and "2007" in time_constraint:
+                filtered_df = filtered_df[filtered_df['timestamp'].str.startswith('2007-07')]
+            elif "2007" in time_constraint:
+                filtered_df = filtered_df[filtered_df['timestamp'].str.startswith('2007')]
+        
+        # 查询逻辑
+        if entities:
+            target_entity = entities[0]
+            
+            for relation in relations:
+                # 模式1: X -> relation -> target_entity
+                mask1 = (
+                    (filtered_df['tail'] == target_entity) & 
+                    (filtered_df['relation'] == relation)
+                )
+                
+                if mask1.any():
+                    for _, row in filtered_df[mask1].iterrows():
+                        result = row['head'].replace('_', ' ')
+                        if result not in results:
+                            results.append(result)
+                
+                # 模式2: target_entity -> relation -> X
+                mask2 = (
+                    (filtered_df['head'] == target_entity) & 
+                    (filtered_df['relation'] == relation)
+                )
+                
+                if mask2.any():
+                    for _, row in filtered_df[mask2].iterrows():
+                        result = row['tail'].replace('_', ' ')
+                        if result not in results:
+                            results.append(result)
+        
+        return results[:15]
+        
+    except Exception as e:
+        return [f"查询错误: {str(e)}"]
+2025-07-21 11:01:57,283 - INFO - 查询返回 0 个结果: []
+2025-07-21 11:01:57,283 - INFO - 查询执行完成
+2025-07-21 11:01:57,283 - INFO - 查询结果数量: 0
+2025-07-21 11:01:57,283 - INFO - 查询结果: []
+2025-07-21 11:01:57,283 - INFO - 步骤4: 评估结果
+2025-07-21 11:01:57,283 - INFO - 评估结果:
+2025-07-21 11:01:57,283 - INFO -   预测答案: []
+2025-07-21 11:01:57,283 - INFO -   标准答案: ['Association of Southeast Asian Nations']
+2025-07-21 11:01:57,284 - INFO -   精确匹配: False
+2025-07-21 11:01:57,284 - INFO -   精度: 0.000, 召回率: 0.000, F1: 0.000
+2025-07-21 11:01:57,284 - INFO -   处理时间: 8.967秒
+2025-07-21 11:01:57,284 - INFO - 处理问题 3: 2007873
+2025-07-21 11:01:57,284 - INFO - 问题: Before 11 December 2009, who used conventional military force against France?
+2025-07-21 11:01:57,284 - INFO - 标准答案: ['Separatist (France)', 'Comoros', 'Royal Air Force', 'Bolivia', 'Colombia', 'Christian (France)', 'Member of Parliament (France)', 'Military (Russia)']
+2025-07-21 11:01:57,284 - INFO - 步骤1: 问题分析
+2025-07-21 11:01:57,346 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-07-21 11:02:06,704 - INFO - 问题分析完成: {'question_type': 'entity_query', 'key_entities': ['France'], 'target_relations': ['used conventional military force against'], 'time_constraints': 'before 11 December 2009', 'answer_type': 'entity', 'query_strategy': '查询在2009年12月11日之前对法国使用常规军事力量的实体'}
+2025-07-21 11:02:06,704 - INFO - 分析结果: {'question_type': 'entity_query', 'key_entities': ['France'], 'target_relations': ['used conventional military force against'], 'time_constraints': 'before 11 December 2009', 'answer_type': 'entity', 'query_strategy': '查询在2009年12月11日之前对法国使用常规军事力量的实体'}
+2025-07-21 11:02:06,704 - INFO - === KG实体和关系检查 ===
+2025-07-21 11:02:06,704 - INFO - 检查实体: 'France'
+2025-07-21 11:02:06,902 - INFO -   模式 'France' 匹配成功:
+2025-07-21 11:02:06,902 - INFO -     作为head: 9930 条记录
+2025-07-21 11:02:06,903 - INFO -       Agence_France-Presse -> Discuss_by_telephone -> Police_(Kenya) (2005-01-03)
+2025-07-21 11:02:06,903 - INFO -       Government_(France) -> Praise_or_endorse -> Citizen_(Sudan) (2005-01-04)
+2025-07-21 11:02:06,903 - INFO -       Agence_France-Presse -> Discuss_by_telephone -> Ange-Félix_Patassé (2005-01-05)
+2025-07-21 11:02:06,903 - INFO -     作为tail: 10102 条记录
+2025-07-21 11:02:06,903 - INFO -       Police_(Kenya) -> Discuss_by_telephone -> Agence_France-Presse (2005-01-03)
+2025-07-21 11:02:06,903 - INFO -       Serge_Lepeltier -> Make_statement -> France (2005-01-04)
+2025-07-21 11:02:06,903 - INFO -       Ange-Félix_Patassé -> Discuss_by_telephone -> Agence_France-Presse (2005-01-05)
+2025-07-21 11:02:06,903 - INFO - 检查目标关系:
+2025-07-21 11:02:06,929 - INFO - KG中的关系类型示例: ['Express_intent_to_engage_in_diplomatic_cooperation_(such_as_policy_support)', 'Make_statement', 'Praise_or_endorse', 'Consult', 'Discuss_by_telephone', 'Make_pessimistic_comment', 'Make_an_appeal_or_request', 'Express_intent_to_provide_economic_aid', 'Provide_aid', 'Reject', 'Use_unconventional_violence', 'Engage_in_diplomatic_cooperation', 'fight_with_small_arms_and_light_weapons', 'Express_intent_to_provide_material_aid', 'Express_intent_to_meet_or_negotiate', 'Accuse', 'Arrest,_detain,_or_charge_with_legal_action', 'Use_conventional_military_force', 'Provide_humanitarian_aid', 'Criticize_or_denounce']
+2025-07-21 11:02:06,929 - INFO -   关系 'used conventional military force against' 模糊匹配: ['Use_unconventional_violence', 'Use_conventional_military_force', 'Provide_military_aid', 'Mobilize_or_increase_armed_forces', 'Refuse_to_de-escalate_military_engagement', 'Bring_lawsuit_against', 'Increase_military_alert_status', 'Provide_military_protection_or_peacekeeping', 'Demonstrate_military_or_police_power', 'Rally_opposition_against']
+2025-07-21 11:02:06,957 - INFO -     'Use_unconventional_violence': 9189 条记录
+2025-07-21 11:02:06,984 - INFO -     'Use_conventional_military_force': 9554 条记录
+2025-07-21 11:02:07,009 - INFO -     'Provide_military_aid': 452 条记录
+2025-07-21 11:02:07,009 - INFO - === KG检查完成 ===
+2025-07-21 11:02:07,010 - INFO - 步骤2: 代码生成
+2025-07-21 11:02:07,010 - INFO - 代码生成成功
+2025-07-21 11:02:07,010 - INFO - 生成的代码长度: 2038 字符
+2025-07-21 11:02:07,010 - INFO - 生成的代码:
+def query_kg(df):
+    import pandas as pd
+    
+    try:
+        results = []
+        entities = ['France']
+        relations = ['used conventional military force against']
+        time_constraint = "before 11 December 2009"
+        
+        # 确保数据类型
+        for col in ['head', 'relation', 'tail', 'timestamp']:
+            if col in df.columns:
+                df[col] = df[col].astype(str)
+        
+        # 时间过滤
+        filtered_df = df.copy()
+        if time_constraint:
+            if "july" in time_constraint.lower() and "2007" in time_constraint:
+                filtered_df = filtered_df[filtered_df['timestamp'].str.startswith('2007-07')]
+            elif "2007" in time_constraint:
+                filtered_df = filtered_df[filtered_df['timestamp'].str.startswith('2007')]
+        
+        # 查询逻辑
+        if entities:
+            target_entity = entities[0]
+            
+            for relation in relations:
+                # 模式1: X -> relation -> target_entity
+                mask1 = (
+                    (filtered_df['tail'] == target_entity) & 
+                    (filtered_df['relation'] == relation)
+                )
+                
+                if mask1.any():
+                    for _, row in filtered_df[mask1].iterrows():
+                        result = row['head'].replace('_', ' ')
+                        if result not in results:
+                            results.append(result)
+                
+                # 模式2: target_entity -> relation -> X
+                mask2 = (
+                    (filtered_df['head'] == target_entity) & 
+                    (filtered_df['relation'] == relation)
+                )
+                
+                if mask2.any():
+                    for _, row in filtered_df[mask2].iterrows():
+                        result = row['tail'].replace('_', ' ')
+                        if result not in results:
+                            results.append(result)
+        
+        return results[:15]
+        
+    except Exception as e:
+        return [f"查询错误: {str(e)}"]
+2025-07-21 11:02:07,010 - INFO - 步骤3: 执行查询
+2025-07-21 11:02:07,072 - INFO - 执行代码:
+2025-07-21 11:02:07,072 - INFO - def query_kg(df):
+    import pandas as pd
+    
+    try:
+        results = []
+        entities = ['France']
+        relations = ['used conventional military force against']
+        time_constraint = "before 11 December 2009"
+        
+        # 确保数据类型
+        for col in ['head', 'relation', 'tail', 'timestamp']:
+            if col in df.columns:
+                df[col] = df[col].astype(str)
+        
+        # 时间过滤
+        filtered_df = df.copy()
+        if time_constraint:
+            if "july" in time_constraint.lower() and "2007" in time_constraint:
+                filtered_df = filtered_df[filtered_df['timestamp'].str.startswith('2007-07')]
+            elif "2007" in time_constraint:
+                filtered_df = filtered_df[filtered_df['timestamp'].str.startswith('2007')]
+        
+        # 查询逻辑
+        if entities:
+            target_entity = entities[0]
+            
+            for relation in relations:
+                # 模式1: X -> relation -> target_entity
+                mask1 = (
+                    (filtered_df['tail'] == target_entity) & 
+                    (filtered_df['relation'] == relation)
+                )
+                
+                if mask1.any():
+                    for _, row in filtered_df[mask1].iterrows():
+                        result = row['head'].replace('_', ' ')
+                        if result not in results:
+                            results.append(result)
+                
+                # 模式2: target_entity -> relation -> X
+                mask2 = (
+                    (filtered_df['head'] == target_entity) & 
+                    (filtered_df['relation'] == relation)
+                )
+                
+                if mask2.any():
+                    for _, row in filtered_df[mask2].iterrows():
+                        result = row['tail'].replace('_', ' ')
+                        if result not in results:
+                            results.append(result)
+        
+        return results[:15]
+        
+    except Exception as e:
+        return [f"查询错误: {str(e)}"]
+2025-07-21 11:02:07,242 - INFO - 查询返回 0 个结果: []
+2025-07-21 11:02:07,242 - INFO - 查询执行完成
+2025-07-21 11:02:07,242 - INFO - 查询结果数量: 0
+2025-07-21 11:02:07,242 - INFO - 查询结果: []
+2025-07-21 11:02:07,242 - INFO - 步骤4: 评估结果
+2025-07-21 11:02:07,242 - INFO - 评估结果:
+2025-07-21 11:02:07,242 - INFO -   预测答案: []
+2025-07-21 11:02:07,242 - INFO -   标准答案: ['Separatist (France)', 'Comoros', 'Royal Air Force', 'Bolivia', 'Colombia', 'Christian (France)', 'Member of Parliament (France)', 'Military (Russia)']
+2025-07-21 11:02:07,242 - INFO -   精确匹配: False
+2025-07-21 11:02:07,243 - INFO -   精度: 0.000, 召回率: 0.000, F1: 0.000
+2025-07-21 11:02:07,243 - INFO -   处理时间: 9.959秒
+2025-07-21 11:02:07,243 - INFO - 处理问题 4: 2044815
+2025-07-21 11:02:07,243 - INFO - 问题: Which country was the first to ask for France after the Algerian extremist?
+2025-07-21 11:02:07,243 - INFO - 标准答案: ['Iran']
+2025-07-21 11:02:07,243 - INFO - 步骤1: 问题分析
+2025-07-21 11:02:07,306 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-07-21 11:02:18,526 - INFO - 问题分析完成: {'question_type': 'relation_query', 'key_entities': ['Algerian extremist', 'France'], 'target_relations': ['ask for'], 'time_constraints': 'first', 'answer_type': 'entity', 'query_strategy': "首先识别出问题中的关键实体'Algerian extremist'和'France'，以及目标关系'ask for'。时间约束是'first'，表示查询的是第一个向法国提出请求的国家。答案类型是一个国家实体。"}
+2025-07-21 11:02:18,527 - INFO - 分析结果: {'question_type': 'relation_query', 'key_entities': ['Algerian extremist', 'France'], 'target_relations': ['ask for'], 'time_constraints': 'first', 'answer_type': 'entity', 'query_strategy': "首先识别出问题中的关键实体'Algerian extremist'和'France'，以及目标关系'ask for'。时间约束是'first'，表示查询的是第一个向法国提出请求的国家。答案类型是一个国家实体。"}
+2025-07-21 11:02:18,527 - INFO - === KG实体和关系检查 ===
+2025-07-21 11:02:18,527 - INFO - 检查实体: 'Algerian extremist'
+2025-07-21 11:02:19,439 - WARNING -   实体 'Algerian extremist' 的所有模式都未找到
+2025-07-21 11:02:19,809 - INFO -     部分匹配 'extremist': 242 条记录
+2025-07-21 11:02:19,810 - INFO -       Agence_France-Presse -> Make_statement -> Extremist_(Algeria)
+2025-07-21 11:02:19,810 - INFO -       Islamic_Extremist_Group_(Islamic_Jihad) -> fight_with_small_arms_and_light_weapons -> Israeli_Defense_Forces
+2025-07-21 11:02:19,810 - INFO - 检查实体: 'France'
+2025-07-21 11:02:20,001 - INFO -   模式 'France' 匹配成功:
+2025-07-21 11:02:20,001 - INFO -     作为head: 9930 条记录
+2025-07-21 11:02:20,001 - INFO -       Agence_France-Presse -> Discuss_by_telephone -> Police_(Kenya) (2005-01-03)
+2025-07-21 11:02:20,001 - INFO -       Government_(France) -> Praise_or_endorse -> Citizen_(Sudan) (2005-01-04)
+2025-07-21 11:02:20,001 - INFO -       Agence_France-Presse -> Discuss_by_telephone -> Ange-Félix_Patassé (2005-01-05)
+2025-07-21 11:02:20,001 - INFO -     作为tail: 10102 条记录
+2025-07-21 11:02:20,002 - INFO -       Police_(Kenya) -> Discuss_by_telephone -> Agence_France-Presse (2005-01-03)
+2025-07-21 11:02:20,002 - INFO -       Serge_Lepeltier -> Make_statement -> France (2005-01-04)
+2025-07-21 11:02:20,002 - INFO -       Ange-Félix_Patassé -> Discuss_by_telephone -> Agence_France-Presse (2005-01-05)
+2025-07-21 11:02:20,002 - INFO - 检查目标关系:
+2025-07-21 11:02:20,026 - INFO - KG中的关系类型示例: ['Express_intent_to_engage_in_diplomatic_cooperation_(such_as_policy_support)', 'Make_statement', 'Praise_or_endorse', 'Consult', 'Discuss_by_telephone', 'Make_pessimistic_comment', 'Make_an_appeal_or_request', 'Express_intent_to_provide_economic_aid', 'Provide_aid', 'Reject', 'Use_unconventional_violence', 'Engage_in_diplomatic_cooperation', 'fight_with_small_arms_and_light_weapons', 'Express_intent_to_provide_material_aid', 'Express_intent_to_meet_or_negotiate', 'Accuse', 'Arrest,_detain,_or_charge_with_legal_action', 'Use_conventional_military_force', 'Provide_humanitarian_aid', 'Criticize_or_denounce']
+2025-07-21 11:02:20,027 - WARNING -   关系 'ask for' 未找到匹配
+2025-07-21 11:02:20,027 - INFO - === KG检查完成 ===
+2025-07-21 11:02:20,027 - INFO - 步骤2: 代码生成
+2025-07-21 11:02:20,027 - INFO - 代码生成成功
+2025-07-21 11:02:20,027 - INFO - 生成的代码长度: 2009 字符
+2025-07-21 11:02:20,027 - INFO - 生成的代码:
+def query_kg(df):
+    import pandas as pd
+    
+    try:
+        results = []
+        entities = ['Algerian extremist', 'France']
+        relations = ['ask for']
+        time_constraint = "first"
+        
+        # 确保数据类型
+        for col in ['head', 'relation', 'tail', 'timestamp']:
+            if col in df.columns:
+                df[col] = df[col].astype(str)
+        
+        # 时间过滤
+        filtered_df = df.copy()
+        if time_constraint:
+            if "july" in time_constraint.lower() and "2007" in time_constraint:
+                filtered_df = filtered_df[filtered_df['timestamp'].str.startswith('2007-07')]
+            elif "2007" in time_constraint:
+                filtered_df = filtered_df[filtered_df['timestamp'].str.startswith('2007')]
+        
+        # 查询逻辑
+        if entities:
+            target_entity = entities[0]
+            
+            for relation in relations:
+                # 模式1: X -> relation -> target_entity
+                mask1 = (
+                    (filtered_df['tail'] == target_entity) & 
+                    (filtered_df['relation'] == relation)
+                )
+                
+                if mask1.any():
+                    for _, row in filtered_df[mask1].iterrows():
+                        result = row['head'].replace('_', ' ')
+                        if result not in results:
+                            results.append(result)
+                
+                # 模式2: target_entity -> relation -> X
+                mask2 = (
+                    (filtered_df['head'] == target_entity) & 
+                    (filtered_df['relation'] == relation)
+                )
+                
+                if mask2.any():
+                    for _, row in filtered_df[mask2].iterrows():
+                        result = row['tail'].replace('_', ' ')
+                        if result not in results:
+                            results.append(result)
+        
+        return results[:15]
+        
+    except Exception as e:
+        return [f"查询错误: {str(e)}"]
+2025-07-21 11:02:20,027 - INFO - 步骤3: 执行查询
+2025-07-21 11:02:20,090 - INFO - 执行代码:
+2025-07-21 11:02:20,090 - INFO - def query_kg(df):
+    import pandas as pd
+    
+    try:
+        results = []
+        entities = ['Algerian extremist', 'France']
+        relations = ['ask for']
+        time_constraint = "first"
+        
+        # 确保数据类型
+        for col in ['head', 'relation', 'tail', 'timestamp']:
+            if col in df.columns:
+                df[col] = df[col].astype(str)
+        
+        # 时间过滤
+        filtered_df = df.copy()
+        if time_constraint:
+            if "july" in time_constraint.lower() and "2007" in time_constraint:
+                filtered_df = filtered_df[filtered_df['timestamp'].str.startswith('2007-07')]
+            elif "2007" in time_constraint:
+                filtered_df = filtered_df[filtered_df['timestamp'].str.startswith('2007')]
+        
+        # 查询逻辑
+        if entities:
+            target_entity = entities[0]
+            
+            for relation in relations:
+                # 模式1: X -> relation -> target_entity
+                mask1 = (
+                    (filtered_df['tail'] == target_entity) & 
+                    (filtered_df['relation'] == relation)
+                )
+                
+                if mask1.any():
+                    for _, row in filtered_df[mask1].iterrows():
+                        result = row['head'].replace('_', ' ')
+                        if result not in results:
+                            results.append(result)
+                
+                # 模式2: target_entity -> relation -> X
+                mask2 = (
+                    (filtered_df['head'] == target_entity) & 
+                    (filtered_df['relation'] == relation)
+                )
+                
+                if mask2.any():
+                    for _, row in filtered_df[mask2].iterrows():
+                        result = row['tail'].replace('_', ' ')
+                        if result not in results:
+                            results.append(result)
+        
+        return results[:15]
+        
+    except Exception as e:
+        return [f"查询错误: {str(e)}"]
+2025-07-21 11:02:20,244 - INFO - 查询返回 0 个结果: []
+2025-07-21 11:02:20,244 - INFO - 查询执行完成
+2025-07-21 11:02:20,244 - INFO - 查询结果数量: 0
+2025-07-21 11:02:20,244 - INFO - 查询结果: []
+2025-07-21 11:02:20,244 - INFO - 步骤4: 评估结果
+2025-07-21 11:02:20,244 - INFO - 评估结果:
+2025-07-21 11:02:20,244 - INFO -   预测答案: []
+2025-07-21 11:02:20,244 - INFO -   标准答案: ['Iran']
+2025-07-21 11:02:20,244 - INFO -   精确匹配: False
+2025-07-21 11:02:20,244 - INFO -   精度: 0.000, 召回率: 0.000, F1: 0.000
+2025-07-21 11:02:20,244 - INFO -   处理时间: 13.001秒
+2025-07-21 11:02:20,244 - INFO - 处理问题 5: 2016117
+2025-07-21 11:02:20,244 - INFO - 问题: Before the Brazilian Ministry of Agriculture, Fishing and Forestry, which country was the last to condemn France?
+2025-07-21 11:02:20,245 - INFO - 标准答案: ['Mexico']
+2025-07-21 11:02:20,245 - INFO - 步骤1: 问题分析
+2025-07-21 11:02:20,321 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-07-21 11:02:28,576 - INFO - 问题分析完成: {'question_type': 'entity_query', 'key_entities': ['Brazilian Ministry of Agriculture, Fishing and Forestry', 'France'], 'target_relations': ['condemn'], 'time_constraints': 'Before the Brazilian Ministry of Agriculture, Fishing and Forestry', 'answer_type': 'entity', 'query_strategy': '首先确定巴西农业、渔业和林业部谴责法国的时间点，然后查询在此之前最后一个谴责法国的国家。'}
+2025-07-21 11:02:28,576 - INFO - 分析结果: {'question_type': 'entity_query', 'key_entities': ['Brazilian Ministry of Agriculture, Fishing and Forestry', 'France'], 'target_relations': ['condemn'], 'time_constraints': 'Before the Brazilian Ministry of Agriculture, Fishing and Forestry', 'answer_type': 'entity', 'query_strategy': '首先确定巴西农业、渔业和林业部谴责法国的时间点，然后查询在此之前最后一个谴责法国的国家。'}
+2025-07-21 11:02:28,576 - INFO - === KG实体和关系检查 ===
+2025-07-21 11:02:28,576 - INFO - 检查实体: 'Brazilian Ministry of Agriculture, Fishing and Forestry'
+2025-07-21 11:02:29,432 - WARNING -   实体 'Brazilian Ministry of Agriculture, Fishing and Forestry' 的所有模式都未找到
+2025-07-21 11:02:29,615 - INFO -     部分匹配 'Brazilian': 4 条记录
+2025-07-21 11:02:29,616 - INFO -       Brazilian_Communist_Party -> Engage_in_material_cooperation -> Socialism_and_Freedom_Party
+2025-07-21 11:02:29,616 - INFO -       Socialism_and_Freedom_Party -> Engage_in_material_cooperation -> Brazilian_Communist_Party
+2025-07-21 11:02:29,616 - INFO - 检查实体: 'France'
+2025-07-21 11:02:29,804 - INFO -   模式 'France' 匹配成功:
+2025-07-21 11:02:29,804 - INFO -     作为head: 9930 条记录
+2025-07-21 11:02:29,804 - INFO -       Agence_France-Presse -> Discuss_by_telephone -> Police_(Kenya) (2005-01-03)
+2025-07-21 11:02:29,805 - INFO -       Government_(France) -> Praise_or_endorse -> Citizen_(Sudan) (2005-01-04)
+2025-07-21 11:02:29,805 - INFO -       Agence_France-Presse -> Discuss_by_telephone -> Ange-Félix_Patassé (2005-01-05)
+2025-07-21 11:02:29,805 - INFO -     作为tail: 10102 条记录
+2025-07-21 11:02:29,805 - INFO -       Police_(Kenya) -> Discuss_by_telephone -> Agence_France-Presse (2005-01-03)
+2025-07-21 11:02:29,805 - INFO -       Serge_Lepeltier -> Make_statement -> France (2005-01-04)
+2025-07-21 11:02:29,805 - INFO -       Ange-Félix_Patassé -> Discuss_by_telephone -> Agence_France-Presse (2005-01-05)
+2025-07-21 11:02:29,805 - INFO - 检查目标关系:
+2025-07-21 11:02:29,829 - INFO - KG中的关系类型示例: ['Express_intent_to_engage_in_diplomatic_cooperation_(such_as_policy_support)', 'Make_statement', 'Praise_or_endorse', 'Consult', 'Discuss_by_telephone', 'Make_pessimistic_comment', 'Make_an_appeal_or_request', 'Express_intent_to_provide_economic_aid', 'Provide_aid', 'Reject', 'Use_unconventional_violence', 'Engage_in_diplomatic_cooperation', 'fight_with_small_arms_and_light_weapons', 'Express_intent_to_provide_material_aid', 'Express_intent_to_meet_or_negotiate', 'Accuse', 'Arrest,_detain,_or_charge_with_legal_action', 'Use_conventional_military_force', 'Provide_humanitarian_aid', 'Criticize_or_denounce']
+2025-07-21 11:02:29,829 - WARNING -   关系 'condemn' 未找到匹配
+2025-07-21 11:02:29,829 - INFO - === KG检查完成 ===
+2025-07-21 11:02:29,829 - INFO - 步骤2: 代码生成
+2025-07-21 11:02:29,829 - INFO - 代码生成成功
+2025-07-21 11:02:29,829 - INFO - 生成的代码长度: 2107 字符
+2025-07-21 11:02:29,830 - INFO - 生成的代码:
+def query_kg(df):
+    import pandas as pd
+    
+    try:
+        results = []
+        entities = ['Brazilian Ministry of Agriculture, Fishing and Forestry', 'France']
+        relations = ['condemn']
+        time_constraint = "Before the Brazilian Ministry of Agriculture, Fishing and Forestry"
+        
+        # 确保数据类型
+        for col in ['head', 'relation', 'tail', 'timestamp']:
+            if col in df.columns:
+                df[col] = df[col].astype(str)
+        
+        # 时间过滤
+        filtered_df = df.copy()
+        if time_constraint:
+            if "july" in time_constraint.lower() and "2007" in time_constraint:
+                filtered_df = filtered_df[filtered_df['timestamp'].str.startswith('2007-07')]
+            elif "2007" in time_constraint:
+                filtered_df = filtered_df[filtered_df['timestamp'].str.startswith('2007')]
+        
+        # 查询逻辑
+        if entities:
+            target_entity = entities[0]
+            
+            for relation in relations:
+                # 模式1: X -> relation -> target_entity
+                mask1 = (
+                    (filtered_df['tail'] == target_entity) & 
+                    (filtered_df['relation'] == relation)
+                )
+                
+                if mask1.any():
+                    for _, row in filtered_df[mask1].iterrows():
+                        result = row['head'].replace('_', ' ')
+                        if result not in results:
+                            results.append(result)
+                
+                # 模式2: target_entity -> relation -> X
+                mask2 = (
+                    (filtered_df['head'] == target_entity) & 
+                    (filtered_df['relation'] == relation)
+                )
+                
+                if mask2.any():
+                    for _, row in filtered_df[mask2].iterrows():
+                        result = row['tail'].replace('_', ' ')
+                        if result not in results:
+                            results.append(result)
+        
+        return results[:15]
+        
+    except Exception as e:
+        return [f"查询错误: {str(e)}"]
+2025-07-21 11:02:29,830 - INFO - 步骤3: 执行查询
+2025-07-21 11:02:29,871 - INFO - 执行代码:
+2025-07-21 11:02:29,871 - INFO - def query_kg(df):
+    import pandas as pd
+    
+    try:
+        results = []
+        entities = ['Brazilian Ministry of Agriculture, Fishing and Forestry', 'France']
+        relations = ['condemn']
+        time_constraint = "Before the Brazilian Ministry of Agriculture, Fishing and Forestry"
+        
+        # 确保数据类型
+        for col in ['head', 'relation', 'tail', 'timestamp']:
+            if col in df.columns:
+                df[col] = df[col].astype(str)
+        
+        # 时间过滤
+        filtered_df = df.copy()
+        if time_constraint:
+            if "july" in time_constraint.lower() and "2007" in time_constraint:
+                filtered_df = filtered_df[filtered_df['timestamp'].str.startswith('2007-07')]
+            elif "2007" in time_constraint:
+                filtered_df = filtered_df[filtered_df['timestamp'].str.startswith('2007')]
+        
+        # 查询逻辑
+        if entities:
+            target_entity = entities[0]
+            
+            for relation in relations:
+                # 模式1: X -> relation -> target_entity
+                mask1 = (
+                    (filtered_df['tail'] == target_entity) & 
+                    (filtered_df['relation'] == relation)
+                )
+                
+                if mask1.any():
+                    for _, row in filtered_df[mask1].iterrows():
+                        result = row['head'].replace('_', ' ')
+                        if result not in results:
+                            results.append(result)
+                
+                # 模式2: target_entity -> relation -> X
+                mask2 = (
+                    (filtered_df['head'] == target_entity) & 
+                    (filtered_df['relation'] == relation)
+                )
+                
+                if mask2.any():
+                    for _, row in filtered_df[mask2].iterrows():
+                        result = row['tail'].replace('_', ' ')
+                        if result not in results:
+                            results.append(result)
+        
+        return results[:15]
+        
+    except Exception as e:
+        return [f"查询错误: {str(e)}"]
+2025-07-21 11:02:30,038 - INFO - 查询返回 0 个结果: []
+2025-07-21 11:02:30,038 - INFO - 查询执行完成
+2025-07-21 11:02:30,039 - INFO - 查询结果数量: 0
+2025-07-21 11:02:30,039 - INFO - 查询结果: []
+2025-07-21 11:02:30,039 - INFO - 步骤4: 评估结果
+2025-07-21 11:02:30,039 - INFO - 评估结果:
+2025-07-21 11:02:30,039 - INFO -   预测答案: []
+2025-07-21 11:02:30,039 - INFO -   标准答案: ['Mexico']
+2025-07-21 11:02:30,039 - INFO -   精确匹配: False
+2025-07-21 11:02:30,039 - INFO -   精度: 0.000, 召回率: 0.000, F1: 0.000
+2025-07-21 11:02:30,039 - INFO -   处理时间: 9.794秒
+2025-07-21 11:02:30,040 - INFO - 结果已保存到: /mnt/nvme0n1/tyj/TKGQA/MY/intermediate_results_20250721_110230.json
+2025-07-21 11:02:30,040 - INFO - 已保存中间结果 (5/6)
+2025-07-21 11:02:30,040 - INFO - 处理问题 6: 2018890
+2025-07-21 11:02:30,040 - INFO - 问题: Who received Juan Carlos I's visit from Juan Carlos I on the same month of Qatar?
+2025-07-21 11:02:30,040 - INFO - 标准答案: ['Royal Administration (Spain)', 'Royal Administration (Jordan)', 'Royal Administration (Saudi Arabia)']
+2025-07-21 11:02:30,040 - INFO - 步骤1: 问题分析
+2025-07-21 11:02:30,090 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-07-21 11:02:37,881 - INFO - 问题分析完成: {'question_type': 'relation_query', 'key_entities': ['Juan Carlos I', 'Qatar'], 'target_relations': ['received visit from'], 'time_constraints': 'same month', 'answer_type': 'entity', 'query_strategy': 'Find the entity that received a visit from Juan Carlos I in the same month as the event involving Qatar.'}
+2025-07-21 11:02:37,882 - INFO - 分析结果: {'question_type': 'relation_query', 'key_entities': ['Juan Carlos I', 'Qatar'], 'target_relations': ['received visit from'], 'time_constraints': 'same month', 'answer_type': 'entity', 'query_strategy': 'Find the entity that received a visit from Juan Carlos I in the same month as the event involving Qatar.'}
+2025-07-21 11:02:37,882 - INFO - === KG实体和关系检查 ===
+2025-07-21 11:02:37,882 - INFO - 检查实体: 'Juan Carlos I'
+2025-07-21 11:02:38,258 - INFO -   模式 'Juan_Carlos_I' 匹配成功:
+2025-07-21 11:02:38,259 - INFO -     作为head: 181 条记录
+2025-07-21 11:02:38,259 - INFO -       Juan_Carlos_I -> Host_a_visit -> Solomon_Passy (2005-01-08)
+2025-07-21 11:02:38,259 - INFO -       Juan_Carlos_I -> Make_a_visit -> Muhammad_VI (2005-01-17)
+2025-07-21 11:02:38,259 - INFO -       Juan_Carlos_I -> Praise_or_endorse -> Muhammad_VI (2005-01-18)
+2025-07-21 11:02:38,259 - INFO -     作为tail: 159 条记录
+2025-07-21 11:02:38,259 - INFO -       Solomon_Passy -> Make_a_visit -> Juan_Carlos_I (2005-01-08)
+2025-07-21 11:02:38,259 - INFO -       Muhammad_VI -> Host_a_visit -> Juan_Carlos_I (2005-01-17)
+2025-07-21 11:02:38,259 - INFO -       Muhammad_VI -> Praise_or_endorse -> Juan_Carlos_I (2005-01-17)
+2025-07-21 11:02:38,260 - INFO - 检查实体: 'Qatar'
+2025-07-21 11:02:38,444 - INFO -   模式 'Qatar' 匹配成功:
+2025-07-21 11:02:38,444 - INFO -     作为head: 1702 条记录
+2025-07-21 11:02:38,444 - INFO -       Government_(Qatar) -> Make_statement -> Qatar (2005-01-08)
+2025-07-21 11:02:38,444 - INFO -       Qatar -> Express_intent_to_cooperate -> Kuwait (2005-02-07)
+2025-07-21 11:02:38,445 - INFO -       Treasury/Finance_Ministry_(Qatar) -> Make_statement -> Sheikh_Hamad_bin_Khalifa_al-Thani (2005-02-08)
+2025-07-21 11:02:38,445 - INFO -     作为tail: 2058 条记录
+2025-07-21 11:02:38,445 - INFO -       Government_(Qatar) -> Make_statement -> Qatar (2005-01-08)
+2025-07-21 11:02:38,445 - INFO -       Al_Jazeera -> Make_statement -> Qatar (2005-01-23)
+2025-07-21 11:02:38,445 - INFO -       Gerhard_Schröder -> Express_intent_to_meet_or_negotiate -> Qatar (2005-01-31)
+2025-07-21 11:02:38,445 - INFO - 检查目标关系:
+2025-07-21 11:02:38,469 - INFO - KG中的关系类型示例: ['Express_intent_to_engage_in_diplomatic_cooperation_(such_as_policy_support)', 'Make_statement', 'Praise_or_endorse', 'Consult', 'Discuss_by_telephone', 'Make_pessimistic_comment', 'Make_an_appeal_or_request', 'Express_intent_to_provide_economic_aid', 'Provide_aid', 'Reject', 'Use_unconventional_violence', 'Engage_in_diplomatic_cooperation', 'fight_with_small_arms_and_light_weapons', 'Express_intent_to_provide_material_aid', 'Express_intent_to_meet_or_negotiate', 'Accuse', 'Arrest,_detain,_or_charge_with_legal_action', 'Use_conventional_military_force', 'Provide_humanitarian_aid', 'Criticize_or_denounce']
+2025-07-21 11:02:38,469 - INFO -   关系 'received visit from' 模糊匹配: ['Host_a_visit', 'Make_a_visit']
+2025-07-21 11:02:38,498 - INFO -     'Host_a_visit': 24411 条记录
+2025-07-21 11:02:38,527 - INFO -     'Make_a_visit': 24422 条记录
+2025-07-21 11:02:38,527 - INFO - === KG检查完成 ===
+2025-07-21 11:02:38,527 - INFO - 步骤2: 代码生成
+2025-07-21 11:02:38,527 - INFO - 代码生成成功
+2025-07-21 11:02:38,527 - INFO - 生成的代码长度: 2020 字符
+2025-07-21 11:02:38,527 - INFO - 生成的代码:
+def query_kg(df):
+    import pandas as pd
+    
+    try:
+        results = []
+        entities = ['Juan Carlos I', 'Qatar']
+        relations = ['received visit from']
+        time_constraint = "same month"
+        
+        # 确保数据类型
+        for col in ['head', 'relation', 'tail', 'timestamp']:
+            if col in df.columns:
+                df[col] = df[col].astype(str)
+        
+        # 时间过滤
+        filtered_df = df.copy()
+        if time_constraint:
+            if "july" in time_constraint.lower() and "2007" in time_constraint:
+                filtered_df = filtered_df[filtered_df['timestamp'].str.startswith('2007-07')]
+            elif "2007" in time_constraint:
+                filtered_df = filtered_df[filtered_df['timestamp'].str.startswith('2007')]
+        
+        # 查询逻辑
+        if entities:
+            target_entity = entities[0]
+            
+            for relation in relations:
+                # 模式1: X -> relation -> target_entity
+                mask1 = (
+                    (filtered_df['tail'] == target_entity) & 
+                    (filtered_df['relation'] == relation)
+                )
+                
+                if mask1.any():
+                    for _, row in filtered_df[mask1].iterrows():
+                        result = row['head'].replace('_', ' ')
+                        if result not in results:
+                            results.append(result)
+                
+                # 模式2: target_entity -> relation -> X
+                mask2 = (
+                    (filtered_df['head'] == target_entity) & 
+                    (filtered_df['relation'] == relation)
+                )
+                
+                if mask2.any():
+                    for _, row in filtered_df[mask2].iterrows():
+                        result = row['tail'].replace('_', ' ')
+                        if result not in results:
+                            results.append(result)
+        
+        return results[:15]
+        
+    except Exception as e:
+        return [f"查询错误: {str(e)}"]
+2025-07-21 11:02:38,527 - INFO - 步骤3: 执行查询
+2025-07-21 11:02:38,600 - INFO - 执行代码:
+2025-07-21 11:02:38,600 - INFO - def query_kg(df):
+    import pandas as pd
+    
+    try:
+        results = []
+        entities = ['Juan Carlos I', 'Qatar']
+        relations = ['received visit from']
+        time_constraint = "same month"
+        
+        # 确保数据类型
+        for col in ['head', 'relation', 'tail', 'timestamp']:
+            if col in df.columns:
+                df[col] = df[col].astype(str)
+        
+        # 时间过滤
+        filtered_df = df.copy()
+        if time_constraint:
+            if "july" in time_constraint.lower() and "2007" in time_constraint:
+                filtered_df = filtered_df[filtered_df['timestamp'].str.startswith('2007-07')]
+            elif "2007" in time_constraint:
+                filtered_df = filtered_df[filtered_df['timestamp'].str.startswith('2007')]
+        
+        # 查询逻辑
+        if entities:
+            target_entity = entities[0]
+            
+            for relation in relations:
+                # 模式1: X -> relation -> target_entity
+                mask1 = (
+                    (filtered_df['tail'] == target_entity) & 
+                    (filtered_df['relation'] == relation)
+                )
+                
+                if mask1.any():
+                    for _, row in filtered_df[mask1].iterrows():
+                        result = row['head'].replace('_', ' ')
+                        if result not in results:
+                            results.append(result)
+                
+                # 模式2: target_entity -> relation -> X
+                mask2 = (
+                    (filtered_df['head'] == target_entity) & 
+                    (filtered_df['relation'] == relation)
+                )
+                
+                if mask2.any():
+                    for _, row in filtered_df[mask2].iterrows():
+                        result = row['tail'].replace('_', ' ')
+                        if result not in results:
+                            results.append(result)
+        
+        return results[:15]
+        
+    except Exception as e:
+        return [f"查询错误: {str(e)}"]
+2025-07-21 11:02:38,766 - INFO - 查询返回 0 个结果: []
+2025-07-21 11:02:38,766 - INFO - 查询执行完成
+2025-07-21 11:02:38,766 - INFO - 查询结果数量: 0
+2025-07-21 11:02:38,766 - INFO - 查询结果: []
+2025-07-21 11:02:38,766 - INFO - 步骤4: 评估结果
+2025-07-21 11:02:38,766 - INFO - 评估结果:
+2025-07-21 11:02:38,766 - INFO -   预测答案: []
+2025-07-21 11:02:38,766 - INFO -   标准答案: ['Royal Administration (Spain)', 'Royal Administration (Jordan)', 'Royal Administration (Saudi Arabia)']
+2025-07-21 11:02:38,766 - INFO -   精确匹配: False
+2025-07-21 11:02:38,766 - INFO -   精度: 0.000, 召回率: 0.000, F1: 0.000
+2025-07-21 11:02:38,766 - INFO -   处理时间: 8.726秒
+2025-07-21 11:02:38,768 - INFO - 结果已保存到: /mnt/nvme0n1/tyj/TKGQA/MY/final_results_20250721_110238.json
+2025-07-21 11:02:38,768 - INFO - 实验完成，请查看结果文件获取详细统计信息

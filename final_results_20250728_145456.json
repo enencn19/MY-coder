@@ -1,0 +1,262 @@
+[
+  {
+    "quid": 2045036,
+    "question": "Who was rejected by the Kuomintang after June, 2007?",
+    "qtype": "before_after",
+    "answer_type": "entity",
+    "time_level": "month",
+    "expected_answers": [
+      "Tsai Ing-wen",
+      "Wang Ching-feng"
+    ],
+    "predicted_answers": [],
+    "analysis": {
+      "question_type": "before_after",
+      "qtype": "before_after",
+      "answer_type": "entity",
+      "time_level": "month",
+      "key_entities": [
+        "Kuomintang"
+      ],
+      "entities": [
+        "Kuomintang"
+      ],
+      "time_constraints": [
+        "2007"
+      ],
+      "time": [
+        "2007"
+      ],
+      "target_relations": [],
+      "query_strategy": "使用before_after类型查询策略"
+    },
+    "query_code": "def query_kg(df):\n    import pandas as pd\n    try:\n        # 确保数据类型\n        for col in ['head', 'relation', 'tail', 'timestamp']:\n            if col in df.columns:\n                df[col] = df[col].astype(str)\n        \n        entities = ['Kuomintang']\n        relations = []\n        results = []\n        \n        for entity in entities:\n            entity_patterns = [entity, entity.replace(' ', '_'), entity.replace('_', ' ')]\n            \n            for pattern in entity_patterns:\n                for relation in relations:\n                    mask1 = (\n                        (df['tail'].str.contains(pattern, case=False, na=False)) & \n                        (df['relation'] == relation)\n                    )\n                    \n                    if mask1.any():\n                        for _, row in df[mask1].iterrows():\n                            result = row['head'].replace('_', ' ')\n                            if result not in results:\n                                results.append(result)\n        \n        return results[:15]\n        \n    except Exception as e:\n        return []",
+    "exact_match": false,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0
+  },
+  {
+    "quid": 2006643,
+    "question": "Who declined Iran after August, 2015?",
+    "qtype": "before_after",
+    "answer_type": "entity",
+    "time_level": "month",
+    "expected_answers": [
+      "Kuwait",
+      "Other Authorities / Officials (Somalia)",
+      "Congress (United States)"
+    ],
+    "predicted_answers": [],
+    "analysis": {
+      "question_type": "before_after",
+      "qtype": "before_after",
+      "answer_type": "entity",
+      "time_level": "month",
+      "key_entities": [
+        "Iran"
+      ],
+      "entities": [
+        "Iran"
+      ],
+      "time_constraints": [
+        "2015"
+      ],
+      "time": [
+        "2015"
+      ],
+      "target_relations": [],
+      "query_strategy": "使用before_after类型查询策略"
+    },
+    "query_code": "def query_kg(df):\n    import pandas as pd\n    try:\n        # 确保数据类型\n        for col in ['head', 'relation', 'tail', 'timestamp']:\n            if col in df.columns:\n                df[col] = df[col].astype(str)\n        \n        entities = ['Iran']\n        relations = []\n        results = []\n        \n        for entity in entities:\n            entity_patterns = [entity, entity.replace(' ', '_'), entity.replace('_', ' ')]\n            \n            for pattern in entity_patterns:\n                for relation in relations:\n                    mask1 = (\n                        (df['tail'].str.contains(pattern, case=False, na=False)) & \n                        (df['relation'] == relation)\n                    )\n                    \n                    if mask1.any():\n                        for _, row in df[mask1].iterrows():\n                            result = row['head'].replace('_', ' ')\n                            if result not in results:\n                                results.append(result)\n        \n        return results[:15]\n        \n    except Exception as e:\n        return []",
+    "exact_match": false,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0
+  },
+  {
+    "quid": 2027657,
+    "question": "Who wanted to cooperate with Japan on 23 August 2006?",
+    "qtype": "equal",
+    "answer_type": "entity",
+    "time_level": "day",
+    "expected_answers": [
+      "Association of Southeast Asian Nations"
+    ],
+    "predicted_answers": [],
+    "analysis": {
+      "question_type": "equal",
+      "qtype": "equal",
+      "answer_type": "entity",
+      "time_level": "day",
+      "key_entities": [
+        "Japan"
+      ],
+      "entities": [
+        "Japan"
+      ],
+      "time_constraints": [
+        "2006-08-23"
+      ],
+      "time": [
+        "2006-08-23"
+      ],
+      "target_relations": [],
+      "query_strategy": "使用equal类型查询策略"
+    },
+    "query_code": "def query_kg(df):\n    import pandas as pd\n    try:\n        # 确保数据类型\n        for col in ['head', 'relation', 'tail', 'timestamp']:\n            if col in df.columns:\n                df[col] = df[col].astype(str)\n        \n        entities = ['Japan']\n        relations = []\n        results = []\n        \n        for entity in entities:\n            entity_patterns = [entity, entity.replace(' ', '_'), entity.replace('_', ' ')]\n            \n            for pattern in entity_patterns:\n                for relation in relations:\n                    mask1 = (\n                        (df['tail'].str.contains(pattern, case=False, na=False)) & \n                        (df['relation'] == relation)\n                    )\n                    \n                    if mask1.any():\n                        for _, row in df[mask1].iterrows():\n                            result = row['head'].replace('_', ' ')\n                            if result not in results:\n                                results.append(result)\n        \n        return results[:15]\n        \n    except Exception as e:\n        return []",
+    "exact_match": false,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0
+  },
+  {
+    "quid": 2007873,
+    "question": "Before 11 December 2009, who used conventional military force against France?",
+    "qtype": "before_after",
+    "answer_type": "entity",
+    "time_level": "day",
+    "expected_answers": [
+      "Separatist (France)",
+      "Comoros",
+      "Royal Air Force",
+      "Bolivia",
+      "Colombia",
+      "Christian (France)",
+      "Member of Parliament (France)",
+      "Military (Russia)"
+    ],
+    "predicted_answers": [],
+    "analysis": {
+      "question_type": "before_after",
+      "qtype": "before_after",
+      "answer_type": "entity",
+      "time_level": "day",
+      "key_entities": [
+        "France"
+      ],
+      "entities": [
+        "France"
+      ],
+      "time_constraints": [
+        "2009-12-11"
+      ],
+      "time": [
+        "2009-12-11"
+      ],
+      "target_relations": [],
+      "query_strategy": "使用before_after类型查询策略"
+    },
+    "query_code": "def query_kg(df):\n    import pandas as pd\n    try:\n        # 确保数据类型\n        for col in ['head', 'relation', 'tail', 'timestamp']:\n            if col in df.columns:\n                df[col] = df[col].astype(str)\n        \n        entities = ['France']\n        relations = []\n        results = []\n        \n        for entity in entities:\n            entity_patterns = [entity, entity.replace(' ', '_'), entity.replace('_', ' ')]\n            \n            for pattern in entity_patterns:\n                for relation in relations:\n                    mask1 = (\n                        (df['tail'].str.contains(pattern, case=False, na=False)) & \n                        (df['relation'] == relation)\n                    )\n                    \n                    if mask1.any():\n                        for _, row in df[mask1].iterrows():\n                            result = row['head'].replace('_', ' ')\n                            if result not in results:\n                                results.append(result)\n        \n        return results[:15]\n        \n    except Exception as e:\n        return []",
+    "exact_match": false,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0
+  },
+  {
+    "quid": 2044815,
+    "question": "Which country was the first to ask for France after the Algerian extremist?",
+    "qtype": "after_first",
+    "answer_type": "entity",
+    "time_level": "day",
+    "expected_answers": [
+      "Iran"
+    ],
+    "predicted_answers": [],
+    "analysis": {
+      "question_type": "after_first",
+      "qtype": "after_first",
+      "answer_type": "entity",
+      "time_level": "day",
+      "key_entities": [
+        "France",
+        "Anguel Marin"
+      ],
+      "entities": [
+        "France",
+        "Anguel Marin"
+      ],
+      "time_constraints": [],
+      "time": [],
+      "target_relations": [],
+      "query_strategy": "使用after_first类型查询策略"
+    },
+    "query_code": "def query_kg(df):\n    import pandas as pd\n    try:\n        # 确保数据类型\n        for col in ['head', 'relation', 'tail', 'timestamp']:\n            if col in df.columns:\n                df[col] = df[col].astype(str)\n        \n        entities = ['France', 'Anguel Marin']\n        relations = []\n        results = []\n        \n        for entity in entities:\n            entity_patterns = [entity, entity.replace(' ', '_'), entity.replace('_', ' ')]\n            \n            for pattern in entity_patterns:\n                for relation in relations:\n                    mask1 = (\n                        (df['tail'].str.contains(pattern, case=False, na=False)) & \n                        (df['relation'] == relation)\n                    )\n                    \n                    if mask1.any():\n                        for _, row in df[mask1].iterrows():\n                            result = row['head'].replace('_', ' ')\n                            if result not in results:\n                                results.append(result)\n        \n        return results[:15]\n        \n    except Exception as e:\n        return []",
+    "exact_match": false,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0
+  },
+  {
+    "quid": 2016117,
+    "question": "Before the Brazilian Ministry of Agriculture, Fishing and Forestry, which country was the last to condemn France?",
+    "qtype": "before_last",
+    "answer_type": "entity",
+    "time_level": "day",
+    "expected_answers": [
+      "Mexico"
+    ],
+    "predicted_answers": [],
+    "analysis": {
+      "question_type": "before_last",
+      "qtype": "before_last",
+      "answer_type": "entity",
+      "time_level": "day",
+      "key_entities": [
+        "Swaziland",
+        "Agriculture / Fishing / Forestry Ministry (Laos)",
+        "France"
+      ],
+      "entities": [
+        "Swaziland",
+        "Agriculture / Fishing / Forestry Ministry (Laos)",
+        "France"
+      ],
+      "time_constraints": [],
+      "time": [],
+      "target_relations": [],
+      "query_strategy": "使用before_last类型查询策略"
+    },
+    "query_code": "def query_kg(df):\n    import pandas as pd\n    try:\n        # 确保数据类型\n        for col in ['head', 'relation', 'tail', 'timestamp']:\n            if col in df.columns:\n                df[col] = df[col].astype(str)\n        \n        entities = ['Swaziland', 'Agriculture / Fishing / Forestry Ministry (Laos)', 'France']\n        relations = []\n        results = []\n        \n        for entity in entities:\n            entity_patterns = [entity, entity.replace(' ', '_'), entity.replace('_', ' ')]\n            \n            for pattern in entity_patterns:\n                for relation in relations:\n                    mask1 = (\n                        (df['tail'].str.contains(pattern, case=False, na=False)) & \n                        (df['relation'] == relation)\n                    )\n                    \n                    if mask1.any():\n                        for _, row in df[mask1].iterrows():\n                            result = row['head'].replace('_', ' ')\n                            if result not in results:\n                                results.append(result)\n        \n        return results[:15]\n        \n    except Exception as e:\n        return []",
+    "exact_match": false,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0
+  },
+  {
+    "quid": 2018890,
+    "question": "Who received Juan Carlos I's visit from Juan Carlos I on the same month of Qatar?",
+    "qtype": "equal_multi",
+    "answer_type": "entity",
+    "time_level": "month",
+    "expected_answers": [
+      "Royal Administration (Spain)",
+      "Royal Administration (Jordan)",
+      "Royal Administration (Saudi Arabia)"
+    ],
+    "predicted_answers": [],
+    "analysis": {
+      "question_type": "equal_multi",
+      "qtype": "equal_multi",
+      "answer_type": "entity",
+      "time_level": "month",
+      "key_entities": [
+        "Juan Carlos I",
+        "Qatar"
+      ],
+      "entities": [
+        "Juan Carlos I",
+        "Qatar"
+      ],
+      "time_constraints": [],
+      "time": [],
+      "target_relations": [],
+      "query_strategy": "使用equal_multi类型查询策略"
+    },
+    "query_code": "def query_kg(df):\n    import pandas as pd\n    try:\n        # 确保数据类型\n        for col in ['head', 'relation', 'tail', 'timestamp']:\n            if col in df.columns:\n                df[col] = df[col].astype(str)\n        \n        entities = ['Juan Carlos I', 'Qatar']\n        relations = []\n        results = []\n        \n        for entity in entities:\n            entity_patterns = [entity, entity.replace(' ', '_'), entity.replace('_', ' ')]\n            \n            for pattern in entity_patterns:\n                for relation in relations:\n                    mask1 = (\n                        (df['tail'].str.contains(pattern, case=False, na=False)) & \n                        (df['relation'] == relation)\n                    )\n                    \n                    if mask1.any():\n                        for _, row in df[mask1].iterrows():\n                            result = row['head'].replace('_', ' ')\n                            if result not in results:\n                                results.append(result)\n        \n        return results[:15]\n        \n    except Exception as e:\n        return []",
+    "exact_match": false,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0
+  }
+]

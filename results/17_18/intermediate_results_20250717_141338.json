@@ -1,0 +1,178 @@
+[
+  {
+    "quid": 2000014,
+    "question": "Who would wish to visit Ireland in July, the year of 2007?",
+    "ground_truth": [
+      "Bertie Ahern"
+    ],
+    "analysis": {
+      "question_type": "entity_query",
+      "time_constraints": {
+        "year": "2007",
+        "month": "July",
+        "time_range": "2005-01-01 to 2015-12-31"
+      },
+      "key_entities": [
+        "Ireland"
+      ],
+      "target_relations": [
+        "Make_a_visit",
+        "Host_a_visit"
+      ],
+      "answer_type": "entity",
+      "query_strategy": "The question is asking about who would wish to visit Ireland in July 2007. The key entity is 'Ireland', and the relevant relations are 'Make_a_visit' (for visitors) and 'Host_a_visit' (for hosts). The time constraint is July 2007. The query strategy involves filtering events where the tail entity is 'Ireland' and the relation is either 'Make_a_visit' or 'Host_a_visit', and the time is July 2007. The answer should be the head entity of such events."
+    },
+    "generated_code": "def query_kg(df):\n    import pandas as pd\n    from datetime import datetime\n    try:\n        # 基础时间过滤\n        df = df[(df['timestamp'] >= '2005-01-01') & (df['timestamp'] <= '2015-12-31')]\n        # 时间约束处理\n        time_constraints = \"{'year': '2007', 'month': 'July', 'time_range': '2005-01-01 to 2015-12-31'}\"\n        if time_constraints:\n            if '2007-07' in time_constraints:\n                df = df[(df['year'] == 2007) & (df['month'] == 7)]\n            elif 'after' in time_constraints.lower():\n                pass\n            elif any(year in time_constraints for year in ['2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015']):\n                for year in ['2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015']:\n                    if year in time_constraints:\n                        df = df[df['year'] == int(year)]\n                        break\n        # 实体过滤\n        key_entities = ['Ireland']\n        if key_entities:\n            entity_filter = pd.Series([False] * len(df))\n            for entity in key_entities:\n                entity_filter |= (\n                    df['head'].str.contains(entity, case=False, na=False) |\n                    df['tail'].str.contains(entity, case=False, na=False) |\n                    (df['head'] == entity) |\n                    (df['tail'] == entity)\n                )\n            df = df[entity_filter]\n        # 关系过滤\n        target_relations = ['Make_a_visit', 'Host_a_visit']\n        if target_relations:\n            relation_filter = pd.Series([False] * len(df))\n            for rel in target_relations:\n                relation_filter |= (\n                    df['relation'] == rel |\n                    df['relation'].str.contains(rel, case=False, na=False)\n                )\n            df = df[relation_filter]\n        if df.empty:\n            return []\n        # 返回相关实体\n        results = []\n        for _, row in df.iterrows():\n            if any(entity in str(row['head']).lower() for entity in [e.lower() for e in key_entities]):\n                results.append(row['tail'])\n            elif any(entity in str(row['tail']).lower() for entity in [e.lower() for e in key_entities]):\n                results.append(row['head'])\n        # 去重\n        results = list(set(results))\n        return results\n    except Exception as e:\n        print(f\"查询执行错误: {{e}}\")\n        return []",
+    "predicted_answers": [],
+    "evaluation": {
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "predicted_count": 0,
+      "ground_truth_count": 1,
+      "intersection_count": 0
+    }
+  },
+  {
+    "quid": 2000015,
+    "question": "In which year did Viktor Orban visit Iran for the first time?",
+    "ground_truth": [
+      "2015"
+    ],
+    "analysis": {
+      "question_type": "first_event",
+      "time_constraints": "时间范围为2005-01-01到2015-12-31，可用年份为2005至2015",
+      "key_entities": [
+        "Viktor_Orban",
+        "Iran"
+      ],
+      "target_relations": [
+        "Make_a_visit",
+        "Host_a_visit"
+      ],
+      "answer_type": "time",
+      "query_strategy": "首先在知识图谱中查找Viktor_Orban与Iran之间在2005-2015年间发生的所有访问事件（Make_a_visit或Host_a_visit关系），然后筛选出时间最早的事件，返回该事件发生的年份。"
+    },
+    "generated_code": "def query_kg(df):\n    import pandas as pd\n    from datetime import datetime\n    try:\n        # 基础时间过滤\n        df = df[(df['timestamp'] >= '2005-01-01') & (df['timestamp'] <= '2015-12-31')]\n        # 实体过滤\n        key_entities = ['Viktor_Orban', 'Iran']\n        if len(key_entities) >= 2:\n            entity1, entity2 = key_entities[0], key_entities[1]\n            # 双向匹配：entity1->entity2 或 entity2->entity1\n            df_filtered = df[\n                ((df['head'].str.contains(entity1, case=False, na=False) | \n                  df['head'] == entity1) & \n                 (df['tail'].str.contains(entity2, case=False, na=False) | \n                  df['tail'] == entity2)) |\n                ((df['head'].str.contains(entity2, case=False, na=False) | \n                  df['head'] == entity2) & \n                 (df['tail'].str.contains(entity1, case=False, na=False) | \n                  df['tail'] == entity1))\n            ]\n        else:\n            return []\n        # 关系过滤\n        target_relations = ['Make_a_visit', 'Host_a_visit']\n        if target_relations:\n            relation_filter = df_filtered['relation'].isin(target_relations)\n            for rel in target_relations:\n                relation_filter |= df_filtered['relation'].str.contains(rel, case=False, na=False)\n            df_filtered = df_filtered[relation_filter]\n        if df_filtered.empty:\n            return []\n        # 找到最早的事件\n        earliest_event = df_filtered.loc[df_filtered['timestamp'].idxmin()]\n        # 根据答案类型返回结果\n        answer_type = \"time\"\n        if answer_type == 'time':\n            return [str(earliest_event['year'])]\n        else:\n            return [earliest_event['head'], earliest_event['tail']]\n    except Exception as e:\n        print(f\"查询执行错误: {{e}}\")\n        return []",
+    "predicted_answers": [],
+    "evaluation": {
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "predicted_count": 0,
+      "ground_truth_count": 1,
+      "intersection_count": 0
+    }
+  },
+  {
+    "quid": 2000016,
+    "question": "Who made optimistic remarks about Iran after the Organisation for Economic Cooperation and Development?",
+    "ground_truth": [
+      "South Korea",
+      "Party Member (Iraq)",
+      "France",
+      "China",
+      "Iraq",
+      "Member of Legislative (Govt) (Iran)",
+      "Japan",
+      "Head of Government (Ukraine)",
+      "Thailand",
+      "Kazakhstan"
+    ],
+    "analysis": {
+      "question_type": "entity_query",
+      "time_constraints": "after the Organisation for Economic Cooperation and Development (OECD) event, within the time range of 2005-01-01 to 2015-12-31",
+      "key_entities": [
+        "Organisation_for_Economic_Cooperation_and_Development",
+        "Iran"
+      ],
+      "target_relations": [
+        "Make_statement",
+        "Praise_or_endorse",
+        "Make_optimistic_comment"
+      ],
+      "answer_type": "entity",
+      "query_strategy": "1. First, identify the time when the Organisation for Economic Cooperation and Development (OECD) made a statement or had an event involving Iran. 2. Then, search for events after that time where an entity made optimistic remarks about Iran, using the relations 'Make_statement', 'Praise_or_endorse', or 'Make_optimistic_comment'. 3. Return the entity (head) that made the optimistic remarks."
+    },
+    "generated_code": "def query_kg(df):\n    import pandas as pd\n    from datetime import datetime\n    try:\n        # 基础时间过滤\n        df = df[(df['timestamp'] >= '2005-01-01') & (df['timestamp'] <= '2015-12-31')]\n        # 时间约束处理\n        time_constraints = \"after the Organisation for Economic Cooperation and Development (OECD) event, within the time range of 2005-01-01 to 2015-12-31\"\n        if time_constraints:\n            if 'after' in time_constraints.lower():\n                # 找到OECD事件的时间\n                oecd_events = df[\n                    (df['head'].str.contains('Organisation_for_Economic_Cooperation_and_Development', case=False, na=False) |\n                    (df['head'] == 'Organisation_for_Economic_Cooperation_and_Development') |\n                    (df['tail'].str.contains('Organisation_for_Economic_Cooperation_and_Development', case=False, na=False)) |\n                    (df['tail'] == 'Organisation_for_Economic_Cooperation_and_Development')\n                )]\n                if not oecd_events.empty:\n                    latest_oecd_time = oecd_events['timestamp'].max()\n                    df = df[df['timestamp'] > latest_oecd_time]\n        # 实体过滤\n        key_entities = ['Organisation_for_Economic_Cooperation_and_Development', 'Iran']\n        if key_entities:\n            entity_filter = pd.Series([False] * len(df))\n            for entity in key_entities:\n                entity_filter |= (\n                    df['head'].str.contains(entity, case=False, na=False) |\n                    df['tail'].str.contains(entity, case=False, na=False) |\n                    (df['head'] == entity) |\n                    (df['tail'] == entity)\n                )\n            df = df[entity_filter]\n        # 关系过滤\n        target_relations = ['Make_statement', 'Praise_or_endorse', 'Make_optimistic_comment']\n        if target_relations:\n            relation_filter = pd.Series([False] * len(df))\n            for rel in target_relations:\n                relation_filter |= (\n                    (df['relation'] == rel) |\n                    (df['relation'].str.contains(rel, case=False, na=False))\n                )\n            df = df[relation_filter]\n        if df.empty:\n            return []\n        # 返回相关实体\n        results = []\n        for _, row in df.iterrows():\n            if 'Iran' in str(row['tail']).lower():\n                results.append(row['head'])\n            elif 'Iran' in str(row['head']).lower():\n                results.append(row['tail'])\n        # 去重\n        results = list(set(results))\n        return results\n    except Exception as e:\n        print(f\"查询执行错误: {{e}}\")\n        return []",
+    "predicted_answers": [],
+    "evaluation": {
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "predicted_count": 0,
+      "ground_truth_count": 10,
+      "intersection_count": 0
+    }
+  },
+  {
+    "quid": 2000017,
+    "question": "Who made optimistic remarks about Yasuo Fukuda after Japan?",
+    "ground_truth": [
+      "Government Official (Japan)",
+      "China"
+    ],
+    "analysis": {
+      "question_type": "entity_query",
+      "time_constraints": "after Japan (需要先确定Japan与Yasuo_Fukuda相关事件的时间点，然后查找该时间点之后的事件)",
+      "key_entities": [
+        "Japan",
+        "Yasuo_Fukuda"
+      ],
+      "target_relations": [
+        "Praise_or_endorse",
+        "Make_statement",
+        "Make_optimistic_comment"
+      ],
+      "answer_type": "entity",
+      "query_strategy": "1. 首先查询Japan与Yasuo_Fukuda之间发生的所有事件，确定最晚发生的事件时间点T。2. 在时间点T之后的时间范围内(2005-2015)，查找包含关系'Praise_or_endorse'或'Make_statement'且包含实体'Yasuo_Fukuda'的事件。3. 筛选出这些事件中head实体(即发表言论的主体)。4. 若存在多个结果，按时间顺序排列。"
+    },
+    "generated_code": "def query_kg(df):\n    import pandas as pd\n    from datetime import datetime\n    try:\n        # 基础时间过滤\n        df = df[(df['timestamp'] >= '2005-01-01') & (df['timestamp'] <= '2015-12-31')]\n        # 第一步：找到Japan与Yasuo_Fukuda相关事件的最晚时间点\n        japan_fukuda_events = df[\n            ((df['head'] == 'Japan') | (df['tail'] == 'Japan')) &\n            ((df['head'] == 'Yasuo_Fukuda') | (df['tail'] == 'Yasuo_Fukuda'))\n        ]\n        if not japan_fukuda_events.empty:\n            latest_time = japan_fukuda_events['timestamp'].max()\n            # 第二步：查询该时间点之后的事件\n            df = df[df['timestamp'] > latest_time]\n        # 实体过滤\n        key_entities = ['Japan', 'Yasuo_Fukuda']\n        if key_entities:\n            entity_filter = pd.Series([False] * len(df))\n            for entity in key_entities:\n                entity_filter |= (\n                    df['head'].str.contains(entity, case=False, na=False) |\n                    df['tail'].str.contains(entity, case=False, na=False) |\n                    (df['head'] == entity) |\n                    (df['tail'] == entity)\n                )\n            df = df[entity_filter]\n        # 关系过滤\n        target_relations = ['Praise_or_endorse', 'Make_statement', 'Make_optimistic_comment']\n        if target_relations:\n            relation_filter = pd.Series([False] * len(df))\n            for rel in target_relations:\n                relation_filter |= (\n                    (df['relation'] == rel) |\n                    df['relation'].str.contains(rel, case=False, na=False)\n                )\n            df = df[relation_filter]\n        if df.empty:\n            return []\n        # 返回相关实体\n        results = []\n        for _, row in df.iterrows():\n            if 'Yasuo_Fukuda'.lower() in str(row['head']).lower():\n                results.append(row['tail'])\n            elif 'Yasuo_Fukuda'.lower() in str(row['tail']).lower():\n                results.append(row['head'])\n        # 去重\n        results = list(set(results))\n        return results\n    except Exception as e:\n        print(f\"查询执行错误: {{e}}\")\n        return []",
+    "predicted_answers": [],
+    "evaluation": {
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "predicted_count": 0,
+      "ground_truth_count": 2,
+      "intersection_count": 0
+    }
+  },
+  {
+    "quid": 2000018,
+    "question": "In which month did Xi Jinping praise the Bahamas?",
+    "ground_truth": [
+      "2015-01"
+    ],
+    "analysis": {
+      "question_type": "time_query",
+      "time_constraints": "时间范围为2005-01-01到2015-12-31",
+      "key_entities": [
+        "Xi_Jinping",
+        "Bahamas"
+      ],
+      "target_relations": [
+        "Praise_or_endorse"
+      ],
+      "answer_type": "time",
+      "query_strategy": "首先在给定的时间范围内（2005-2015年）查找所有涉及'Xi_Jinping'作为head实体、'Bahamas'作为tail实体、且关系为'Praise_or_endorse'的事件。然后从这些事件中提取出具体的时间信息（月份）。如果存在多个这样的事件，需要根据问题中的'which month'确定返回所有符合条件的月份。"
+    },
+    "generated_code": "def query_kg(df):\n    import pandas as pd\n    from datetime import datetime\n    try:\n        # 基础时间过滤\n        df = df[(df['timestamp'] >= '2005-01-01') & (df['timestamp'] <= '2015-12-31')]\n        # 实体过滤\n        key_entities = ['Xi_Jinping', 'Bahamas']\n        entity_filter = pd.Series([False] * len(df))\n        for entity in key_entities:\n            entity_filter |= (\n                df['head'].str.contains(entity, case=False, na=False) |\n                df['tail'].str.contains(entity, case=False, na=False) |\n                (df['head'] == entity) |\n                (df['tail'] == entity)\n            )\n        df_filtered = df[entity_filter]\n        # 关系过滤\n        target_relations = ['Praise_or_endorse']\n        if target_relations:\n            relation_filter = df_filtered['relation'].isin(target_relations)\n            for rel in target_relations:\n                relation_filter |= df_filtered['relation'].str.contains(rel, case=False, na=False)\n            df_filtered = df_filtered[relation_filter]\n        if df_filtered.empty:\n            return []\n        # 提取月份信息\n        months = []\n        for _, row in df_filtered.iterrows():\n            if 'month' in df_filtered.columns:\n                month_str = f\"{{row['year']}}-{{row['month']}}\"\n                months.append(month_str)\n            else:\n                try:\n                    dt = datetime.strptime(row['timestamp'], '%Y-%m-%d')\n                    month_str = f\"{{dt.year}}-{{dt.month}}\"\n                    months.append(month_str)\n                except:\n                    continue\n        return list(set(months)) if months else []\n    except Exception as e:\n        print(f\"查询执行错误: {{e}}\")\n        return []",
+    "predicted_answers": [
+      "{row['year']}-{row['month']}"
+    ],
+    "evaluation": {
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "predicted_count": 1,
+      "ground_truth_count": 1,
+      "intersection_count": 0
+    }
+  }
+]

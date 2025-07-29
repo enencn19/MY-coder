@@ -1,0 +1,528 @@
+2025-07-21 11:21:02,292 - INFO - 日志系统初始化完成，日志文件: /mnt/nvme0n1/tyj/TKGQA/MY/logs/experiment_20250721_112102.log
+2025-07-21 11:21:02,324 - INFO - TemporalKGQASystem 初始化完成
+2025-07-21 11:21:02,324 - INFO - 加载知识图谱: MY/data/output/full_df.txt
+2025-07-21 11:21:02,699 - INFO - 数据形状: (461329, 4)
+2025-07-21 11:21:02,699 - INFO - 列名: ['head', 'relation', 'tail', 'timestamp']
+2025-07-21 11:21:02,736 - INFO - 知识图谱加载完成，共 461329 条记录
+2025-07-21 11:21:02,736 - INFO - 时间范围: 2005-01-01 00:00:00 到 2015-12-31 00:00:00
+2025-07-21 11:21:02,736 - INFO - 加载问题数据: MY/data/multitq/questions/question_6.json
+2025-07-21 11:21:02,737 - INFO - 问题数据加载完成，共 6 个问题
+2025-07-21 11:21:02,737 - INFO - 处理问题 1: 2056020
+2025-07-21 11:21:02,737 - INFO - 问题: When did Walker San Miguel first express interest in working with Bolivia?
+2025-07-21 11:21:02,737 - INFO - 标准答案: ['2007-07-24']
+2025-07-21 11:21:02,737 - INFO - 步骤1: 问题分析
+2025-07-21 11:21:02,993 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-07-21 11:21:11,063 - INFO - 问题分析完成: {'question_type': 'time_query', 'key_entities': ['Walker San Miguel', 'Bolivia'], 'target_relations': ['express interest in working with'], 'time_constraints': '', 'answer_type': 'time', 'query_strategy': "查询Walker San Miguel与Bolivia之间'express interest in working with'关系的最早时间点"}
+2025-07-21 11:21:11,064 - INFO - 分析结果: {'question_type': 'time_query', 'key_entities': ['Walker San Miguel', 'Bolivia'], 'target_relations': ['express interest in working with'], 'time_constraints': '', 'answer_type': 'time', 'query_strategy': "查询Walker San Miguel与Bolivia之间'express interest in working with'关系的最早时间点"}
+2025-07-21 11:21:11,064 - INFO - === KG实体和关系检查 ===
+2025-07-21 11:21:11,064 - INFO - 检查实体: 'Walker San Miguel'
+2025-07-21 11:21:11,472 - INFO -   模式 'Walker_San_Miguel' 匹配成功:
+2025-07-21 11:21:11,472 - INFO -     作为head: 27 条记录
+2025-07-21 11:21:11,472 - INFO -       Walker_San_Miguel -> Make_a_visit -> China (2006-08-30)
+2025-07-21 11:21:11,472 - INFO -       Walker_San_Miguel -> Praise_or_endorse -> China (2006-08-30)
+2025-07-21 11:21:11,472 - INFO -       Walker_San_Miguel -> Make_statement -> Evo_Morales (2006-09-19)
+2025-07-21 11:21:11,472 - INFO -     作为tail: 14 条记录
+2025-07-21 11:21:11,473 - INFO -       China -> Host_a_visit -> Walker_San_Miguel (2006-08-30)
+2025-07-21 11:21:11,473 - INFO -       Walker_San_Miguel -> Make_statement -> Walker_San_Miguel (2006-11-02)
+2025-07-21 11:21:11,473 - INFO -       Bolivia -> Consult -> Walker_San_Miguel (2006-11-04)
+2025-07-21 11:21:11,473 - INFO - 检查实体: 'Bolivia'
+2025-07-21 11:21:11,658 - INFO -   模式 'Bolivia' 匹配成功:
+2025-07-21 11:21:11,658 - INFO -     作为head: 945 条记录
+2025-07-21 11:21:11,659 - INFO -       Bolivia -> Host_a_visit -> Combatant_(Argentina) (2005-01-06)
+2025-07-21 11:21:11,659 - INFO -       Bolivia -> Rally_opposition_against -> France (2005-01-11)
+2025-07-21 11:21:11,659 - INFO -       Bolivia -> Consult -> China (2005-01-27)
+2025-07-21 11:21:11,659 - INFO -     作为tail: 1335 条记录
+2025-07-21 11:21:11,659 - INFO -       Combatant_(Argentina) -> Make_a_visit -> Bolivia (2005-01-06)
+2025-07-21 11:21:11,659 - INFO -       Rodrigo_Rato -> Express_intent_to_meet_or_negotiate -> Bolivia (2005-01-14)
+2025-07-21 11:21:11,659 - INFO -       China -> Consult -> Bolivia (2005-01-27)
+2025-07-21 11:21:11,659 - INFO - 检查目标关系:
+2025-07-21 11:21:11,683 - INFO - KG中的关系类型示例: ['Express_intent_to_engage_in_diplomatic_cooperation_(such_as_policy_support)', 'Make_statement', 'Praise_or_endorse', 'Consult', 'Discuss_by_telephone', 'Make_pessimistic_comment', 'Make_an_appeal_or_request', 'Express_intent_to_provide_economic_aid', 'Provide_aid', 'Reject', 'Use_unconventional_violence', 'Engage_in_diplomatic_cooperation', 'fight_with_small_arms_and_light_weapons', 'Express_intent_to_provide_material_aid', 'Express_intent_to_meet_or_negotiate', 'Accuse', 'Arrest,_detain,_or_charge_with_legal_action', 'Use_conventional_military_force', 'Provide_humanitarian_aid', 'Criticize_or_denounce']
+2025-07-21 11:21:11,684 - INFO -   关系 'express interest in working with' 模糊匹配: ['Express_intent_to_engage_in_diplomatic_cooperation_(such_as_policy_support)', 'Express_intent_to_provide_economic_aid', 'fight_with_small_arms_and_light_weapons', 'Express_intent_to_provide_material_aid', 'Express_intent_to_meet_or_negotiate', 'Arrest,_detain,_or_charge_with_legal_action', 'Express_intent_to_cooperate_economically', 'Express_intent_to_cooperate', 'Express_intent_to_provide_humanitarian_aid', 'Express_accord']
+2025-07-21 11:21:11,711 - INFO -     'Express_intent_to_engage_in_diplomatic_cooperation_(such_as_policy_support)': 9704 条记录
+2025-07-21 11:21:11,737 - INFO -     'Express_intent_to_provide_economic_aid': 576 条记录
+2025-07-21 11:21:11,763 - INFO -     'fight_with_small_arms_and_light_weapons': 5386 条记录
+2025-07-21 11:21:11,763 - INFO - === KG检查完成 ===
+2025-07-21 11:21:11,763 - INFO - 步骤2: 代码生成
+2025-07-21 11:21:11,817 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-07-21 11:21:29,049 - INFO - 代码生成成功
+2025-07-21 11:21:29,049 - INFO - 生成的代码长度: 1192 字符
+2025-07-21 11:21:29,049 - INFO - 生成的代码:
+import pandas as pd
+
+def query_kg(df):
+    """
+    查询Walker San Miguel首次表达与Bolivia合作意向的时间
+    参数:
+        df: 知识图谱DataFrame，包含列['head', 'relation', 'tail', 'timestamp']
+    返回:
+        最早时间点的字符串，格式为YYYY-MM-DD HH:MM:SS
+    """
+    try:
+        # 实体名称处理（转换为知识图谱中的下划线格式）
+        head_pattern = 'Walker_San_Miguel'
+        tail_pattern = 'Bolivia'
+        
+        # 关系映射（根据分析结果映射到知识图谱中的实际关系）
+        relations = ['Express_intent_to_cooperate']
+        
+        # 筛选符合条件的记录
+        mask = (
+            df['head'].str.contains(head_pattern, case=False, regex=False) &
+            df['tail'].str.contains(tail_pattern, case=False, regex=False) &
+            df['relation'].isin(relations)
+        )
+        
+        filtered_df = df[mask].copy()
+        
+        if filtered_df.empty:
+            return "No records found"
+        
+        # 转换为datetime格式并找到最早的时间戳
+        filtered_df['timestamp'] = pd.to_datetime(filtered_df['timestamp'])
+        earliest_record = filtered_df.loc[filtered_df['timestamp'].idxmin()]
+        
+        # 返回最早时间点
+        return earliest_record['timestamp'].strftime('%Y-%m-%d %H:%M:%S')
+        
+    except Exception as e:
+        return f"Error occurred: {str(e)}"
+2025-07-21 11:21:29,049 - INFO - 步骤3: 执行查询
+2025-07-21 11:21:29,236 - INFO - 查询返回单个结果: 2007-07-24 00:00:00
+2025-07-21 11:21:29,236 - INFO - 步骤4: 评估结果
+2025-07-21 11:21:29,236 - INFO - 评估结果:
+2025-07-21 11:21:29,236 - INFO -   预测答案: ['2007-07-24 00:00:00']
+2025-07-21 11:21:29,236 - INFO -   标准答案: ['2007-07-24']
+2025-07-21 11:21:29,236 - INFO -   精确匹配: False
+2025-07-21 11:21:29,236 - INFO -   精度: 0.000, 召回率: 0.000, F1: 0.000
+2025-07-21 11:21:29,236 - INFO -   处理时间: 26.499秒
+2025-07-21 11:21:29,236 - INFO - 处理问题 2: 2027657
+2025-07-21 11:21:29,236 - INFO - 问题: Who wanted to cooperate with Japan on 23 August 2006?
+2025-07-21 11:21:29,236 - INFO - 标准答案: ['Association of Southeast Asian Nations']
+2025-07-21 11:21:29,236 - INFO - 步骤1: 问题分析
+2025-07-21 11:21:29,292 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-07-21 11:21:37,438 - INFO - 问题分析完成: {'question_type': 'relation_query', 'key_entities': ['Japan'], 'target_relations': ['wanted to cooperate with'], 'time_constraints': '23 August 2006', 'answer_type': 'entity', 'query_strategy': "首先在时序知识图谱中定位到2006年8月23日的时间节点，然后查找与Japan存在'wanted to cooperate with'关系的实体。"}
+2025-07-21 11:21:37,439 - INFO - 分析结果: {'question_type': 'relation_query', 'key_entities': ['Japan'], 'target_relations': ['wanted to cooperate with'], 'time_constraints': '23 August 2006', 'answer_type': 'entity', 'query_strategy': "首先在时序知识图谱中定位到2006年8月23日的时间节点，然后查找与Japan存在'wanted to cooperate with'关系的实体。"}
+2025-07-21 11:21:37,439 - INFO - === KG实体和关系检查 ===
+2025-07-21 11:21:37,439 - INFO - 检查实体: 'Japan'
+2025-07-21 11:21:37,628 - INFO -   模式 'Japan' 匹配成功:
+2025-07-21 11:21:37,628 - INFO -     作为head: 15572 条记录
+2025-07-21 11:21:37,628 - INFO -       Government_Official_(Japan) -> Consult -> Emperor_Akihito (2005-01-01)
+2025-07-21 11:21:37,628 - INFO -       Japan -> Express_intent_to_provide_material_aid -> International_Government_Organizations (2005-01-01)
+2025-07-21 11:21:37,629 - INFO -       Japan -> Consult -> China (2005-01-03)
+2025-07-21 11:21:37,629 - INFO -     作为tail: 18845 条记录
+2025-07-21 11:21:37,629 - INFO -       Emperor_Akihito -> Consult -> Government_Official_(Japan) (2005-01-01)
+2025-07-21 11:21:37,629 - INFO -       China -> Threaten -> Japan (2005-01-02)
+2025-07-21 11:21:37,629 - INFO -       China -> Consult -> Japan (2005-01-03)
+2025-07-21 11:21:37,629 - INFO - 检查目标关系:
+2025-07-21 11:21:37,652 - INFO - KG中的关系类型示例: ['Express_intent_to_engage_in_diplomatic_cooperation_(such_as_policy_support)', 'Make_statement', 'Praise_or_endorse', 'Consult', 'Discuss_by_telephone', 'Make_pessimistic_comment', 'Make_an_appeal_or_request', 'Express_intent_to_provide_economic_aid', 'Provide_aid', 'Reject', 'Use_unconventional_violence', 'Engage_in_diplomatic_cooperation', 'fight_with_small_arms_and_light_weapons', 'Express_intent_to_provide_material_aid', 'Express_intent_to_meet_or_negotiate', 'Accuse', 'Arrest,_detain,_or_charge_with_legal_action', 'Use_conventional_military_force', 'Provide_humanitarian_aid', 'Criticize_or_denounce']
+2025-07-21 11:21:37,653 - INFO -   关系 'wanted to cooperate with' 模糊匹配: ['fight_with_small_arms_and_light_weapons', 'Arrest,_detain,_or_charge_with_legal_action', 'Express_intent_to_cooperate_economically', 'Express_intent_to_cooperate', 'Threaten_with_military_force', 'Cooperate_militarily', 'Cooperate_economically', 'fight_with_artillery_and_tanks', 'Express_intent_to_cooperate_on_judicial_matters', 'Threaten_with_sanctions,_boycott,_embargo']
+2025-07-21 11:21:37,680 - INFO -     'fight_with_small_arms_and_light_weapons': 5386 条记录
+2025-07-21 11:21:37,709 - INFO -     'Arrest,_detain,_or_charge_with_legal_action': 22069 条记录
+2025-07-21 11:21:37,734 - INFO -     'Express_intent_to_cooperate_economically': 744 条记录
+2025-07-21 11:21:37,734 - INFO - === KG检查完成 ===
+2025-07-21 11:21:37,734 - INFO - 步骤2: 代码生成
+2025-07-21 11:21:37,789 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-07-21 11:21:54,671 - INFO - 代码生成成功
+2025-07-21 11:21:54,671 - INFO - 生成的代码长度: 1361 字符
+2025-07-21 11:21:54,672 - INFO - 生成的代码:
+import pandas as pd
+
+def query_kg(df):
+    # Map natural language relations to KG relations
+    relation_mapping = {
+        'wanted to cooperate with': ['Express_intent_to_cooperate', 'Engage_in_diplomatic_cooperation']
+    }
+    
+    # Prepare query parameters
+    target_entity = 'Japan'
+    target_date = '2006-08-23'
+    relations = relation_mapping['wanted to cooperate with']
+    
+    # Convert timestamp to date for comparison
+    df['date'] = pd.to_datetime(df['timestamp']).dt.date
+    query_date = pd.to_datetime(target_date).date()
+    
+    # Filter by date and entity (either head or tail contains Japan)
+    date_filtered = df[df['date'] == query_date]
+    entity_filtered = date_filtered[
+        (date_filtered['head'].str.contains(target_entity, case=False)) | 
+        (date_filtered['tail'].str.contains(target_entity, case=False))
+    ]
+    
+    # Further filter by relations
+    relation_filtered = entity_filtered[entity_filtered['relation'].isin(relations)]
+    
+    # Extract the other entity in the relation (not Japan)
+    results = []
+    for _, row in relation_filtered.iterrows():
+        if row['head'].lower().find('japan') != -1:
+            results.append(row['tail'].replace('_', ' '))
+        else:
+            results.append(row['head'].replace('_', ' '))
+    
+    # Remove duplicates and return
+    return list(set(results))
+2025-07-21 11:21:54,672 - INFO - 步骤3: 执行查询
+2025-07-21 11:21:54,812 - INFO - 查询返回 2 个结果: ['Vietnam', 'Association of Southeast Asian Nations']
+2025-07-21 11:21:54,812 - INFO - 步骤4: 评估结果
+2025-07-21 11:21:54,812 - INFO - 评估结果:
+2025-07-21 11:21:54,812 - INFO -   预测答案: ['Vietnam', 'Association of Southeast Asian Nations']
+2025-07-21 11:21:54,812 - INFO -   标准答案: ['Association of Southeast Asian Nations']
+2025-07-21 11:21:54,812 - INFO -   精确匹配: False
+2025-07-21 11:21:54,812 - INFO -   精度: 0.500, 召回率: 1.000, F1: 0.667
+2025-07-21 11:21:54,812 - INFO -   处理时间: 25.576秒
+2025-07-21 11:21:54,812 - INFO - 处理问题 3: 2007873
+2025-07-21 11:21:54,813 - INFO - 问题: Before 11 December 2009, who used conventional military force against France?
+2025-07-21 11:21:54,813 - INFO - 标准答案: ['Separatist (France)', 'Comoros', 'Royal Air Force', 'Bolivia', 'Colombia', 'Christian (France)', 'Member of Parliament (France)', 'Military (Russia)']
+2025-07-21 11:21:54,813 - INFO - 步骤1: 问题分析
+2025-07-21 11:21:54,886 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-07-21 11:22:02,981 - INFO - 问题分析完成: {'question_type': 'entity_query', 'key_entities': ['France'], 'target_relations': ['used conventional military force against'], 'time_constraints': 'before 11 December 2009', 'answer_type': 'entity', 'query_strategy': "查询在2009年12月11日之前，对法国使用常规军事力量的实体。需要检索时序知识图谱中在该时间点之前与法国存在'used conventional military force against'关系的实体。"}
+2025-07-21 11:22:02,981 - INFO - 分析结果: {'question_type': 'entity_query', 'key_entities': ['France'], 'target_relations': ['used conventional military force against'], 'time_constraints': 'before 11 December 2009', 'answer_type': 'entity', 'query_strategy': "查询在2009年12月11日之前，对法国使用常规军事力量的实体。需要检索时序知识图谱中在该时间点之前与法国存在'used conventional military force against'关系的实体。"}
+2025-07-21 11:22:02,981 - INFO - === KG实体和关系检查 ===
+2025-07-21 11:22:02,981 - INFO - 检查实体: 'France'
+2025-07-21 11:22:03,171 - INFO -   模式 'France' 匹配成功:
+2025-07-21 11:22:03,171 - INFO -     作为head: 9930 条记录
+2025-07-21 11:22:03,172 - INFO -       Agence_France-Presse -> Discuss_by_telephone -> Police_(Kenya) (2005-01-03)
+2025-07-21 11:22:03,172 - INFO -       Government_(France) -> Praise_or_endorse -> Citizen_(Sudan) (2005-01-04)
+2025-07-21 11:22:03,172 - INFO -       Agence_France-Presse -> Discuss_by_telephone -> Ange-Félix_Patassé (2005-01-05)
+2025-07-21 11:22:03,172 - INFO -     作为tail: 10102 条记录
+2025-07-21 11:22:03,172 - INFO -       Police_(Kenya) -> Discuss_by_telephone -> Agence_France-Presse (2005-01-03)
+2025-07-21 11:22:03,172 - INFO -       Serge_Lepeltier -> Make_statement -> France (2005-01-04)
+2025-07-21 11:22:03,172 - INFO -       Ange-Félix_Patassé -> Discuss_by_telephone -> Agence_France-Presse (2005-01-05)
+2025-07-21 11:22:03,172 - INFO - 检查目标关系:
+2025-07-21 11:22:03,196 - INFO - KG中的关系类型示例: ['Express_intent_to_engage_in_diplomatic_cooperation_(such_as_policy_support)', 'Make_statement', 'Praise_or_endorse', 'Consult', 'Discuss_by_telephone', 'Make_pessimistic_comment', 'Make_an_appeal_or_request', 'Express_intent_to_provide_economic_aid', 'Provide_aid', 'Reject', 'Use_unconventional_violence', 'Engage_in_diplomatic_cooperation', 'fight_with_small_arms_and_light_weapons', 'Express_intent_to_provide_material_aid', 'Express_intent_to_meet_or_negotiate', 'Accuse', 'Arrest,_detain,_or_charge_with_legal_action', 'Use_conventional_military_force', 'Provide_humanitarian_aid', 'Criticize_or_denounce']
+2025-07-21 11:22:03,197 - INFO -   关系 'used conventional military force against' 模糊匹配: ['Use_unconventional_violence', 'Use_conventional_military_force', 'Provide_military_aid', 'Mobilize_or_increase_armed_forces', 'Refuse_to_de-escalate_military_engagement', 'Bring_lawsuit_against', 'Increase_military_alert_status', 'Provide_military_protection_or_peacekeeping', 'Demonstrate_military_or_police_power', 'Rally_opposition_against']
+2025-07-21 11:22:03,225 - INFO -     'Use_unconventional_violence': 9189 条记录
+2025-07-21 11:22:03,252 - INFO -     'Use_conventional_military_force': 9554 条记录
+2025-07-21 11:22:03,277 - INFO -     'Provide_military_aid': 452 条记录
+2025-07-21 11:22:03,277 - INFO - === KG检查完成 ===
+2025-07-21 11:22:03,278 - INFO - 步骤2: 代码生成
+2025-07-21 11:22:03,331 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-07-21 11:22:18,595 - INFO - 代码生成成功
+2025-07-21 11:22:18,595 - INFO - 生成的代码长度: 965 字符
+2025-07-21 11:22:18,595 - INFO - 生成的代码:
+import pandas as pd
+
+def query_kg(df):
+    """
+    查询在2009年12月11日之前，对法国使用常规军事力量的实体
+    
+    参数:
+        df: 时序知识图谱DataFrame，包含列['head', 'relation', 'tail', 'timestamp']
+    
+    返回:
+        list: 符合条件的实体名称列表(下划线转空格)
+    """
+    # 定义目标实体和关系映射
+    target_entity = "France"
+    relation_mapping = "Use_conventional_military_force"
+    time_threshold = "2009-12-11 00:00:00"
+    
+    try:
+        # 筛选条件:
+        # 1. 关系匹配映射后的关系
+        # 2. 尾部实体是法国(模糊匹配)
+        # 3. 时间在2009-12-11之前
+        filtered = df[
+            (df['relation'] == relation_mapping) &
+            (df['tail'].str.contains(target_entity, case=False)) &
+            (df['timestamp'] < time_threshold)
+        ]
+        
+        # 获取所有符合条件的头部实体
+        entities = filtered['head'].unique().tolist()
+        
+        # 将下划线转换为空格
+        result = [e.replace('_', ' ') for e in entities]
+        
+        return result
+    
+    except Exception as e:
+        print(f"查询过程中出现错误: {e}")
+        return []
+2025-07-21 11:22:18,595 - INFO - 步骤3: 执行查询
+2025-07-21 11:22:18,821 - INFO - 查询返回 16 个结果: ['Bolivia', 'Military Personnel - Special (France)', 'Colombia', 'France', 'Military (Russia)', 'Member of Parliament (France)', 'Military (Senegal)', "Police (Cote d'Ivoire)", 'Religion (France)', 'Christian (France)', 'Royal Air Force', 'Actor (France)', 'Corsica', 'Separatist (France)', 'Comoros', 'Republican Force']
+2025-07-21 11:22:18,821 - INFO - 步骤4: 评估结果
+2025-07-21 11:22:18,821 - INFO - 评估结果:
+2025-07-21 11:22:18,821 - INFO -   预测答案: ['Bolivia', 'Military Personnel - Special (France)', 'Colombia', 'France', 'Military (Russia)', 'Member of Parliament (France)', 'Military (Senegal)', "Police (Cote d'Ivoire)", 'Religion (France)', 'Christian (France)', 'Royal Air Force', 'Actor (France)', 'Corsica', 'Separatist (France)', 'Comoros', 'Republican Force']
+2025-07-21 11:22:18,821 - INFO -   标准答案: ['Separatist (France)', 'Comoros', 'Royal Air Force', 'Bolivia', 'Colombia', 'Christian (France)', 'Member of Parliament (France)', 'Military (Russia)']
+2025-07-21 11:22:18,821 - INFO -   精确匹配: False
+2025-07-21 11:22:18,821 - INFO -   精度: 0.500, 召回率: 1.000, F1: 0.667
+2025-07-21 11:22:18,821 - INFO -   处理时间: 24.009秒
+2025-07-21 11:22:18,821 - INFO - 处理问题 4: 2044815
+2025-07-21 11:22:18,821 - INFO - 问题: Which country was the first to ask for France after the Algerian extremist?
+2025-07-21 11:22:18,822 - INFO - 标准答案: ['Iran']
+2025-07-21 11:22:18,822 - INFO - 步骤1: 问题分析
+2025-07-21 11:22:18,876 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-07-21 11:22:27,507 - INFO - 问题分析完成: {'question_type': 'relation_query', 'key_entities': ['Algerian extremist', 'France'], 'target_relations': ['ask for'], 'time_constraints': 'first', 'answer_type': 'entity', 'query_strategy': "首先识别出问题中的关键实体'Algerian extremist'和'France'，以及目标关系'ask for'。时间约束是'first'，表示查询的是第一个向法国提出请求的国家。答案类型是实体（国家名称）。查询策略是在时序知识图谱中查找'Algerian extremist'之后，第一个与'France'建立'ask for'关系的国家。"}
+2025-07-21 11:22:27,507 - INFO - 分析结果: {'question_type': 'relation_query', 'key_entities': ['Algerian extremist', 'France'], 'target_relations': ['ask for'], 'time_constraints': 'first', 'answer_type': 'entity', 'query_strategy': "首先识别出问题中的关键实体'Algerian extremist'和'France'，以及目标关系'ask for'。时间约束是'first'，表示查询的是第一个向法国提出请求的国家。答案类型是实体（国家名称）。查询策略是在时序知识图谱中查找'Algerian extremist'之后，第一个与'France'建立'ask for'关系的国家。"}
+2025-07-21 11:22:27,507 - INFO - === KG实体和关系检查 ===
+2025-07-21 11:22:27,507 - INFO - 检查实体: 'Algerian extremist'
+2025-07-21 11:22:28,404 - WARNING -   实体 'Algerian extremist' 的所有模式都未找到
+2025-07-21 11:22:28,777 - INFO -     部分匹配 'extremist': 242 条记录
+2025-07-21 11:22:28,777 - INFO -       Agence_France-Presse -> Make_statement -> Extremist_(Algeria)
+2025-07-21 11:22:28,777 - INFO -       Islamic_Extremist_Group_(Islamic_Jihad) -> fight_with_small_arms_and_light_weapons -> Israeli_Defense_Forces
+2025-07-21 11:22:28,778 - INFO - 检查实体: 'France'
+2025-07-21 11:22:28,973 - INFO -   模式 'France' 匹配成功:
+2025-07-21 11:22:28,973 - INFO -     作为head: 9930 条记录
+2025-07-21 11:22:28,973 - INFO -       Agence_France-Presse -> Discuss_by_telephone -> Police_(Kenya) (2005-01-03)
+2025-07-21 11:22:28,974 - INFO -       Government_(France) -> Praise_or_endorse -> Citizen_(Sudan) (2005-01-04)
+2025-07-21 11:22:28,974 - INFO -       Agence_France-Presse -> Discuss_by_telephone -> Ange-Félix_Patassé (2005-01-05)
+2025-07-21 11:22:28,974 - INFO -     作为tail: 10102 条记录
+2025-07-21 11:22:28,974 - INFO -       Police_(Kenya) -> Discuss_by_telephone -> Agence_France-Presse (2005-01-03)
+2025-07-21 11:22:28,974 - INFO -       Serge_Lepeltier -> Make_statement -> France (2005-01-04)
+2025-07-21 11:22:28,974 - INFO -       Ange-Félix_Patassé -> Discuss_by_telephone -> Agence_France-Presse (2005-01-05)
+2025-07-21 11:22:28,974 - INFO - 检查目标关系:
+2025-07-21 11:22:28,998 - INFO - KG中的关系类型示例: ['Express_intent_to_engage_in_diplomatic_cooperation_(such_as_policy_support)', 'Make_statement', 'Praise_or_endorse', 'Consult', 'Discuss_by_telephone', 'Make_pessimistic_comment', 'Make_an_appeal_or_request', 'Express_intent_to_provide_economic_aid', 'Provide_aid', 'Reject', 'Use_unconventional_violence', 'Engage_in_diplomatic_cooperation', 'fight_with_small_arms_and_light_weapons', 'Express_intent_to_provide_material_aid', 'Express_intent_to_meet_or_negotiate', 'Accuse', 'Arrest,_detain,_or_charge_with_legal_action', 'Use_conventional_military_force', 'Provide_humanitarian_aid', 'Criticize_or_denounce']
+2025-07-21 11:22:28,999 - WARNING -   关系 'ask for' 未找到匹配
+2025-07-21 11:22:28,999 - INFO - === KG检查完成 ===
+2025-07-21 11:22:28,999 - INFO - 步骤2: 代码生成
+2025-07-21 11:22:29,058 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-07-21 11:22:48,689 - INFO - 代码生成成功
+2025-07-21 11:22:48,689 - INFO - 生成的代码长度: 1922 字符
+2025-07-21 11:22:48,689 - INFO - 生成的代码:
+import pandas as pd
+
+def query_kg(df):
+    """
+    Query the temporal knowledge graph to find which country was the first to ask for France 
+    after the Algerian extremist.
+    
+    Args:
+        df (pd.DataFrame): Knowledge graph dataframe with columns ['head', 'relation', 'tail', 'timestamp']
+        
+    Returns:
+        list: List of country names (with underscores replaced by spaces)
+    """
+    # Map question relations to KG relations
+    relation_mapping = {
+        'ask for': ['Make_an_appeal_or_request', 'Appeal_to']
+    }
+    
+    try:
+        # Step 1: Find all events involving Algerian extremist
+        algerian_events = df[df['head'].str.contains('Algerian_extremist', case=False, regex=False) | 
+                            df['tail'].str.contains('Algerian_extremist', case=False, regex=False)]
+        
+        if algerian_events.empty:
+            return []
+            
+        # Get the latest timestamp of Algerian extremist events
+        latest_algerian_time = algerian_events['timestamp'].max()
+        
+        # Step 2: Find all ask_for events to France after that time
+        ask_for_relations = relation_mapping['ask for']
+        france_events = df[
+            (df['tail'].str.contains('France', case=False, regex=False)) &
+            (df['relation'].isin(ask_for_relations)) &
+            (df['timestamp'] > latest_algerian_time)
+        ]
+        
+        if france_events.empty:
+            return []
+            
+        # Step 3: Find the earliest such event
+        first_request = france_events.loc[france_events['timestamp'].idxmin()]
+        
+        # Step 4: Get the requesting country (head entity)
+        requesting_country = first_request['head']
+        
+        # Return as list with underscores replaced by spaces
+        return [requesting_country.replace('_', ' ')]
+        
+    except Exception as e:
+        print(f"Error during query: {e}")
+        return []
+2025-07-21 11:22:48,689 - INFO - 步骤3: 执行查询
+2025-07-21 11:22:48,872 - INFO - 查询返回 0 个结果: []
+2025-07-21 11:22:48,873 - INFO - 步骤4: 评估结果
+2025-07-21 11:22:48,873 - INFO - 评估结果:
+2025-07-21 11:22:48,873 - INFO -   预测答案: []
+2025-07-21 11:22:48,873 - INFO -   标准答案: ['Iran']
+2025-07-21 11:22:48,873 - INFO -   精确匹配: False
+2025-07-21 11:22:48,873 - INFO -   精度: 0.000, 召回率: 0.000, F1: 0.000
+2025-07-21 11:22:48,873 - INFO -   处理时间: 30.051秒
+2025-07-21 11:22:48,873 - INFO - 处理问题 5: 2016117
+2025-07-21 11:22:48,873 - INFO - 问题: Before the Brazilian Ministry of Agriculture, Fishing and Forestry, which country was the last to condemn France?
+2025-07-21 11:22:48,873 - INFO - 标准答案: ['Mexico']
+2025-07-21 11:22:48,873 - INFO - 步骤1: 问题分析
+2025-07-21 11:22:48,927 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-07-21 11:22:56,558 - INFO - 问题分析完成: {'question_type': 'entity_query', 'key_entities': ['Brazilian Ministry of Agriculture, Fishing and Forestry', 'France'], 'target_relations': ['condemn'], 'time_constraints': 'before the Brazilian Ministry of Agriculture, Fishing and Forestry', 'answer_type': 'entity', 'query_strategy': "Find the last country that condemned France before the Brazilian Ministry of Agriculture, Fishing and Forestry did. This involves identifying the temporal sequence of condemnations and selecting the one immediately preceding the Brazilian Ministry's action."}
+2025-07-21 11:22:56,558 - INFO - 分析结果: {'question_type': 'entity_query', 'key_entities': ['Brazilian Ministry of Agriculture, Fishing and Forestry', 'France'], 'target_relations': ['condemn'], 'time_constraints': 'before the Brazilian Ministry of Agriculture, Fishing and Forestry', 'answer_type': 'entity', 'query_strategy': "Find the last country that condemned France before the Brazilian Ministry of Agriculture, Fishing and Forestry did. This involves identifying the temporal sequence of condemnations and selecting the one immediately preceding the Brazilian Ministry's action."}
+2025-07-21 11:22:56,558 - INFO - === KG实体和关系检查 ===
+2025-07-21 11:22:56,558 - INFO - 检查实体: 'Brazilian Ministry of Agriculture, Fishing and Forestry'
+2025-07-21 11:22:57,403 - WARNING -   实体 'Brazilian Ministry of Agriculture, Fishing and Forestry' 的所有模式都未找到
+2025-07-21 11:22:57,589 - INFO -     部分匹配 'Brazilian': 4 条记录
+2025-07-21 11:22:57,589 - INFO -       Brazilian_Communist_Party -> Engage_in_material_cooperation -> Socialism_and_Freedom_Party
+2025-07-21 11:22:57,589 - INFO -       Socialism_and_Freedom_Party -> Engage_in_material_cooperation -> Brazilian_Communist_Party
+2025-07-21 11:22:57,589 - INFO - 检查实体: 'France'
+2025-07-21 11:22:57,788 - INFO -   模式 'France' 匹配成功:
+2025-07-21 11:22:57,788 - INFO -     作为head: 9930 条记录
+2025-07-21 11:22:57,789 - INFO -       Agence_France-Presse -> Discuss_by_telephone -> Police_(Kenya) (2005-01-03)
+2025-07-21 11:22:57,789 - INFO -       Government_(France) -> Praise_or_endorse -> Citizen_(Sudan) (2005-01-04)
+2025-07-21 11:22:57,789 - INFO -       Agence_France-Presse -> Discuss_by_telephone -> Ange-Félix_Patassé (2005-01-05)
+2025-07-21 11:22:57,789 - INFO -     作为tail: 10102 条记录
+2025-07-21 11:22:57,789 - INFO -       Police_(Kenya) -> Discuss_by_telephone -> Agence_France-Presse (2005-01-03)
+2025-07-21 11:22:57,790 - INFO -       Serge_Lepeltier -> Make_statement -> France (2005-01-04)
+2025-07-21 11:22:57,790 - INFO -       Ange-Félix_Patassé -> Discuss_by_telephone -> Agence_France-Presse (2005-01-05)
+2025-07-21 11:22:57,790 - INFO - 检查目标关系:
+2025-07-21 11:22:57,814 - INFO - KG中的关系类型示例: ['Express_intent_to_engage_in_diplomatic_cooperation_(such_as_policy_support)', 'Make_statement', 'Praise_or_endorse', 'Consult', 'Discuss_by_telephone', 'Make_pessimistic_comment', 'Make_an_appeal_or_request', 'Express_intent_to_provide_economic_aid', 'Provide_aid', 'Reject', 'Use_unconventional_violence', 'Engage_in_diplomatic_cooperation', 'fight_with_small_arms_and_light_weapons', 'Express_intent_to_provide_material_aid', 'Express_intent_to_meet_or_negotiate', 'Accuse', 'Arrest,_detain,_or_charge_with_legal_action', 'Use_conventional_military_force', 'Provide_humanitarian_aid', 'Criticize_or_denounce']
+2025-07-21 11:22:57,815 - WARNING -   关系 'condemn' 未找到匹配
+2025-07-21 11:22:57,815 - INFO - === KG检查完成 ===
+2025-07-21 11:22:57,816 - INFO - 步骤2: 代码生成
+2025-07-21 11:22:57,873 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-07-21 11:23:16,110 - INFO - 代码生成成功
+2025-07-21 11:23:16,110 - INFO - 生成的代码长度: 1729 字符
+2025-07-21 11:23:16,110 - INFO - 生成的代码:
+import pandas as pd
+
+def query_kg(df):
+    """
+    Find the last country that condemned France before the Brazilian Ministry of Agriculture, Fishing and Forestry did.
+    
+    Args:
+        df: DataFrame with columns ['head', 'relation', 'tail', 'timestamp']
+    
+    Returns:
+        List of entity names (with underscores replaced by spaces)
+    """
+    try:
+        # Map relations to KG format
+        condemn_relation = "Criticize_or_denounce"
+        
+        # Find Brazilian Ministry's condemnation timestamp
+        ministry_mask = (
+            df['head'].str.contains('Brazilian_Ministry_of_Agriculture', case=False, regex=False) &
+            (df['relation'] == condemn_relation) &
+            df['tail'].str.contains('France', case=False, regex=False)
+        )
+        
+        ministry_condemnations = df[ministry_mask]
+        if ministry_condemnations.empty:
+            return []
+        
+        ministry_time = ministry_condemnations['timestamp'].max()
+        
+        # Find all condemnations of France before the ministry's action
+        condemn_mask = (
+            (df['relation'] == condemn_relation) &
+            df['tail'].str.contains('France', case=False, regex=False) &
+            (df['timestamp'] < ministry_time)
+        )
+        
+        condemnations = df[condemn_mask]
+        if condemnations.empty:
+            return []
+        
+        # Get the latest condemnation before ministry's action
+        last_condemnation = condemnations.loc[condemnations['timestamp'].idxmax()]
+        
+        # Return the condemning country (head entity)
+        return [last_condemnation['head'].replace('_', ' ')]
+    
+    except Exception as e:
+        print(f"Error in query: {e}")
+        return []
+2025-07-21 11:23:16,111 - INFO - 步骤3: 执行查询
+2025-07-21 11:23:16,315 - INFO - 查询返回 0 个结果: []
+2025-07-21 11:23:16,315 - INFO - 步骤4: 评估结果
+2025-07-21 11:23:16,315 - INFO - 评估结果:
+2025-07-21 11:23:16,315 - INFO -   预测答案: []
+2025-07-21 11:23:16,315 - INFO -   标准答案: ['Mexico']
+2025-07-21 11:23:16,315 - INFO -   精确匹配: False
+2025-07-21 11:23:16,316 - INFO -   精度: 0.000, 召回率: 0.000, F1: 0.000
+2025-07-21 11:23:16,316 - INFO -   处理时间: 27.442秒
+2025-07-21 11:23:16,316 - INFO - 结果已保存到: /mnt/nvme0n1/tyj/TKGQA/MY/intermediate_results_20250721_112316.json
+2025-07-21 11:23:16,316 - INFO - 已保存中间结果 (5/6)
+2025-07-21 11:23:16,316 - INFO - 处理问题 6: 2018890
+2025-07-21 11:23:16,316 - INFO - 问题: Who received Juan Carlos I's visit from Juan Carlos I on the same month of Qatar?
+2025-07-21 11:23:16,316 - INFO - 标准答案: ['Royal Administration (Spain)', 'Royal Administration (Jordan)', 'Royal Administration (Saudi Arabia)']
+2025-07-21 11:23:16,316 - INFO - 步骤1: 问题分析
+2025-07-21 11:23:16,372 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-07-21 11:23:23,833 - INFO - 问题分析完成: {'question_type': 'relation_query', 'key_entities': ['Juan Carlos I', 'Qatar'], 'target_relations': ['received visit from'], 'time_constraints': 'same month', 'answer_type': 'entity', 'query_strategy': 'Find the entity that received a visit from Juan Carlos I in the same month as the event involving Qatar.'}
+2025-07-21 11:23:23,833 - INFO - 分析结果: {'question_type': 'relation_query', 'key_entities': ['Juan Carlos I', 'Qatar'], 'target_relations': ['received visit from'], 'time_constraints': 'same month', 'answer_type': 'entity', 'query_strategy': 'Find the entity that received a visit from Juan Carlos I in the same month as the event involving Qatar.'}
+2025-07-21 11:23:23,833 - INFO - === KG实体和关系检查 ===
+2025-07-21 11:23:23,833 - INFO - 检查实体: 'Juan Carlos I'
+2025-07-21 11:23:24,213 - INFO -   模式 'Juan_Carlos_I' 匹配成功:
+2025-07-21 11:23:24,214 - INFO -     作为head: 181 条记录
+2025-07-21 11:23:24,214 - INFO -       Juan_Carlos_I -> Host_a_visit -> Solomon_Passy (2005-01-08)
+2025-07-21 11:23:24,214 - INFO -       Juan_Carlos_I -> Make_a_visit -> Muhammad_VI (2005-01-17)
+2025-07-21 11:23:24,214 - INFO -       Juan_Carlos_I -> Praise_or_endorse -> Muhammad_VI (2005-01-18)
+2025-07-21 11:23:24,214 - INFO -     作为tail: 159 条记录
+2025-07-21 11:23:24,214 - INFO -       Solomon_Passy -> Make_a_visit -> Juan_Carlos_I (2005-01-08)
+2025-07-21 11:23:24,214 - INFO -       Muhammad_VI -> Host_a_visit -> Juan_Carlos_I (2005-01-17)
+2025-07-21 11:23:24,214 - INFO -       Muhammad_VI -> Praise_or_endorse -> Juan_Carlos_I (2005-01-17)
+2025-07-21 11:23:24,215 - INFO - 检查实体: 'Qatar'
+2025-07-21 11:23:24,403 - INFO -   模式 'Qatar' 匹配成功:
+2025-07-21 11:23:24,403 - INFO -     作为head: 1702 条记录
+2025-07-21 11:23:24,403 - INFO -       Government_(Qatar) -> Make_statement -> Qatar (2005-01-08)
+2025-07-21 11:23:24,403 - INFO -       Qatar -> Express_intent_to_cooperate -> Kuwait (2005-02-07)
+2025-07-21 11:23:24,404 - INFO -       Treasury/Finance_Ministry_(Qatar) -> Make_statement -> Sheikh_Hamad_bin_Khalifa_al-Thani (2005-02-08)
+2025-07-21 11:23:24,404 - INFO -     作为tail: 2058 条记录
+2025-07-21 11:23:24,404 - INFO -       Government_(Qatar) -> Make_statement -> Qatar (2005-01-08)
+2025-07-21 11:23:24,404 - INFO -       Al_Jazeera -> Make_statement -> Qatar (2005-01-23)
+2025-07-21 11:23:24,404 - INFO -       Gerhard_Schröder -> Express_intent_to_meet_or_negotiate -> Qatar (2005-01-31)
+2025-07-21 11:23:24,404 - INFO - 检查目标关系:
+2025-07-21 11:23:24,428 - INFO - KG中的关系类型示例: ['Express_intent_to_engage_in_diplomatic_cooperation_(such_as_policy_support)', 'Make_statement', 'Praise_or_endorse', 'Consult', 'Discuss_by_telephone', 'Make_pessimistic_comment', 'Make_an_appeal_or_request', 'Express_intent_to_provide_economic_aid', 'Provide_aid', 'Reject', 'Use_unconventional_violence', 'Engage_in_diplomatic_cooperation', 'fight_with_small_arms_and_light_weapons', 'Express_intent_to_provide_material_aid', 'Express_intent_to_meet_or_negotiate', 'Accuse', 'Arrest,_detain,_or_charge_with_legal_action', 'Use_conventional_military_force', 'Provide_humanitarian_aid', 'Criticize_or_denounce']
+2025-07-21 11:23:24,428 - INFO -   关系 'received visit from' 模糊匹配: ['Host_a_visit', 'Make_a_visit']
+2025-07-21 11:23:24,459 - INFO -     'Host_a_visit': 24411 条记录
+2025-07-21 11:23:24,491 - INFO -     'Make_a_visit': 24422 条记录
+2025-07-21 11:23:24,491 - INFO - === KG检查完成 ===
+2025-07-21 11:23:24,491 - INFO - 步骤2: 代码生成
+2025-07-21 11:23:24,543 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-07-21 11:23:42,846 - INFO - 代码生成成功
+2025-07-21 11:23:42,846 - INFO - 生成的代码长度: 1354 字符
+2025-07-21 11:23:42,846 - INFO - 生成的代码:
+import pandas as pd
+
+def query_kg(df):
+    # Map the relation to KG's actual relation name
+    target_relation = "Host_a_visit"
+    
+    # Find all visits involving Juan_Carlos_I
+    juan_visits = df[
+        (df['head'].str.contains('Juan_Carlos_I', case=False, regex=False)) & 
+        (df['relation'] == 'Make_a_visit')
+    ].copy()
+    
+    # Find all visits involving Qatar
+    qatar_visits = df[
+        (df['tail'].str.contains('Qatar', case=False, regex=False)) & 
+        (df['relation'] == 'Host_a_visit')
+    ].copy()
+    
+    if juan_visits.empty or qatar_visits.empty:
+        return []
+    
+    # Extract month from timestamps
+    juan_visits['month'] = pd.to_datetime(juan_visits['timestamp']).dt.to_period('M')
+    qatar_visits['month'] = pd.to_datetime(qatar_visits['timestamp']).dt.to_period('M')
+    
+    # Find matching months
+    matching_months = set(juan_visits['month']).intersection(set(qatar_visits['month']))
+    
+    if not matching_months:
+        return []
+    
+    # Get all visits by Juan Carlos I in matching months
+    result_visits = juan_visits[juan_visits['month'].isin(matching_months)]
+    
+    # Get unique entities that received visits
+    result_entities = result_visits['tail'].unique()
+    
+    # Convert underscores to spaces in entity names
+    return [entity.replace('_', ' ') for entity in result_entities]
+2025-07-21 11:23:42,846 - INFO - 步骤3: 执行查询
+2025-07-21 11:23:43,098 - INFO - 查询返回 5 个结果: ['China', 'United Arab Emirates', 'Trinidad and Tobago', 'Portugal', 'Kuwait']
+2025-07-21 11:23:43,099 - INFO - 步骤4: 评估结果
+2025-07-21 11:23:43,099 - INFO - 评估结果:
+2025-07-21 11:23:43,099 - INFO -   预测答案: ['China', 'United Arab Emirates', 'Trinidad and Tobago', 'Portugal', 'Kuwait']
+2025-07-21 11:23:43,099 - INFO -   标准答案: ['Royal Administration (Spain)', 'Royal Administration (Jordan)', 'Royal Administration (Saudi Arabia)']
+2025-07-21 11:23:43,099 - INFO -   精确匹配: False
+2025-07-21 11:23:43,099 - INFO -   精度: 0.000, 召回率: 0.000, F1: 0.000
+2025-07-21 11:23:43,099 - INFO -   处理时间: 26.782秒
+2025-07-21 11:23:43,100 - INFO - 结果已保存到: /mnt/nvme0n1/tyj/TKGQA/MY/final_results_20250721_112343.json
+2025-07-21 11:23:43,100 - INFO - 实验完成，请查看结果文件获取详细统计信息
+2025-07-21 11:23:43,100 - INFO - ✅ 实验成功完成！
+2025-07-21 11:23:43,100 - INFO - 📊 处理问题数: 6
+2025-07-21 11:23:43,100 - INFO - 📁 结果保存在: /mnt/nvme0n1/tyj/TKGQA/MY/

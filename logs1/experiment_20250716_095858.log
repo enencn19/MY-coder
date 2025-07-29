@@ -1,0 +1,88 @@
+2025-07-16 09:58:58,403 - INFO - 日志系统初始化完成，日志文件: /mnt/nvme0n1/tyj/TKGQA/MY/logs/experiment_20250716_095858.log
+2025-07-16 09:58:58,437 - INFO - KG文件前3行: ['head\trelation\ttail\ttimestamp', 'Abdul_Kalam\tExpress_intent_to_engage_in_diplomatic_cooperation_(such_as_policy_support)\tSocial_Worker_(India)\t2005-01-01', 'Abdul_Kalam\tMake_statement\tSwraj_Paul\t2005-01-01']
+2025-07-16 09:58:58,796 - INFO - 加载KG数据: 461329行, 列名: ['head', 'relation', 'tail', 'timestamp']
+2025-07-16 09:58:58,797 - INFO - 时间戳列样例: ['2005-01-01', '2005-01-01', '2005-01-01', '2005-01-01', '2005-01-01']
+2025-07-16 09:58:58,801 - INFO - 加载了 10488 个实体映射和 251 个关系映射
+2025-07-16 09:58:58,802 - INFO - 时间戳列数据类型: object
+2025-07-16 09:58:58,817 - INFO - 时间戳列唯一值样例: ['2005-01-01' '2005-01-02' '2005-01-03' '2005-01-04' '2005-01-05']
+2025-07-16 09:59:00,675 - INFO - 知识图谱预处理完成，有效数据: 461329行
+2025-07-16 09:59:00,678 - INFO - 时间范围: 2005-01-01 00:00:00 到 2015-12-31 00:00:00
+2025-07-16 09:59:00,678 - INFO - 系统初始化完成 - 问题数: 20, KG四元组数: 461329
+2025-07-16 09:59:00,678 - INFO - 代码记录文件: /mnt/nvme0n1/tyj/TKGQA/MY/generated_codes_20250716_095858.py
+2025-07-16 09:59:00,678 - INFO - 开始时序知识图谱问答实验...
+2025-07-16 09:59:00,678 - INFO - 问题总数: 20
+2025-07-16 09:59:00,678 - INFO - 知识图谱四元组数: 461329
+2025-07-16 09:59:00,678 - INFO - 
+==================================================
+2025-07-16 09:59:00,678 - INFO - 开始处理问题 2000014
+2025-07-16 09:59:00,678 - INFO - 问题: Who would wish to visit Ireland in July, the year of 2007?
+2025-07-16 09:59:00,678 - INFO - 标准答案: ['Bertie Ahern']
+2025-07-16 09:59:00,678 - INFO - ==================================================
+2025-07-16 10:02:31,242 - INFO - 问题分析: {'question_type': '特定时间的主体查询', 'time_constraints': '精确时间约束: year=2007 且 month=7', 'key_entities': ['Ireland'], 'target_relation': '访问事件（实际访问或访问意图）', 'answer_type': '头实体（访问者）列表'}
+2025-07-16 10:02:31,242 - INFO - 代码生成成功，开始执行查询
+2025-07-16 10:02:31,243 - ERROR - 执行错误: '(' was never closed (<string>, line 18)
+2025-07-16 10:02:31,244 - ERROR - 详细错误: Traceback (most recent call last):
+  File "/mnt/nvme0n1/tyj/TKGQA/MY/temporal_kgqa_experiment.py", line 414, in execute_query
+    exec(query_code, exec_globals)
+  File "<string>", line 18
+    mask = (
+           ^
+SyntaxError: '(' was never closed
+
+2025-07-16 10:02:31,244 - ERROR - 处理问题 2000014 时出错: 'TemporalKGQASystem' object has no attribute 'auto_fix_code'
+2025-07-16 10:02:31,248 - ERROR - 详细错误: Traceback (most recent call last):
+  File "/mnt/nvme0n1/tyj/TKGQA/MY/temporal_kgqa_experiment.py", line 414, in execute_query
+    exec(query_code, exec_globals)
+  File "<string>", line 18
+    mask = (
+           ^
+SyntaxError: '(' was never closed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/mnt/nvme0n1/tyj/TKGQA/MY/temporal_kgqa_experiment.py", line 597, in run_experiment
+    result = self.process_single_question(question_data)
+  File "/mnt/nvme0n1/tyj/TKGQA/MY/temporal_kgqa_experiment.py", line 563, in process_single_question
+    predicted_answers = self.execute_query(query_code)
+  File "/mnt/nvme0n1/tyj/TKGQA/MY/temporal_kgqa_experiment.py", line 450, in execute_query
+    fixed_code = self.auto_fix_code(query_code, str(e), error_traceback)
+AttributeError: 'TemporalKGQASystem' object has no attribute 'auto_fix_code'
+
+2025-07-16 10:02:31,248 - INFO - 
+==================================================
+2025-07-16 10:02:31,248 - INFO - 开始处理问题 2000015
+2025-07-16 10:02:31,248 - INFO - 问题: In which year did Viktor Orban visit Iran for the first time?
+2025-07-16 10:02:31,248 - INFO - 标准答案: ['2015']
+2025-07-16 10:02:31,248 - INFO - ==================================================
+2025-07-16 10:04:19,280 - WARNING - 分析提取失败: Extra data: line 1 column 16 (char 15)
+2025-07-16 10:04:19,282 - INFO - 问题分析: {'question_type': 'unknown', 'time_constraints': 'unknown', 'key_entities': [], 'target_relation': 'unknown', 'answer_type': 'entity'}
+2025-07-16 10:04:19,282 - INFO - 代码生成成功，开始执行查询
+2025-07-16 10:04:19,807 - INFO - 查询成功，返回 1 个结果: ['2015']
+2025-07-16 10:04:19,807 - INFO - 问题 2000015 处理完成
+2025-07-16 10:04:19,807 - INFO - 预测答案: ['2015']
+2025-07-16 10:04:19,807 - INFO - 标准化后的标准答案: ['2015']
+2025-07-16 10:04:19,807 - INFO - 标准化后的预测答案: ['2015']
+2025-07-16 10:04:19,808 - INFO - 交集: {'2015'}
+2025-07-16 10:04:19,808 - INFO - 评估结果: P=1.000, R=1.000, F1=1.000, EM=True
+2025-07-16 10:04:20,809 - INFO - 
+==================================================
+2025-07-16 10:04:20,809 - INFO - 开始处理问题 2000016
+2025-07-16 10:04:20,809 - INFO - 问题: Who made optimistic remarks about Iran after the Organisation for Economic Cooperation and Development?
+2025-07-16 10:04:20,809 - INFO - 标准答案: ['South Korea', 'Party Member (Iraq)', 'France', 'China', 'Iraq', 'Member of Legislative (Govt) (Iran)', 'Japan', 'Head of Government (Ukraine)', 'Thailand', 'Kazakhstan']
+2025-07-16 10:04:20,809 - INFO - ==================================================
+2025-07-16 10:07:52,332 - WARNING - 分析提取失败: Extra data: line 1 column 16 (char 15)
+2025-07-16 10:07:52,333 - ERROR - 无法提取有效的query_kg函数
+2025-07-16 10:07:52,334 - INFO - 问题分析: {'question_type': 'unknown', 'time_constraints': 'unknown', 'key_entities': [], 'target_relation': 'unknown', 'answer_type': 'entity'}
+2025-07-16 10:07:52,334 - ERROR - 代码生成失败
+2025-07-16 10:07:52,334 - INFO - 问题 2000016 处理完成
+2025-07-16 10:07:52,334 - INFO - 预测答案: ['代码生成失败']
+2025-07-16 10:07:52,334 - INFO - 标准化后的标准答案: ['South Korea', 'Party Member (Iraq)', 'France', 'China', 'Iraq', 'Member of Legislative (Govt) (Iran)', 'Japan', 'Head of Government (Ukraine)', 'Thailand', 'Kazakhstan']
+2025-07-16 10:07:52,334 - INFO - 标准化后的预测答案: []
+2025-07-16 10:07:52,334 - INFO - 评估结果: P=0.000, R=0.000, F1=0.000, EM=False
+2025-07-16 10:07:53,336 - INFO - 
+==================================================
+2025-07-16 10:07:53,336 - INFO - 开始处理问题 2000017
+2025-07-16 10:07:53,336 - INFO - 问题: Who made optimistic remarks about Yasuo Fukuda after Japan?
+2025-07-16 10:07:53,336 - INFO - 标准答案: ['Government Official (Japan)', 'China']
+2025-07-16 10:07:53,336 - INFO - ==================================================

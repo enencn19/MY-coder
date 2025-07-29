@@ -1,0 +1,35 @@
+[
+  {
+    "quid": "2000014",
+    "question": "Who would wish to visit Ireland in July, the year of 2007?",
+    "ground_truth": [
+      "Bertie Ahern"
+    ],
+    "predicted_answers": [],
+    "analysis": {
+      "question_type": "entity_query",
+      "time_constraints": "2007-07",
+      "key_entities": [
+        "Ireland"
+      ],
+      "target_relations": [
+        "Express_intent_to_meet_or_negotiate",
+        "Make_statement",
+        "Make_a_visit",
+        "Host_a_visit"
+      ],
+      "answer_type": "entity",
+      "query_strategy": "首先，根据时间约束'2007-07'筛选出2007年7月的事件。然后，查找与'Ireland'相关的实体，这些实体通过目标关系['Express_intent_to_meet_or_negotiate', 'Make_statement', 'Make_a_visit', 'Host_a_visit']与'Ireland'相关联。最后，返回这些实体作为答案。"
+    },
+    "query_code": "def query_kg(df):\n    import pandas as pd\n    from datetime import datetime\n    try:\n        # 基础时间过滤\n        df = df[(df['timestamp'] >= '2005-01-01') & (df['timestamp'] <= '2015-12-31')]\n        # 时间约束处理\n        time_constraints = \"2007-07\"\n        if '2007-07' in time_constraints:\n            df = df[df['year_month'] == '2007-07']\n        elif 'after' in time_constraints.lower():\n            pass\n        # 实体过滤\n        key_entities = ['Ireland']\n        if key_entities:\n            entity_filter = pd.Series([False] * len(df))\n            for entity in key_entities:\n                entity_filter |= (\n                    df['head'].str.contains(entity, case=False, na=False) |\n                    df['tail'].str.contains(entity, case=False, na=False) |\n                    (df['head'] == entity) |\n                    (df['tail'] == entity)\n                )\n            df = df[entity_filter]\n        # 关系过滤\n        target_relations = ['Express_intent_to_meet_or_negotiate', 'Make_statement', 'Make_a_visit', 'Host_a_visit']\n        if target_relations:\n            relation_filter = pd.Series([False] * len(df))\n            for rel in target_relations:\n                relation_filter |= (\n                    (df['relation'] == rel) |\n                    df['relation'].str.contains(rel, case=False, na=False)\n                )\n            df = df[relation_filter]\n        if df.empty:\n            return []\n        # 返回相关实体\n        results = []\n        for entity in key_entities:\n            related = df[df['tail'].str.contains(entity, case=False, na=False)]['head'].unique()\n            results.extend(related)\n            related = df[df['head'].str.contains(entity, case=False, na=False)]['tail'].unique()\n            results.extend(related)\n        return list(set(results))\n    except Exception as e:\n        print(f\"查询执行错误: {{e}}\")\n        return []",
+    "answer_type": "entity",
+    "time_level": "month",
+    "qtype": "equal",
+    "evaluation": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "exact_match": false
+    }
+  }
+]

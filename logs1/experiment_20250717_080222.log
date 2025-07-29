@@ -1,0 +1,178 @@
+2025-07-17 08:02:22,187 - INFO - 日志系统初始化完成，日志文件: /mnt/nvme0n1/tyj/TKGQA/MY/logs/experiment_20250717_080222.log
+2025-07-17 08:02:22,220 - INFO - KG文件前3行: ['head\trelation\ttail\ttimestamp', 'Abdul_Kalam\tExpress_intent_to_engage_in_diplomatic_cooperation_(such_as_policy_support)\tSocial_Worker_(India)\t2005-01-01', 'Abdul_Kalam\tMake_statement\tSwraj_Paul\t2005-01-01']
+2025-07-17 08:02:22,577 - INFO - 加载KG数据: 461329行, 列名: ['head', 'relation', 'tail', 'timestamp']
+2025-07-17 08:02:22,577 - INFO - 时间戳列样例: ['2005-01-01', '2005-01-01', '2005-01-01', '2005-01-01', '2005-01-01']
+2025-07-17 08:02:22,581 - INFO - 加载了 10488 个实体映射和 251 个关系映射
+2025-07-17 08:02:22,582 - INFO - 时间戳列数据类型: object
+2025-07-17 08:02:22,598 - INFO - 时间戳列唯一值样例: ['2005-01-01' '2005-01-02' '2005-01-03' '2005-01-04' '2005-01-05']
+2025-07-17 08:02:24,341 - INFO - 知识图谱预处理完成，有效数据: 461329行
+2025-07-17 08:02:24,344 - INFO - 时间范围: 2005-01-01 00:00:00 到 2015-12-31 00:00:00
+2025-07-17 08:02:24,344 - INFO - 系统初始化完成 - 问题数: 30, KG四元组数: 461329
+2025-07-17 08:02:24,344 - INFO - 代码记录文件: /mnt/nvme0n1/tyj/TKGQA/MY/generated_codes_20250717_080222.py
+2025-07-17 08:02:24,344 - INFO - 分析温度: 1.0, 代码温度: 0.0
+2025-07-17 08:02:24,344 - INFO - 开始时序知识图谱问答实验...
+2025-07-17 08:02:24,344 - INFO - 问题总数: 30
+2025-07-17 08:02:24,344 - INFO - 知识图谱四元组数: 461329
+2025-07-17 08:02:24,344 - INFO - 分析温度: 1.0
+2025-07-17 08:02:24,344 - INFO - 代码温度: 0.0
+2025-07-17 08:02:24,344 - INFO - 
+==================================================
+2025-07-17 08:02:24,344 - INFO - 开始处理问题 2000014
+2025-07-17 08:02:24,344 - INFO - 问题: Who would wish to visit Ireland in July, the year of 2007?
+2025-07-17 08:02:24,344 - INFO - 标准答案: ['Bertie Ahern']
+2025-07-17 08:02:24,344 - INFO - ==================================================
+2025-07-17 08:02:24,344 - INFO - 第一步：问题分析
+2025-07-17 08:02:35,157 - INFO - 问题分析完成: {'question_type': 'entity_query', 'time_constraints': '2007-07', 'key_entities': ['Ireland'], 'target_relations': ['Express_intent_to_meet_or_negotiate', 'Make_statement', 'Make_a_visit', 'Host_a_visit'], 'answer_type': 'entity', 'query_strategy': "首先，根据时间约束'2007-07'筛选出2007年7月的事件。然后，查找与'Ireland'相关的实体，这些实体通过目标关系['Express_intent_to_meet_or_negotiate', 'Make_statement', 'Make_a_visit', 'Host_a_visit']与'Ireland'相关联。最后，返回这些实体作为答案。"}
+2025-07-17 08:02:35,157 - INFO - 第二步：代码生成
+2025-07-17 08:02:58,281 - INFO - 代码生成成功
+2025-07-17 08:02:58,282 - INFO - 第三步：执行查询
+2025-07-17 08:02:58,410 - INFO - 查询成功，返回 0 个结果: []
+2025-07-17 08:02:58,410 - INFO - 问题 2000014 处理完成
+2025-07-17 08:02:58,411 - INFO - 预测答案: []
+2025-07-17 08:02:58,411 - INFO - 结果已保存到: /mnt/nvme0n1/tyj/TKGQA/MY/intermediate_results_1.json
+2025-07-17 08:02:59,412 - INFO - 
+==================================================
+2025-07-17 08:02:59,412 - INFO - 开始处理问题 2000015
+2025-07-17 08:02:59,412 - INFO - 问题: In which year did Viktor Orban visit Iran for the first time?
+2025-07-17 08:02:59,412 - INFO - 标准答案: ['2015']
+2025-07-17 08:02:59,412 - INFO - ==================================================
+2025-07-17 08:02:59,412 - INFO - 第一步：问题分析
+2025-07-17 08:03:10,709 - INFO - 问题分析完成: {'question_type': 'first_event', 'time_constraints': '2005-01-01 00:00:00 to 2015-12-31 00:00:00', 'key_entities': ['Viktor_Orban', 'Iran'], 'target_relations': ['Make_a_visit', 'Engage_in_diplomatic_cooperation', 'Express_intent_to_meet_or_negotiate'], 'answer_type': 'time', 'query_strategy': "First, identify all events where the head entity is 'Viktor_Orban' and the tail entity is 'Iran' with relations related to visiting or diplomatic cooperation. Then, filter these events to find the earliest occurrence within the given time range (2005-2015). The answer will be the year of this first visit."}
+2025-07-17 08:03:10,709 - INFO - 第二步：代码生成
+2025-07-17 08:03:33,325 - INFO - 代码生成成功
+2025-07-17 08:03:33,325 - INFO - 第三步：执行查询
+2025-07-17 08:03:34,358 - INFO - 查询成功，返回 0 个结果: []
+2025-07-17 08:03:34,359 - INFO - 问题 2000015 处理完成
+2025-07-17 08:03:34,359 - INFO - 预测答案: []
+2025-07-17 08:03:35,360 - INFO - 
+==================================================
+2025-07-17 08:03:35,360 - INFO - 开始处理问题 2000016
+2025-07-17 08:03:35,360 - INFO - 问题: Who made optimistic remarks about Iran after the Organisation for Economic Cooperation and Development?
+2025-07-17 08:03:35,360 - INFO - 标准答案: ['South Korea', 'Party Member (Iraq)', 'France', 'China', 'Iraq', 'Member of Legislative (Govt) (Iran)', 'Japan', 'Head of Government (Ukraine)', 'Thailand', 'Kazakhstan']
+2025-07-17 08:03:35,360 - INFO - ==================================================
+2025-07-17 08:03:35,361 - INFO - 第一步：问题分析
+2025-07-17 08:03:48,301 - INFO - 问题分析完成: {'question_type': 'entity_query', 'time_constraints': 'after the Organisation for Economic Cooperation and Development (OECD) event, within the time range of 2005-01-01 to 2015-12-31', 'key_entities': ['Iran', 'Organisation_for_Economic_Cooperation_and_Development'], 'target_relations': ['Make_statement', 'Praise_or_endorse', 'Make_optimistic_comment'], 'answer_type': 'entity', 'query_strategy': "1. First, identify the time when the Organisation for Economic Cooperation and Development (OECD) made a statement or had an event involving Iran. 2. Then, search for events after that time where someone made optimistic remarks about Iran, using the relations 'Make_statement', 'Praise_or_endorse', or 'Make_optimistic_comment'. 3. Return the entity (person or organization) that made the optimistic remarks."}
+2025-07-17 08:03:48,301 - INFO - 第二步：代码生成
+2025-07-17 08:04:13,719 - INFO - 代码生成成功
+2025-07-17 08:04:13,719 - INFO - 第三步：执行查询
+2025-07-17 08:04:14,951 - INFO - 查询成功，返回 0 个结果: []
+2025-07-17 08:04:14,952 - INFO - 问题 2000016 处理完成
+2025-07-17 08:04:14,952 - INFO - 预测答案: []
+2025-07-17 08:04:15,953 - INFO - 
+==================================================
+2025-07-17 08:04:15,953 - INFO - 开始处理问题 2000017
+2025-07-17 08:04:15,953 - INFO - 问题: Who made optimistic remarks about Yasuo Fukuda after Japan?
+2025-07-17 08:04:15,953 - INFO - 标准答案: ['Government Official (Japan)', 'China']
+2025-07-17 08:04:15,954 - INFO - ==================================================
+2025-07-17 08:04:15,954 - INFO - 第一步：问题分析
+2025-07-17 08:04:27,949 - INFO - 问题分析完成: {'question_type': 'entity_query', 'time_constraints': 'after the time when Yasuo Fukuda was mentioned in Japan', 'key_entities': ['Yasuo_Fukuda', 'Japan'], 'target_relations': ['Praise_or_endorse', 'Make_statement', 'Make_optimistic_comment'], 'answer_type': 'entity', 'query_strategy': "1. First, identify the time when Yasuo Fukuda was mentioned in Japan within the given time range (2005-2015). 2. Then, search for events where entities made optimistic remarks about Yasuo Fukuda after that identified time. 3. The target relations should include 'Praise_or_endorse', 'Make_statement', or any relation indicating optimistic remarks. 4. Return the entity (or entities) that made such remarks."}
+2025-07-17 08:04:27,949 - INFO - 第二步：代码生成
+2025-07-17 08:04:53,157 - INFO - 代码生成成功
+2025-07-17 08:04:53,157 - INFO - 第三步：执行查询
+2025-07-17 08:04:53,158 - ERROR - 执行错误: closing parenthesis ']' does not match opening parenthesis '(' on line 10 (<string>, line 12)
+2025-07-17 08:04:53,159 - ERROR - 详细错误: Traceback (most recent call last):
+  File "/mnt/nvme0n1/tyj/TKGQA/MY/temporal_kgqa_experiment.py", line 794, in execute_query
+    exec(query_code, exec_globals)
+  File "<string>", line 12
+    ]
+    ^
+SyntaxError: closing parenthesis ']' does not match opening parenthesis '(' on line 10
+
+2025-07-17 08:04:53,159 - INFO - 尝试自动修复代码
+2025-07-17 08:05:18,721 - INFO - 代码修复成功
+2025-07-17 08:05:18,721 - INFO - 尝试执行修复后的代码
+2025-07-17 08:05:18,722 - ERROR - 修复后代码执行仍然失败: invalid syntax. Perhaps you forgot a comma? (<string>, line 34)
+2025-07-17 08:05:18,723 - INFO - 问题 2000017 处理完成
+2025-07-17 08:05:18,723 - INFO - 预测答案: []
+2025-07-17 08:05:19,724 - INFO - 
+==================================================
+2025-07-17 08:05:19,724 - INFO - 开始处理问题 2000018
+2025-07-17 08:05:19,724 - INFO - 问题: In which month did Xi Jinping praise the Bahamas?
+2025-07-17 08:05:19,724 - INFO - 标准答案: ['2015-01']
+2025-07-17 08:05:19,724 - INFO - ==================================================
+2025-07-17 08:05:19,725 - INFO - 第一步：问题分析
+2025-07-17 08:05:29,943 - INFO - 问题分析完成: {'question_type': 'time_query', 'time_constraints': '2005-01-01 00:00:00 to 2015-12-31 00:00:00', 'key_entities': ['Xi_Jinping', 'Bahamas'], 'target_relations': ['Praise_or_endorse'], 'answer_type': 'time', 'query_strategy': "Search for events where the head entity is 'Xi_Jinping' and the tail entity is 'Bahamas', with the relation 'Praise_or_endorse' within the given time range. The answer should be the specific month when this event occurred."}
+2025-07-17 08:05:29,943 - INFO - 第二步：代码生成
+2025-07-17 08:05:29,943 - ERROR - 处理问题 2000018 时出错: 'TemporalKGQASystem' object has no attribute 'generate_time_query_code'
+2025-07-17 08:05:29,945 - ERROR - 详细错误: Traceback (most recent call last):
+  File "/mnt/nvme0n1/tyj/TKGQA/MY/temporal_kgqa_experiment.py", line 1030, in run_experiment
+    result = self.process_single_question(question_data)
+  File "/mnt/nvme0n1/tyj/TKGQA/MY/temporal_kgqa_experiment.py", line 986, in process_single_question
+    query_code = self.generate_code_step(question, analysis, quid)
+  File "/mnt/nvme0n1/tyj/TKGQA/MY/temporal_kgqa_experiment.py", line 387, in generate_code_step
+    code_template = self.generate_time_query_code(question, analysis)
+AttributeError: 'TemporalKGQASystem' object has no attribute 'generate_time_query_code'. Did you mean: 'generate_entity_query_code'?
+
+2025-07-17 08:05:29,945 - INFO - 
+==================================================
+2025-07-17 08:05:29,945 - INFO - 开始处理问题 2000019
+2025-07-17 08:05:29,945 - INFO - 问题: When did Iran last express its intention to meet with international governmental organisations?
+2025-07-17 08:05:29,945 - INFO - 标准答案: ['2006-05-27']
+2025-07-17 08:05:29,945 - INFO - ==================================================
+2025-07-17 08:05:29,945 - INFO - 第一步：问题分析
+2025-07-17 08:05:41,360 - INFO - 问题分析完成: {'question_type': 'last_event', 'time_constraints': '2005-01-01 00:00:00 to 2015-12-31 00:00:00', 'key_entities': ['Iran', 'International_Government_Organizations'], 'target_relations': ['Express_intent_to_meet_or_negotiate'], 'answer_type': 'time', 'query_strategy': "1. Identify all events where the head entity is 'Iran' and the tail entity is 'International_Government_Organizations' with the relation 'Express_intent_to_meet_or_negotiate'. 2. Filter these events within the given time range (2005-2015). 3. Sort the remaining events by time in descending order. 4. Select the most recent event and return its timestamp."}
+2025-07-17 08:05:41,360 - INFO - 第二步：代码生成
+2025-07-17 08:05:41,360 - ERROR - 处理问题 2000019 时出错: 'TemporalKGQASystem' object has no attribute 'generate_last_event_code'
+2025-07-17 08:05:41,363 - ERROR - 详细错误: Traceback (most recent call last):
+  File "/mnt/nvme0n1/tyj/TKGQA/MY/temporal_kgqa_experiment.py", line 1030, in run_experiment
+    result = self.process_single_question(question_data)
+  File "/mnt/nvme0n1/tyj/TKGQA/MY/temporal_kgqa_experiment.py", line 986, in process_single_question
+    query_code = self.generate_code_step(question, analysis, quid)
+  File "/mnt/nvme0n1/tyj/TKGQA/MY/temporal_kgqa_experiment.py", line 385, in generate_code_step
+    code_template = self.generate_last_event_code(question, analysis)
+AttributeError: 'TemporalKGQASystem' object has no attribute 'generate_last_event_code'. Did you mean: 'generate_first_event_code'?
+
+2025-07-17 08:05:41,363 - INFO - 
+==================================================
+2025-07-17 08:05:41,363 - INFO - 开始处理问题 2000020
+2025-07-17 08:05:41,363 - INFO - 问题: In which country did Colombia release people before 23 February 2008?
+2025-07-17 08:05:41,363 - INFO - 标准答案: ['Guerrilla (Colombia)']
+2025-07-17 08:05:41,363 - INFO - ==================================================
+2025-07-17 08:05:41,364 - INFO - 第一步：问题分析
+2025-07-17 08:05:50,621 - INFO - 问题分析完成: {'question_type': 'time_query', 'time_constraints': 'before 2008-02-23', 'key_entities': ['Colombia'], 'target_relations': ['Return,_release_person(s)'], 'answer_type': 'entity', 'query_strategy': "查找在2008年2月23日之前，Colombia作为head实体，关系为'Return,_release_person(s)'的所有事件，并提取tail实体(即被释放人员所在的国家)。需要确保事件时间严格早于2008-02-23。"}
+2025-07-17 08:05:50,622 - INFO - 第二步：代码生成
+2025-07-17 08:05:50,622 - ERROR - 处理问题 2000020 时出错: 'TemporalKGQASystem' object has no attribute 'generate_time_query_code'
+2025-07-17 08:05:50,624 - ERROR - 详细错误: Traceback (most recent call last):
+  File "/mnt/nvme0n1/tyj/TKGQA/MY/temporal_kgqa_experiment.py", line 1030, in run_experiment
+    result = self.process_single_question(question_data)
+  File "/mnt/nvme0n1/tyj/TKGQA/MY/temporal_kgqa_experiment.py", line 986, in process_single_question
+    query_code = self.generate_code_step(question, analysis, quid)
+  File "/mnt/nvme0n1/tyj/TKGQA/MY/temporal_kgqa_experiment.py", line 387, in generate_code_step
+    code_template = self.generate_time_query_code(question, analysis)
+AttributeError: 'TemporalKGQASystem' object has no attribute 'generate_time_query_code'. Did you mean: 'generate_entity_query_code'?
+
+2025-07-17 08:05:50,624 - INFO - 
+==================================================
+2025-07-17 08:05:50,624 - INFO - 开始处理问题 2000021
+2025-07-17 08:05:50,624 - INFO - 问题: Who was the first country to express optimism about Barack Obama after Ireland?
+2025-07-17 08:05:50,624 - INFO - 标准答案: ['Angela Merkel']
+2025-07-17 08:05:50,624 - INFO - ==================================================
+2025-07-17 08:05:50,624 - INFO - 第一步：问题分析
+2025-07-17 08:06:03,117 - INFO - 问题分析完成: {'question_type': 'first_event', 'time_constraints': 'After the time when Ireland expressed optimism about Barack Obama, within the time range of 2005-01-01 00:00:00 to 2015-12-31 00:00:00', 'key_entities': ['Ireland', 'Barack_Obama'], 'target_relations': ['Express_intent_to_engage_in_diplomatic_cooperation_(such_as_policy_support)', 'Make_statement', 'Praise_or_endorse'], 'answer_type': 'entity', 'query_strategy': '1. First, find the time when Ireland expressed optimism about Barack Obama. 2. Then, search for the first event where any country (excluding Ireland) expressed optimism about Barack Obama after that time. The relevant relations include expressing diplomatic cooperation, making statements, or praising/endorsing.'}
+2025-07-17 08:06:03,117 - INFO - 第二步：代码生成
+2025-07-17 08:06:37,053 - INFO - 代码生成成功
+2025-07-17 08:06:37,053 - INFO - 第三步：执行查询
+2025-07-17 08:06:37,054 - ERROR - 执行错误: closing parenthesis ']' does not match opening parenthesis '(' on line 35 (<string>, line 37)
+2025-07-17 08:06:37,054 - ERROR - 详细错误: Traceback (most recent call last):
+  File "/mnt/nvme0n1/tyj/TKGQA/MY/temporal_kgqa_experiment.py", line 794, in execute_query
+    exec(query_code, exec_globals)
+  File "<string>", line 37
+    ]
+    ^
+SyntaxError: closing parenthesis ']' does not match opening parenthesis '(' on line 35
+
+2025-07-17 08:06:37,054 - INFO - 尝试自动修复代码
+2025-07-17 08:07:10,050 - INFO - 代码修复成功
+2025-07-17 08:07:10,050 - INFO - 尝试执行修复后的代码
+2025-07-17 08:07:11,022 - INFO - 修复后查询成功，返回 0 个结果: []
+2025-07-17 08:07:11,023 - INFO - 问题 2000021 处理完成
+2025-07-17 08:07:11,023 - INFO - 预测答案: []
+2025-07-17 08:07:12,024 - INFO - 
+==================================================
+2025-07-17 08:07:12,024 - INFO - 开始处理问题 2000022
+2025-07-17 08:07:12,024 - INFO - 问题: Which was the first country to praise Colombia after Cristina Fernández de Kirchner?
+2025-07-17 08:07:12,024 - INFO - 标准答案: ['Barack Obama']
+2025-07-17 08:07:12,024 - INFO - ==================================================
+2025-07-17 08:07:12,025 - INFO - 第一步：问题分析
+2025-07-17 08:07:23,421 - INFO - 问题分析完成: {'question_type': 'first_event', 'time_constraints': 'after the time when Cristina_Fernández_de_Kirchner praised Colombia', 'key_entities': ['Cristina_Fernández_de_Kirchner', 'Colombia'], 'target_relations': ['Praise_or_endorse'], 'answer_type': 'entity', 'query_strategy': "1. First, find the time when Cristina_Fernández_de_Kirchner praised Colombia by querying events with head='Cristina_Fernández_de_Kirchner', tail='Colombia', and relation='Praise_or_endorse'. 2. Then, find the first event after that time where any country (head) praises Colombia (tail) with relation='Praise_or_endorse'. The answer will be the head entity of that event."}
+2025-07-17 08:07:23,421 - INFO - 第二步：代码生成

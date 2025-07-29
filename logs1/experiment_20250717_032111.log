@@ -1,0 +1,732 @@
+2025-07-17 03:21:11,487 - INFO - 日志系统初始化完成，日志文件: /mnt/nvme0n1/tyj/TKGQA/MY/logs/experiment_20250717_032111.log
+2025-07-17 03:21:11,521 - INFO - KG文件前3行: ['head\trelation\ttail\ttimestamp', 'Abdul_Kalam\tExpress_intent_to_engage_in_diplomatic_cooperation_(such_as_policy_support)\tSocial_Worker_(India)\t2005-01-01', 'Abdul_Kalam\tMake_statement\tSwraj_Paul\t2005-01-01']
+2025-07-17 03:21:11,877 - INFO - 加载KG数据: 461329行, 列名: ['head', 'relation', 'tail', 'timestamp']
+2025-07-17 03:21:11,879 - INFO - 时间戳列样例: ['2005-01-01', '2005-01-01', '2005-01-01', '2005-01-01', '2005-01-01']
+2025-07-17 03:21:11,883 - INFO - 加载了 10488 个实体映射和 251 个关系映射
+2025-07-17 03:21:11,883 - INFO - 时间戳列数据类型: object
+2025-07-17 03:21:11,900 - INFO - 时间戳列唯一值样例: ['2005-01-01' '2005-01-02' '2005-01-03' '2005-01-04' '2005-01-05']
+2025-07-17 03:21:13,722 - INFO - 知识图谱预处理完成，有效数据: 461329行
+2025-07-17 03:21:13,724 - INFO - 时间范围: 2005-01-01 00:00:00 到 2015-12-31 00:00:00
+2025-07-17 03:21:13,724 - INFO - 系统初始化完成 - 问题数: 30, KG四元组数: 461329
+2025-07-17 03:21:13,724 - INFO - 代码记录文件: /mnt/nvme0n1/tyj/TKGQA/MY/generated_codes_20250717_032111.py
+2025-07-17 03:21:13,724 - INFO - 分析温度: 1.0, 代码温度: 0.0
+2025-07-17 03:21:13,724 - INFO - 开始时序知识图谱问答实验...
+2025-07-17 03:21:13,724 - INFO - 问题总数: 30
+2025-07-17 03:21:13,724 - INFO - 知识图谱四元组数: 461329
+2025-07-17 03:21:13,724 - INFO - 分析温度: 0.3
+2025-07-17 03:21:13,724 - INFO - 代码温度: 0.0
+2025-07-17 03:21:13,724 - INFO - 
+==================================================
+2025-07-17 03:21:13,724 - INFO - 开始处理问题 2000014
+2025-07-17 03:21:13,724 - INFO - 问题: Who would wish to visit Ireland in July, the year of 2007?
+2025-07-17 03:21:13,724 - INFO - 标准答案: ['Bertie Ahern']
+2025-07-17 03:21:13,724 - INFO - ==================================================
+2025-07-17 03:21:13,724 - INFO - 第一步：问题分析
+2025-07-17 03:21:21,223 - INFO - 问题分析完成: {'question_type': 'entity_query', 'time_constraints': 'July 2007', 'key_entities': ['Ireland'], 'target_relations': ['Express_intent_to_meet_or_negotiate', 'Engage_in_diplomatic_cooperation', 'Make_statement', 'Praise_or_endorse', 'Consult'], 'answer_type': 'entity', 'query_strategy': "Identify entities that have any of the target relations with 'Ireland' during July 2007. The relations should involve actions or statements indicating a wish or intent to visit, such as diplomatic meetings, endorsements, or consultations."}
+2025-07-17 03:21:21,223 - INFO - 第二步：代码生成
+2025-07-17 03:22:01,506 - INFO - 代码生成成功
+2025-07-17 03:22:01,506 - INFO - 第三步：执行查询
+2025-07-17 03:22:01,580 - ERROR - 执行错误: __import__ not found
+2025-07-17 03:22:01,581 - ERROR - 详细错误: Traceback (most recent call last):
+  File "/mnt/nvme0n1/tyj/TKGQA/MY/temporal_kgqa_experiment.py", line 579, in execute_query
+    results = exec_globals['query_kg'](self.kg_df.copy())
+  File "<string>", line 2, in query_kg
+ImportError: __import__ not found
+
+2025-07-17 03:22:01,581 - INFO - 尝试自动修复代码
+2025-07-17 03:22:30,395 - INFO - 代码修复成功
+2025-07-17 03:22:30,395 - INFO - 尝试执行修复后的代码
+2025-07-17 03:22:30,922 - INFO - 修复后查询成功，返回 2 个结果: ['Trevor_Sargent', 'Bertie_Ahern']
+2025-07-17 03:22:30,927 - INFO - 问题 2000014 处理完成
+2025-07-17 03:22:30,928 - INFO - 预测答案: ['Trevor_Sargent', 'Bertie_Ahern']
+2025-07-17 03:22:30,928 - INFO - 标准化后的标准答案: ['Bertie Ahern']
+2025-07-17 03:22:30,928 - INFO - 标准化后的预测答案: ['Trevor_Sargent', 'Bertie_Ahern']
+2025-07-17 03:22:30,928 - INFO - 交集: set()
+2025-07-17 03:22:30,928 - INFO - 评估结果: P=0.000, R=0.000, F1=0.000, EM=False
+2025-07-17 03:22:30,928 - INFO - 结果已保存到: /mnt/nvme0n1/tyj/TKGQA/MY/intermediate_results_1.json
+2025-07-17 03:22:31,929 - INFO - 
+==================================================
+2025-07-17 03:22:31,930 - INFO - 开始处理问题 2000015
+2025-07-17 03:22:31,930 - INFO - 问题: In which year did Viktor Orban visit Iran for the first time?
+2025-07-17 03:22:31,930 - INFO - 标准答案: ['2015']
+2025-07-17 03:22:31,930 - INFO - ==================================================
+2025-07-17 03:22:31,930 - INFO - 第一步：问题分析
+2025-07-17 03:22:41,870 - INFO - 问题分析完成: {'question_type': 'first_event', 'time_constraints': '时间范围: 2005-01-01 00:00:00 到 2015-12-31 00:00:00', 'key_entities': ['Viktor Orban', 'Iran'], 'target_relations': ['Engage_in_diplomatic_cooperation', 'Express_intent_to_meet_or_negotiate'], 'answer_type': 'time', 'query_strategy': '首先在给定的时间范围内查找Viktor Orban和Iran之间的所有事件，然后筛选出与外交合作或会面谈判相关的事件，最后找出这些事件中时间最早的一个，返回其发生年份。'}
+2025-07-17 03:22:41,870 - INFO - 第二步：代码生成
+2025-07-17 03:23:06,089 - INFO - 代码生成成功
+2025-07-17 03:23:06,089 - INFO - 第三步：执行查询
+2025-07-17 03:23:06,165 - ERROR - 执行错误: __import__ not found
+2025-07-17 03:23:06,165 - ERROR - 详细错误: Traceback (most recent call last):
+  File "/mnt/nvme0n1/tyj/TKGQA/MY/temporal_kgqa_experiment.py", line 579, in execute_query
+    results = exec_globals['query_kg'](self.kg_df.copy())
+  File "<string>", line 2, in query_kg
+ImportError: __import__ not found
+
+2025-07-17 03:23:06,165 - INFO - 尝试自动修复代码
+2025-07-17 03:23:27,532 - INFO - 代码修复成功
+2025-07-17 03:23:27,532 - INFO - 尝试执行修复后的代码
+2025-07-17 03:23:28,432 - INFO - 修复后查询成功，返回 0 个结果: []
+2025-07-17 03:23:28,437 - INFO - 问题 2000015 处理完成
+2025-07-17 03:23:28,437 - INFO - 预测答案: []
+2025-07-17 03:23:28,437 - INFO - 标准化后的标准答案: ['2015']
+2025-07-17 03:23:28,437 - INFO - 标准化后的预测答案: []
+2025-07-17 03:23:28,437 - INFO - 评估结果: P=0.000, R=0.000, F1=0.000, EM=False
+2025-07-17 03:23:29,438 - INFO - 
+==================================================
+2025-07-17 03:23:29,438 - INFO - 开始处理问题 2000016
+2025-07-17 03:23:29,439 - INFO - 问题: Who made optimistic remarks about Iran after the Organisation for Economic Cooperation and Development?
+2025-07-17 03:23:29,439 - INFO - 标准答案: ['South Korea', 'Party Member (Iraq)', 'France', 'China', 'Iraq', 'Member of Legislative (Govt) (Iran)', 'Japan', 'Head of Government (Ukraine)', 'Thailand', 'Kazakhstan']
+2025-07-17 03:23:29,439 - INFO - ==================================================
+2025-07-17 03:23:29,439 - INFO - 第一步：问题分析
+2025-07-17 03:23:39,857 - INFO - 问题分析完成: {'question_type': 'entity_query', 'time_constraints': 'after the Organisation for Economic Cooperation and Development (OECD) event, within the time range of 2005-01-01 to 2015-12-31', 'key_entities': ['Iran', 'Organisation for Economic Cooperation and Development'], 'target_relations': ['Make_statement', 'Praise_or_endorse', 'Express_intent_to_engage_in_diplomatic_cooperation'], 'answer_type': 'entity', 'query_strategy': "1. Identify events involving 'Iran' and 'Organisation for Economic Cooperation and Development' (OECD) within the given time range. 2. Filter for events where OECD or related entities made optimistic remarks (using target relations). 3. Extract the entity (person or organization) that made the remarks."}
+2025-07-17 03:23:39,857 - INFO - 第二步：代码生成
+2025-07-17 03:24:17,909 - INFO - 代码生成成功
+2025-07-17 03:24:17,909 - INFO - 第三步：执行查询
+2025-07-17 03:24:17,955 - ERROR - 执行错误: __import__ not found
+2025-07-17 03:24:17,955 - ERROR - 详细错误: Traceback (most recent call last):
+  File "/mnt/nvme0n1/tyj/TKGQA/MY/temporal_kgqa_experiment.py", line 579, in execute_query
+    results = exec_globals['query_kg'](self.kg_df.copy())
+  File "<string>", line 2, in query_kg
+ImportError: __import__ not found
+
+2025-07-17 03:24:17,955 - INFO - 尝试自动修复代码
+2025-07-17 03:24:46,709 - INFO - 代码修复成功
+2025-07-17 03:24:46,709 - INFO - 尝试执行修复后的代码
+2025-07-17 03:24:47,562 - INFO - 修复后查询成功，返回 0 个结果: []
+2025-07-17 03:24:47,567 - INFO - 问题 2000016 处理完成
+2025-07-17 03:24:47,567 - INFO - 预测答案: []
+2025-07-17 03:24:47,567 - INFO - 标准化后的标准答案: ['South Korea', 'Party Member (Iraq)', 'France', 'China', 'Iraq', 'Member of Legislative (Govt) (Iran)', 'Japan', 'Head of Government (Ukraine)', 'Thailand', 'Kazakhstan']
+2025-07-17 03:24:47,567 - INFO - 标准化后的预测答案: []
+2025-07-17 03:24:47,567 - INFO - 评估结果: P=0.000, R=0.000, F1=0.000, EM=False
+2025-07-17 03:24:48,568 - INFO - 
+==================================================
+2025-07-17 03:24:48,569 - INFO - 开始处理问题 2000017
+2025-07-17 03:24:48,569 - INFO - 问题: Who made optimistic remarks about Yasuo Fukuda after Japan?
+2025-07-17 03:24:48,569 - INFO - 标准答案: ['Government Official (Japan)', 'China']
+2025-07-17 03:24:48,569 - INFO - ==================================================
+2025-07-17 03:24:48,569 - INFO - 第一步：问题分析
+2025-07-17 03:24:59,035 - INFO - 问题分析完成: {'question_type': 'entity_query', 'time_constraints': '2005-01-01 00:00:00 到 2015-12-31 00:00:00', 'key_entities': ['Yasuo Fukuda', 'Japan'], 'target_relations': ['Make_statement', 'Praise_or_endorse', 'Make_optimistic_comment'], 'answer_type': 'entity', 'query_strategy': "1. 首先在知识图谱中查找与'Yasuo Fukuda'相关的实体。2. 然后筛选出在'Japan'之后（时间上）对'Yasuo Fukuda'进行'Make_statement'、'Praise_or_endorse'或'Make_optimistic_comment'的实体。3. 由于问题中明确提到'after Japan'，需要确保事件的时间在'Japan'相关事件之后。"}
+2025-07-17 03:24:59,035 - INFO - 第二步：代码生成
+2025-07-17 03:25:34,915 - INFO - 代码生成成功
+2025-07-17 03:25:34,916 - INFO - 第三步：执行查询
+2025-07-17 03:25:34,917 - ERROR - 执行错误: unterminated string literal (detected at line 53) (<string>, line 53)
+2025-07-17 03:25:34,917 - ERROR - 详细错误: Traceback (most recent call last):
+  File "/mnt/nvme0n1/tyj/TKGQA/MY/temporal_kgqa_experiment.py", line 575, in execute_query
+    exec(query_code, exec_globals)
+  File "<string>", line 53
+    return []'
+             ^
+SyntaxError: unterminated string literal (detected at line 53)
+
+2025-07-17 03:25:34,917 - INFO - 尝试自动修复代码
+2025-07-17 03:26:00,315 - INFO - 代码修复成功
+2025-07-17 03:26:00,315 - INFO - 问题 2000017 处理完成
+2025-07-17 03:26:00,315 - INFO - 预测答案: []
+2025-07-17 03:26:00,315 - INFO - 标准化后的标准答案: ['Government Official (Japan)', 'China']
+2025-07-17 03:26:00,316 - INFO - 标准化后的预测答案: []
+2025-07-17 03:26:00,316 - INFO - 评估结果: P=0.000, R=0.000, F1=0.000, EM=False
+2025-07-17 03:26:01,317 - INFO - 
+==================================================
+2025-07-17 03:26:01,317 - INFO - 开始处理问题 2000018
+2025-07-17 03:26:01,317 - INFO - 问题: In which month did Xi Jinping praise the Bahamas?
+2025-07-17 03:26:01,317 - INFO - 标准答案: ['2015-01']
+2025-07-17 03:26:01,317 - INFO - ==================================================
+2025-07-17 03:26:01,317 - INFO - 第一步：问题分析
+2025-07-17 03:26:09,598 - INFO - 问题分析完成: {'question_type': 'time_query', 'time_constraints': '时间范围为2005-01-01到2015-12-31', 'key_entities': ['Xi Jinping', 'Bahamas'], 'target_relations': ['Praise_or_endorse'], 'answer_type': 'time', 'query_strategy': "首先在知识图谱中查找Xi Jinping与Bahamas之间的'Praise_or_endorse'关系，然后提取该事件发生的具体时间（月份）。由于问题中未指定具体年份，需要检索整个时间范围内的所有相关事件。"}
+2025-07-17 03:26:09,599 - INFO - 第二步：代码生成
+2025-07-17 03:26:34,389 - INFO - 代码生成成功
+2025-07-17 03:26:34,389 - INFO - 第三步：执行查询
+2025-07-17 03:26:34,483 - ERROR - 执行错误: __import__ not found
+2025-07-17 03:26:34,484 - ERROR - 详细错误: Traceback (most recent call last):
+  File "/mnt/nvme0n1/tyj/TKGQA/MY/temporal_kgqa_experiment.py", line 579, in execute_query
+    results = exec_globals['query_kg'](self.kg_df.copy())
+  File "<string>", line 2, in query_kg
+ImportError: __import__ not found
+
+2025-07-17 03:26:34,484 - INFO - 尝试自动修复代码
+2025-07-17 03:26:57,716 - INFO - 代码修复成功
+2025-07-17 03:26:57,717 - INFO - 尝试执行修复后的代码
+2025-07-17 03:26:58,643 - INFO - 修复后查询成功，返回 10 个结果: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October']
+2025-07-17 03:26:58,648 - INFO - 问题 2000018 处理完成
+2025-07-17 03:26:58,648 - INFO - 预测答案: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October']
+2025-07-17 03:26:58,648 - INFO - 标准化后的标准答案: ['2015-01']
+2025-07-17 03:26:58,648 - INFO - 标准化后的预测答案: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October']
+2025-07-17 03:26:58,648 - INFO - 交集: set()
+2025-07-17 03:26:58,648 - INFO - 评估结果: P=0.000, R=0.000, F1=0.000, EM=False
+2025-07-17 03:26:58,649 - INFO - 结果已保存到: /mnt/nvme0n1/tyj/TKGQA/MY/intermediate_results_5.json
+2025-07-17 03:26:59,650 - INFO - 
+==================================================
+2025-07-17 03:26:59,651 - INFO - 开始处理问题 2000019
+2025-07-17 03:26:59,651 - INFO - 问题: When did Iran last express its intention to meet with international governmental organisations?
+2025-07-17 03:26:59,651 - INFO - 标准答案: ['2006-05-27']
+2025-07-17 03:26:59,651 - INFO - ==================================================
+2025-07-17 03:26:59,651 - INFO - 第一步：问题分析
+2025-07-17 03:27:08,976 - INFO - 问题分析完成: {'question_type': 'last_event', 'time_constraints': '时间范围为2005-01-01到2015-12-31', 'key_entities': ['Iran', 'international governmental organisations'], 'target_relations': ['Express_intent_to_meet_or_negotiate'], 'answer_type': 'time', 'query_strategy': "首先在知识图谱中查找伊朗(Iran)作为head实体，国际政府组织(international governmental organisations)作为tail实体的三元组，关系为'Express_intent_to_meet_or_negotiate'。然后在这些三元组中筛选出时间最晚的事件，返回该事件的时间。"}
+2025-07-17 03:27:08,976 - INFO - 第二步：代码生成
+2025-07-17 03:27:27,000 - INFO - 代码生成成功
+2025-07-17 03:27:27,000 - INFO - 第三步：执行查询
+2025-07-17 03:27:27,063 - ERROR - 执行错误: __import__ not found
+2025-07-17 03:27:27,063 - ERROR - 详细错误: Traceback (most recent call last):
+  File "/mnt/nvme0n1/tyj/TKGQA/MY/temporal_kgqa_experiment.py", line 579, in execute_query
+    results = exec_globals['query_kg'](self.kg_df.copy())
+  File "<string>", line 2, in query_kg
+ImportError: __import__ not found
+
+2025-07-17 03:27:27,063 - INFO - 尝试自动修复代码
+2025-07-17 03:27:39,160 - INFO - 代码修复成功
+2025-07-17 03:27:39,161 - INFO - 尝试执行修复后的代码
+2025-07-17 03:27:39,486 - INFO - 修复后查询成功，返回 0 个结果: []
+2025-07-17 03:27:39,491 - INFO - 问题 2000019 处理完成
+2025-07-17 03:27:39,491 - INFO - 预测答案: []
+2025-07-17 03:27:39,491 - INFO - 标准化后的标准答案: ['2006-05-27']
+2025-07-17 03:27:39,491 - INFO - 标准化后的预测答案: []
+2025-07-17 03:27:39,491 - INFO - 评估结果: P=0.000, R=0.000, F1=0.000, EM=False
+2025-07-17 03:27:40,492 - INFO - 
+==================================================
+2025-07-17 03:27:40,492 - INFO - 开始处理问题 2000020
+2025-07-17 03:27:40,492 - INFO - 问题: In which country did Colombia release people before 23 February 2008?
+2025-07-17 03:27:40,492 - INFO - 标准答案: ['Guerrilla (Colombia)']
+2025-07-17 03:27:40,492 - INFO - ==================================================
+2025-07-17 03:27:40,492 - INFO - 第一步：问题分析
+2025-07-17 03:27:48,250 - INFO - 问题分析完成: {'question_type': 'entity_query', 'time_constraints': 'before 23 February 2008', 'key_entities': ['Colombia'], 'target_relations': ['Release'], 'answer_type': 'entity', 'query_strategy': "1. 首先在知识图谱中查找与'Colombia'相关的实体作为head或tail。2. 筛选出关系类型为'Release'的三元组。3. 进一步过滤时间约束，确保事件发生在2008年2月23日之前。4. 返回满足条件的tail实体（即被释放的国家）。"}
+2025-07-17 03:27:48,250 - INFO - 第二步：代码生成
+2025-07-17 03:28:21,457 - INFO - 代码生成成功
+2025-07-17 03:28:21,457 - INFO - 第三步：执行查询
+2025-07-17 03:28:21,496 - ERROR - 执行错误: __import__ not found
+2025-07-17 03:28:21,497 - ERROR - 详细错误: Traceback (most recent call last):
+  File "/mnt/nvme0n1/tyj/TKGQA/MY/temporal_kgqa_experiment.py", line 579, in execute_query
+    results = exec_globals['query_kg'](self.kg_df.copy())
+  File "<string>", line 2, in query_kg
+ImportError: __import__ not found
+
+2025-07-17 03:28:21,497 - INFO - 尝试自动修复代码
+2025-07-17 03:28:45,996 - INFO - 代码修复成功
+2025-07-17 03:28:45,997 - INFO - 尝试执行修复后的代码
+2025-07-17 03:28:46,431 - INFO - 修复后查询成功，返回 5 个结果: ['Guerrilla_(Colombia)', 'Ingrid_Betancourt_Pulecio', 'Citizen_(Venezuela)', 'National_Liberation_Army', 'Lawmaker_(Colombia)']
+2025-07-17 03:28:46,436 - INFO - 问题 2000020 处理完成
+2025-07-17 03:28:46,436 - INFO - 预测答案: ['Guerrilla_(Colombia)', 'Ingrid_Betancourt_Pulecio', 'Citizen_(Venezuela)', 'National_Liberation_Army', 'Lawmaker_(Colombia)']
+2025-07-17 03:28:46,436 - INFO - 标准化后的标准答案: ['Guerrilla (Colombia)']
+2025-07-17 03:28:46,436 - INFO - 标准化后的预测答案: ['Guerrilla_(Colombia)', 'Ingrid_Betancourt_Pulecio', 'Citizen_(Venezuela)', 'National_Liberation_Army', 'Lawmaker_(Colombia)']
+2025-07-17 03:28:46,436 - INFO - 交集: set()
+2025-07-17 03:28:46,436 - INFO - 评估结果: P=0.000, R=0.000, F1=0.000, EM=False
+2025-07-17 03:28:47,437 - INFO - 
+==================================================
+2025-07-17 03:28:47,437 - INFO - 开始处理问题 2000021
+2025-07-17 03:28:47,437 - INFO - 问题: Who was the first country to express optimism about Barack Obama after Ireland?
+2025-07-17 03:28:47,437 - INFO - 标准答案: ['Angela Merkel']
+2025-07-17 03:28:47,437 - INFO - ==================================================
+2025-07-17 03:28:47,438 - INFO - 第一步：问题分析
+2025-07-17 03:28:56,463 - INFO - 问题分析完成: {'question_type': 'first_event', 'time_constraints': '时间范围在2005-01-01到2015-12-31之间', 'key_entities': ['Ireland', 'Barack Obama'], 'target_relations': ['Praise_or_endorse', 'Express_intent_to_engage_in_diplomatic_cooperation_(such_as_policy_support)', 'Make_statement'], 'answer_type': 'entity', 'query_strategy': '首先查找Ireland对Barack Obama表达乐观态度的事件，确定该事件的时间点。然后在同一时间范围内，查找在该时间点之后第一个对Barack Obama表达乐观态度的国家。'}
+2025-07-17 03:28:56,463 - INFO - 第二步：代码生成
+2025-07-17 03:29:28,075 - INFO - 代码生成成功
+2025-07-17 03:29:28,075 - INFO - 第三步：执行查询
+2025-07-17 03:29:28,123 - ERROR - 执行错误: __import__ not found
+2025-07-17 03:29:28,124 - ERROR - 详细错误: Traceback (most recent call last):
+  File "/mnt/nvme0n1/tyj/TKGQA/MY/temporal_kgqa_experiment.py", line 579, in execute_query
+    results = exec_globals['query_kg'](self.kg_df.copy())
+  File "<string>", line 2, in query_kg
+ImportError: __import__ not found
+
+2025-07-17 03:29:28,124 - INFO - 尝试自动修复代码
+2025-07-17 03:29:50,191 - INFO - 代码修复成功
+2025-07-17 03:29:50,191 - INFO - 尝试执行修复后的代码
+2025-07-17 03:29:50,192 - ERROR - 修复后代码执行仍然失败: closing parenthesis ')' does not match opening parenthesis '[' on line 7 (<string>, line 13)
+2025-07-17 03:29:50,198 - INFO - 问题 2000021 处理完成
+2025-07-17 03:29:50,198 - INFO - 预测答案: ["执行错误: closing parenthesis ')' does not match opening parenthesis '[' on line 7 (<string>, line 13)"]
+2025-07-17 03:29:50,198 - INFO - 标准化后的标准答案: ['Angela Merkel']
+2025-07-17 03:29:50,199 - INFO - 标准化后的预测答案: []
+2025-07-17 03:29:50,199 - INFO - 评估结果: P=0.000, R=0.000, F1=0.000, EM=False
+2025-07-17 03:29:51,200 - INFO - 
+==================================================
+2025-07-17 03:29:51,200 - INFO - 开始处理问题 2000022
+2025-07-17 03:29:51,200 - INFO - 问题: Which was the first country to praise Colombia after Cristina Fernández de Kirchner?
+2025-07-17 03:29:51,200 - INFO - 标准答案: ['Barack Obama']
+2025-07-17 03:29:51,200 - INFO - ==================================================
+2025-07-17 03:29:51,200 - INFO - 第一步：问题分析
+2025-07-17 03:29:58,585 - INFO - 问题分析完成: {'question_type': 'first_event', 'time_constraints': '时间范围在2005-01-01到2015-12-31之间，且事件发生在Cristina Fernández de Kirchner之后', 'key_entities': ['Colombia', 'Cristina Fernández de Kirchner'], 'target_relations': ['Praise_or_endorse'], 'answer_type': 'entity', 'query_strategy': "1. 首先确定Cristina Fernández de Kirchner相关事件的时间点 2. 在该时间点之后，查找第一个与Colombia存在'Praise_or_endorse'关系的国家实体 3. 按时间排序返回最早的事件主体"}
+2025-07-17 03:29:58,585 - INFO - 第二步：代码生成
+2025-07-17 03:30:24,978 - INFO - 代码生成成功
+2025-07-17 03:30:24,979 - INFO - 第三步：执行查询
+2025-07-17 03:30:24,979 - ERROR - 执行错误: unterminated string literal (detected at line 40) (<string>, line 40)
+2025-07-17 03:30:24,979 - ERROR - 详细错误: Traceback (most recent call last):
+  File "/mnt/nvme0n1/tyj/TKGQA/MY/temporal_kgqa_experiment.py", line 575, in execute_query
+    exec(query_code, exec_globals)
+  File "<string>", line 40
+    return []'
+             ^
+SyntaxError: unterminated string literal (detected at line 40)
+
+2025-07-17 03:30:24,979 - INFO - 尝试自动修复代码
+2025-07-17 03:30:48,176 - INFO - 代码修复成功
+2025-07-17 03:30:48,176 - INFO - 问题 2000022 处理完成
+2025-07-17 03:30:48,176 - INFO - 预测答案: []
+2025-07-17 03:30:48,177 - INFO - 标准化后的标准答案: ['Barack Obama']
+2025-07-17 03:30:48,177 - INFO - 标准化后的预测答案: []
+2025-07-17 03:30:48,177 - INFO - 评估结果: P=0.000, R=0.000, F1=0.000, EM=False
+2025-07-17 03:30:49,178 - INFO - 
+==================================================
+2025-07-17 03:30:49,178 - INFO - 开始处理问题 2000023
+2025-07-17 03:30:49,178 - INFO - 问题: Which country hosted the visit of Frank Bainimarama after Vanuatu?
+2025-07-17 03:30:49,178 - INFO - 标准答案: ['China']
+2025-07-17 03:30:49,178 - INFO - ==================================================
+2025-07-17 03:30:49,178 - INFO - 第一步：问题分析
+2025-07-17 03:30:58,627 - INFO - 问题分析完成: {'question_type': 'entity_query', 'time_constraints': '时间范围在2005-01-01到2015-12-31之间', 'key_entities': ['Frank Bainimarama', 'Vanuatu'], 'target_relations': ['Engage_in_diplomatic_cooperation', 'Express_intent_to_meet_or_negotiate', 'Visit'], 'answer_type': 'entity', 'query_strategy': '1. 首先查找Frank Bainimarama与Vanuatu之间的访问事件，确定访问时间点。2. 然后在Vanuatu访问之后的时间范围内，查找Frank Bainimarama的下一个访问事件，确定访问的国家。3. 需要检查时间顺序和外交访问相关的关系类型。'}
+2025-07-17 03:30:58,627 - INFO - 第二步：代码生成
+2025-07-17 03:31:32,735 - INFO - 代码生成成功
+2025-07-17 03:31:32,735 - INFO - 第三步：执行查询
+2025-07-17 03:31:32,807 - ERROR - 执行错误: __import__ not found
+2025-07-17 03:31:32,808 - ERROR - 详细错误: Traceback (most recent call last):
+  File "/mnt/nvme0n1/tyj/TKGQA/MY/temporal_kgqa_experiment.py", line 579, in execute_query
+    results = exec_globals['query_kg'](self.kg_df.copy())
+  File "<string>", line 2, in query_kg
+ImportError: __import__ not found
+
+2025-07-17 03:31:32,808 - INFO - 尝试自动修复代码
+2025-07-17 03:31:57,723 - INFO - 代码修复成功
+2025-07-17 03:31:57,723 - INFO - 尝试执行修复后的代码
+2025-07-17 03:31:58,317 - INFO - 修复后查询成功，返回 0 个结果: []
+2025-07-17 03:31:58,322 - INFO - 问题 2000023 处理完成
+2025-07-17 03:31:58,322 - INFO - 预测答案: []
+2025-07-17 03:31:58,322 - INFO - 标准化后的标准答案: ['China']
+2025-07-17 03:31:58,322 - INFO - 标准化后的预测答案: []
+2025-07-17 03:31:58,322 - INFO - 评估结果: P=0.000, R=0.000, F1=0.000, EM=False
+2025-07-17 03:31:58,323 - INFO - 结果已保存到: /mnt/nvme0n1/tyj/TKGQA/MY/intermediate_results_10.json
+2025-07-17 03:31:59,325 - INFO - 
+==================================================
+2025-07-17 03:31:59,325 - INFO - 开始处理问题 2000024
+2025-07-17 03:31:59,325 - INFO - 问题: Who asked for Japan in October 2005?
+2025-07-17 03:31:59,325 - INFO - 标准答案: ['Wang Yi', 'Donald Rumsfeld', 'Finance / Economy / Commerce / Trade Ministry (New Zealand)', 'Robert Jones Portman', 'China', 'Iraq']
+2025-07-17 03:31:59,325 - INFO - ==================================================
+2025-07-17 03:31:59,325 - INFO - 第一步：问题分析
+2025-07-17 03:32:07,639 - INFO - 问题分析完成: {'question_type': 'entity_query', 'time_constraints': 'October 2005', 'key_entities': ['Japan'], 'target_relations': ['Make_an_appeal_or_request', 'Express_intent_to_engage_in_diplomatic_cooperation', 'Make_statement'], 'answer_type': 'entity', 'query_strategy': '在2005年10月的时间范围内，查找以Japan为tail实体，且关系为Make_an_appeal_or_request、Express_intent_to_engage_in_diplomatic_cooperation或Make_statement的三元组，返回对应的head实体。'}
+2025-07-17 03:32:07,639 - INFO - 第二步：代码生成
+2025-07-17 03:32:28,774 - INFO - 代码生成成功
+2025-07-17 03:32:28,774 - INFO - 第三步：执行查询
+2025-07-17 03:32:28,815 - ERROR - 执行错误: __import__ not found
+2025-07-17 03:32:28,815 - ERROR - 详细错误: Traceback (most recent call last):
+  File "/mnt/nvme0n1/tyj/TKGQA/MY/temporal_kgqa_experiment.py", line 579, in execute_query
+    results = exec_globals['query_kg'](self.kg_df.copy())
+  File "<string>", line 2, in query_kg
+ImportError: __import__ not found
+
+2025-07-17 03:32:28,815 - INFO - 尝试自动修复代码
+2025-07-17 03:32:43,808 - INFO - 代码修复成功
+2025-07-17 03:32:43,808 - INFO - 尝试执行修复后的代码
+2025-07-17 03:32:44,061 - INFO - 修复后查询成功，返回 10 个结果: ['Education_(United_States)', 'Robert_Jones_Portman', 'Finance_/_Economy_/_Commerce_/_Trade_Ministry_(New_Zealand)', 'Ryutaro_Hashimoto', 'Cabinet_/_Council_of_Ministers_/_Advisors_(Japan)', 'China', 'Governor_(Japan)', 'Media_Personnel_(Japan)', 'Iraq', 'Wang_Yi']
+2025-07-17 03:32:44,065 - INFO - 问题 2000024 处理完成
+2025-07-17 03:32:44,065 - INFO - 预测答案: ['Education_(United_States)', 'Robert_Jones_Portman', 'Finance_/_Economy_/_Commerce_/_Trade_Ministry_(New_Zealand)', 'Ryutaro_Hashimoto', 'Cabinet_/_Council_of_Ministers_/_Advisors_(Japan)', 'China', 'Governor_(Japan)', 'Media_Personnel_(Japan)', 'Iraq', 'Wang_Yi']
+2025-07-17 03:32:44,065 - INFO - 标准化后的标准答案: ['Wang Yi', 'Donald Rumsfeld', 'Finance / Economy / Commerce / Trade Ministry (New Zealand)', 'Robert Jones Portman', 'China', 'Iraq']
+2025-07-17 03:32:44,065 - INFO - 标准化后的预测答案: ['Education_(United_States)', 'Robert_Jones_Portman', 'Finance_/_Economy_/_Commerce_/_Trade_Ministry_(New_Zealand)', 'Ryutaro_Hashimoto', 'Cabinet_/_Council_of_Ministers_/_Advisors_(Japan)', 'China', 'Governor_(Japan)', 'Media_Personnel_(Japan)', 'Iraq', 'Wang_Yi']
+2025-07-17 03:32:44,066 - INFO - 交集: {'China', 'Iraq'}
+2025-07-17 03:32:44,066 - INFO - 评估结果: P=0.200, R=0.333, F1=0.250, EM=False
+2025-07-17 03:32:45,067 - INFO - 
+==================================================
+2025-07-17 03:32:45,067 - INFO - 开始处理问题 2000025
+2025-07-17 03:32:45,067 - INFO - 问题: Which country criticised Colombia after 8 February 2015?
+2025-07-17 03:32:45,067 - INFO - 标准答案: ['National Liberation Army']
+2025-07-17 03:32:45,067 - INFO - ==================================================
+2025-07-17 03:32:45,067 - INFO - 第一步：问题分析
+2025-07-17 03:32:54,207 - INFO - 问题分析完成: {'question_type': 'entity_query', 'time_constraints': 'after 8 February 2015', 'key_entities': ['Colombia'], 'target_relations': ['Criticize_or_denounce'], 'answer_type': 'entity', 'query_strategy': "Find all entities that have a 'Criticize_or_denounce' relation with 'Colombia' where the timestamp is after 8 February 2015. The answer should be the country that criticized Colombia."}
+2025-07-17 03:32:54,208 - INFO - 第二步：代码生成
+2025-07-17 03:33:32,511 - INFO - 代码生成成功
+2025-07-17 03:33:32,511 - INFO - 第三步：执行查询
+2025-07-17 03:33:32,512 - ERROR - 执行错误: unterminated string literal (detected at line 56) (<string>, line 56)
+2025-07-17 03:33:32,512 - ERROR - 详细错误: Traceback (most recent call last):
+  File "/mnt/nvme0n1/tyj/TKGQA/MY/temporal_kgqa_experiment.py", line 575, in execute_query
+    exec(query_code, exec_globals)
+  File "<string>", line 56
+    return []'
+             ^
+SyntaxError: unterminated string literal (detected at line 56)
+
+2025-07-17 03:33:32,512 - INFO - 尝试自动修复代码
+2025-07-17 03:33:56,876 - INFO - 代码修复成功
+2025-07-17 03:33:56,876 - INFO - 问题 2000025 处理完成
+2025-07-17 03:33:56,876 - INFO - 预测答案: []
+2025-07-17 03:33:56,877 - INFO - 标准化后的标准答案: ['National Liberation Army']
+2025-07-17 03:33:56,877 - INFO - 标准化后的预测答案: []
+2025-07-17 03:33:56,877 - INFO - 评估结果: P=0.000, R=0.000, F1=0.000, EM=False
+2025-07-17 03:33:57,878 - INFO - 
+==================================================
+2025-07-17 03:33:57,878 - INFO - 开始处理问题 2000026
+2025-07-17 03:33:57,878 - INFO - 问题: Before December 9, 2008, who did Timor-Leste request for?
+2025-07-17 03:33:57,878 - INFO - 标准答案: ['Malaysia', 'Portugal', 'UN Security Council']
+2025-07-17 03:33:57,878 - INFO - ==================================================
+2025-07-17 03:33:57,878 - INFO - 第一步：问题分析
+2025-07-17 03:34:08,312 - INFO - 问题分析完成: {'question_type': 'entity_query', 'time_constraints': 'before December 9, 2008', 'key_entities': ['Timor-Leste'], 'target_relations': ['Make_an_appeal_or_request'], 'answer_type': 'entity', 'query_strategy': "1. 首先在知识图谱中查找主体实体'Timor-Leste'。2. 筛选关系类型为'Make_an_appeal_or_request'的三元组。3. 进一步过滤时间约束，只保留时间早于2008-12-09的三元组。4. 返回符合条件的尾实体作为答案。"}
+2025-07-17 03:34:08,312 - INFO - 第二步：代码生成
+2025-07-17 03:34:43,373 - INFO - 代码生成成功
+2025-07-17 03:34:43,373 - INFO - 第三步：执行查询
+2025-07-17 03:34:43,420 - ERROR - 执行错误: __import__ not found
+2025-07-17 03:34:43,421 - ERROR - 详细错误: Traceback (most recent call last):
+  File "/mnt/nvme0n1/tyj/TKGQA/MY/temporal_kgqa_experiment.py", line 579, in execute_query
+    results = exec_globals['query_kg'](self.kg_df.copy())
+  File "<string>", line 2, in query_kg
+ImportError: __import__ not found
+
+2025-07-17 03:34:43,421 - INFO - 尝试自动修复代码
+2025-07-17 03:35:18,037 - INFO - 代码修复成功
+2025-07-17 03:35:18,038 - INFO - 尝试执行修复后的代码
+2025-07-17 03:35:18,286 - INFO - 修复后查询成功，返回 10 个结果: ['UN_Security_Council', 'Japan', 'Head_of_Government_(Timor-Leste)', 'Malaysia', 'Portugal', 'Media_Personnel_(Australia)', 'Media_Personnel_(International)', 'Timor-Leste', 'Legislature_(Timor-Leste)', 'Citizen_(Australia)']
+2025-07-17 03:35:18,291 - INFO - 问题 2000026 处理完成
+2025-07-17 03:35:18,291 - INFO - 预测答案: ['UN_Security_Council', 'Japan', 'Head_of_Government_(Timor-Leste)', 'Malaysia', 'Portugal', 'Media_Personnel_(Australia)', 'Media_Personnel_(International)', 'Timor-Leste', 'Legislature_(Timor-Leste)', 'Citizen_(Australia)']
+2025-07-17 03:35:18,291 - INFO - 标准化后的标准答案: ['Malaysia', 'Portugal', 'UN Security Council']
+2025-07-17 03:35:18,291 - INFO - 标准化后的预测答案: ['UN_Security_Council', 'Japan', 'Head_of_Government_(Timor-Leste)', 'Malaysia', 'Portugal', 'Media_Personnel_(Australia)', 'Media_Personnel_(International)', 'Timor-Leste', 'Legislature_(Timor-Leste)', 'Citizen_(Australia)']
+2025-07-17 03:35:18,291 - INFO - 交集: {'Portugal', 'Malaysia'}
+2025-07-17 03:35:18,291 - INFO - 评估结果: P=0.200, R=0.667, F1=0.308, EM=False
+2025-07-17 03:35:19,292 - INFO - 
+==================================================
+2025-07-17 03:35:19,293 - INFO - 开始处理问题 2000028
+2025-07-17 03:35:19,293 - INFO - 问题: After 2009-12-3, who received Bolivia's visit from Bolivia?
+2025-07-17 03:35:19,293 - INFO - 标准答案: ['Iran', 'International Court of Justice', 'Mahmoud Ahmadinejad', 'Colombia', 'France', 'The Hague', 'Majid Takht Ravanchi']
+2025-07-17 03:35:19,293 - INFO - ==================================================
+2025-07-17 03:35:19,293 - INFO - 第一步：问题分析
+2025-07-17 03:35:33,898 - INFO - 问题分析完成: {'question_type': 'entity_query', 'time_constraints': 'after 2009-12-3', 'key_entities': ['Bolivia'], 'target_relations': ['Engage_in_diplomatic_cooperation', 'Express_intent_to_meet_or_negotiate', 'Visit'], 'answer_type': 'entity', 'query_strategy': "1. 首先筛选时间范围在2009-12-3之后的事件 2. 查找头实体或尾实体中包含'Bolivia'的三元组 3. 重点关注涉及外交访问类的关系 4. 由于问题询问'who received...from Bolivia'，需要特别关注头实体是Bolivia且关系表示访问的三元组，然后提取尾实体作为答案"}
+2025-07-17 03:35:33,898 - INFO - 第二步：代码生成
+2025-07-17 03:36:36,939 - INFO - 代码生成成功
+2025-07-17 03:36:36,939 - INFO - 第三步：执行查询
+2025-07-17 03:36:36,985 - ERROR - 执行错误: __import__ not found
+2025-07-17 03:36:36,986 - ERROR - 详细错误: Traceback (most recent call last):
+  File "/mnt/nvme0n1/tyj/TKGQA/MY/temporal_kgqa_experiment.py", line 579, in execute_query
+    results = exec_globals['query_kg'](self.kg_df.copy())
+  File "<string>", line 2, in query_kg
+ImportError: __import__ not found
+
+2025-07-17 03:36:36,986 - INFO - 尝试自动修复代码
+2025-07-17 03:37:21,581 - INFO - 代码修复成功
+2025-07-17 03:37:21,581 - INFO - 尝试执行修复后的代码
+2025-07-17 03:37:21,582 - ERROR - 修复后代码执行仍然失败: invalid syntax (<string>, line 38)
+2025-07-17 03:37:21,589 - INFO - 问题 2000028 处理完成
+2025-07-17 03:37:21,589 - INFO - 预测答案: ['执行错误: invalid syntax (<string>, line 38)']
+2025-07-17 03:37:21,589 - INFO - 标准化后的标准答案: ['Iran', 'International Court of Justice', 'Mahmoud Ahmadinejad', 'Colombia', 'France', 'The Hague', 'Majid Takht Ravanchi']
+2025-07-17 03:37:21,589 - INFO - 标准化后的预测答案: []
+2025-07-17 03:37:21,589 - INFO - 评估结果: P=0.000, R=0.000, F1=0.000, EM=False
+2025-07-17 03:37:22,590 - INFO - 
+==================================================
+2025-07-17 03:37:22,590 - INFO - 开始处理问题 2000029
+2025-07-17 03:37:22,591 - INFO - 问题: After May, 2015, who gave a condemnation to France?
+2025-07-17 03:37:22,591 - INFO - 标准答案: ['Iran', 'Ahmed el-Tayeb', 'Benjamin Netanyahu', 'Police (Syria)', 'Royal Administration (Spain)', 'Foreign Affairs (Lebanon)', 'Heinz Fischer', 'China', 'Member of Parliament (France)', 'Other Authorities / Officials (Libya)', 'Media Personnel (Iran)', 'Foreign Affairs (France)', 'Citizen (International)', 'Citizen (United Kingdom)', 'Lawmaker (Syria)', 'Uhuru Muigai Kenyatta', 'Citizen (Venezuela)']
+2025-07-17 03:37:22,591 - INFO - ==================================================
+2025-07-17 03:37:22,591 - INFO - 第一步：问题分析
+2025-07-17 03:37:38,356 - INFO - 问题分析完成: {'question_type': 'entity_query', 'time_constraints': 'After May, 2015', 'key_entities': ['France'], 'target_relations': ['Criticize_or_denounce', 'Make_pessimistic_comment', 'Accuse'], 'answer_type': 'entity', 'query_strategy': '1. 首先筛选时间范围在2015-05-01之后的事件 2. 查找以France为tail(被谴责对象)的三元组 3. 重点关注Criticize_or_denounce等谴责类关系 4. 返回对应的head实体(谴责发出者)'}
+2025-07-17 03:37:38,356 - INFO - 第二步：代码生成
+2025-07-17 03:37:58,071 - INFO - 代码生成成功
+2025-07-17 03:37:58,071 - INFO - 第三步：执行查询
+2025-07-17 03:37:58,136 - ERROR - 执行错误: __import__ not found
+2025-07-17 03:37:58,137 - ERROR - 详细错误: Traceback (most recent call last):
+  File "/mnt/nvme0n1/tyj/TKGQA/MY/temporal_kgqa_experiment.py", line 579, in execute_query
+    results = exec_globals['query_kg'](self.kg_df.copy())
+  File "<string>", line 2, in query_kg
+ImportError: __import__ not found
+
+2025-07-17 03:37:58,137 - INFO - 尝试自动修复代码
+2025-07-17 03:38:11,127 - INFO - 代码修复成功
+2025-07-17 03:38:11,127 - INFO - 尝试执行修复后的代码
+2025-07-17 03:38:11,209 - INFO - 修复后查询成功，返回 10 个结果: ['Foreign_Affairs_(France)', 'France', 'Ismaïl_Omar_Guelleh', 'Iran', 'Barack_Obama', 'Citizen_(United_Kingdom)', 'Foreign_Affairs_(Lebanon)', 'Other_Authorities_/_Officials_(Libya)', 'Citizen_(Unidentified_State_Actor)', 'Citizen_(Australia)']
+2025-07-17 03:38:11,214 - INFO - 问题 2000029 处理完成
+2025-07-17 03:38:11,214 - INFO - 预测答案: ['Foreign_Affairs_(France)', 'France', 'Ismaïl_Omar_Guelleh', 'Iran', 'Barack_Obama', 'Citizen_(United_Kingdom)', 'Foreign_Affairs_(Lebanon)', 'Other_Authorities_/_Officials_(Libya)', 'Citizen_(Unidentified_State_Actor)', 'Citizen_(Australia)']
+2025-07-17 03:38:11,214 - INFO - 标准化后的标准答案: ['Iran', 'Ahmed el-Tayeb', 'Benjamin Netanyahu', 'Police (Syria)', 'Royal Administration (Spain)', 'Foreign Affairs (Lebanon)', 'Heinz Fischer', 'China', 'Member of Parliament (France)', 'Other Authorities / Officials (Libya)', 'Media Personnel (Iran)', 'Foreign Affairs (France)', 'Citizen (International)', 'Citizen (United Kingdom)', 'Lawmaker (Syria)', 'Uhuru Muigai Kenyatta', 'Citizen (Venezuela)']
+2025-07-17 03:38:11,214 - INFO - 标准化后的预测答案: ['Foreign_Affairs_(France)', 'France', 'Ismaïl_Omar_Guelleh', 'Iran', 'Barack_Obama', 'Citizen_(United_Kingdom)', 'Foreign_Affairs_(Lebanon)', 'Other_Authorities_/_Officials_(Libya)', 'Citizen_(Unidentified_State_Actor)', 'Citizen_(Australia)']
+2025-07-17 03:38:11,214 - INFO - 交集: {'Iran'}
+2025-07-17 03:38:11,214 - INFO - 评估结果: P=0.100, R=0.059, F1=0.074, EM=False
+2025-07-17 03:38:11,216 - INFO - 结果已保存到: /mnt/nvme0n1/tyj/TKGQA/MY/intermediate_results_15.json
+2025-07-17 03:38:12,217 - INFO - 
+==================================================
+2025-07-17 03:38:12,217 - INFO - 开始处理问题 2000030
+2025-07-17 03:38:12,217 - INFO - 问题: Which country was the first to receive optimistic remarks from Japan after the children of the Philippines?
+2025-07-17 03:38:12,217 - INFO - 标准答案: ['Iraq']
+2025-07-17 03:38:12,217 - INFO - ==================================================
+2025-07-17 03:38:12,218 - INFO - 第一步：问题分析
+2025-07-17 03:38:24,163 - INFO - 问题分析完成: {'question_type': 'first_event', 'time_constraints': '2005-01-01 00:00:00 to 2015-12-31 00:00:00', 'key_entities': ['Japan', 'Philippines', 'Children_(Palestinian_Territory,_Occupied)'], 'target_relations': ['Praise_or_endorse', 'Make_statement'], 'answer_type': 'entity', 'query_strategy': "1. First, identify all events where Japan praises or endorses any entity after praising the children of the Philippines. 2. Filter these events to find the earliest one within the given time range. 3. Extract the country that was the recipient of Japan's optimistic remarks in that first event."}
+2025-07-17 03:38:24,164 - INFO - 第二步：代码生成
+2025-07-17 03:39:03,821 - INFO - 代码生成成功
+2025-07-17 03:39:03,822 - INFO - 第三步：执行查询
+2025-07-17 03:39:03,866 - ERROR - 执行错误: __import__ not found
+2025-07-17 03:39:03,867 - ERROR - 详细错误: Traceback (most recent call last):
+  File "/mnt/nvme0n1/tyj/TKGQA/MY/temporal_kgqa_experiment.py", line 579, in execute_query
+    results = exec_globals['query_kg'](self.kg_df.copy())
+  File "<string>", line 2, in query_kg
+ImportError: __import__ not found
+
+2025-07-17 03:39:03,867 - INFO - 尝试自动修复代码
+2025-07-17 03:39:34,309 - INFO - 代码修复成功
+2025-07-17 03:39:34,310 - INFO - 尝试执行修复后的代码
+2025-07-17 03:39:34,935 - INFO - 修复后查询成功，返回 0 个结果: []
+2025-07-17 03:39:34,940 - INFO - 问题 2000030 处理完成
+2025-07-17 03:39:34,940 - INFO - 预测答案: []
+2025-07-17 03:39:34,940 - INFO - 标准化后的标准答案: ['Iraq']
+2025-07-17 03:39:34,940 - INFO - 标准化后的预测答案: []
+2025-07-17 03:39:34,940 - INFO - 评估结果: P=0.000, R=0.000, F1=0.000, EM=False
+2025-07-17 03:39:35,941 - INFO - 
+==================================================
+2025-07-17 03:39:35,941 - INFO - 开始处理问题 2000031
+2025-07-17 03:39:35,941 - INFO - 问题: Who visited Qatar after 8 March 2015?
+2025-07-17 03:39:35,942 - INFO - 标准答案: ['Nuri al-Maliki', 'Iran', 'Daniel Constantin', 'Habib Essid', 'Mahmoud Abbas', 'Chongwadai', 'Nicos Anastasiades', 'Philip Hammond', 'Presidential Family (United States)', 'Shura Council', 'Isaias Afewerki', 'Khaled Bahah', 'Violeta Bulc', 'Cabinet / Council of Ministers / Advisors (United States)', 'Ministry (Iran)', 'Barack Obama']
+2025-07-17 03:39:35,942 - INFO - ==================================================
+2025-07-17 03:39:35,942 - INFO - 第一步：问题分析
+2025-07-17 03:39:46,948 - INFO - 问题分析完成: {'question_type': 'entity_query', 'time_constraints': 'after 8 March 2015', 'key_entities': ['Qatar'], 'target_relations': ['Engage_in_diplomatic_cooperation', 'Express_intent_to_meet_or_negotiate', 'Make_statement', 'Consult', 'Discuss_by_telephone'], 'answer_type': 'entity', 'query_strategy': '1. 首先筛选所有在2015-03-08之后发生的事件 2. 在这些事件中查找以Qatar作为tail(被访问方)的三元组 3. 重点关注涉及外交访问、会晤或电话讨论等关系的事件 4. 返回符合条件的head实体(访问者)列表'}
+2025-07-17 03:39:46,948 - INFO - 第二步：代码生成
+2025-07-17 03:40:14,476 - INFO - 代码生成成功
+2025-07-17 03:40:14,477 - INFO - 第三步：执行查询
+2025-07-17 03:40:14,523 - ERROR - 执行错误: __import__ not found
+2025-07-17 03:40:14,523 - ERROR - 详细错误: Traceback (most recent call last):
+  File "/mnt/nvme0n1/tyj/TKGQA/MY/temporal_kgqa_experiment.py", line 579, in execute_query
+    results = exec_globals['query_kg'](self.kg_df.copy())
+  File "<string>", line 2, in query_kg
+ImportError: __import__ not found
+
+2025-07-17 03:40:14,523 - INFO - 尝试自动修复代码
+2025-07-17 03:40:34,513 - INFO - 代码修复成功
+2025-07-17 03:40:34,513 - INFO - 尝试执行修复后的代码
+2025-07-17 03:40:34,628 - INFO - 修复后查询成功，返回 10 个结果: ['Head_of_Government_(Qatar)', 'Sheikh_Ahmed_Abdullah', 'Treasury/Finance_Ministry_(Qatar)', 'United_Arab_Emirates', 'Mahmoud_Abbas', "Pakistan_People's_Party", 'Abdullah_bin_Nasser_bin_Khalifa_Al-Thani', 'Andrew_Robb', 'Militant_(Syria)', 'Government_(France)']
+2025-07-17 03:40:34,633 - INFO - 问题 2000031 处理完成
+2025-07-17 03:40:34,633 - INFO - 预测答案: ['Head_of_Government_(Qatar)', 'Sheikh_Ahmed_Abdullah', 'Treasury/Finance_Ministry_(Qatar)', 'United_Arab_Emirates', 'Mahmoud_Abbas', "Pakistan_People's_Party", 'Abdullah_bin_Nasser_bin_Khalifa_Al-Thani', 'Andrew_Robb', 'Militant_(Syria)', 'Government_(France)']
+2025-07-17 03:40:34,633 - INFO - 标准化后的标准答案: ['Nuri al-Maliki', 'Iran', 'Daniel Constantin', 'Habib Essid', 'Mahmoud Abbas', 'Chongwadai', 'Nicos Anastasiades', 'Philip Hammond', 'Presidential Family (United States)', 'Shura Council', 'Isaias Afewerki', 'Khaled Bahah', 'Violeta Bulc', 'Cabinet / Council of Ministers / Advisors (United States)', 'Ministry (Iran)', 'Barack Obama']
+2025-07-17 03:40:34,633 - INFO - 标准化后的预测答案: ['Head_of_Government_(Qatar)', 'Sheikh_Ahmed_Abdullah', 'Treasury/Finance_Ministry_(Qatar)', 'United_Arab_Emirates', 'Mahmoud_Abbas', "Pakistan_People's_Party", 'Abdullah_bin_Nasser_bin_Khalifa_Al-Thani', 'Andrew_Robb', 'Militant_(Syria)', 'Government_(France)']
+2025-07-17 03:40:34,633 - INFO - 交集: set()
+2025-07-17 03:40:34,633 - INFO - 评估结果: P=0.000, R=0.000, F1=0.000, EM=False
+2025-07-17 03:40:35,634 - INFO - 
+==================================================
+2025-07-17 03:40:35,634 - INFO - 开始处理问题 2000032
+2025-07-17 03:40:35,635 - INFO - 问题: Who would want to have diplomatic cooperation with Iran in March, 2009?
+2025-07-17 03:40:35,635 - INFO - 标准答案: ['Barack Obama', 'Lee Myung Bak', 'Business (Tunisia)', 'Iraq', 'Mauritania']
+2025-07-17 03:40:35,635 - INFO - ==================================================
+2025-07-17 03:40:35,635 - INFO - 第一步：问题分析
+2025-07-17 03:40:44,821 - INFO - 问题分析完成: {'question_type': 'entity_query', 'time_constraints': 'March, 2009', 'key_entities': ['Iran'], 'target_relations': ['Express_intent_to_engage_in_diplomatic_cooperation', 'Engage_in_diplomatic_cooperation'], 'answer_type': 'entity', 'query_strategy': "Find all entities (head) that have a relation of 'Express_intent_to_engage_in_diplomatic_cooperation' or 'Engage_in_diplomatic_cooperation' with Iran (tail) during March 2009."}
+2025-07-17 03:40:44,821 - INFO - 第二步：代码生成
+2025-07-17 03:41:15,493 - INFO - 代码生成成功
+2025-07-17 03:41:15,493 - INFO - 第三步：执行查询
+2025-07-17 03:41:15,541 - ERROR - 执行错误: __import__ not found
+2025-07-17 03:41:15,541 - ERROR - 详细错误: Traceback (most recent call last):
+  File "/mnt/nvme0n1/tyj/TKGQA/MY/temporal_kgqa_experiment.py", line 579, in execute_query
+    results = exec_globals['query_kg'](self.kg_df.copy())
+  File "<string>", line 2, in query_kg
+ImportError: __import__ not found
+
+2025-07-17 03:41:15,541 - INFO - 尝试自动修复代码
+2025-07-17 03:41:36,354 - INFO - 代码修复成功
+2025-07-17 03:41:36,354 - INFO - 尝试执行修复后的代码
+2025-07-17 03:41:36,675 - INFO - 修复后查询成功，返回 10 个结果: ['Sergei_Ivanovich_Shmatkó', 'Barack_Obama', 'Business_(Tunisia)', 'Iraq', 'Lee_Myung_Bak', 'Mauritania', 'Japan', 'South_Korea', 'Romania', 'Qatar']
+2025-07-17 03:41:36,680 - INFO - 问题 2000032 处理完成
+2025-07-17 03:41:36,680 - INFO - 预测答案: ['Sergei_Ivanovich_Shmatkó', 'Barack_Obama', 'Business_(Tunisia)', 'Iraq', 'Lee_Myung_Bak', 'Mauritania', 'Japan', 'South_Korea', 'Romania', 'Qatar']
+2025-07-17 03:41:36,680 - INFO - 标准化后的标准答案: ['Barack Obama', 'Lee Myung Bak', 'Business (Tunisia)', 'Iraq', 'Mauritania']
+2025-07-17 03:41:36,680 - INFO - 标准化后的预测答案: ['Sergei_Ivanovich_Shmatkó', 'Barack_Obama', 'Business_(Tunisia)', 'Iraq', 'Lee_Myung_Bak', 'Mauritania', 'Japan', 'South_Korea', 'Romania', 'Qatar']
+2025-07-17 03:41:36,680 - INFO - 交集: {'Mauritania', 'Iraq'}
+2025-07-17 03:41:36,680 - INFO - 评估结果: P=0.200, R=0.400, F1=0.267, EM=False
+2025-07-17 03:41:37,682 - INFO - 
+==================================================
+2025-07-17 03:41:37,682 - INFO - 开始处理问题 2000033
+2025-07-17 03:41:37,682 - INFO - 问题: Which country would want to cooperate with Japan first, after India's industry?
+2025-07-17 03:41:37,682 - INFO - 标准答案: ['South Korea']
+2025-07-17 03:41:37,682 - INFO - ==================================================
+2025-07-17 03:41:37,682 - INFO - 第一步：问题分析
+2025-07-17 03:41:48,069 - INFO - 问题分析完成: {'question_type': 'first_event', 'time_constraints': '2005-01-01 00:00:00 to 2015-12-31 00:00:00', 'key_entities': ['Japan', 'India'], 'target_relations': ['Express_intent_to_engage_in_diplomatic_cooperation_(such_as_policy_support)', 'Engage_in_diplomatic_cooperation', 'Express_intent_to_meet_or_negotiate'], 'answer_type': 'entity', 'query_strategy': "1. Identify all events where India engages in industrial cooperation with Japan. 2. Find the earliest event after India's industrial cooperation where another country expresses intent to cooperate with Japan. 3. Return the country entity from that event."}
+2025-07-17 03:41:48,069 - INFO - 第二步：代码生成
+2025-07-17 03:42:18,533 - INFO - 代码生成成功
+2025-07-17 03:42:18,533 - INFO - 第三步：执行查询
+2025-07-17 03:42:18,534 - ERROR - 执行错误: closing parenthesis ']' does not match opening parenthesis '(' on line 8 (<string>, line 12)
+2025-07-17 03:42:18,534 - ERROR - 详细错误: Traceback (most recent call last):
+  File "/mnt/nvme0n1/tyj/TKGQA/MY/temporal_kgqa_experiment.py", line 575, in execute_query
+    exec(query_code, exec_globals)
+  File "<string>", line 12
+    ]
+    ^
+SyntaxError: closing parenthesis ']' does not match opening parenthesis '(' on line 8
+
+2025-07-17 03:42:18,534 - INFO - 尝试自动修复代码
+2025-07-17 03:42:41,803 - INFO - 代码修复成功
+2025-07-17 03:42:41,804 - INFO - 问题 2000033 处理完成
+2025-07-17 03:42:41,804 - INFO - 预测答案: []
+2025-07-17 03:42:41,804 - INFO - 标准化后的标准答案: ['South Korea']
+2025-07-17 03:42:41,804 - INFO - 标准化后的预测答案: []
+2025-07-17 03:42:41,804 - INFO - 评估结果: P=0.000, R=0.000, F1=0.000, EM=False
+2025-07-17 03:42:42,805 - INFO - 
+==================================================
+2025-07-17 03:42:42,805 - INFO - 开始处理问题 2000034
+2025-07-17 03:42:42,806 - INFO - 问题: Who made optimistic remarks about Colombia before May 2006?
+2025-07-17 03:42:42,806 - INFO - 标准答案: ['Mexico', 'Government (Ecuador)']
+2025-07-17 03:42:42,806 - INFO - ==================================================
+2025-07-17 03:42:42,806 - INFO - 第一步：问题分析
+2025-07-17 03:42:53,056 - INFO - 问题分析完成: {'question_type': 'entity_query', 'time_constraints': 'before May 2006', 'key_entities': ['Colombia'], 'target_relations': ['Make_statement', 'Praise_or_endorse'], 'answer_type': 'entity', 'query_strategy': "查找在2006年5月之前与'Colombia'相关的实体，这些实体通过'Make_statement'或'Praise_or_endorse'关系对哥伦比亚发表了乐观言论。需要筛选时间范围内（2005-01-01至2015-12-31）且时间早于2006-05的事件。"}
+2025-07-17 03:42:53,056 - INFO - 第二步：代码生成
+2025-07-17 03:43:36,577 - INFO - 代码生成成功
+2025-07-17 03:43:36,578 - INFO - 第三步：执行查询
+2025-07-17 03:43:36,632 - ERROR - 执行错误: __import__ not found
+2025-07-17 03:43:36,632 - ERROR - 详细错误: Traceback (most recent call last):
+  File "/mnt/nvme0n1/tyj/TKGQA/MY/temporal_kgqa_experiment.py", line 579, in execute_query
+    results = exec_globals['query_kg'](self.kg_df.copy())
+  File "<string>", line 2, in query_kg
+ImportError: __import__ not found
+
+2025-07-17 03:43:36,632 - INFO - 尝试自动修复代码
+2025-07-17 03:44:14,729 - INFO - 代码修复成功
+2025-07-17 03:44:14,729 - INFO - 尝试执行修复后的代码
+2025-07-17 03:44:15,166 - INFO - 修复后查询成功，返回 10 个结果: ['Patrick_Manning', 'José_Miguel_Insulza', 'Passenger_Jet_(Colombia)', 'High_Commission_for_Refugees', 'Social_Party_of_National_Unity', 'France', 'National_Liberation_Army', 'Citizen_(United_Kingdom)', 'Media_Personnel_(Colombia)', 'Associated_Press']
+2025-07-17 03:44:15,176 - INFO - 问题 2000034 处理完成
+2025-07-17 03:44:15,176 - INFO - 预测答案: ['Patrick_Manning', 'José_Miguel_Insulza', 'Passenger_Jet_(Colombia)', 'High_Commission_for_Refugees', 'Social_Party_of_National_Unity', 'France', 'National_Liberation_Army', 'Citizen_(United_Kingdom)', 'Media_Personnel_(Colombia)', 'Associated_Press']
+2025-07-17 03:44:15,176 - INFO - 标准化后的标准答案: ['Mexico', 'Government (Ecuador)']
+2025-07-17 03:44:15,176 - INFO - 标准化后的预测答案: ['Patrick_Manning', 'José_Miguel_Insulza', 'Passenger_Jet_(Colombia)', 'High_Commission_for_Refugees', 'Social_Party_of_National_Unity', 'France', 'National_Liberation_Army', 'Citizen_(United_Kingdom)', 'Media_Personnel_(Colombia)', 'Associated_Press']
+2025-07-17 03:44:15,176 - INFO - 交集: set()
+2025-07-17 03:44:15,176 - INFO - 评估结果: P=0.000, R=0.000, F1=0.000, EM=False
+2025-07-17 03:44:15,178 - INFO - 结果已保存到: /mnt/nvme0n1/tyj/TKGQA/MY/intermediate_results_20.json
+2025-07-17 03:44:16,180 - INFO - 
+==================================================
+2025-07-17 03:44:16,180 - INFO - 开始处理问题 2000035
+2025-07-17 03:44:16,180 - INFO - 问题: When did Jakaya Mrisho Kikwete support France?
+2025-07-17 03:44:16,180 - INFO - 标准答案: ['2013-04-02']
+2025-07-17 03:44:16,180 - INFO - ==================================================
+2025-07-17 03:44:16,180 - INFO - 第一步：问题分析
+2025-07-17 03:44:26,425 - INFO - 问题分析完成: {'question_type': 'time_query', 'time_constraints': '2005-01-01 00:00:00 到 2015-12-31 00:00:00', 'key_entities': ['Jakaya Mrisho Kikwete', 'France'], 'target_relations': ['Express_intent_to_engage_in_diplomatic_cooperation_(such_as_policy_support)', 'Praise_or_endorse', 'Engage_in_diplomatic_cooperation'], 'answer_type': 'time', 'query_strategy': '在给定的时间范围内，查找Jakaya Mrisho Kikwete与France之间符合目标关系的事件，并返回事件发生的时间。'}
+2025-07-17 03:44:26,425 - INFO - 第二步：代码生成
+2025-07-17 03:45:02,309 - INFO - 代码生成成功
+2025-07-17 03:45:02,309 - INFO - 第三步：执行查询
+2025-07-17 03:45:02,310 - ERROR - 执行错误: unterminated string literal (detected at line 67) (<string>, line 67)
+2025-07-17 03:45:02,311 - ERROR - 详细错误: Traceback (most recent call last):
+  File "/mnt/nvme0n1/tyj/TKGQA/MY/temporal_kgqa_experiment.py", line 575, in execute_query
+    exec(query_code, exec_globals)
+  File "<string>", line 67
+    return []'
+             ^
+SyntaxError: unterminated string literal (detected at line 67)
+
+2025-07-17 03:45:02,311 - INFO - 尝试自动修复代码
+2025-07-17 03:45:30,226 - INFO - 代码修复成功
+2025-07-17 03:45:30,226 - INFO - 问题 2000035 处理完成
+2025-07-17 03:45:30,226 - INFO - 预测答案: []
+2025-07-17 03:45:30,226 - INFO - 标准化后的标准答案: ['2013-04-02']
+2025-07-17 03:45:30,226 - INFO - 标准化后的预测答案: []
+2025-07-17 03:45:30,226 - INFO - 评估结果: P=0.000, R=0.000, F1=0.000, EM=False
+2025-07-17 03:45:31,228 - INFO - 
+==================================================
+2025-07-17 03:45:31,228 - INFO - 开始处理问题 2000036
+2025-07-17 03:45:31,228 - INFO - 问题: Before 10 August 2005, which country was rejected by Iran?
+2025-07-17 03:45:31,228 - INFO - 标准答案: ['France', 'Lawyer/Attorney (Egypt)', 'Asylum Seeker (Iran)', 'Tony Blair', 'United Arab Emirates', 'Iraq']
+2025-07-17 03:45:31,228 - INFO - ==================================================
+2025-07-17 03:45:31,228 - INFO - 第一步：问题分析
+2025-07-17 03:45:39,889 - INFO - 问题分析完成: {'question_type': 'entity_query', 'time_constraints': 'before 10 August 2005', 'key_entities': ['Iran'], 'target_relations': ['Reject'], 'answer_type': 'entity', 'query_strategy': "Find all entities that were rejected by Iran before 10 August 2005. The query should filter events where Iran is the subject (head) and 'Reject' is the relation, with a timestamp earlier than 2005-08-10. The answer should be the country (tail entity) that was rejected."}
+2025-07-17 03:45:39,889 - INFO - 第二步：代码生成
+2025-07-17 03:45:59,364 - INFO - 代码生成成功
+2025-07-17 03:45:59,364 - INFO - 第三步：执行查询
+2025-07-17 03:45:59,413 - ERROR - 执行错误: __import__ not found
+2025-07-17 03:45:59,413 - ERROR - 详细错误: Traceback (most recent call last):
+  File "/mnt/nvme0n1/tyj/TKGQA/MY/temporal_kgqa_experiment.py", line 579, in execute_query
+    results = exec_globals['query_kg'](self.kg_df.copy())
+  File "<string>", line 2, in query_kg
+ImportError: __import__ not found
+
+2025-07-17 03:45:59,413 - INFO - 尝试自动修复代码
+2025-07-17 03:46:12,662 - INFO - 代码修复成功
+2025-07-17 03:46:12,662 - INFO - 尝试执行修复后的代码
+2025-07-17 03:46:13,226 - INFO - 修复后查询成功，返回 7 个结果: ['Tony_Blair', 'Iraq', 'Lawyer/Attorney_(Egypt)', 'Asylum_Seeker_(Iran)', 'UN_Security_Council', 'United_Arab_Emirates', 'France']
+2025-07-17 03:46:13,239 - INFO - 问题 2000036 处理完成
+2025-07-17 03:46:13,239 - INFO - 预测答案: ['Tony_Blair', 'Iraq', 'Lawyer/Attorney_(Egypt)', 'Asylum_Seeker_(Iran)', 'UN_Security_Council', 'United_Arab_Emirates', 'France']
+2025-07-17 03:46:13,239 - INFO - 标准化后的标准答案: ['France', 'Lawyer/Attorney (Egypt)', 'Asylum Seeker (Iran)', 'Tony Blair', 'United Arab Emirates', 'Iraq']
+2025-07-17 03:46:13,239 - INFO - 标准化后的预测答案: ['Tony_Blair', 'Iraq', 'Lawyer/Attorney_(Egypt)', 'Asylum_Seeker_(Iran)', 'UN_Security_Council', 'United_Arab_Emirates', 'France']
+2025-07-17 03:46:13,239 - INFO - 交集: {'France', 'Iraq'}
+2025-07-17 03:46:13,239 - INFO - 评估结果: P=0.286, R=0.333, F1=0.308, EM=False
+2025-07-17 03:46:14,240 - INFO - 
+==================================================
+2025-07-17 03:46:14,240 - INFO - 开始处理问题 2000037
+2025-07-17 03:46:14,241 - INFO - 问题: When did Royal Dutch Shell first formally sign an agreement with Iran?
+2025-07-17 03:46:14,241 - INFO - 标准答案: ['2007-01-31']
+2025-07-17 03:46:14,241 - INFO - ==================================================
+2025-07-17 03:46:14,241 - INFO - 第一步：问题分析
+2025-07-17 03:46:24,291 - INFO - 问题分析完成: {'question_type': 'first_event', 'time_constraints': '时间范围在2005-01-01到2015-12-31之间', 'key_entities': ['Royal Dutch Shell', 'Iran'], 'target_relations': ['Express_intent_to_engage_in_diplomatic_cooperation_(such_as_policy_support)', 'Engage_in_diplomatic_cooperation', 'Express_intent_to_provide_economic_aid', 'Express_intent_to_meet_or_negotiate'], 'answer_type': 'time', 'query_strategy': '首先在给定的时间范围内查找Royal Dutch Shell和Iran之间的所有事件，然后筛选出与合作协议或谈判相关的关系，最后找出最早发生的事件的时间。'}
+2025-07-17 03:46:24,291 - INFO - 第二步：代码生成
+2025-07-17 03:46:52,969 - INFO - 代码生成成功
+2025-07-17 03:46:52,969 - INFO - 第三步：执行查询
+2025-07-17 03:46:52,970 - ERROR - 执行错误: invalid syntax. Perhaps you forgot a comma? (<string>, line 12)
+2025-07-17 03:46:52,970 - ERROR - 详细错误: Traceback (most recent call last):
+  File "/mnt/nvme0n1/tyj/TKGQA/MY/temporal_kgqa_experiment.py", line 575, in execute_query
+    exec(query_code, exec_globals)
+  File "<string>", line 12
+    mask = ((df['head'].str.contains(entity1, case=False, na=False) & 
+            ^^^
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+
+2025-07-17 03:46:52,971 - INFO - 尝试自动修复代码
+2025-07-17 03:47:16,575 - INFO - 代码修复成功
+2025-07-17 03:47:16,575 - INFO - 尝试执行修复后的代码
+2025-07-17 03:47:16,576 - ERROR - 修复后代码执行仍然失败: invalid syntax. Perhaps you forgot a comma? (<string>, line 12)
+2025-07-17 03:47:16,576 - INFO - 问题 2000037 处理完成
+2025-07-17 03:47:16,577 - INFO - 预测答案: ['执行错误: invalid syntax. Perhaps you forgot a comma? (<string>, line 12)']
+2025-07-17 03:47:16,577 - INFO - 标准化后的标准答案: ['2007-01-31']
+2025-07-17 03:47:16,577 - INFO - 标准化后的预测答案: []
+2025-07-17 03:47:16,577 - INFO - 评估结果: P=0.000, R=0.000, F1=0.000, EM=False
+2025-07-17 03:47:17,578 - INFO - 
+==================================================
+2025-07-17 03:47:17,578 - INFO - 开始处理问题 2000038
+2025-07-17 03:47:17,578 - INFO - 问题: Who wanted diplomatic cooperation with Japan before March 2005?
+2025-07-17 03:47:17,578 - INFO - 标准答案: ['South Korea', 'Roh Moo Hyun', 'China', 'Thailand', 'Mexico']
+2025-07-17 03:47:17,578 - INFO - ==================================================
+2025-07-17 03:47:17,578 - INFO - 第一步：问题分析
+2025-07-17 03:47:26,114 - INFO - 问题分析完成: {'question_type': 'entity_query', 'time_constraints': 'before March 2005', 'key_entities': ['Japan'], 'target_relations': ['Express_intent_to_engage_in_diplomatic_cooperation_(such_as_policy_support)', 'Engage_in_diplomatic_cooperation'], 'answer_type': 'entity', 'query_strategy': "Find all entities (head) that have a relation of 'Express_intent_to_engage_in_diplomatic_cooperation' or 'Engage_in_diplomatic_cooperation' with 'Japan' (tail) before March 2005."}
+2025-07-17 03:47:26,114 - INFO - 第二步：代码生成
+2025-07-17 03:47:55,038 - INFO - 代码生成成功
+2025-07-17 03:47:55,038 - INFO - 第三步：执行查询
+2025-07-17 03:47:55,087 - ERROR - 执行错误: __import__ not found
+2025-07-17 03:47:55,088 - ERROR - 详细错误: Traceback (most recent call last):
+  File "/mnt/nvme0n1/tyj/TKGQA/MY/temporal_kgqa_experiment.py", line 579, in execute_query
+    results = exec_globals['query_kg'](self.kg_df.copy())
+  File "<string>", line 2, in query_kg
+ImportError: __import__ not found
+
+2025-07-17 03:47:55,088 - INFO - 尝试自动修复代码
+2025-07-17 03:48:15,662 - INFO - 代码修复成功
+2025-07-17 03:48:15,663 - INFO - 尝试执行修复后的代码
+2025-07-17 03:48:15,953 - INFO - 修复后查询成功，返回 7 个结果: ['China', 'Thailand', 'Vietnam', 'South_Korea', 'Roh_Moo_Hyun', 'Iran', 'Mexico']
+2025-07-17 03:48:15,958 - INFO - 问题 2000038 处理完成
+2025-07-17 03:48:15,958 - INFO - 预测答案: ['China', 'Thailand', 'Vietnam', 'South_Korea', 'Roh_Moo_Hyun', 'Iran', 'Mexico']
+2025-07-17 03:48:15,958 - INFO - 标准化后的标准答案: ['South Korea', 'Roh Moo Hyun', 'China', 'Thailand', 'Mexico']
+2025-07-17 03:48:15,958 - INFO - 标准化后的预测答案: ['China', 'Thailand', 'Vietnam', 'South_Korea', 'Roh_Moo_Hyun', 'Iran', 'Mexico']
+2025-07-17 03:48:15,958 - INFO - 交集: {'China', 'Thailand', 'Mexico'}
+2025-07-17 03:48:15,958 - INFO - 评估结果: P=0.429, R=0.600, F1=0.500, EM=False
+2025-07-17 03:48:16,959 - INFO - 
+==================================================
+2025-07-17 03:48:16,959 - INFO - 开始处理问题 2000039
+2025-07-17 03:48:16,959 - INFO - 问题: On 21 December 2009, which country announced its intention to cooperate with Iran?
+2025-07-17 03:48:16,960 - INFO - 标准答案: ['Iraq']
+2025-07-17 03:48:16,960 - INFO - ==================================================
+2025-07-17 03:48:16,960 - INFO - 第一步：问题分析
+2025-07-17 03:48:24,648 - INFO - 问题分析完成: {'question_type': 'time_query', 'time_constraints': '21 December 2009', 'key_entities': ['Iran'], 'target_relations': ['Express_intent_to_engage_in_diplomatic_cooperation_(such_as_policy_support)'], 'answer_type': 'entity', 'query_strategy': "在知识图谱中查找在2009年12月21日与'Iran'存在'Express_intent_to_engage_in_diplomatic_cooperation'关系的国家实体"}
+2025-07-17 03:48:24,649 - INFO - 第二步：代码生成
+2025-07-17 03:48:55,761 - INFO - 代码生成成功
+2025-07-17 03:48:55,761 - INFO - 第三步：执行查询
+2025-07-17 03:48:55,762 - ERROR - 执行错误: unterminated string literal (detected at line 62) (<string>, line 62)
+2025-07-17 03:48:55,762 - ERROR - 详细错误: Traceback (most recent call last):
+  File "/mnt/nvme0n1/tyj/TKGQA/MY/temporal_kgqa_experiment.py", line 575, in execute_query
+    exec(query_code, exec_globals)
+  File "<string>", line 62
+    return []'
+             ^
+SyntaxError: unterminated string literal (detected at line 62)
+
+2025-07-17 03:48:55,762 - INFO - 尝试自动修复代码
+2025-07-17 03:49:20,623 - INFO - 代码修复成功
+2025-07-17 03:49:20,623 - INFO - 问题 2000039 处理完成
+2025-07-17 03:49:20,623 - INFO - 预测答案: []
+2025-07-17 03:49:20,623 - INFO - 标准化后的标准答案: ['Iraq']
+2025-07-17 03:49:20,623 - INFO - 标准化后的预测答案: []
+2025-07-17 03:49:20,623 - INFO - 评估结果: P=0.000, R=0.000, F1=0.000, EM=False
+2025-07-17 03:49:20,626 - INFO - 结果已保存到: /mnt/nvme0n1/tyj/TKGQA/MY/intermediate_results_25.json
+2025-07-17 03:49:21,627 - INFO - 
+==================================================
+2025-07-17 03:49:21,627 - INFO - 开始处理问题 2000084
+2025-07-17 03:49:21,627 - INFO - 问题: Who hosted the visit of Abdelkader Messahel to Mauritania in the same year?
+2025-07-17 03:49:21,627 - INFO - 标准答案: ['Middle East']
+2025-07-17 03:49:21,627 - INFO - ==================================================
+2025-07-17 03:49:21,627 - INFO - 第一步：问题分析
+2025-07-17 03:49:33,350 - INFO - 问题分析完成: {'question_type': 'entity_query', 'time_constraints': "same year as Abdelkader Messahel's visit to Mauritania (specific year not provided in question, but within 2005-2015 range)", 'key_entities': ['Abdelkader Messahel', 'Mauritania'], 'target_relations': ['Engage_in_diplomatic_cooperation', 'Express_intent_to_meet_or_negotiate', 'Host_visit'], 'answer_type': 'entity', 'query_strategy': "1. First identify the specific year of Abdelkader Messahel's visit to Mauritania by querying events where he is the subject and Mauritania is the object with relevant diplomatic relations. 2. Then query for all events in that same year where the relation involves hosting a visit, with Mauritania as the location. 3. Return the entity that hosted the visit (likely a government official or organization)."}
+2025-07-17 03:49:33,350 - INFO - 第二步：代码生成
+2025-07-17 03:50:01,475 - INFO - 代码生成成功
+2025-07-17 03:50:01,475 - INFO - 第三步：执行查询
+2025-07-17 03:50:01,476 - ERROR - 执行错误: unterminated string literal (detected at line 41) (<string>, line 41)
+2025-07-17 03:50:01,476 - ERROR - 详细错误: Traceback (most recent call last):
+  File "/mnt/nvme0n1/tyj/TKGQA/MY/temporal_kgqa_experiment.py", line 575, in execute_query
+    exec(query_code, exec_globals)
+  File "<string>", line 41
+    return []'
+             ^
+SyntaxError: unterminated string literal (detected at line 41)
+
+2025-07-17 03:50:01,476 - INFO - 尝试自动修复代码

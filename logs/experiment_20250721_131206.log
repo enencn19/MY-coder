@@ -1,0 +1,185 @@
+2025-07-21 13:12:06,530 - INFO - 日志系统初始化完成，日志文件: /mnt/nvme0n1/tyj/TKGQA/MY/logs/experiment_20250721_131206.log
+2025-07-21 13:12:06,562 - INFO - TemporalKGQASystem 初始化完成
+2025-07-21 13:12:06,562 - INFO - 加载知识图谱: MY/data/output/full_df.txt
+2025-07-21 13:12:06,945 - INFO - 数据形状: (461329, 4)
+2025-07-21 13:12:06,946 - INFO - 列名: ['head', 'relation', 'tail', 'timestamp']
+2025-07-21 13:12:06,984 - INFO - 知识图谱加载完成，共 461329 条记录
+2025-07-21 13:12:06,984 - INFO - 时间范围: 2005-01-01 00:00:00 到 2015-12-31 00:00:00
+2025-07-21 13:12:06,984 - INFO - 加载问题数据: MY/data/multitq/questions/sample_20_questions.json
+2025-07-21 13:12:06,984 - INFO - 问题数据加载完成，共 20 个问题
+2025-07-21 13:12:06,984 - INFO - 开始处理 20 个问题
+2025-07-21 13:12:06,985 - INFO - 
+============================================================
+2025-07-21 13:12:06,985 - INFO - 进度: 1/20
+2025-07-21 13:12:06,985 - INFO - 
+==================================================
+2025-07-21 13:12:06,985 - INFO - 处理问题 2056020: When did Walker San Miguel first express interest in working with Bolivia?
+2025-07-21 13:12:06,985 - INFO - 预期答案: ['2007-07-24']
+2025-07-21 13:12:06,985 - INFO - 问题类型: first_last
+2025-07-21 13:12:06,985 - INFO - 答案类型: time
+2025-07-21 13:12:06,985 - INFO - 代码生成成功
+2025-07-21 13:12:06,986 - INFO - 生成的代码长度: 2954 字符
+2025-07-21 13:12:13,055 - INFO - 原始查询结果类型: <class 'list'>
+2025-07-21 13:12:13,056 - INFO - 原始查询结果: ['2007-07-24']
+2025-07-21 13:12:13,056 - INFO - 查询返回 1 个结果: ['2007-07-24']
+2025-07-21 13:12:13,056 - INFO - 预测答案: ['2007-07-24']
+2025-07-21 13:12:13,056 - INFO - F1: 1.000, 精确率: 1.000, 召回率: 1.000
+2025-07-21 13:12:13,057 - INFO - 结果已更新到: /mnt/nvme0n1/tyj/TKGQA/MY/final_results_20250721_131206.json
+2025-07-21 13:12:13,057 - INFO - 
+============================================================
+2025-07-21 13:12:13,057 - INFO - 进度: 2/20
+2025-07-21 13:12:13,057 - INFO - 
+==================================================
+2025-07-21 13:12:13,057 - INFO - 处理问题 2027657: Who wanted to cooperate with Japan on 23 August 2006?
+2025-07-21 13:12:13,057 - INFO - 预期答案: ['Association of Southeast Asian Nations']
+2025-07-21 13:12:13,057 - INFO - 问题类型: equal
+2025-07-21 13:12:13,057 - INFO - 答案类型: entity
+2025-07-21 13:12:13,058 - INFO - 代码生成成功
+2025-07-21 13:12:13,058 - INFO - 生成的代码长度: 1623 字符
+2025-07-21 13:12:14,474 - INFO - 原始查询结果类型: <class 'list'>
+2025-07-21 13:12:14,475 - INFO - 原始查询结果: ['Association of Southeast Asian Nations']
+2025-07-21 13:12:14,475 - INFO - 查询返回 1 个结果: ['Association of Southeast Asian Nations']
+2025-07-21 13:12:14,475 - INFO - 预测答案: ['Association of Southeast Asian Nations']
+2025-07-21 13:12:14,475 - INFO - F1: 1.000, 精确率: 1.000, 召回率: 1.000
+2025-07-21 13:12:14,475 - INFO - 结果已更新到: /mnt/nvme0n1/tyj/TKGQA/MY/final_results_20250721_131206.json
+2025-07-21 13:12:14,475 - INFO - 
+============================================================
+2025-07-21 13:12:14,475 - INFO - 进度: 3/20
+2025-07-21 13:12:14,475 - INFO - 
+==================================================
+2025-07-21 13:12:14,475 - INFO - 处理问题 2007873: Before 11 December 2009, who used conventional military force against France?
+2025-07-21 13:12:14,476 - INFO - 预期答案: ['Separatist (France)', 'Comoros', 'Royal Air Force', 'Bolivia', 'Colombia', 'Christian (France)', 'Member of Parliament (France)', 'Military (Russia)']
+2025-07-21 13:12:14,476 - INFO - 问题类型: before_after
+2025-07-21 13:12:14,476 - INFO - 答案类型: entity
+2025-07-21 13:12:14,476 - INFO - 代码生成成功
+2025-07-21 13:12:14,476 - INFO - 生成的代码长度: 2532 字符
+2025-07-21 13:12:15,609 - INFO - 原始查询结果类型: <class 'list'>
+2025-07-21 13:12:15,610 - INFO - 原始查询结果: ['Bolivia', 'Military Personnel - Special (France)', 'Colombia', 'Military (Russia)', 'Member of Parliament (France)', 'Military (Senegal)', "Police (Cote d'Ivoire)", 'Religion (France)', 'Christian (France)', 'Royal Air Force']
+2025-07-21 13:12:15,610 - INFO - 查询返回 10 个结果: ['Bolivia', 'Military Personnel - Special (France)', 'Colombia', 'Military (Russia)', 'Member of Parliament (France)', 'Military (Senegal)', "Police (Cote d'Ivoire)", 'Religion (France)', 'Christian (France)', 'Royal Air Force']
+2025-07-21 13:12:15,610 - INFO - 预测答案: ['Bolivia', 'Military Personnel - Special (France)', 'Colombia', 'Military (Russia)', 'Member of Parliament (France)', 'Military (Senegal)', "Police (Cote d'Ivoire)", 'Religion (France)', 'Christian (France)', 'Royal Air Force']
+2025-07-21 13:12:15,610 - INFO - F1: 0.667, 精确率: 0.600, 召回率: 0.750
+2025-07-21 13:12:15,611 - INFO - 结果已更新到: /mnt/nvme0n1/tyj/TKGQA/MY/final_results_20250721_131206.json
+2025-07-21 13:12:15,611 - INFO - 
+============================================================
+2025-07-21 13:12:15,611 - INFO - 进度: 4/20
+2025-07-21 13:12:15,611 - INFO - 
+==================================================
+2025-07-21 13:12:15,611 - INFO - 处理问题 2044815: Which country was the first to ask for France after the Algerian extremist?
+2025-07-21 13:12:15,611 - INFO - 预期答案: ['Iran']
+2025-07-21 13:12:15,611 - INFO - 问题类型: after_first
+2025-07-21 13:12:15,611 - INFO - 答案类型: entity
+2025-07-21 13:12:15,612 - ERROR - 代码生成失败: 'CodeGenerator' object has no attribute '_generate_after_first_code'
+2025-07-21 13:12:15,683 - INFO - 原始查询结果类型: <class 'list'>
+2025-07-21 13:12:15,683 - INFO - 原始查询结果: []
+2025-07-21 13:12:15,683 - INFO - 查询返回 0 个结果: []
+2025-07-21 13:12:15,683 - INFO - 预测答案: []
+2025-07-21 13:12:15,683 - INFO - F1: 0.000, 精确率: 0.000, 召回率: 0.000
+2025-07-21 13:12:15,684 - INFO - 结果已更新到: /mnt/nvme0n1/tyj/TKGQA/MY/final_results_20250721_131206.json
+2025-07-21 13:12:15,684 - INFO - 
+============================================================
+2025-07-21 13:12:15,684 - INFO - 进度: 5/20
+2025-07-21 13:12:15,684 - INFO - 
+==================================================
+2025-07-21 13:12:15,684 - INFO - 处理问题 2016117: Before the Brazilian Ministry of Agriculture, Fishing and Forestry, which country was the last to condemn France?
+2025-07-21 13:12:15,684 - INFO - 预期答案: ['Mexico']
+2025-07-21 13:12:15,684 - INFO - 问题类型: before_last
+2025-07-21 13:12:15,684 - INFO - 答案类型: entity
+2025-07-21 13:12:15,684 - ERROR - 代码生成失败: 'CodeGenerator' object has no attribute '_generate_before_last_code'
+2025-07-21 13:12:15,757 - INFO - 原始查询结果类型: <class 'list'>
+2025-07-21 13:12:15,758 - INFO - 原始查询结果: []
+2025-07-21 13:12:15,758 - INFO - 查询返回 0 个结果: []
+2025-07-21 13:12:15,758 - INFO - 预测答案: []
+2025-07-21 13:12:15,758 - INFO - F1: 0.000, 精确率: 0.000, 召回率: 0.000
+2025-07-21 13:12:15,758 - INFO - 结果已更新到: /mnt/nvme0n1/tyj/TKGQA/MY/final_results_20250721_131206.json
+2025-07-21 13:12:15,758 - INFO - 
+============================================================
+2025-07-21 13:12:15,759 - INFO - 进度: 6/20
+2025-07-21 13:12:15,759 - INFO - 
+==================================================
+2025-07-21 13:12:15,759 - INFO - 处理问题 2018890: Who received Juan Carlos I's visit from Juan Carlos I on the same month of Qatar?
+2025-07-21 13:12:15,759 - INFO - 预期答案: ['Royal Administration (Spain)', 'Royal Administration (Jordan)', 'Royal Administration (Saudi Arabia)']
+2025-07-21 13:12:15,759 - INFO - 问题类型: equal_multi
+2025-07-21 13:12:15,759 - INFO - 答案类型: entity
+2025-07-21 13:12:15,759 - ERROR - 代码生成失败: 'CodeGenerator' object has no attribute '_generate_equal_multi_code'
+2025-07-21 13:12:15,830 - INFO - 原始查询结果类型: <class 'list'>
+2025-07-21 13:12:15,831 - INFO - 原始查询结果: []
+2025-07-21 13:12:15,831 - INFO - 查询返回 0 个结果: []
+2025-07-21 13:12:15,831 - INFO - 预测答案: []
+2025-07-21 13:12:15,831 - INFO - F1: 0.000, 精确率: 0.000, 召回率: 0.000
+2025-07-21 13:12:15,832 - INFO - 结果已更新到: /mnt/nvme0n1/tyj/TKGQA/MY/final_results_20250721_131206.json
+2025-07-21 13:12:15,832 - INFO - 
+============================================================
+2025-07-21 13:12:15,832 - INFO - 进度: 7/20
+2025-07-21 13:12:15,832 - INFO - 
+==================================================
+2025-07-21 13:12:15,832 - INFO - 处理问题 2024585: In February 2007, who wanted to negotiate with France?
+2025-07-21 13:12:15,832 - INFO - 预期答案: ['Mahmoud Abbas', 'Citizen (Mauritania)', 'Activist (France)', 'Representatives (France)', 'China', 'Cristina Fernández de Kirchner']
+2025-07-21 13:12:15,832 - INFO - 问题类型: equal
+2025-07-21 13:12:15,832 - INFO - 答案类型: entity
+2025-07-21 13:12:15,832 - INFO - 代码生成成功
+2025-07-21 13:12:15,832 - INFO - 生成的代码长度: 1617 字符
+2025-07-21 13:12:17,810 - INFO - 原始查询结果类型: <class 'list'>
+2025-07-21 13:12:17,811 - INFO - 原始查询结果: ['Cristina Fernández de Kirchner']
+2025-07-21 13:12:17,811 - INFO - 查询返回 1 个结果: ['Cristina Fernández de Kirchner']
+2025-07-21 13:12:17,811 - INFO - 预测答案: ['Cristina Fernández de Kirchner']
+2025-07-21 13:12:17,811 - INFO - F1: 0.286, 精确率: 1.000, 召回率: 0.167
+2025-07-21 13:12:17,813 - INFO - 结果已更新到: /mnt/nvme0n1/tyj/TKGQA/MY/final_results_20250721_131206.json
+2025-07-21 13:12:17,813 - INFO - 
+============================================================
+2025-07-21 13:12:17,813 - INFO - 进度: 8/20
+2025-07-21 13:12:17,813 - INFO - 
+==================================================
+2025-07-21 13:12:17,813 - INFO - 处理问题 2009795: When did Iran last negotiate with Federica Mogherini?
+2025-07-21 13:12:17,813 - INFO - 预期答案: ['2015-07-28']
+2025-07-21 13:12:17,813 - INFO - 问题类型: first_last
+2025-07-21 13:12:17,813 - INFO - 答案类型: time
+2025-07-21 13:12:17,814 - INFO - 代码生成成功
+2025-07-21 13:12:17,814 - INFO - 生成的代码长度: 2948 字符
+2025-07-21 13:12:28,901 - INFO - 原始查询结果类型: <class 'list'>
+2025-07-21 13:12:28,901 - INFO - 原始查询结果: ['2015-07-23']
+2025-07-21 13:12:28,901 - INFO - 查询返回 1 个结果: ['2015-07-23']
+2025-07-21 13:12:28,901 - INFO - 预测答案: ['2015-07-23']
+2025-07-21 13:12:28,901 - INFO - F1: 0.000, 精确率: 0.000, 召回率: 0.000
+2025-07-21 13:12:28,902 - INFO - 结果已更新到: /mnt/nvme0n1/tyj/TKGQA/MY/final_results_20250721_131206.json
+2025-07-21 13:12:28,902 - INFO - 
+============================================================
+2025-07-21 13:12:28,902 - INFO - 进度: 9/20
+2025-07-21 13:12:28,902 - INFO - 
+==================================================
+2025-07-21 13:12:28,902 - INFO - 处理问题 2002166: In what year did the Prime Minister of India first express an intention to negotiate with Japan?
+2025-07-21 13:12:28,902 - INFO - 预期答案: ['2008']
+2025-07-21 13:12:28,903 - INFO - 问题类型: first_last
+2025-07-21 13:12:28,903 - INFO - 答案类型: time
+2025-07-21 13:12:28,903 - INFO - 代码生成成功
+2025-07-21 13:12:28,903 - INFO - 生成的代码长度: 2939 字符
+2025-07-21 13:12:40,786 - INFO - 原始查询结果类型: <class 'list'>
+2025-07-21 13:12:40,786 - INFO - 原始查询结果: []
+2025-07-21 13:12:40,786 - INFO - 查询返回 0 个结果: []
+2025-07-21 13:12:40,786 - INFO - 预测答案: []
+2025-07-21 13:12:40,786 - INFO - F1: 0.000, 精确率: 0.000, 召回率: 0.000
+2025-07-21 13:12:40,793 - INFO - 结果已更新到: /mnt/nvme0n1/tyj/TKGQA/MY/final_results_20250721_131206.json
+2025-07-21 13:12:40,793 - INFO - 
+============================================================
+2025-07-21 13:12:40,793 - INFO - 进度: 10/20
+2025-07-21 13:12:40,793 - INFO - 
+==================================================
+2025-07-21 13:12:40,793 - INFO - 处理问题 2022493: Who visited France on 1 April 2014?
+2025-07-21 13:12:40,793 - INFO - 预期答案: ['Xi Jinping']
+2025-07-21 13:12:40,793 - INFO - 问题类型: equal
+2025-07-21 13:12:40,793 - INFO - 答案类型: entity
+2025-07-21 13:12:40,794 - INFO - 代码生成成功
+2025-07-21 13:12:40,794 - INFO - 生成的代码长度: 1589 字符
+2025-07-21 13:12:42,132 - INFO - 原始查询结果类型: <class 'list'>
+2025-07-21 13:12:42,132 - INFO - 原始查询结果: ['Xi Jinping']
+2025-07-21 13:12:42,132 - INFO - 查询返回 1 个结果: ['Xi Jinping']
+2025-07-21 13:12:42,132 - INFO - 预测答案: ['Xi Jinping']
+2025-07-21 13:12:42,132 - INFO - F1: 1.000, 精确率: 1.000, 召回率: 1.000
+2025-07-21 13:12:42,133 - INFO - 结果已更新到: /mnt/nvme0n1/tyj/TKGQA/MY/final_results_20250721_131206.json
+2025-07-21 13:12:42,133 - INFO - 达到最大问题数限制: 10
+2025-07-21 13:12:42,133 - ERROR - 实验执行失败: TemporalKGQASystem.print_final_stats() takes 1 positional argument but 2 were given
+2025-07-21 13:12:42,134 - ERROR - Traceback (most recent call last):
+  File "/mnt/nvme0n1/tyj/TKGQA/MY/main/run_experiment.py", line 77, in run_complete_experiment
+    system.print_final_stats(results)
+TypeError: TemporalKGQASystem.print_final_stats() takes 1 positional argument but 2 were given
+
+2025-07-21 13:12:42,134 - ERROR - ❌ 实验运行失败: TemporalKGQASystem.print_final_stats() takes 1 positional argument but 2 were given

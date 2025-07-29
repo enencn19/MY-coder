@@ -1,0 +1,38 @@
+[
+    {
+    "quid": 2056020,
+    "question": "When did Walker San Miguel first express interest in working with Bolivia?",
+    "answers": [
+      "2007-07-24"
+    ],
+    "answer_type": "time",
+    "time_level": "day",
+    "qtype": "first_last",
+    "qlabel": "Single",
+    "time": [],
+    "entities": [
+      "Walker San Miguel",
+      "Bolivia"
+    ],
+    "entity_positions": [
+      {
+        "entity": [
+          "Walker San Miguel"
+        ],
+        "position": [
+          9,
+          26
+        ]
+      },
+      {
+        "entity": [
+          "Bolivia"
+        ],
+        "position": [
+          66,
+          73
+        ]
+      }
+    ]
+  }
+]

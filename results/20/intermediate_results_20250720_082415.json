@@ -1,0 +1,310 @@
+[
+  {
+    "quid": 2000014,
+    "question": "Who would wish to visit Ireland in July, the year of 2007?",
+    "ground_truth": [
+      "Bertie Ahern"
+    ],
+    "analysis": {
+      "question_type": "entity_query",
+      "key_entities": [
+        "Ireland"
+      ],
+      "target_relations": [
+        "wish to visit"
+      ],
+      "time_constraints": "2007-07",
+      "answer_type": "entity",
+      "query_strategy": "首先识别出关键实体'Ireland'和目标关系'wish to visit'，然后应用时间约束'2007-07'来筛选出在2007年7月有意愿访问爱尔兰的实体。"
+    },
+    "generated_code": "def query_kg(df):\n    import pandas as pd\n    \n    try:\n        results = []\n        entities = ['Ireland']\n        relations = ['wish to visit']\n        time_constraint = \"2007-07\"\n        max_results = 5\n        \n        # 确保所有列都是字符串类型\n        for col in ['head', 'relation', 'tail', 'timestamp']:\n            if col in df.columns:\n                df[col] = df[col].astype(str)\n        \n        # 时间过滤\n        filtered_df = df.copy()\n        if time_constraint:\n            # 处理 \"July, 2007\" 或 \"july\" + \"2007\" 格式\n            if (\"july\" in time_constraint.lower() or \"July\" in time_constraint) and \"2007\" in time_constraint:\n                filtered_df = filtered_df[filtered_df['timestamp'].str.startswith('2007-07')]\n            elif \"2007\" in time_constraint:\n                filtered_df = filtered_df[filtered_df['timestamp'].str.startswith('2007')]\n            elif len(time_constraint) == 4 and time_constraint.isdigit():  # 年份\n                filtered_df = filtered_df[filtered_df['timestamp'].str.startswith(time_constraint)]\n            elif len(time_constraint) == 7:  # 年-月格式\n                filtered_df = filtered_df[filtered_df['timestamp'].str.startswith(time_constraint)]\n        \n        # 查找相关记录\n        if entities:\n            target_entity = entities[0]\n            \n            # 尝试精确匹配实体名称\n            for relation in relations:\n                # 模式1: X -> relation -> target_entity (谁想访问目标实体)\n                mask1 = (\n                    (filtered_df['tail'] == target_entity) & \n                    (filtered_df['relation'] == relation)\n                )\n                \n                if mask1.any():\n                    matched_df = filtered_df[mask1]\n                    for _, row in matched_df.iterrows():\n                        visitor = row['head'].replace('_', ' ')\n                        if visitor not in results and len(results) < max_results:\n                            results.append(visitor)\n                \n                # 模式2: target_entity -> Host_a_visit -> X (目标实体接待谁)\n                if relation == 'Host_a_visit' or 'Host_a_visit' in relations:\n                    mask2 = (\n                        (filtered_df['head'] == target_entity) & \n                        (filtered_df['relation'] == 'Host_a_visit')\n                    )\n                    \n                    if mask2.any():\n                        matched_df = filtered_df[mask2]\n                        for _, row in matched_df.iterrows():\n                            visitor = row['tail'].replace('_', ' ')\n                            if visitor not in results and len(results) < max_results:\n                                results.append(visitor)\n        \n        # 如果是Iran相关的praise查询，直接查找所有praise记录\n        if entities and any('iran' in entity.lower() for entity in entities):\n            if 'Praise_or_endorse' in relations:\n                praise_mask = (\n                    (filtered_df['tail'] == 'Iran') & \n                    (filtered_df['relation'] == 'Praise_or_endorse')\n                )\n                \n                if praise_mask.any():\n                    matched_df = filtered_df[praise_mask]\n                    for _, row in matched_df.iterrows():\n                        praiser = row['head'].replace('_', ' ')\n                        if praiser not in results and len(results) < max_results:\n                            results.append(praiser)\n        \n        return results[:max_results]\n        \n    except Exception as e:\n        return [f\"查询错误: {str(e)}\"]",
+    "predicted_answer": [],
+    "evaluation": {
+      "precision": 0,
+      "recall": 0.0,
+      "f1": 0,
+      "exact_match": false,
+      "intersection_count": 0
+    },
+    "process_time": 8.51441478729248
+  },
+  {
+    "quid": 2000015,
+    "question": "In which year did Viktor Orban visit Iran for the first time?",
+    "ground_truth": [
+      "2015"
+    ],
+    "analysis": {
+      "question_type": "time_query",
+      "key_entities": [
+        "Viktor Orban",
+        "Iran"
+      ],
+      "target_relations": [
+        "visit"
+      ],
+      "time_constraints": "first time",
+      "answer_type": "time",
+      "query_strategy": "The query aims to find the earliest year in which the relation 'visit' between 'Viktor Orban' and 'Iran' occurred. This requires searching the temporal knowledge graph for all instances of Viktor Orban visiting Iran and identifying the one with the minimum timestamp."
+    },
+    "generated_code": "def query_kg(df):\n    import pandas as pd\n    try:\n        entities = ['Viktor Orban', 'Iran']\n        relations = ['visit']\n        \n        results = []\n        \n        # 确保所有列都是字符串类型\n        for col in ['head', 'relation', 'tail', 'timestamp']:\n            if col in df.columns:\n                df[col] = df[col].astype(str)\n        \n        # 对于\"first time\"类型的查询，需要找到特定关系的最早记录\n        if len(entities) >= 2:\n            entity1, entity2 = entities[0], entities[1]\n            \n            # 尝试多种实体名称格式\n            entity1_patterns = [entity1, entity1.replace(' ', '_'), entity1.replace('_', ' ')]\n            entity2_patterns = [entity2, entity2.replace(' ', '_'), entity2.replace('_', ' ')]\n            \n            for e1_pattern in entity1_patterns:\n                for e2_pattern in entity2_patterns:\n                    # 查找 entity1 -> relation -> entity2 的记录\n                    mask = (\n                        (df['head'].str.contains(e1_pattern, case=False, na=False)) &\n                        (df['tail'].str.contains(e2_pattern, case=False, na=False)) &\n                        (df['relation'].isin(relations))\n                    )\n                    \n                    if mask.any():\n                        filtered_df = df[mask]\n                        for _, row in filtered_df.iterrows():\n                            year = row['timestamp'][:4]\n                            results.append(year)\n        \n        # 返回最早的年份\n        if results:\n            earliest_year = min(results)\n            return [earliest_year]\n        else:\n            return []\n            \n    except Exception as e:\n        return [f\"查询错误: {str(e)}\"]",
+    "predicted_answer": [],
+    "evaluation": {
+      "precision": 0,
+      "recall": 0.0,
+      "f1": 0,
+      "exact_match": false,
+      "intersection_count": 0
+    },
+    "process_time": 12.405185222625732
+  },
+  {
+    "quid": 2000016,
+    "question": "Who made optimistic remarks about Iran after the Organisation for Economic Cooperation and Development?",
+    "ground_truth": [
+      "South Korea",
+      "Party Member (Iraq)",
+      "France",
+      "China",
+      "Iraq",
+      "Member of Legislative (Govt) (Iran)",
+      "Japan",
+      "Head of Government (Ukraine)",
+      "Thailand",
+      "Kazakhstan"
+    ],
+    "analysis": {
+      "question_type": "relation_query",
+      "key_entities": [
+        "Organisation for Economic Cooperation and Development",
+        "Iran"
+      ],
+      "target_relations": [
+        "made optimistic remarks about"
+      ],
+      "time_constraints": "after the Organisation for Economic Cooperation and Development",
+      "answer_type": "entity",
+      "query_strategy": "首先识别关键实体'Organisation for Economic Cooperation and Development'和'Iran'，然后查找在'Organisation for Economic Cooperation and Development'之后与'Iran'存在'made optimistic remarks about'关系的实体。"
+    },
+    "generated_code": "def query_kg(df):\n    import pandas as pd\n    \n    try:\n        results = []\n        entities = ['Organisation for Economic Cooperation and Development', 'Iran']\n        relations = ['made optimistic remarks about']\n        time_constraint = \"after the Organisation for Economic Cooperation and Development\"\n        max_results = 5\n        \n        # 确保所有列都是字符串类型\n        for col in ['head', 'relation', 'tail', 'timestamp']:\n            if col in df.columns:\n                df[col] = df[col].astype(str)\n        \n        # 时间过滤\n        filtered_df = df.copy()\n        if time_constraint:\n            # 处理 \"July, 2007\" 或 \"july\" + \"2007\" 格式\n            if (\"july\" in time_constraint.lower() or \"July\" in time_constraint) and \"2007\" in time_constraint:\n                filtered_df = filtered_df[filtered_df['timestamp'].str.startswith('2007-07')]\n            elif \"2007\" in time_constraint:\n                filtered_df = filtered_df[filtered_df['timestamp'].str.startswith('2007')]\n            elif len(time_constraint) == 4 and time_constraint.isdigit():  # 年份\n                filtered_df = filtered_df[filtered_df['timestamp'].str.startswith(time_constraint)]\n            elif len(time_constraint) == 7:  # 年-月格式\n                filtered_df = filtered_df[filtered_df['timestamp'].str.startswith(time_constraint)]\n        \n        # 查找相关记录\n        if entities:\n            target_entity = entities[0]\n            \n            # 尝试精确匹配实体名称\n            for relation in relations:\n                # 模式1: X -> relation -> target_entity (谁想访问目标实体)\n                mask1 = (\n                    (filtered_df['tail'] == target_entity) & \n                    (filtered_df['relation'] == relation)\n                )\n                \n                if mask1.any():\n                    matched_df = filtered_df[mask1]\n                    for _, row in matched_df.iterrows():\n                        visitor = row['head'].replace('_', ' ')\n                        if visitor not in results and len(results) < max_results:\n                            results.append(visitor)\n                \n                # 模式2: target_entity -> Host_a_visit -> X (目标实体接待谁)\n                if relation == 'Host_a_visit' or 'Host_a_visit' in relations:\n                    mask2 = (\n                        (filtered_df['head'] == target_entity) & \n                        (filtered_df['relation'] == 'Host_a_visit')\n                    )\n                    \n                    if mask2.any():\n                        matched_df = filtered_df[mask2]\n                        for _, row in matched_df.iterrows():\n                            visitor = row['tail'].replace('_', ' ')\n                            if visitor not in results and len(results) < max_results:\n                                results.append(visitor)\n        \n        # 如果是Iran相关的praise查询，直接查找所有praise记录\n        if entities and any('iran' in entity.lower() for entity in entities):\n            if 'Praise_or_endorse' in relations:\n                praise_mask = (\n                    (filtered_df['tail'] == 'Iran') & \n                    (filtered_df['relation'] == 'Praise_or_endorse')\n                )\n                \n                if praise_mask.any():\n                    matched_df = filtered_df[praise_mask]\n                    for _, row in matched_df.iterrows():\n                        praiser = row['head'].replace('_', ' ')\n                        if praiser not in results and len(results) < max_results:\n                            results.append(praiser)\n        \n        return results[:max_results]\n        \n    except Exception as e:\n        return [f\"查询错误: {str(e)}\"]",
+    "predicted_answer": [],
+    "evaluation": {
+      "precision": 0,
+      "recall": 0.0,
+      "f1": 0,
+      "exact_match": false,
+      "intersection_count": 0
+    },
+    "process_time": 8.815990686416626
+  },
+  {
+    "quid": 2000017,
+    "question": "Who made optimistic remarks about Yasuo Fukuda after Japan?",
+    "ground_truth": [
+      "Government Official (Japan)",
+      "China"
+    ],
+    "analysis": {
+      "question_type": "relation_query",
+      "key_entities": [
+        "Yasuo Fukuda",
+        "Japan"
+      ],
+      "target_relations": [
+        "made optimistic remarks about"
+      ],
+      "time_constraints": "after Japan",
+      "answer_type": "entity",
+      "query_strategy": "首先识别出关键实体'Yasuo Fukuda'和'Japan'，然后查找在'Japan'之后对'Yasuo Fukuda'发表乐观言论的实体。"
+    },
+    "generated_code": "def query_kg(df):\n    import pandas as pd\n    \n    try:\n        results = []\n        entities = ['Yasuo Fukuda', 'Japan']\n        relations = ['made optimistic remarks about']\n        time_constraint = \"after Japan\"\n        max_results = 5\n        \n        # 确保所有列都是字符串类型\n        for col in ['head', 'relation', 'tail', 'timestamp']:\n            if col in df.columns:\n                df[col] = df[col].astype(str)\n        \n        # 时间过滤\n        filtered_df = df.copy()\n        if time_constraint:\n            # 处理 \"July, 2007\" 或 \"july\" + \"2007\" 格式\n            if (\"july\" in time_constraint.lower() or \"July\" in time_constraint) and \"2007\" in time_constraint:\n                filtered_df = filtered_df[filtered_df['timestamp'].str.startswith('2007-07')]\n            elif \"2007\" in time_constraint:\n                filtered_df = filtered_df[filtered_df['timestamp'].str.startswith('2007')]\n            elif len(time_constraint) == 4 and time_constraint.isdigit():  # 年份\n                filtered_df = filtered_df[filtered_df['timestamp'].str.startswith(time_constraint)]\n            elif len(time_constraint) == 7:  # 年-月格式\n                filtered_df = filtered_df[filtered_df['timestamp'].str.startswith(time_constraint)]\n        \n        # 查找相关记录\n        if entities:\n            target_entity = entities[0]\n            \n            # 尝试精确匹配实体名称\n            for relation in relations:\n                # 模式1: X -> relation -> target_entity (谁想访问目标实体)\n                mask1 = (\n                    (filtered_df['tail'] == target_entity) & \n                    (filtered_df['relation'] == relation)\n                )\n                \n                if mask1.any():\n                    matched_df = filtered_df[mask1]\n                    for _, row in matched_df.iterrows():\n                        visitor = row['head'].replace('_', ' ')\n                        if visitor not in results and len(results) < max_results:\n                            results.append(visitor)\n                \n                # 模式2: target_entity -> Host_a_visit -> X (目标实体接待谁)\n                if relation == 'Host_a_visit' or 'Host_a_visit' in relations:\n                    mask2 = (\n                        (filtered_df['head'] == target_entity) & \n                        (filtered_df['relation'] == 'Host_a_visit')\n                    )\n                    \n                    if mask2.any():\n                        matched_df = filtered_df[mask2]\n                        for _, row in matched_df.iterrows():\n                            visitor = row['tail'].replace('_', ' ')\n                            if visitor not in results and len(results) < max_results:\n                                results.append(visitor)\n        \n        # 如果是Iran相关的praise查询，直接查找所有praise记录\n        if entities and any('iran' in entity.lower() for entity in entities):\n            if 'Praise_or_endorse' in relations:\n                praise_mask = (\n                    (filtered_df['tail'] == 'Iran') & \n                    (filtered_df['relation'] == 'Praise_or_endorse')\n                )\n                \n                if praise_mask.any():\n                    matched_df = filtered_df[praise_mask]\n                    for _, row in matched_df.iterrows():\n                        praiser = row['head'].replace('_', ' ')\n                        if praiser not in results and len(results) < max_results:\n                            results.append(praiser)\n        \n        return results[:max_results]\n        \n    except Exception as e:\n        return [f\"查询错误: {str(e)}\"]",
+    "predicted_answer": [],
+    "evaluation": {
+      "precision": 0,
+      "recall": 0.0,
+      "f1": 0,
+      "exact_match": false,
+      "intersection_count": 0
+    },
+    "process_time": 7.91203761100769
+  },
+  {
+    "quid": 2000018,
+    "question": "In which month did Xi Jinping praise the Bahamas?",
+    "ground_truth": [
+      "2015-01"
+    ],
+    "analysis": {
+      "question_type": "time_query",
+      "key_entities": [
+        "Xi Jinping",
+        "the Bahamas"
+      ],
+      "target_relations": [
+        "praise"
+      ],
+      "time_constraints": "",
+      "answer_type": "time",
+      "query_strategy": "The question asks for the specific month when Xi Jinping praised the Bahamas. The strategy involves querying the knowledge graph for events where Xi Jinping is the subject, 'praise' is the relation, and the Bahamas is the object, then extracting the timestamp of the event to determine the month."
+    },
+    "generated_code": "def query_kg(df):\n    import pandas as pd\n    try:\n        entities = ['Xi Jinping', 'the Bahamas']\n        relations = ['praise']\n        \n        results = []\n        \n        # 确保所有列都是字符串类型\n        for col in ['head', 'relation', 'tail', 'timestamp']:\n            if col in df.columns:\n                df[col] = df[col].astype(str)\n        \n        # 对于\"first time\"类型的查询，需要找到特定关系的最早记录\n        if len(entities) >= 2:\n            entity1, entity2 = entities[0], entities[1]\n            \n            # 尝试多种实体名称格式\n            entity1_patterns = [entity1, entity1.replace(' ', '_'), entity1.replace('_', ' ')]\n            entity2_patterns = [entity2, entity2.replace(' ', '_'), entity2.replace('_', ' ')]\n            \n            for e1_pattern in entity1_patterns:\n                for e2_pattern in entity2_patterns:\n                    # 查找 entity1 -> relation -> entity2 的记录\n                    mask = (\n                        (df['head'].str.contains(e1_pattern, case=False, na=False)) &\n                        (df['tail'].str.contains(e2_pattern, case=False, na=False)) &\n                        (df['relation'].isin(relations))\n                    )\n                    \n                    if mask.any():\n                        filtered_df = df[mask]\n                        for _, row in filtered_df.iterrows():\n                            year = row['timestamp'][:4]\n                            results.append(year)\n        \n        # 返回最早的年份\n        if results:\n            earliest_year = min(results)\n            return [earliest_year]\n        else:\n            return []\n            \n    except Exception as e:\n        return [f\"查询错误: {str(e)}\"]",
+    "predicted_answer": [],
+    "evaluation": {
+      "precision": 0,
+      "recall": 0.0,
+      "f1": 0,
+      "exact_match": false,
+      "intersection_count": 0
+    },
+    "process_time": 11.492581844329834
+  },
+  {
+    "quid": 2000019,
+    "question": "When did Iran last express its intention to meet with international governmental organisations?",
+    "ground_truth": [
+      "2006-05-27"
+    ],
+    "analysis": {
+      "question_type": "time_query",
+      "key_entities": [
+        "Iran",
+        "international governmental organisations"
+      ],
+      "target_relations": [
+        "express intention to meet"
+      ],
+      "time_constraints": "last",
+      "answer_type": "time",
+      "query_strategy": "查询伊朗与国际政府组织最后一次表达会面意图的时间点。需要检索时序知识图谱中伊朗与国际政府组织之间的关系，并找出最近一次表达会面意图的时间。"
+    },
+    "generated_code": "def query_kg(df):\n    import pandas as pd\n    try:\n        entities = ['Iran', 'international governmental organisations']\n        relations = ['express intention to meet']\n        \n        results = []\n        \n        # 确保所有列都是字符串类型\n        for col in ['head', 'relation', 'tail', 'timestamp']:\n            if col in df.columns:\n                df[col] = df[col].astype(str)\n        \n        # 对于\"first time\"类型的查询，需要找到特定关系的最早记录\n        if len(entities) >= 2:\n            entity1, entity2 = entities[0], entities[1]\n            \n            # 尝试多种实体名称格式\n            entity1_patterns = [entity1, entity1.replace(' ', '_'), entity1.replace('_', ' ')]\n            entity2_patterns = [entity2, entity2.replace(' ', '_'), entity2.replace('_', ' ')]\n            \n            for e1_pattern in entity1_patterns:\n                for e2_pattern in entity2_patterns:\n                    # 查找 entity1 -> relation -> entity2 的记录\n                    mask = (\n                        (df['head'].str.contains(e1_pattern, case=False, na=False)) &\n                        (df['tail'].str.contains(e2_pattern, case=False, na=False)) &\n                        (df['relation'].isin(relations))\n                    )\n                    \n                    if mask.any():\n                        filtered_df = df[mask]\n                        for _, row in filtered_df.iterrows():\n                            year = row['timestamp'][:4]\n                            results.append(year)\n        \n        # 返回最早的年份\n        if results:\n            earliest_year = min(results)\n            return [earliest_year]\n        else:\n            return []\n            \n    except Exception as e:\n        return [f\"查询错误: {str(e)}\"]",
+    "predicted_answer": [],
+    "evaluation": {
+      "precision": 0,
+      "recall": 0.0,
+      "f1": 0,
+      "exact_match": false,
+      "intersection_count": 0
+    },
+    "process_time": 11.505895614624023
+  },
+  {
+    "quid": 2000020,
+    "question": "In which country did Colombia release people before 23 February 2008?",
+    "ground_truth": [
+      "Guerrilla (Colombia)"
+    ],
+    "analysis": {
+      "question_type": "entity_query",
+      "key_entities": [
+        "Colombia"
+      ],
+      "target_relations": [
+        "release people"
+      ],
+      "time_constraints": "before 23 February 2008",
+      "answer_type": "entity",
+      "query_strategy": "首先在时序知识图谱中定位实体'Colombia'，然后查找在2008年2月23日之前发生的'release people'关系，最后确定该关系指向的目标国家实体。"
+    },
+    "generated_code": "def query_kg(df):\n    import pandas as pd\n    \n    try:\n        results = []\n        entities = ['Colombia']\n        relations = ['release people']\n        time_constraint = \"before 23 February 2008\"\n        max_results = 5\n        \n        # 确保所有列都是字符串类型\n        for col in ['head', 'relation', 'tail', 'timestamp']:\n            if col in df.columns:\n                df[col] = df[col].astype(str)\n        \n        # 时间过滤\n        filtered_df = df.copy()\n        if time_constraint:\n            # 处理 \"July, 2007\" 或 \"july\" + \"2007\" 格式\n            if (\"july\" in time_constraint.lower() or \"July\" in time_constraint) and \"2007\" in time_constraint:\n                filtered_df = filtered_df[filtered_df['timestamp'].str.startswith('2007-07')]\n            elif \"2007\" in time_constraint:\n                filtered_df = filtered_df[filtered_df['timestamp'].str.startswith('2007')]\n            elif len(time_constraint) == 4 and time_constraint.isdigit():  # 年份\n                filtered_df = filtered_df[filtered_df['timestamp'].str.startswith(time_constraint)]\n            elif len(time_constraint) == 7:  # 年-月格式\n                filtered_df = filtered_df[filtered_df['timestamp'].str.startswith(time_constraint)]\n        \n        # 查找相关记录\n        if entities:\n            target_entity = entities[0]\n            \n            # 尝试精确匹配实体名称\n            for relation in relations:\n                # 模式1: X -> relation -> target_entity (谁想访问目标实体)\n                mask1 = (\n                    (filtered_df['tail'] == target_entity) & \n                    (filtered_df['relation'] == relation)\n                )\n                \n                if mask1.any():\n                    matched_df = filtered_df[mask1]\n                    for _, row in matched_df.iterrows():\n                        visitor = row['head'].replace('_', ' ')\n                        if visitor not in results and len(results) < max_results:\n                            results.append(visitor)\n                \n                # 模式2: target_entity -> Host_a_visit -> X (目标实体接待谁)\n                if relation == 'Host_a_visit' or 'Host_a_visit' in relations:\n                    mask2 = (\n                        (filtered_df['head'] == target_entity) & \n                        (filtered_df['relation'] == 'Host_a_visit')\n                    )\n                    \n                    if mask2.any():\n                        matched_df = filtered_df[mask2]\n                        for _, row in matched_df.iterrows():\n                            visitor = row['tail'].replace('_', ' ')\n                            if visitor not in results and len(results) < max_results:\n                                results.append(visitor)\n        \n        # 如果是Iran相关的praise查询，直接查找所有praise记录\n        if entities and any('iran' in entity.lower() for entity in entities):\n            if 'Praise_or_endorse' in relations:\n                praise_mask = (\n                    (filtered_df['tail'] == 'Iran') & \n                    (filtered_df['relation'] == 'Praise_or_endorse')\n                )\n                \n                if praise_mask.any():\n                    matched_df = filtered_df[praise_mask]\n                    for _, row in matched_df.iterrows():\n                        praiser = row['head'].replace('_', ' ')\n                        if praiser not in results and len(results) < max_results:\n                            results.append(praiser)\n        \n        return results[:max_results]\n        \n    except Exception as e:\n        return [f\"查询错误: {str(e)}\"]",
+    "predicted_answer": [],
+    "evaluation": {
+      "precision": 0,
+      "recall": 0.0,
+      "f1": 0,
+      "exact_match": false,
+      "intersection_count": 0
+    },
+    "process_time": 7.542222738265991
+  },
+  {
+    "quid": 2000021,
+    "question": "Who was the first country to express optimism about Barack Obama after Ireland?",
+    "ground_truth": [
+      "Angela Merkel"
+    ],
+    "analysis": {
+      "question_type": "relation_query",
+      "key_entities": [
+        "Ireland",
+        "Barack Obama"
+      ],
+      "target_relations": [
+        "express optimism about"
+      ],
+      "time_constraints": "after Ireland",
+      "answer_type": "entity",
+      "query_strategy": "首先找到Ireland对Barack Obama表达乐观的时间点，然后查询在该时间点之后第一个对Barack Obama表达乐观的国家。"
+    },
+    "generated_code": "def query_kg(df):\n    import pandas as pd\n    \n    try:\n        results = []\n        entities = ['Ireland', 'Barack Obama']\n        relations = ['express optimism about']\n        time_constraint = \"after Ireland\"\n        max_results = 5\n        \n        # 确保所有列都是字符串类型\n        for col in ['head', 'relation', 'tail', 'timestamp']:\n            if col in df.columns:\n                df[col] = df[col].astype(str)\n        \n        # 时间过滤\n        filtered_df = df.copy()\n        if time_constraint:\n            # 处理 \"July, 2007\" 或 \"july\" + \"2007\" 格式\n            if (\"july\" in time_constraint.lower() or \"July\" in time_constraint) and \"2007\" in time_constraint:\n                filtered_df = filtered_df[filtered_df['timestamp'].str.startswith('2007-07')]\n            elif \"2007\" in time_constraint:\n                filtered_df = filtered_df[filtered_df['timestamp'].str.startswith('2007')]\n            elif len(time_constraint) == 4 and time_constraint.isdigit():  # 年份\n                filtered_df = filtered_df[filtered_df['timestamp'].str.startswith(time_constraint)]\n            elif len(time_constraint) == 7:  # 年-月格式\n                filtered_df = filtered_df[filtered_df['timestamp'].str.startswith(time_constraint)]\n        \n        # 查找相关记录\n        if entities:\n            target_entity = entities[0]\n            \n            # 尝试精确匹配实体名称\n            for relation in relations:\n                # 模式1: X -> relation -> target_entity (谁想访问目标实体)\n                mask1 = (\n                    (filtered_df['tail'] == target_entity) & \n                    (filtered_df['relation'] == relation)\n                )\n                \n                if mask1.any():\n                    matched_df = filtered_df[mask1]\n                    for _, row in matched_df.iterrows():\n                        visitor = row['head'].replace('_', ' ')\n                        if visitor not in results and len(results) < max_results:\n                            results.append(visitor)\n                \n                # 模式2: target_entity -> Host_a_visit -> X (目标实体接待谁)\n                if relation == 'Host_a_visit' or 'Host_a_visit' in relations:\n                    mask2 = (\n                        (filtered_df['head'] == target_entity) & \n                        (filtered_df['relation'] == 'Host_a_visit')\n                    )\n                    \n                    if mask2.any():\n                        matched_df = filtered_df[mask2]\n                        for _, row in matched_df.iterrows():\n                            visitor = row['tail'].replace('_', ' ')\n                            if visitor not in results and len(results) < max_results:\n                                results.append(visitor)\n        \n        # 如果是Iran相关的praise查询，直接查找所有praise记录\n        if entities and any('iran' in entity.lower() for entity in entities):\n            if 'Praise_or_endorse' in relations:\n                praise_mask = (\n                    (filtered_df['tail'] == 'Iran') & \n                    (filtered_df['relation'] == 'Praise_or_endorse')\n                )\n                \n                if praise_mask.any():\n                    matched_df = filtered_df[praise_mask]\n                    for _, row in matched_df.iterrows():\n                        praiser = row['head'].replace('_', ' ')\n                        if praiser not in results and len(results) < max_results:\n                            results.append(praiser)\n        \n        return results[:max_results]\n        \n    except Exception as e:\n        return [f\"查询错误: {str(e)}\"]",
+    "predicted_answer": [],
+    "evaluation": {
+      "precision": 0,
+      "recall": 0.0,
+      "f1": 0,
+      "exact_match": false,
+      "intersection_count": 0
+    },
+    "process_time": 7.9245829582214355
+  },
+  {
+    "quid": 2000022,
+    "question": "Which was the first country to praise Colombia after Cristina Fernández de Kirchner?",
+    "ground_truth": [
+      "Barack Obama"
+    ],
+    "analysis": {
+      "question_type": "relation_query",
+      "key_entities": [
+        "Colombia",
+        "Cristina Fernández de Kirchner"
+      ],
+      "target_relations": [
+        "praise"
+      ],
+      "time_constraints": "after Cristina Fernández de Kirchner",
+      "answer_type": "entity",
+      "query_strategy": "Find the first country that praised Colombia after the time period associated with Cristina Fernández de Kirchner's tenure or relevant event."
+    },
+    "generated_code": "def query_kg(df):\n    import pandas as pd\n    \n    try:\n        results = []\n        entities = ['Colombia', 'Cristina Fernández de Kirchner']\n        relations = ['praise']\n        time_constraint = \"after Cristina Fernández de Kirchner\"\n        max_results = 5\n        \n        # 确保所有列都是字符串类型\n        for col in ['head', 'relation', 'tail', 'timestamp']:\n            if col in df.columns:\n                df[col] = df[col].astype(str)\n        \n        # 时间过滤\n        filtered_df = df.copy()\n        if time_constraint:\n            # 处理 \"July, 2007\" 或 \"july\" + \"2007\" 格式\n            if (\"july\" in time_constraint.lower() or \"July\" in time_constraint) and \"2007\" in time_constraint:\n                filtered_df = filtered_df[filtered_df['timestamp'].str.startswith('2007-07')]\n            elif \"2007\" in time_constraint:\n                filtered_df = filtered_df[filtered_df['timestamp'].str.startswith('2007')]\n            elif len(time_constraint) == 4 and time_constraint.isdigit():  # 年份\n                filtered_df = filtered_df[filtered_df['timestamp'].str.startswith(time_constraint)]\n            elif len(time_constraint) == 7:  # 年-月格式\n                filtered_df = filtered_df[filtered_df['timestamp'].str.startswith(time_constraint)]\n        \n        # 查找相关记录\n        if entities:\n            target_entity = entities[0]\n            \n            # 尝试精确匹配实体名称\n            for relation in relations:\n                # 模式1: X -> relation -> target_entity (谁想访问目标实体)\n                mask1 = (\n                    (filtered_df['tail'] == target_entity) & \n                    (filtered_df['relation'] == relation)\n                )\n                \n                if mask1.any():\n                    matched_df = filtered_df[mask1]\n                    for _, row in matched_df.iterrows():\n                        visitor = row['head'].replace('_', ' ')\n                        if visitor not in results and len(results) < max_results:\n                            results.append(visitor)\n                \n                # 模式2: target_entity -> Host_a_visit -> X (目标实体接待谁)\n                if relation == 'Host_a_visit' or 'Host_a_visit' in relations:\n                    mask2 = (\n                        (filtered_df['head'] == target_entity) & \n                        (filtered_df['relation'] == 'Host_a_visit')\n                    )\n                    \n                    if mask2.any():\n                        matched_df = filtered_df[mask2]\n                        for _, row in matched_df.iterrows():\n                            visitor = row['tail'].replace('_', ' ')\n                            if visitor not in results and len(results) < max_results:\n                                results.append(visitor)\n        \n        # 如果是Iran相关的praise查询，直接查找所有praise记录\n        if entities and any('iran' in entity.lower() for entity in entities):\n            if 'Praise_or_endorse' in relations:\n                praise_mask = (\n                    (filtered_df['tail'] == 'Iran') & \n                    (filtered_df['relation'] == 'Praise_or_endorse')\n                )\n                \n                if praise_mask.any():\n                    matched_df = filtered_df[praise_mask]\n                    for _, row in matched_df.iterrows():\n                        praiser = row['head'].replace('_', ' ')\n                        if praiser not in results and len(results) < max_results:\n                            results.append(praiser)\n        \n        return results[:max_results]\n        \n    except Exception as e:\n        return [f\"查询错误: {str(e)}\"]",
+    "predicted_answer": [],
+    "evaluation": {
+      "precision": 0,
+      "recall": 0.0,
+      "f1": 0,
+      "exact_match": false,
+      "intersection_count": 0
+    },
+    "process_time": 7.859802007675171
+  },
+  {
+    "quid": 2000023,
+    "question": "Which country hosted the visit of Frank Bainimarama after Vanuatu?",
+    "ground_truth": [
+      "China"
+    ],
+    "analysis": {
+      "question_type": "relation_query",
+      "key_entities": [
+        "Frank Bainimarama",
+        "Vanuatu"
+      ],
+      "target_relations": [
+        "hosted the visit"
+      ],
+      "time_constraints": "after",
+      "answer_type": "entity",
+      "query_strategy": "首先确定Frank Bainimarama在访问Vanuatu之后访问的国家，需要查询时序知识图谱中Frank Bainimarama的访问记录，并按时间顺序筛选出在Vanuatu之后的访问记录，然后提取访问的国家信息。"
+    },
+    "generated_code": "def query_kg(df):\n    import pandas as pd\n    \n    try:\n        results = []\n        entities = ['Frank Bainimarama', 'Vanuatu']\n        relations = ['hosted the visit']\n        time_constraint = \"after\"\n        max_results = 5\n        \n        # 确保所有列都是字符串类型\n        for col in ['head', 'relation', 'tail', 'timestamp']:\n            if col in df.columns:\n                df[col] = df[col].astype(str)\n        \n        # 时间过滤\n        filtered_df = df.copy()\n        if time_constraint:\n            # 处理 \"July, 2007\" 或 \"july\" + \"2007\" 格式\n            if (\"july\" in time_constraint.lower() or \"July\" in time_constraint) and \"2007\" in time_constraint:\n                filtered_df = filtered_df[filtered_df['timestamp'].str.startswith('2007-07')]\n            elif \"2007\" in time_constraint:\n                filtered_df = filtered_df[filtered_df['timestamp'].str.startswith('2007')]\n            elif len(time_constraint) == 4 and time_constraint.isdigit():  # 年份\n                filtered_df = filtered_df[filtered_df['timestamp'].str.startswith(time_constraint)]\n            elif len(time_constraint) == 7:  # 年-月格式\n                filtered_df = filtered_df[filtered_df['timestamp'].str.startswith(time_constraint)]\n        \n        # 查找相关记录\n        if entities:\n            target_entity = entities[0]\n            \n            # 尝试精确匹配实体名称\n            for relation in relations:\n                # 模式1: X -> relation -> target_entity (谁想访问目标实体)\n                mask1 = (\n                    (filtered_df['tail'] == target_entity) & \n                    (filtered_df['relation'] == relation)\n                )\n                \n                if mask1.any():\n                    matched_df = filtered_df[mask1]\n                    for _, row in matched_df.iterrows():\n                        visitor = row['head'].replace('_', ' ')\n                        if visitor not in results and len(results) < max_results:\n                            results.append(visitor)\n                \n                # 模式2: target_entity -> Host_a_visit -> X (目标实体接待谁)\n                if relation == 'Host_a_visit' or 'Host_a_visit' in relations:\n                    mask2 = (\n                        (filtered_df['head'] == target_entity) & \n                        (filtered_df['relation'] == 'Host_a_visit')\n                    )\n                    \n                    if mask2.any():\n                        matched_df = filtered_df[mask2]\n                        for _, row in matched_df.iterrows():\n                            visitor = row['tail'].replace('_', ' ')\n                            if visitor not in results and len(results) < max_results:\n                                results.append(visitor)\n        \n        # 如果是Iran相关的praise查询，直接查找所有praise记录\n        if entities and any('iran' in entity.lower() for entity in entities):\n            if 'Praise_or_endorse' in relations:\n                praise_mask = (\n                    (filtered_df['tail'] == 'Iran') & \n                    (filtered_df['relation'] == 'Praise_or_endorse')\n                )\n                \n                if praise_mask.any():\n                    matched_df = filtered_df[praise_mask]\n                    for _, row in matched_df.iterrows():\n                        praiser = row['head'].replace('_', ' ')\n                        if praiser not in results and len(results) < max_results:\n                            results.append(praiser)\n        \n        return results[:max_results]\n        \n    except Exception as e:\n        return [f\"查询错误: {str(e)}\"]",
+    "predicted_answer": [],
+    "evaluation": {
+      "precision": 0,
+      "recall": 0.0,
+      "f1": 0,
+      "exact_match": false,
+      "intersection_count": 0
+    },
+    "process_time": 7.959472417831421
+  }
+]

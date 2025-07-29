@@ -1,0 +1,441 @@
+[
+    {
+        "quid": 2000000,
+        "question": "Who was the first to request a meeting with Togo in 2005?",
+        "answers": [
+            "Head of Government (Togo)"
+        ],
+        "answer_type": "entity",
+        "time_level": "year",
+        "qtype": "equal_multi",
+        "qlabel": "Multiple",
+        "time": [
+            "2005"
+        ],
+        "entities": [
+            "Togo"
+        ],
+        "entity_positions": [
+            {
+                "entity": [
+                    "Togo"
+                ],
+                "position": [
+                    44,
+                    48
+                ]
+            }
+        ]
+    },
+    {
+        "quid": 2000001,
+        "question": "In which month did the head of Turkmenistan last praise Iran?",
+        "answers": [
+            "2014-11"
+        ],
+        "answer_type": "time",
+        "time_level": "month",
+        "qtype": "first_last",
+        "qlabel": "Single",
+        "time": [],
+        "entities": [
+            "Police (Turkmenistan)",
+            "Iran"
+        ],
+        "entity_positions": [
+            {
+                "entity": [
+                    "Police (Turkmenistan)"
+                ],
+                "position": [
+                    31,
+                    43
+                ]
+            },
+            {
+                "entity": [
+                    "Iran"
+                ],
+                "position": [
+                    56,
+                    60
+                ]
+            }
+        ]
+    },
+    {
+        "quid": 2000002,
+        "question": "Who visited Japan on 27 February 2007?",
+        "answers": [
+            "Mikhail Yefimovich Fradkov",
+            "Sergey Vladilenovich Kiriyenko"
+        ],
+        "answer_type": "entity",
+        "time_level": "day",
+        "qtype": "equal",
+        "qlabel": "Single",
+        "time": [
+            "2007-02-27"
+        ],
+        "entities": [
+            "Japan"
+        ],
+        "entity_positions": [
+            {
+                "entity": [
+                    "Japan"
+                ],
+                "position": [
+                    12,
+                    17
+                ]
+            }
+        ]
+    },
+    {
+        "quid": 2000003,
+        "question": "Who denounced Bolivia after 2 May 2015?",
+        "answers": [
+            "Evo Morales",
+            "Heraldo Muñoz"
+        ],
+        "answer_type": "entity",
+        "time_level": "day",
+        "qtype": "before_after",
+        "qlabel": "Single",
+        "time": [
+            "2015-05-02"
+        ],
+        "entities": [
+            "Bolivia"
+        ],
+        "entity_positions": [
+            {
+                "entity": [
+                    "Bolivia"
+                ],
+                "position": [
+                    14,
+                    21
+                ]
+            }
+        ]
+    },
+    {
+        "quid": 2000004,
+        "question": "Which country praised Togo on 12 November 2009?",
+        "answers": [
+            "China"
+        ],
+        "answer_type": "entity",
+        "time_level": "day",
+        "qtype": "equal",
+        "qlabel": "Single",
+        "time": [
+            "2009-11-12"
+        ],
+        "entities": [
+            "Togo"
+        ],
+        "entity_positions": [
+            {
+                "entity": [
+                    "Togo"
+                ],
+                "position": [
+                    22,
+                    26
+                ]
+            }
+        ]
+    },
+    {
+        "quid": 2000005,
+        "question": "Which country last praised Iran in 2009?",
+        "answers": [
+            "Vietnam"
+        ],
+        "answer_type": "entity",
+        "time_level": "year",
+        "qtype": "equal_multi",
+        "qlabel": "Multiple",
+        "time": [
+            "2009"
+        ],
+        "entities": [
+            "Iran"
+        ],
+        "entity_positions": [
+            {
+                "entity": [
+                    "Iran"
+                ],
+                "position": [
+                    27,
+                    31
+                ]
+            }
+        ]
+    },
+    {
+        "quid": 2000006,
+        "question": "Before the Middle East, with whom did Mauritania express an interest in cooperation?",
+        "answers": [
+            "Yemen",
+            "Kuwait",
+            "Niger",
+            "France",
+            "Japan"
+        ],
+        "answer_type": "entity",
+        "time_level": "day",
+        "qtype": "before_after",
+        "qlabel": "Single",
+        "time": [],
+        "entities": [
+            "Middle East",
+            "Mauritania"
+        ],
+        "entity_positions": [
+            {
+                "entity": [
+                    "Middle East"
+                ],
+                "position": [
+                    11,
+                    22
+                ]
+            },
+            {
+                "entity": [
+                    "Mauritania"
+                ],
+                "position": [
+                    38,
+                    48
+                ]
+            }
+        ]
+    },
+    {
+        "quid": 2000007,
+        "question": "After Mahmoud Abbas, with whom did France want to engage in diplomatic cooperation?",
+        "answers": [
+            "Ministry (Iran)",
+            "Iran",
+            "South Korea"
+        ],
+        "answer_type": "entity",
+        "time_level": "day",
+        "qtype": "before_after",
+        "qlabel": "Single",
+        "time": [],
+        "entities": [
+            "Mahmoud Abbas",
+            "France"
+        ],
+        "entity_positions": [
+            {
+                "entity": [
+                    "Mahmoud Abbas"
+                ],
+                "position": [
+                    6,
+                    19
+                ]
+            },
+            {
+                "entity": [
+                    "France"
+                ],
+                "position": [
+                    35,
+                    41
+                ]
+            }
+        ]
+    },
+    {
+        "quid": 2000008,
+        "question": "Which country did Bolivia ask about before September 2009?",
+        "answers": [
+            "Colombia",
+            "Military (Bolivia)",
+            "Evo Morales",
+            "Envoy (United States)",
+            "Andean Community",
+            "Mexico"
+        ],
+        "answer_type": "entity",
+        "time_level": "month",
+        "qtype": "before_after",
+        "qlabel": "Single",
+        "time": [
+            "2009-09"
+        ],
+        "entities": [
+            "Bolivia"
+        ],
+        "entity_positions": [
+            {
+                "entity": [
+                    "Bolivia"
+                ],
+                "position": [
+                    18,
+                    25
+                ]
+            }
+        ]
+    },
+    {
+        "quid": 2000009,
+        "question": "Who was the first country to sign formal agreements with Iran in 2007?",
+        "answers": [
+            "UN Security Council"
+        ],
+        "answer_type": "entity",
+        "time_level": "year",
+        "qtype": "equal_multi",
+        "qlabel": "Multiple",
+        "time": [
+            "2007"
+        ],
+        "entities": [
+            "Iran"
+        ],
+        "entity_positions": [
+            {
+                "entity": [
+                    "Iran"
+                ],
+                "position": [
+                    57,
+                    61
+                ]
+            }
+        ]
+    },
+    {
+        "quid": 2000010,
+        "question": "Who did Bhutan negotiate with after June 2014?",
+        "answers": [
+            "China",
+            "Maldives"
+        ],
+        "answer_type": "entity",
+        "time_level": "month",
+        "qtype": "before_after",
+        "qlabel": "Single",
+        "time": [
+            "2014-06"
+        ],
+        "entities": [
+            "Bhutan"
+        ],
+        "entity_positions": [
+            {
+                "entity": [
+                    "Bhutan"
+                ],
+                "position": [
+                    8,
+                    14
+                ]
+            }
+        ]
+    },
+    {
+        "quid": 2000011,
+        "question": "Who wanted to negotiate with Qatar on 2 December 2007?",
+        "answers": [
+            "Mahmoud Ahmadinejad"
+        ],
+        "answer_type": "entity",
+        "time_level": "day",
+        "qtype": "equal",
+        "qlabel": "Single",
+        "time": [
+            "2007-12-02"
+        ],
+        "entities": [
+            "Qatar"
+        ],
+        "entity_positions": [
+            {
+                "entity": [
+                    "Qatar"
+                ],
+                "position": [
+                    29,
+                    34
+                ]
+            }
+        ]
+    },
+    {
+        "quid": 2000012,
+        "question": "On 19 October 2012, which country made a request to Japan?",
+        "answers": [
+            "South Korea"
+        ],
+        "answer_type": "entity",
+        "time_level": "day",
+        "qtype": "equal",
+        "qlabel": "Single",
+        "time": [
+            "2012-10-19"
+        ],
+        "entities": [
+            "Japan"
+        ],
+        "entity_positions": [
+            {
+                "entity": [
+                    "Japan"
+                ],
+                "position": [
+                    52,
+                    57
+                ]
+            }
+        ]
+    },
+    {
+        "quid": 2000013,
+        "question": "After the International Monetary Fund, with which country did Japan first express its intention to negotiate?",
+        "answers": [
+            "Cambodia"
+        ],
+        "answer_type": "entity",
+        "time_level": "day",
+        "qtype": "after_first",
+        "qlabel": "Multiple",
+        "time": [],
+        "entities": [
+            "International Monetary Fund",
+            "Japan"
+        ],
+        "entity_positions": [
+            {
+                "entity": [
+                    "International Monetary Fund"
+                ],
+                "position": [
+                    10,
+                    37
+                ]
+            },
+            {
+                "entity": [
+                    "Japan"
+                ],
+                "position": [
+                    62,
+                    67
+                ]
+            }
+        ]
+    }
+   
+]

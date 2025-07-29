@@ -1,0 +1,172 @@
+[
+  {
+    "quid": 2000014,
+    "question": "Who would wish to visit Ireland in July, the year of 2007?",
+    "ground_truth": [
+      "Bertie Ahern"
+    ],
+    "analysis": {
+      "question_type": "entity_query",
+      "time_constraints": "July 2007",
+      "key_entities": [
+        "Ireland"
+      ],
+      "target_relations": [
+        "Make_a_visit",
+        "Host_a_visit"
+      ],
+      "answer_type": "entity",
+      "query_strategy": "首先，识别问题中的时间约束为2007年7月。然后，查找在2007年7月期间与'Ireland'相关的实体，这些实体通过'Make_a_visit'或'Host_a_visit'关系与'Ireland'相连。最终返回这些实体作为答案。"
+    },
+    "generated_code": "def query_kg(df):\n    try:\n        results = []\n        # 过滤数据\n        filtered_df = df[\n            (df['head'] == 'Ireland') & \n            (df['relation'].isin(['Make_a_visit', 'Host_a_visit'])) &\n            (df['year'] == 2007) &\n            (df['month'] == 7)\n        ]\n        # 处理结果\n        for _, row in filtered_df.iterrows():\n            if not pd.isna(row['tail']):\n                results.append(str(row['tail']))\n        return list(set(results))  # 去重\n    except Exception as e:\n        return []",
+    "predicted_answers": [],
+    "evaluation": {
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "predicted_count": 0,
+      "ground_truth_count": 1,
+      "intersection_count": 0
+    }
+  },
+  {
+    "quid": 2000015,
+    "question": "In which year did Viktor Orban visit Iran for the first time?",
+    "ground_truth": [
+      "2015"
+    ],
+    "analysis": {
+      "question_type": "first_event",
+      "time_constraints": "时间范围在2005-01-01到2015-12-31之间",
+      "key_entities": [
+        "Viktor_Orban",
+        "Iran"
+      ],
+      "target_relations": [
+        "Make_a_visit",
+        "Host_a_visit"
+      ],
+      "answer_type": "time",
+      "query_strategy": "首先在给定的时间范围内查找Viktor_Orban和Iran之间发生的所有访问事件（Make_a_visit或Host_a_visit关系），然后筛选出时间最早的事件，返回该事件发生的年份。"
+    },
+    "generated_code": "def query_kg(df):\n    try:\n        results = []\n        # 过滤数据：时间范围在2005-2015之间，且关系是访问事件\n        filtered_df = df[\n            ((df['relation'] == 'Make_a_visit') | (df['relation'] == 'Host_a_visit')) &\n            (df['head'] == 'Viktor_Orban') & \n            (df['tail'] == 'Iran') &\n            (df['year'] >= 2005) & \n            (df['year'] <= 2015)\n        ]\n        if not filtered_df.empty:\n            # 按日期排序，找到最早的访问事件\n            filtered_df['date_str'] = filtered_df.apply(\n                lambda row: f\"{row['year']}-{row['month']:02d}-{row['day']:02d}\" \n                if not pd.isna(row['day']) else f\"{row['year']}-{row['month']:02d}\",\n                axis=1\n            )\n            earliest_visit = filtered_df.sort_values('date_str').iloc[0]\n            results.append(str(earliest_visit['year']))\n        return results\n    except Exception as e:\n        return []",
+    "predicted_answers": [],
+    "evaluation": {
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "predicted_count": 0,
+      "ground_truth_count": 1,
+      "intersection_count": 0
+    }
+  },
+  {
+    "quid": 2000016,
+    "question": "Who made optimistic remarks about Iran after the Organisation for Economic Cooperation and Development?",
+    "ground_truth": [
+      "South Korea",
+      "Party Member (Iraq)",
+      "France",
+      "China",
+      "Iraq",
+      "Member of Legislative (Govt) (Iran)",
+      "Japan",
+      "Head of Government (Ukraine)",
+      "Thailand",
+      "Kazakhstan"
+    ],
+    "analysis": {
+      "question_type": "entity_query",
+      "time_constraints": "after the Organisation for Economic Cooperation and Development (OECD) event, within the time range of 2005-01-01 to 2015-12-31",
+      "key_entities": [
+        "Organisation_for_Economic_Cooperation_and_Development",
+        "Iran"
+      ],
+      "target_relations": [
+        "Make_statement",
+        "Praise_or_endorse",
+        "Make_optimistic_comment"
+      ],
+      "answer_type": "entity",
+      "query_strategy": "1. First, identify the time when the Organisation for Economic Cooperation and Development (OECD) made any statement or took any action related to Iran. 2. Then, search for events after that time where an entity made optimistic remarks about Iran, using the relations 'Make_statement', 'Praise_or_endorse', or 'Make_optimistic_comment'. 3. Return the entity (head) that made the optimistic remarks."
+    },
+    "generated_code": "def query_kg(df):\n    try:\n        results = []\n        # Step 1: Find OECD events related to Iran\n        oecd_events = df[\n            (df['head'] == 'Organisation_for_Economic_Cooperation_and_Development') &\n            (df['tail'] == 'Iran') &\n            (df['relation'].isin(['Make_statement', 'Praise_or_endorse', 'Make_optimistic_comment'])) &\n            (df['year'] >= 2005) & (df['year'] <= 2015)\n        ]\n        if not oecd_events.empty:\n            # Get the latest OECD event date\n            latest_oecd_date = oecd_events.sort_values('year', ascending=False).iloc[0]\n            oecd_year = latest_oecd_date['year']\n            oecd_month = latest_oecd_date['month']\n            oecd_date = f\"{oecd_year}-{oecd_month:02d}\"\n            # Step 2: Find optimistic remarks about Iran after OECD event\n            optimistic_remarks = df[\n                (df['tail'] == 'Iran') &\n                (df['relation'].isin(['Make_statement', 'Praise_or_endorse', 'Make_optimistic_comment'])) &\n                (\n                    (df['year'] > oecd_year) |\n                    ((df['year'] == oecd_year) & (df['month'] > oecd_month))\n                ) &\n                (df['year'] >= 2005) & (df['year'] <= 2015)\n            ]\n            # Step 3: Get entities that made the remarks\n            for _, row in optimistic_remarks.iterrows():\n                if not pd.isna(row['head']):\n                    results.append(str(row['head']))\n        return list(set(results))\n    except Exception as e:\n        return []",
+    "predicted_answers": [],
+    "evaluation": {
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "predicted_count": 0,
+      "ground_truth_count": 10,
+      "intersection_count": 0
+    }
+  },
+  {
+    "quid": 2000017,
+    "question": "Who made optimistic remarks about Yasuo Fukuda after Japan?",
+    "ground_truth": [
+      "Government Official (Japan)",
+      "China"
+    ],
+    "analysis": {
+      "question_type": "entity_query",
+      "time_constraints": "时间范围在2005-01-01到2015-12-31之间，且需要发生在'Japan'相关事件之后",
+      "key_entities": [
+        "Yasuo_Fukuda",
+        "Japan"
+      ],
+      "target_relations": [
+        "Praise_or_endorse",
+        "Make_statement",
+        "Make_optimistic_comment"
+      ],
+      "answer_type": "entity",
+      "query_strategy": "1. 首先确定'Japan'与'Yasuo_Fukuda'相关的事件时间点。2. 在知识图谱中查找在该时间点之后，与'Yasuo_Fukuda'相关的包含'Praise_or_endorse'、'Make_statement'或'Make_optimistic_comment'关系的事件。3. 提取这些事件中的主体(head)作为答案。"
+    },
+    "generated_code": "def query_kg(df):\n    try:\n        results = []\n        # Step 1: Find Japan-related events involving Yasuo_Fukuda\n        japan_events = df[\n            (df['head'] == 'Japan') & \n            (df['tail'] == 'Yasuo_Fukuda') & \n            (df['year'] >= 2005) & \n            (df['year'] <= 2015)\n        ]\n        if japan_events.empty:\n            return []\n        # Get the latest Japan event date\n        latest_japan_event = japan_events.sort_values(\n            by=['year', 'month', 'day'], \n            ascending=False\n        ).iloc[0]\n        event_date = f\"{latest_japan_event['year']}-{latest_japan_event['month']:02d}\"\n        # Step 2: Find optimistic remarks after Japan event\n        remarks = df[\n            (df['tail'] == 'Yasuo_Fukuda') & \n            (df['relation'].isin(['Praise_or_endorse', 'Make_statement', 'Make_optimistic_comment'])) & \n            (\n                (df['year'] > latest_japan_event['year']) | \n                ((df['year'] == latest_japan_event['year']) & (df['month'] > latest_japan_event['month'])) |\n                ((df['year'] == latest_japan_event['year']) & (df['month'] == latest_japan_event['month']) & (df['day'] > latest_japan_event['day']))\n            ) & \n            (df['year'] >= 2005) & \n            (df['year'] <= 2015)\n        ]\n        # Step 3: Extract heads\n        for _, row in remarks.iterrows():\n            if not pd.isna(row['head']):\n                results.append(str(row['head']))\n        return list(set(results))\n    except Exception as e:\n        return []",
+    "predicted_answers": [],
+    "evaluation": {
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "predicted_count": 0,
+      "ground_truth_count": 2,
+      "intersection_count": 0
+    }
+  },
+  {
+    "quid": 2000018,
+    "question": "In which month did Xi Jinping praise the Bahamas?",
+    "ground_truth": [
+      "2015-01"
+    ],
+    "analysis": {
+      "question_type": "time_query",
+      "time_constraints": "时间范围为2005-01-01到2015-12-31，问题未指定具体年份，需在全部时间范围内搜索",
+      "key_entities": [
+        "Xi_Jinping",
+        "Bahamas"
+      ],
+      "target_relations": [
+        "Praise_or_endorse"
+      ],
+      "answer_type": "time",
+      "query_strategy": "1. 首先在知识图谱中查找所有涉及'Xi_Jinping'作为head实体、'Bahamas'作为tail实体、关系为'Praise_or_endorse'的三元组。2. 从匹配的三元组中提取时间信息。3. 如果没有明确的时间信息，则查找相关事件的时间属性。4. 返回具体的时间（月份）。"
+    },
+    "generated_code": "def query_kg(df):\n    try:\n        results = []\n        # 过滤数据\n        filtered_df = df[\n            (df['head'] == 'Xi_Jinping') & \n            (df['tail'] == 'Bahamas') & \n            (df['relation'] == 'Praise_or_endorse')\n        ]\n        # 处理结果\n        for _, row in filtered_df.iterrows():\n            if 'month' in row and not pd.isna(row['month']):\n                if 'year' in row and not pd.isna(row['year']):\n                    results.append(f\"{row['year']}-{row['month']:02d}\")\n                elif 'date_str' in row and not pd.isna(row['date_str']):\n                    results.append(row['date_str'])\n                elif 'timestamp' in row and not pd.isna(row['timestamp']):\n                    results.append(row['timestamp'].strftime('%Y-%m-%d'))\n        return list(set(results))  # 去重\n    except Exception as e:\n        return []",
+    "predicted_answers": [],
+    "evaluation": {
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "predicted_count": 0,
+      "ground_truth_count": 1,
+      "intersection_count": 0
+    }
+  }
+]

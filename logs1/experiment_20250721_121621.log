@@ -1,0 +1,123 @@
+2025-07-21 12:16:21,501 - INFO - 日志系统初始化完成，日志文件: /mnt/nvme0n1/tyj/TKGQA/MY/logs/experiment_20250721_121621.log
+2025-07-21 12:16:21,533 - INFO - TemporalKGQASystem 初始化完成
+2025-07-21 12:16:21,534 - INFO - 加载知识图谱: MY/data/output/full_df.txt
+2025-07-21 12:16:21,910 - INFO - 数据形状: (461329, 4)
+2025-07-21 12:16:21,910 - INFO - 列名: ['head', 'relation', 'tail', 'timestamp']
+2025-07-21 12:16:21,948 - INFO - 知识图谱加载完成，共 461329 条记录
+2025-07-21 12:16:21,948 - INFO - 时间范围: 2005-01-01 00:00:00 到 2015-12-31 00:00:00
+2025-07-21 12:16:21,948 - INFO - 加载问题数据: MY/data/multitq/questions/question_6.json
+2025-07-21 12:16:21,948 - INFO - 问题数据加载完成，共 6 个问题
+2025-07-21 12:16:21,948 - INFO - 
+==================================================
+2025-07-21 12:16:21,948 - INFO - 处理问题 2056020: When did Walker San Miguel first express interest in working with Bolivia?
+2025-07-21 12:16:21,948 - INFO - 预期答案: ['2007-07-24']
+2025-07-21 12:16:21,948 - INFO - 问题类型: first_last
+2025-07-21 12:16:21,948 - INFO - 答案类型: time
+2025-07-21 12:16:21,949 - INFO - 代码生成成功
+2025-07-21 12:16:21,949 - INFO - 生成的代码长度: 2954 字符
+2025-07-21 12:16:28,086 - INFO - 原始查询结果类型: <class 'list'>
+2025-07-21 12:16:28,086 - INFO - 原始查询结果: ['2007-07-24']
+2025-07-21 12:16:28,086 - INFO - 查询返回 1 个结果: ['2007-07-24']
+2025-07-21 12:16:28,087 - INFO - 预测答案: ['2007-07-24']
+2025-07-21 12:16:28,087 - INFO - F1: 1.000, 精确率: 1.000, 召回率: 1.000
+2025-07-21 12:16:28,087 - INFO - 
+==================================================
+2025-07-21 12:16:28,087 - INFO - 处理问题 2027657: Who wanted to cooperate with Japan on 23 August 2006?
+2025-07-21 12:16:28,087 - INFO - 预期答案: ['Association of Southeast Asian Nations']
+2025-07-21 12:16:28,087 - INFO - 问题类型: equal
+2025-07-21 12:16:28,087 - INFO - 答案类型: entity
+2025-07-21 12:16:28,088 - INFO - 代码生成成功
+2025-07-21 12:16:28,088 - INFO - 生成的代码长度: 1623 字符
+2025-07-21 12:16:29,497 - INFO - 原始查询结果类型: <class 'list'>
+2025-07-21 12:16:29,497 - INFO - 原始查询结果: ['Association of Southeast Asian Nations']
+2025-07-21 12:16:29,497 - INFO - 查询返回 1 个结果: ['Association of Southeast Asian Nations']
+2025-07-21 12:16:29,498 - INFO - 预测答案: ['Association of Southeast Asian Nations']
+2025-07-21 12:16:29,498 - INFO - F1: 1.000, 精确率: 1.000, 召回率: 1.000
+2025-07-21 12:16:29,498 - INFO - 
+==================================================
+2025-07-21 12:16:29,498 - INFO - 处理问题 2007873: Before 11 December 2009, who used conventional military force against France?
+2025-07-21 12:16:29,498 - INFO - 预期答案: ['Separatist (France)', 'Comoros', 'Royal Air Force', 'Bolivia', 'Colombia', 'Christian (France)', 'Member of Parliament (France)', 'Military (Russia)']
+2025-07-21 12:16:29,498 - INFO - 问题类型: before_after
+2025-07-21 12:16:29,498 - INFO - 答案类型: entity
+2025-07-21 12:16:29,499 - INFO - 代码生成成功
+2025-07-21 12:16:29,499 - INFO - 生成的代码长度: 1695 字符
+2025-07-21 12:16:30,175 - INFO - 原始查询结果类型: <class 'list'>
+2025-07-21 12:16:30,176 - INFO - 原始查询结果: ['Bolivia', 'Military Personnel - Special (France)', 'Colombia', 'France', 'Military (Russia)']
+2025-07-21 12:16:30,176 - INFO - 查询返回 5 个结果: ['Bolivia', 'Military Personnel - Special (France)', 'Colombia', 'France', 'Military (Russia)']
+2025-07-21 12:16:30,176 - INFO - 预测答案: ['Bolivia', 'Military Personnel - Special (France)', 'Colombia', 'France', 'Military (Russia)']
+2025-07-21 12:16:30,176 - INFO - F1: 0.462, 精确率: 0.600, 召回率: 0.375
+2025-07-21 12:16:30,176 - INFO - 
+==================================================
+2025-07-21 12:16:30,176 - INFO - 处理问题 2044815: Which country was the first to ask for France after the Algerian extremist?
+2025-07-21 12:16:30,176 - INFO - 预期答案: ['Iran']
+2025-07-21 12:16:30,176 - INFO - 问题类型: after_first
+2025-07-21 12:16:30,176 - INFO - 答案类型: entity
+2025-07-21 12:16:30,177 - INFO - 代码生成成功
+2025-07-21 12:16:30,177 - INFO - 生成的代码长度: 3438 字符
+2025-07-21 12:16:30,178 - INFO - After_First查询 - 实体: ['France', 'Anguel Marin']
+2025-07-21 12:16:30,178 - INFO - After_First查询 - 时间约束: []
+2025-07-21 12:16:30,178 - INFO - After_First查询 - 参考实体: None
+2025-07-21 12:16:30,178 - INFO - After_First查询 - 关系: ['Make_an_appeal_or_request', 'Appeal_to']
+2025-07-21 12:16:30,178 - INFO - 数据集大小: 461329
+2025-07-21 12:16:30,178 - WARNING - 未找到时间约束，无法执行after_first查询
+2025-07-21 12:16:30,178 - INFO - 原始查询结果类型: <class 'list'>
+2025-07-21 12:16:30,178 - INFO - 原始查询结果: []
+2025-07-21 12:16:30,178 - INFO - 查询返回 0 个结果: []
+2025-07-21 12:16:30,178 - INFO - 预测答案: []
+2025-07-21 12:16:30,178 - INFO - F1: 0.000, 精确率: 0.000, 召回率: 0.000
+2025-07-21 12:16:30,178 - INFO - 
+==================================================
+2025-07-21 12:16:30,178 - INFO - 处理问题 2016117: Before the Brazilian Ministry of Agriculture, Fishing and Forestry, which country was the last to condemn France?
+2025-07-21 12:16:30,178 - INFO - 预期答案: ['Mexico']
+2025-07-21 12:16:30,179 - INFO - 问题类型: before_last
+2025-07-21 12:16:30,179 - INFO - 答案类型: entity
+2025-07-21 12:16:30,179 - INFO - 代码生成成功
+2025-07-21 12:16:30,179 - INFO - 生成的代码长度: 3583 字符
+2025-07-21 12:16:30,180 - INFO - Before_Last查询 - 实体: ['Swaziland', 'Agriculture / Fishing / Forestry Ministry (Laos)', 'France']
+2025-07-21 12:16:30,180 - INFO - Before_Last查询 - 关系: ['Criticize_or_denounce']
+2025-07-21 12:16:30,180 - INFO - 数据集大小: 461329
+2025-07-21 12:16:30,180 - INFO - 目标实体: France, 参考实体: Agriculture / Fishing / Forestry Ministry (Laos)
+2025-07-21 12:16:32,028 - WARNING - 未找到参考实体 'Agriculture / Fishing / Forestry Ministry (Laos)' 对 'France' 的记录
+2025-07-21 12:16:32,029 - INFO - 原始查询结果类型: <class 'list'>
+2025-07-21 12:16:32,029 - INFO - 原始查询结果: []
+2025-07-21 12:16:32,029 - INFO - 查询返回 0 个结果: []
+2025-07-21 12:16:32,029 - INFO - 预测答案: []
+2025-07-21 12:16:32,029 - INFO - F1: 0.000, 精确率: 0.000, 召回率: 0.000
+2025-07-21 12:16:32,030 - INFO - 结果已保存到: /mnt/nvme0n1/tyj/TKGQA/MY/intermediate_results_20250721_121632.json
+2025-07-21 12:16:32,030 - INFO - 已保存中间结果 (5/6)
+2025-07-21 12:16:32,030 - INFO - 
+==================================================
+2025-07-21 12:16:32,030 - INFO - 处理问题 2018890: Who received Juan Carlos I's visit from Juan Carlos I on the same month of Qatar?
+2025-07-21 12:16:32,030 - INFO - 预期答案: ['Royal Administration (Spain)', 'Royal Administration (Jordan)', 'Royal Administration (Saudi Arabia)']
+2025-07-21 12:16:32,030 - INFO - 问题类型: equal_multi
+2025-07-21 12:16:32,030 - INFO - 答案类型: entity
+2025-07-21 12:16:32,031 - INFO - 代码生成成功
+2025-07-21 12:16:32,031 - INFO - 生成的代码长度: 3188 字符
+2025-07-21 12:16:32,032 - INFO - Equal_Multi查询 - 实体: ['Juan Carlos I', 'Qatar']
+2025-07-21 12:16:32,032 - INFO - Equal_Multi查询 - 关系: ['Make_a_visit', 'Host_a_visit']
+2025-07-21 12:16:32,032 - INFO - 数据集大小: 461329
+2025-07-21 12:16:32,032 - INFO - 查找 'Juan Carlos I' 访问 'Qatar' 的时间
+2025-07-21 12:16:33,517 - INFO - 找到参考时间: 2006-04-26
+2025-07-21 12:16:33,517 - INFO - 参考月份: 2006-04
+2025-07-21 12:16:33,599 - INFO - 同月记录数: 3880
+2025-07-21 12:16:33,720 - INFO - 同月访问记录: 0 条
+2025-07-21 12:16:33,839 - INFO - 同月访问记录: 0 条
+2025-07-21 12:16:33,958 - INFO - 同月访问记录: 4 条
+2025-07-21 12:16:33,958 - INFO - 找到同月访问: Royal Administration (Saudi Arabia)
+2025-07-21 12:16:33,958 - INFO - 找到同月访问: Royal Administration (Spain)
+2025-07-21 12:16:33,958 - INFO - 找到同月访问: Royal Administration (Jordan)
+2025-07-21 12:16:34,080 - INFO - 同月访问记录: 2 条
+2025-07-21 12:16:34,081 - INFO - 找到同月访问: Saud bin Faisal bin Abdul-Aziz
+2025-07-21 12:16:34,199 - INFO - 同月访问记录: 0 条
+2025-07-21 12:16:34,319 - INFO - 同月访问记录: 0 条
+2025-07-21 12:16:34,319 - INFO - Equal_Multi最终结果: ['Royal Administration (Saudi Arabia)', 'Royal Administration (Spain)', 'Royal Administration (Jordan)', 'Saud bin Faisal bin Abdul-Aziz']
+2025-07-21 12:16:34,319 - INFO - 原始查询结果类型: <class 'list'>
+2025-07-21 12:16:34,319 - INFO - 原始查询结果: ['Royal Administration (Saudi Arabia)', 'Royal Administration (Spain)', 'Royal Administration (Jordan)', 'Saud bin Faisal bin Abdul-Aziz']
+2025-07-21 12:16:34,319 - INFO - 查询返回 4 个结果: ['Royal Administration (Saudi Arabia)', 'Royal Administration (Spain)', 'Royal Administration (Jordan)', 'Saud bin Faisal bin Abdul-Aziz']
+2025-07-21 12:16:34,319 - INFO - 预测答案: ['Royal Administration (Saudi Arabia)', 'Royal Administration (Spain)', 'Royal Administration (Jordan)', 'Saud bin Faisal bin Abdul-Aziz']
+2025-07-21 12:16:34,319 - INFO - F1: 0.857, 精确率: 0.750, 召回率: 1.000
+2025-07-21 12:16:34,320 - INFO - 结果已保存到: /mnt/nvme0n1/tyj/TKGQA/MY/final_results_20250721_121634.json
+2025-07-21 12:16:34,320 - INFO - 实验完成，请查看结果文件获取详细统计信息
+2025-07-21 12:16:34,320 - INFO - ✅ 实验成功完成！
+2025-07-21 12:16:34,320 - INFO - 📊 处理问题数: 6
+2025-07-21 12:16:34,320 - INFO - 📁 结果保存在: /mnt/nvme0n1/tyj/TKGQA/MY/

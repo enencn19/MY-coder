@@ -1,0 +1,167 @@
+[
+  {
+    "quid": 2000014,
+    "question": "Who would wish to visit Ireland in July, the year of 2007?",
+    "ground_truth": [
+      "Bertie Ahern"
+    ],
+    "analysis": {
+      "question_type": "entity_query",
+      "time_constraints": "July 2007",
+      "key_entities": [
+        "Ireland"
+      ],
+      "target_relations": [
+        "Make_a_visit",
+        "Host_a_visit"
+      ],
+      "answer_type": "entity",
+      "query_strategy": "1. 首先确定问题的时间约束为2007年7月。2. 识别关键实体'Ireland'作为访问的目标地点。3. 在知识图谱中查找2007年7月期间与'Ireland'相关的'Make_a_visit'或'Host_a_visit'关系。4. 返回在该时间段内访问爱尔兰的实体列表。"
+    },
+    "generated_code": "",
+    "predicted_answers": [
+      "执行错误: 'TemporalKGQASystem' object has no attribute 'code_generator'"
+    ],
+    "evaluation": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "exact_match": false
+    }
+  },
+  {
+    "quid": 2000015,
+    "question": "In which year did Viktor Orban visit Iran for the first time?",
+    "ground_truth": [
+      "2015"
+    ],
+    "analysis": {
+      "question_type": "first_event",
+      "time_constraints": "时间范围在2005-01-01到2015-12-31之间，可用年份为2005至2015",
+      "key_entities": [
+        "Viktor_Orban",
+        "Iran"
+      ],
+      "target_relations": [
+        "Make_a_visit",
+        "Host_a_visit"
+      ],
+      "answer_type": "time",
+      "query_strategy": "首先在给定的时间范围内（2005-2015）查找Viktor_Orban与Iran之间通过'Make_a_visit'或'Host_a_visit'关系连接的所有事件。然后从这些事件中筛选出时间最早的事件，提取其年份作为答案。"
+    },
+    "generated_code": "",
+    "predicted_answers": [
+      "执行错误: 'TemporalKGQASystem' object has no attribute 'code_generator'"
+    ],
+    "evaluation": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "exact_match": false
+    }
+  },
+  {
+    "quid": 2000016,
+    "question": "Who made optimistic remarks about Iran after the Organisation for Economic Cooperation and Development?",
+    "ground_truth": [
+      "South Korea",
+      "Party Member (Iraq)",
+      "France",
+      "China",
+      "Iraq",
+      "Member of Legislative (Govt) (Iran)",
+      "Japan",
+      "Head of Government (Ukraine)",
+      "Thailand",
+      "Kazakhstan"
+    ],
+    "analysis": {
+      "question_type": "entity_query",
+      "time_constraints": "after the Organisation for Economic Cooperation and Development (OECD) event, within the time range of 2005-01-01 to 2015-12-31",
+      "key_entities": [
+        "Organisation_for_Economic_Cooperation_and_Development",
+        "Iran"
+      ],
+      "target_relations": [
+        "Make_statement",
+        "Praise_or_endorse",
+        "Make_optimistic_comment"
+      ],
+      "answer_type": "entity",
+      "query_strategy": "1. First, identify the time when the Organisation for Economic Cooperation and Development (OECD) made a statement or had an event involving Iran. 2. Then, search for events after that time where an entity made optimistic remarks about Iran, using the relations 'Make_statement', 'Praise_or_endorse', or 'Make_optimistic_comment'. 3. Return the entity (head) that made the optimistic remarks."
+    },
+    "generated_code": "",
+    "predicted_answers": [
+      "执行错误: 'TemporalKGQASystem' object has no attribute 'code_generator'"
+    ],
+    "evaluation": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "exact_match": false
+    }
+  },
+  {
+    "quid": 2000017,
+    "question": "Who made optimistic remarks about Yasuo Fukuda after Japan?",
+    "ground_truth": [
+      "Government Official (Japan)",
+      "China"
+    ],
+    "analysis": {
+      "question_type": "entity_query",
+      "time_constraints": "after Japan (需要先确定Japan与Yasuo_Fukuda相关事件的时间点，然后查找该时间点之后的事件)",
+      "key_entities": [
+        "Japan",
+        "Yasuo_Fukuda"
+      ],
+      "target_relations": [
+        "Praise_or_endorse",
+        "Make_statement",
+        "Make_optimistic_comment"
+      ],
+      "answer_type": "entity",
+      "query_strategy": "1. 首先查询Japan与Yasuo_Fukuda之间的所有事件，确定参考时间点；2. 在参考时间点之后的时间范围内，查找包含Yasuo_Fukuda作为tail实体且关系为Praise_or_endorse或Make_statement的事件；3. 筛选出包含乐观言论的事件，返回对应的head实体"
+    },
+    "generated_code": "",
+    "predicted_answers": [
+      "执行错误: 'TemporalKGQASystem' object has no attribute 'code_generator'"
+    ],
+    "evaluation": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "exact_match": false
+    }
+  },
+  {
+    "quid": 2000018,
+    "question": "In which month did Xi Jinping praise the Bahamas?",
+    "ground_truth": [
+      "2015-01"
+    ],
+    "analysis": {
+      "question_type": "time_query",
+      "time_constraints": "时间范围为2005-01-01到2015-12-31，问题未指定具体年份，需在全部可用年份中搜索",
+      "key_entities": [
+        "Xi_Jinping",
+        "Bahamas"
+      ],
+      "target_relations": [
+        "Praise_or_endorse"
+      ],
+      "answer_type": "time",
+      "query_strategy": "1. 在知识图谱中搜索头实体为'Xi_Jinping'且尾实体为'Bahamas'的三元组 2. 筛选关系为'Praise_or_endorse'的三元组 3. 提取符合条件的三元组的时间属性 4. 返回具体月份信息（若存在多个结果则按时间排序后返回最早/最晚的月份）"
+    },
+    "generated_code": "",
+    "predicted_answers": [
+      "执行错误: 'TemporalKGQASystem' object has no attribute 'code_generator'"
+    ],
+    "evaluation": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "exact_match": false
+    }
+  }
+]

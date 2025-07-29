@@ -1,0 +1,984 @@
+[
+  {
+    "quid": "2000014",
+    "question": "Who would wish to visit Ireland in July, the year of 2007?",
+    "ground_truth": [
+      "Bertie Ahern"
+    ],
+    "predicted_answers": [],
+    "analysis": {
+      "question_type": "specific_event",
+      "time_constraints": "year=2007 and month=7 (July 2007)",
+      "key_entities": [
+        "Ireland"
+      ],
+      "target_relation": "Express_intent_to_engage_in_diplomatic_cooperation_(such_as_policy_support)",
+      "answer_type": "entity (head)"
+    },
+    "query_code": "def query_kg(df):\n    import pandas as pd\n    import re\n    from datetime import datetime\n    \n    try:\n        # 1. 时间过滤：2007年7月\n        time_filtered = df[(df['year'] == 2007) & (df['month'] == 7)]\n        if time_filtered.empty:\n            return []\n        \n        # 2. 关系过滤：匹配外交合作意图\n        rel_str = \"Express_intent_to_engage_in_diplomatic_cooperation_(such_as_policy_support)\"\n        rel_filtered = time_filtered[time_filtered['relation'] == rel_str]\n        if rel_filtered.empty:\n            return []\n        \n        # 3. 实体过滤：精确匹配Ireland\n        ireland_exact = rel_filtered[rel_filtered['tail'] == \"Ireland\"]\n        if not ireland_exact.empty:\n            results = ireland_exact['head'].unique().tolist()\n            return results\n        \n        # 4. 如果精确匹配无结果，使用模糊匹配\n        ireland_fuzzy = rel_filtered[rel_filtered['tail'].str.contains(r\"Ireland\", case=False, na=False)]\n        if not ireland_fuzzy.empty:\n            results = ireland_fuzzy['head'].unique().tolist()\n            return results\n        \n        return []\n        \n    except Exception as e:\n        print(f\"查询执行错误: {e}\")\n        return []",
+    "answer_type": "entity",
+    "time_level": "month",
+    "qtype": "equal",
+    "evaluation": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "exact_match": false
+    }
+  },
+  {
+    "quid": "2000015",
+    "question": "In which year did Viktor Orban visit Iran for the first time?",
+    "ground_truth": [
+      "2015"
+    ],
+    "predicted_answers": [],
+    "analysis": {
+      "question_type": "unknown",
+      "time_constraints": "unknown",
+      "key_entities": [],
+      "target_relation": "unknown",
+      "answer_type": "entity"
+    },
+    "query_code": "def query_kg(df):\n    import pandas as pd\n    import re\n    from datetime import datetime\n    \n    try:\n        # 定义核心实体\n        person = \"Viktor Orban\"\n        country = \"Iran\"\n        \n        # 策略1: 精确匹配 (head=person AND tail=country)\n        exact_cond = (df['head'].str.fullmatch(person, case=False)) & \\\n                     (df['tail'].str.fullmatch(country, case=False))\n        filtered_df = df[exact_cond]\n        \n        # 策略2: 宽松匹配 (若精确匹配无结果)\n        if filtered_df.empty:\n            loose_cond = (df['head'].str.contains(person, case=False, na=False)) & \\\n                         (df['tail'].str.contains(country, case=False, na=False))\n            filtered_df = df[loose_cond]\n        \n        # 若无结果则返回空列表\n        if filtered_df.empty:\n            return []\n        \n        # 按时间戳排序取最早事件\n        filtered_df = filtered_df.sort_values(by='timestamp')\n        first_event = filtered_df.iloc[0]\n        \n        # 返回年份字符串\n        return [str(int(first_event['year']))]\n        \n    except Exception as e:\n        print(f\"查询执行错误: {e}\")\n        return []",
+    "answer_type": "time",
+    "time_level": "year",
+    "qtype": "first_last",
+    "evaluation": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "exact_match": false
+    }
+  },
+  {
+    "quid": "2000016",
+    "question": "Who made optimistic remarks about Iran after the Organisation for Economic Cooperation and Development?",
+    "ground_truth": [
+      "South Korea",
+      "Party Member (Iraq)",
+      "France",
+      "China",
+      "Iraq",
+      "Member of Legislative (Govt) (Iran)",
+      "Japan",
+      "Head of Government (Ukraine)",
+      "Thailand",
+      "Kazakhstan"
+    ],
+    "predicted_answers": [],
+    "analysis": {
+      "question_type": "unknown",
+      "time_constraints": "unknown",
+      "key_entities": [],
+      "target_relation": "unknown",
+      "answer_type": "entity"
+    },
+    "query_code": "def query_kg(df):\n    import pandas as pd\n    import re\n    from datetime import datetime\n    \n    try:\n        # 规范化实体名称（替换空格为下划线）\n        oecd_norm = \"Organisation_for_Economic_Cooperation_and_Development\"\n        iran_norm = \"Iran\"\n        \n        # 步骤1: 查找OECD相关事件的时间\n        oecd_mask = (\n            (df['head'].str.contains(oecd_norm, case=False, na=False)) |\n            (df['tail'].str.contains(oecd_norm, case=False, na=False))\n        )\n        oecd_events = df[oecd_mask]\n        \n        # 如果没有匹配结果，尝试缩写匹配\n        if oecd_events.empty:\n            oecd_mask = (\n                (df['head'].str.contains(\"OECD\", case=False, na=False)) |\n                (df['tail'].str.contains(\"OECD\", case=False, na=False))\n            )\n            oecd_events = df[oecd_mask]\n        \n        # 如果仍找不到OECD事件则返回空\n        if oecd_events.empty:\n            return []\n        \n        # 获取OECD事件的最早时间戳\n        min_oecd_time = oecd_events['timestamp'].min()\n        \n        # 步骤2: 查找在OECD最早时间之后关于Iran的乐观言论\n        iran_mask = (\n            (df['tail'] == iran_norm) |  # 精确匹配\n            (df['tail'].str.contains(iran_norm, case=False, na=False))  # 模糊匹配\n        )\n        praise_mask = (df['relation'] == 'Praise_or_endorse')\n        time_mask = (df['timestamp'] > min_oecd_time)\n        \n        results = df[time_mask & praise_mask & iran_mask]\n        \n        # 如果结果为空，放宽为任何包含\"praise\"或\"optimistic\"的关系\n        if results.empty:\n            relation_mask = df['relation'].str.contains('praise|optimistic', case=False, na=False)\n            results = df[time_mask & relation_mask & iran_mask]\n        \n        # 返回发表言论的主体（head）去重列表\n        return results['head'].unique().tolist()\n    \n    except Exception as e:\n        print(f\"查询执行错误: {e}\")\n        return []",
+    "answer_type": "entity",
+    "time_level": "day",
+    "qtype": "before_after",
+    "evaluation": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "exact_match": false
+    }
+  },
+  {
+    "quid": "2000017",
+    "question": "Who made optimistic remarks about Yasuo Fukuda after Japan?",
+    "ground_truth": [
+      "Government Official (Japan)",
+      "China"
+    ],
+    "predicted_answers": [],
+    "analysis": {
+      "question_type": "unknown",
+      "time_constraints": "unknown",
+      "key_entities": [],
+      "target_relation": "unknown",
+      "answer_type": "entity"
+    },
+    "query_code": "def query_kg(df):\n    import pandas as pd\n    import re\n    from datetime import datetime\n    \n    try:\n        # 1. 识别关键实体\n        japan_entity = \"Japan\"\n        yasuo_entity = \"Yasuo_Fukuda\"  # 将空格转换为下划线格式\n        \n        # 2. 查找涉及Japan的最新时间戳\n        japan_mask = (\n            df['head'].str.contains(japan_entity, case=False, na=False) | \n            df['tail'].str.contains(japan_entity, case=False, na=False)\n        japan_events = df[japan_mask]\n        \n        if japan_events.empty:\n            return []  # 无Japan相关事件\n        \n        latest_japan_ts = japan_events['timestamp'].max()\n        \n        # 3. 查找在Japan最新事件后对Yasuo Fukuda的赞扬事件\n        praise_mask = (df['relation'] == 'Praise_or_endorse')\n        time_mask = (df['timestamp'] > latest_japan_ts)\n        \n        # 精确匹配Yasuo Fukuda\n        exact_tail_mask = (df['tail'] == yasuo_entity)\n        results = df[praise_mask & time_mask & exact_tail_mask]\n        \n        # 若无结果则尝试模糊匹配\n        if results.empty:\n            fuzzy_tail_mask = df['tail'].str.contains(yasuo_entity, case=False, na=False)\n            results = df[praise_mask & time_mask & fuzzy_tail_mask]\n        \n        # 4. 返回唯一主体列表\n        return results['head'].unique().tolist()\n        \n    except Exception as e:\n        print(f\"查询执行错误: {e}\")\n        return []",
+    "answer_type": "entity",
+    "time_level": "day",
+    "qtype": "before_after",
+    "evaluation": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "exact_match": false
+    }
+  },
+  {
+    "quid": "2000018",
+    "question": "In which month did Xi Jinping praise the Bahamas?",
+    "ground_truth": [
+      "2015-01"
+    ],
+    "predicted_answers": [
+      "2015-01"
+    ],
+    "analysis": {
+      "question_type": "unknown",
+      "time_constraints": "unknown",
+      "key_entities": [],
+      "target_relation": "unknown",
+      "answer_type": "entity"
+    },
+    "query_code": "def query_kg(df):\n    import pandas as pd\n    import re\n    from datetime import datetime\n    \n    try:\n        # 标准化实体名称（空格转下划线）\n        head_entity = \"Xi_Jinping\"\n        tail_entities = [\"Bahamas\", \"The_Bahamas\"]  # 考虑可能的命名变体\n        \n        # 第一步：精确匹配核心关系\n        praise_df = df[df['relation'] == 'Praise_or_endorse']\n        \n        # 第二步：尝试不同实体组合的精确匹配\n        results_df = pd.DataFrame()\n        for tail in tail_entities:\n            temp_df = praise_df[\n                (praise_df['head'] == head_entity) & \n                (praise_df['tail'] == tail)\n            ]\n            results_df = pd.concat([results_df, temp_df])\n        \n        # 第三步：如果精确匹配无结果，尝试模糊匹配\n        if results_df.empty:\n            head_mask = praise_df['head'].str.contains(head_entity, case=False, na=False)\n            tail_mask = praise_df['tail'].str.contains('Bahamas', case=False, na=False)\n            results_df = praise_df[head_mask & tail_mask]\n        \n        # 提取并返回唯一月份（按时间排序）\n        if not results_df.empty:\n            months = results_df['year_month'].unique().tolist()\n            months.sort()  # 按时间升序排序\n            return months\n        \n        return []  # 无结果时返回空列表\n        \n    except Exception as e:\n        print(f\"查询执行错误: {e}\")\n        return []",
+    "answer_type": "time",
+    "time_level": "month",
+    "qtype": "equal",
+    "evaluation": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "exact_match": true
+    }
+  },
+  {
+    "quid": "2000019",
+    "question": "When did Iran last express its intention to meet with international governmental organisations?",
+    "ground_truth": [
+      "2006-05-27"
+    ],
+    "predicted_answers": [
+      "2015-12-24 00:00:00"
+    ],
+    "analysis": {
+      "question_type": "unknown",
+      "time_constraints": "unknown",
+      "key_entities": [],
+      "target_relation": "unknown",
+      "answer_type": "entity"
+    },
+    "query_code": "def query_kg(df):\n    import pandas as pd\n    \n    try:\n        # 定义目标关系（完整字符串匹配）\n        target_relation = 'Express_intent_to_engage_in_diplomatic_cooperation_(such_as_policy_support)'\n        \n        # 第一步：精确匹配实体和关系\n        iran_exact = df[\n            (df['head'] == 'Iran') & \n            (df['relation'] == target_relation)\n        ]\n        \n        # 第二步：若无结果则进行模糊匹配\n        if iran_exact.empty:\n            iran_fuzzy = df[\n                df['head'].str.contains('Iran', case=False, na=False) & \n                (df['relation'] == target_relation)\n            ]\n            results_df = iran_fuzzy\n        else:\n            results_df = iran_exact\n        \n        # 按时间戳降序排序取最近事件\n        if not results_df.empty:\n            results_df = results_df.sort_values('timestamp', ascending=False)\n            latest_date = results_df.iloc[0]['timestamp']\n            return [latest_date]\n        \n        return []  # 无结果时返回空列表\n        \n    except Exception as e:\n        print(f\"查询执行错误: {e}\")\n        return []",
+    "answer_type": "time",
+    "time_level": "day",
+    "qtype": "first_last",
+    "evaluation": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0,
+      "exact_match": false
+    }
+  },
+  {
+    "quid": "2000020",
+    "question": "In which country did Colombia release people before 23 February 2008?",
+    "ground_truth": [
+      "Guerrilla (Colombia)"
+    ],
+    "predicted_answers": [
+      "Guerrilla_(Colombia)",
+      "National_Liberation_Army"
+    ],
+    "analysis": {
+      "question_type": "unknown",
+      "time_constraints": "unknown",
+      "key_entities": [],
+      "target_relation": "unknown",
+      "answer_type": "entity"
+    },
+    "query_code": "def query_kg(df):\n    import pandas as pd\n    import re\n    from datetime import datetime\n    \n    try:\n        # 定义核心参数\n        target_date = \"2008-02-23\"\n        key_entity = \"Colombia\"\n        relation_keyword = \"release\"  # 关系关键词\n        \n        # 步骤1: 过滤时间 (timestamp < 2008-02-23)\n        time_filtered = df[df['timestamp'] < target_date]\n        \n        # 步骤2: 精确匹配实体 (head == \"Colombia\")\n        entity_filtered = time_filtered[time_filtered['head'] == key_entity]\n        \n        # 步骤3: 匹配关系 (包含\"release\"关键词)\n        relation_filtered = entity_filtered[\n            entity_filtered['relation'].str.contains(relation_keyword, case=False, na=False)\n        ]\n        \n        # 如果结果为空，尝试模糊匹配实体 (head包含\"Colombia\")\n        if relation_filtered.empty:\n            entity_fuzzy = time_filtered[\n                time_filtered['head'].str.contains(key_entity, case=False, na=False)\n            ]\n            relation_filtered = entity_fuzzy[\n                entity_fuzzy['relation'].str.contains(relation_keyword, case=False, na=False)\n            ]\n        \n        # 提取答案 (tail列的去重结果)\n        results = relation_filtered['tail'].drop_duplicates().tolist()\n        return results\n        \n    except Exception as e:\n        print(f\"查询执行错误: {e}\")\n        return []",
+    "answer_type": "entity",
+    "time_level": "day",
+    "qtype": "before_after",
+    "evaluation": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0,
+      "exact_match": false
+    }
+  },
+  {
+    "quid": "2000021",
+    "question": "Who was the first country to express optimism about Barack Obama after Ireland?",
+    "ground_truth": [
+      "Angela Merkel"
+    ],
+    "predicted_answers": [
+      "代码生成失败"
+    ],
+    "analysis": {
+      "question_type": "unknown",
+      "time_constraints": "unknown",
+      "key_entities": [],
+      "target_relation": "unknown",
+      "answer_type": "entity"
+    },
+    "query_code": "",
+    "answer_type": "entity",
+    "time_level": "day",
+    "qtype": "after_first",
+    "evaluation": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "exact_match": false
+    }
+  },
+  {
+    "quid": "2000022",
+    "question": "Which was the first country to praise Colombia after Cristina Fernández de Kirchner?",
+    "ground_truth": [
+      "Barack Obama"
+    ],
+    "predicted_answers": [],
+    "analysis": {
+      "question_type": "unknown",
+      "time_constraints": "unknown",
+      "key_entities": [],
+      "target_relation": "unknown",
+      "answer_type": "entity"
+    },
+    "query_code": "def query_kg(df):\n    import pandas as pd\n    import re\n    from datetime import datetime\n    \n    try:\n        # 标准化实体名称\n        cfk_entity = \"Cristina_Fernández_de_Kirchner\"\n        colombia_entity = \"Colombia\"\n        \n        # 步骤1: 找到Cristina Fernández de Kirchner最近的时间点\n        cfk_mask = (\n            df['head'].str.contains(cfk_entity, case=False, na=False) | \n            df['tail'].str.contains(cfk_entity, case=False, na=False)\n        )\n        cfk_events = df[cfk_mask]\n        \n        if cfk_events.empty:\n            return []\n        \n        # 获取最近的时间戳\n        cfk_events['timestamp_dt'] = pd.to_datetime(cfk_events['timestamp'])\n        ref_time = cfk_events['timestamp_dt'].max()\n        \n        # 步骤2: 查找在参考时间后赞扬哥伦比亚的事件\n        praise_mask = (\n            (df['relation'] == 'Praise_or_endorse') &\n            (df['tail'].str.contains(colombia_entity, case=False, na=False)) & \n            (pd.to_datetime(df['timestamp']) > ref_time\n        )\n        praise_events = df[praise_mask]\n        \n        if praise_events.empty:\n            return []\n        \n        # 按时间排序并获取第一个事件\n        praise_events = praise_events.sort_values(by='timestamp')\n        first_praise = praise_events.iloc[0]\n        \n        return [first_praise['head']]\n        \n    except Exception as e:\n        print(f\"查询执行错误: {e}\")\n        return []",
+    "answer_type": "entity",
+    "time_level": "day",
+    "qtype": "after_first",
+    "evaluation": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "exact_match": false
+    }
+  },
+  {
+    "quid": "2000023",
+    "question": "Which country hosted the visit of Frank Bainimarama after Vanuatu?",
+    "ground_truth": [
+      "China"
+    ],
+    "predicted_answers": [],
+    "analysis": {
+      "question_type": "unknown",
+      "time_constraints": "unknown",
+      "key_entities": [],
+      "target_relation": "unknown",
+      "answer_type": "entity"
+    },
+    "query_code": "def query_kg(df):\n    import pandas as pd\n    \n    try:\n        # 定义关键实体和关系模式\n        visitor = \"Frank Bainimarama\"\n        visited_country = \"Vanuatu\"\n        \n        # 步骤1: 找到所有访问Vanuatu的事件\n        visit_condition = (\n            df['relation'].str.contains('visit', case=False, na=False) &\n            (df['tail'] == visited_country)\n        )\n        # 先尝试精确匹配head\n        vanuatu_visits = df[visit_condition & (df['head'] == visitor)]\n        # 若精确匹配无结果，尝试模糊匹配head\n        if vanuatu_visits.empty:\n            vanuatu_visits = df[visit_condition & (df['head'].str.contains(visitor, case=False, na=False))]\n        \n        # 若无访问Vanuatu记录，返回空\n        if vanuatu_visits.empty:\n            return []\n        \n        # 获取最近一次访问Vanuatu的时间戳\n        last_vanuatu_time = vanuatu_visits['timestamp'].max()\n        \n        # 步骤2: 查找在Vanuatu之后的下一次访问事件\n        next_visit_condition = (\n            df['relation'].str.contains('visit', case=False, na=False) &\n            (df['timestamp'] > last_vanuatu_time) &\n            (df['tail'] != visited_country)  # 排除再次访问Vanuatu\n        )\n        # 先精确匹配head\n        next_visits = df[next_visit_condition & (df['head'] == visitor)]\n        # 若精确匹配无结果，尝试模糊匹配\n        if next_visits.empty:\n            next_visits = df[next_visit_condition & (df['head'].str.contains(visitor, case=False, na=False))]\n        \n        # 若无后续访问，返回空\n        if next_visits.empty:\n            return []\n        \n        # 按时间戳排序获取",
+    "answer_type": "entity",
+    "time_level": "day",
+    "qtype": "before_after",
+    "evaluation": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "exact_match": false
+    }
+  },
+  {
+    "quid": "2000024",
+    "question": "Who asked for Japan in October 2005?",
+    "ground_truth": [
+      "Wang Yi",
+      "Donald Rumsfeld",
+      "Finance / Economy / Commerce / Trade Ministry (New Zealand)",
+      "Robert Jones Portman",
+      "China",
+      "Iraq"
+    ],
+    "predicted_answers": [
+      "Robert_Jones_Portman",
+      "Finance_/_Economy_/_Commerce_/_Trade_Ministry_(New_Zealand)",
+      "China",
+      "Iraq",
+      "Wang_Yi",
+      "Donald_Rumsfeld"
+    ],
+    "analysis": {
+      "question_type": "unknown",
+      "time_constraints": "unknown",
+      "key_entities": [],
+      "target_relation": "unknown",
+      "answer_type": "entity"
+    },
+    "query_code": "def query_kg(df):\n    import pandas as pd\n    import re\n    from datetime import datetime\n    \n    try:\n        # 步骤1: 时间过滤 (2005年10月)\n        time_df = df[df['year_month'] == '2005-10']\n        if time_df.empty:\n            return []\n        \n        # 步骤2: 关系过滤 (\"Make_an_appeal_or_request\")\n        rel_df = time_df[time_df['relation'] == 'Make_an_appeal_or_request']\n        if rel_df.empty:\n            return []\n        \n        # 步骤3: 实体匹配 (Japan作为tail)\n        # 先尝试精确匹配\n        exact_match = rel_df[rel_df['tail'] == 'Japan']\n        if not exact_match.empty:\n            return exact_match['head'].unique().tolist()\n        \n        # 精确匹配失败时尝试模糊匹配\n        fuzzy_match = rel_df[rel_df['tail'].str.contains('Japan', case=False, na=False)]\n        return fuzzy_match['head'].unique().tolist()\n        \n    except Exception as e:\n        print(f\"查询执行错误: {e}\")\n        return []",
+    "answer_type": "entity",
+    "time_level": "month",
+    "qtype": "equal",
+    "evaluation": {
+      "precision": 0.3333333333333333,
+      "recall": 0.3333333333333333,
+      "f1": 0.3333333333333333,
+      "exact_match": false
+    }
+  },
+  {
+    "quid": "2000025",
+    "question": "Which country criticised Colombia after 8 February 2015?",
+    "ground_truth": [
+      "National Liberation Army"
+    ],
+    "predicted_answers": [
+      "Defense_/_Security_Ministry_(Venezuela)"
+    ],
+    "analysis": {
+      "question_type": "unknown",
+      "time_constraints": "unknown",
+      "key_entities": [],
+      "target_relation": "unknown",
+      "answer_type": "entity"
+    },
+    "query_code": "def query_kg(df):\n    import pandas as pd\n    import re\n    from datetime import datetime\n    \n    try:\n        # 定义核心查询条件\n        time_cutoff = \"2015-02-08\"\n        target_relation = \"Make_pessimistic_comment\"\n        target_entity = \"Colombia\"\n        \n        # 主查询：精确匹配关系和时间\n        main_filter = (\n            (df['relation'] == target_relation) &\n            (df['tail'] == target_entity) &\n            (df['timestamp'] > time_cutoff)\n        )\n        results_df = df[main_filter]\n        \n        # 如果主查询无结果，尝试模糊匹配实体\n        if results_df.empty:\n            fuzzy_filter = (\n                (df['relation'] == target_relation) &\n                (df['tail'].str.contains(re.escape(target_entity), case=False, na=False)) &\n                (df['timestamp'] > time_cutoff)\n            )\n            results_df = df[fuzzy_filter]\n        \n        # 如果仍无结果，尝试扩展关系匹配\n        if results_df.empty:\n            extended_relation_filter = (\n                df['relation'].str.contains('critic|pessimistic', case=False, na=False) &\n                (df['tail'] == target_entity) &\n                (df['timestamp'] > time_cutoff)\n            )\n            results_df = df[extended_relation_filter]\n        \n        # 提取唯一国家实体\n        results = list(results_df['head'].unique())\n        return results\n        \n    except Exception as e:\n        print(f\"查询执行错误: {e}\")\n        return []",
+    "answer_type": "entity",
+    "time_level": "day",
+    "qtype": "before_after",
+    "evaluation": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0,
+      "exact_match": false
+    }
+  },
+  {
+    "quid": "2000026",
+    "question": "Before December 9, 2008, who did Timor-Leste request for?",
+    "ground_truth": [
+      "Malaysia",
+      "Portugal",
+      "UN Security Council"
+    ],
+    "predicted_answers": [
+      "Malaysia",
+      "Portugal",
+      "UN_Security_Council"
+    ],
+    "analysis": {
+      "question_type": "unknown",
+      "time_constraints": "unknown",
+      "key_entities": [],
+      "target_relation": "unknown",
+      "answer_type": "entity"
+    },
+    "query_code": "def query_kg(df):\n    import pandas as pd\n    import re\n    from datetime import datetime\n    \n    try:\n        # 定义核心参数\n        target_relation = \"Make_an_appeal_or_request\"\n        time_threshold = \"2008-12-09\"\n        key_entity = \"Timor-Leste\"\n        \n        # 第一步：过滤目标关系和有效时间\n        relation_mask = df['relation'] == target_relation\n        time_mask = df['timestamp'] < time_threshold\n        filtered_df = df[relation_mask & time_mask]\n        \n        # 第二步：精确匹配实体\n        exact_mask = filtered_df['head'] == key_entity\n        results_df = filtered_df[exact_mask]\n        \n        # 第三步：如果精确匹配无结果，尝试模糊匹配\n        if results_df.empty:\n            fuzzy_mask = filtered_df['head'].str.contains(key_entity, case=False, na=False)\n            results_df = filtered_df[fuzzy_mask]\n        \n        # 提取去重后的tail实体列表\n        if not results_df.empty:\n            results = results_df['tail'].drop_duplicates().tolist()\n            return results\n        \n        return []  # 无结果时返回空列表\n        \n    except Exception as e:\n        print(f\"查询执行错误: {e}\")\n        return []",
+    "answer_type": "entity",
+    "time_level": "day",
+    "qtype": "before_after",
+    "evaluation": {
+      "precision": 0.6666666666666666,
+      "recall": 0.6666666666666666,
+      "f1": 0.6666666666666666,
+      "exact_match": false
+    }
+  },
+  {
+    "quid": "2000028",
+    "question": "After 2009-12-3, who received Bolivia's visit from Bolivia?",
+    "ground_truth": [
+      "Iran",
+      "International Court of Justice",
+      "Mahmoud Ahmadinejad",
+      "Colombia",
+      "France",
+      "The Hague",
+      "Majid Takht Ravanchi"
+    ],
+    "predicted_answers": [
+      "Mahmoud_Ahmadinejad",
+      "Cristina_Fernández_de_Kirchner",
+      "Manuel_Rodríguez_Cuadros",
+      "Evo_Morales",
+      "Iran",
+      "Ministry_(Iran)",
+      "China",
+      "María_Ángela_Holguín",
+      "Rafael_Correa",
+      "Colombia",
+      "The_Hague",
+      "International_Court_of_Justice",
+      "Ministry_(Venezuela)",
+      "France",
+      "Foreign_Affairs_(Venezuela)",
+      "Civil_Guard",
+      "Martin_Belaunde_Lossio",
+      "Majid_Takht_Ravanchi",
+      "Heraldo_Muñoz"
+    ],
+    "analysis": {
+      "question_type": "unknown",
+      "time_constraints": "unknown",
+      "key_entities": [],
+      "target_relation": "unknown",
+      "answer_type": "entity"
+    },
+    "query_code": "def query_kg(df):\n    import pandas as pd\n    \n    try:\n        # 时间过滤：2009-12-03之后\n        time_filter = df['timestamp'] > '2009-12-03'\n        \n        # 实体过滤：head包含\"Bolivia\"（不区分大小写）\n        bolivia_filter = df['head'].str.contains('Bolivia', case=False, na=False)\n        \n        # 关系过滤：relation包含\"visit\"（不区分大小写）\n        visit_filter = df['relation'].str.contains('visit', case=False, na=False)\n        \n        # 应用所有过滤条件\n        filtered_df = df[time_filter & bolivia_filter & visit_filter]\n        \n        # 提取唯一的tail实体作为答案\n        results = filtered_df['tail'].drop_duplicates().tolist()\n        \n        return results\n        \n    except Exception as e:\n        print(f\"查询执行错误: {e}\")\n        return []",
+    "answer_type": "entity",
+    "time_level": "day",
+    "qtype": "before_after",
+    "evaluation": {
+      "precision": 0.15789473684210525,
+      "recall": 0.42857142857142855,
+      "f1": 0.23076923076923078,
+      "exact_match": false
+    }
+  },
+  {
+    "quid": "2000029",
+    "question": "After May, 2015, who gave a condemnation to France?",
+    "ground_truth": [
+      "Iran",
+      "Ahmed el-Tayeb",
+      "Benjamin Netanyahu",
+      "Police (Syria)",
+      "Royal Administration (Spain)",
+      "Foreign Affairs (Lebanon)",
+      "Heinz Fischer",
+      "China",
+      "Member of Parliament (France)",
+      "Other Authorities / Officials (Libya)",
+      "Media Personnel (Iran)",
+      "Foreign Affairs (France)",
+      "Citizen (International)",
+      "Citizen (United Kingdom)",
+      "Lawmaker (Syria)",
+      "Uhuru Muigai Kenyatta",
+      "Citizen (Venezuela)"
+    ],
+    "predicted_answers": [],
+    "analysis": {
+      "question_type": "unknown",
+      "time_constraints": "unknown",
+      "key_entities": [],
+      "target_relation": "unknown",
+      "answer_type": "entity"
+    },
+    "query_code": "def query_kg(df):\n    import pandas as pd\n    import re\n    from datetime import datetime\n    \n    try:\n        # 转换时间戳为datetime格式\n        df['timestamp'] = pd.to_datetime(df['timestamp'])\n        \n        # 定义核心查询条件\n        time_cond = (df['timestamp'] > '2015-05-31')\n        relation_cond = (df['relation'] == 'Make_pessimistic_comment')\n        \n        # 精确匹配France\n        tail_cond_exact = (df['tail'] == 'France')\n        filtered_df = df[time_cond & relation_cond & tail_cond_exact]\n        \n        # 如果精确匹配无结果，尝试模糊匹配\n        if filtered_df.empty:\n            tail_cond_fuzzy = df['tail'].str.contains('France', case=False, na=False)\n            filtered_df = df[time_cond & relation_cond & tail_cond_fuzzy]\n        \n        # 提取结果并去重\n        results = filtered_df['head'].drop_duplicates().tolist()\n        return results\n        \n    except Exception as e:\n        print(f\"查询执行错误: {e}\")\n        return []",
+    "answer_type": "entity",
+    "time_level": "month",
+    "qtype": "before_after",
+    "evaluation": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "exact_match": false
+    }
+  },
+  {
+    "quid": "2000030",
+    "question": "Which country was the first to receive optimistic remarks from Japan after the children of the Philippines?",
+    "ground_truth": [
+      "Iraq"
+    ],
+    "predicted_answers": [
+      "Japan"
+    ],
+    "analysis": {
+      "question_type": "unknown",
+      "time_constraints": "unknown",
+      "key_entities": [],
+      "target_relation": "unknown",
+      "answer_type": "entity"
+    },
+    "query_code": "def query_kg(df):\n    import pandas as pd\n    import re\n    from datetime import datetime\n    \n    try:\n        # 确保时间戳为datetime类型\n        if not pd.api.types.is_datetime64_any_dtype(df['timestamp']):\n            df['timestamp'] = pd.to_datetime(df['timestamp'])\n        \n        # ===== 步骤1: 定位菲律宾儿童事件的时间参考点 =====\n        # 条件1: 实体包含\"Philippines\"（不区分大小写）\n        cond_ph = df['head'].str.contains('Philippines', case=False, na=False) | \\\n                  df['tail'].str.contains('Philippines', case=False, na=False)\n        \n        # 条件2: 实体包含\"children\"或\"child\"（覆盖单复数）\n        cond_child = df['head'].str.contains('child', case=False, na=False) | \\\n                    df['tail'].str.contains('child', case=False, na=False)\n        \n        # 组合条件获取相关事件\n        ph_child_events = df[cond_ph & cond_child]\n        \n        # 获取最早时间戳作为参考点\n        ref_time = ph_child_events['timestamp'].min() if not ph_child_events.empty else None\n        \n        # 如果未找到事件，使用整个数据集的最小时间作为备选\n        if ref_time is None:\n            ref_time = df['timestamp'].min()\n        \n        # ===== 步骤2: 查找Japan发出的乐观言论 =====\n        # 条件1: head包含\"Japan\"\n        cond_japan = df['head'].str.contains('Japan', case=False, na=False)\n        \n        # 条件2: 关系包含\"optimistic\"（主要目标）\n        cond_optimistic = df['relation'].str.contains('optimistic', case=False, na=False)\n        \n        # 条件3: 时间在参考点之后\n        cond_time = df['timestamp'] > ref_time\n        \n        # 组合条件查询\n        target_events = df[cond_japan & cond_optimistic & cond_time]\n        \n        # 如果未找到，尝试备选关系\"Praise_or_endorse\"\n        if target_events.empty:\n            cond_praise = df['relation'] == 'Praise_or_endorse'\n            target_events = df[cond_japan & cond_praise & cond_time]\n        \n        # ===== 步骤3: 按时间排序取首个结果 =====\n        if not target_events.empty:\n            first_event = target_events.sort_values('timestamp').iloc[0]\n            return [first_event['tail']]  # 返回接收言论的国家\n        \n        return []  # 无结果返回空列表\n        \n    except Exception as e:\n        print(f\"查询执行错误: {e}\")\n        return []",
+    "answer_type": "entity",
+    "time_level": "day",
+    "qtype": "after_first",
+    "evaluation": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0,
+      "exact_match": false
+    }
+  },
+  {
+    "quid": "2000031",
+    "question": "Who visited Qatar after 8 March 2015?",
+    "ground_truth": [
+      "Nuri al-Maliki",
+      "Iran",
+      "Daniel Constantin",
+      "Habib Essid",
+      "Mahmoud Abbas",
+      "Chongwadai",
+      "Nicos Anastasiades",
+      "Philip Hammond",
+      "Presidential Family (United States)",
+      "Shura Council",
+      "Isaias Afewerki",
+      "Khaled Bahah",
+      "Violeta Bulc",
+      "Cabinet / Council of Ministers / Advisors (United States)",
+      "Ministry (Iran)",
+      "Barack Obama"
+    ],
+    "predicted_answers": [
+      "Kuwait",
+      "Nicos_Anastasiades",
+      "Member_of_Legislative_(Govt)_(Qatar)",
+      "Chongwadai",
+      "Head_of_Government_(Qatar)",
+      "South_Korea",
+      "Sheikh_Ahmed_Abdullah",
+      "Treasury/Finance_Ministry_(Qatar)",
+      "United_Arab_Emirates",
+      "Pakistan_People's_Party",
+      "Iran",
+      "Mahmoud_Abbas",
+      "Andrew_Robb",
+      "Militant_(Syria)",
+      "France",
+      "Government_(France)",
+      "Iraq",
+      "Khaled_Bahah",
+      "Mohammad_Reza_Naqdi",
+      "Oman",
+      "Barack_Obama",
+      "Government_(Qatar)",
+      "Daniel_Constantin",
+      "Ashraf_Ghani_Ahmadzai",
+      "Foreign_Affairs_(Syria)",
+      "Al_Jazeera",
+      "Ashraf_Rifi",
+      "Yasar_Yakis",
+      "Cabinet_/_Council_of_Ministers_/_Advisors_(United_States)",
+      "Ministry_(Iran)",
+      "Al-Shabaab",
+      "Media_(Qatar)",
+      "Isaias_Afewerki",
+      "Police_(Qatar)",
+      "Military_Personnel_(Yemen)",
+      "Nuri_al-Maliki",
+      "Middle_East",
+      "Sarah_Leah_Whitson",
+      "Central_Intelligence_Agency",
+      "Foreign_Affairs_(South_Korea)",
+      "Khalid_bin_Mohammad_Al_Attiyah",
+      "Philip_Hammond",
+      "Presidential_Family_(United_States)",
+      "Shura_Council",
+      "Violeta_Bulc",
+      "Milliyet",
+      "Military_Personnel_(France)",
+      "China",
+      "Habib_Essid",
+      "Rafael_Correa"
+    ],
+    "analysis": {
+      "question_type": "unknown",
+      "time_constraints": "unknown",
+      "key_entities": [],
+      "target_relation": "unknown",
+      "answer_type": "entity"
+    },
+    "query_code": "def query_kg(df):\n    import pandas as pd\n    import re\n    from datetime import datetime\n    \n    try:\n        # 定义目标实体和时间约束\n        target_entity = \"Qatar\"\n        time_cutoff = \"2015-03-08\"\n        \n        # 先尝试精确匹配tail实体\n        filtered_df = df[(df['tail'] == target_entity) & \n                         (df['timestamp'] > time_cutoff)]\n        \n        # 如果精确匹配结果为空，尝试模糊匹配\n        if filtered_df.empty:\n            filtered_df = df[df['tail'].str.contains(target_entity, case=False, na=False) & \n                            (df['timestamp'] > time_cutoff)]\n        \n        # 提取唯一的head实体\n        results = filtered_df['head'].drop_duplicates().tolist()\n        return results\n        \n    except Exception as e:\n        print(f\"查询执行错误: {e}\")\n        return []",
+    "answer_type": "entity",
+    "time_level": "day",
+    "qtype": "before_after",
+    "evaluation": {
+      "precision": 0.04,
+      "recall": 0.125,
+      "f1": 0.06060606060606061,
+      "exact_match": false
+    }
+  },
+  {
+    "quid": "2000032",
+    "question": "Who would want to have diplomatic cooperation with Iran in March, 2009?",
+    "ground_truth": [
+      "Barack Obama",
+      "Lee Myung Bak",
+      "Business (Tunisia)",
+      "Iraq",
+      "Mauritania"
+    ],
+    "predicted_answers": [
+      "Barack_Obama",
+      "Business_(Tunisia)",
+      "Iraq",
+      "Lee_Myung_Bak",
+      "Mauritania"
+    ],
+    "analysis": {
+      "question_type": "unknown",
+      "time_constraints": "unknown",
+      "key_entities": [],
+      "target_relation": "unknown",
+      "answer_type": "entity"
+    },
+    "query_code": "def query_kg(df):\n    import pandas as pd\n    import re\n    from datetime import datetime\n    \n    try:\n        # 定义目标关系和时间范围\n        target_relation = 'Express_intent_to_engage_in_diplomatic_cooperation_(such_as_policy_support)'\n        target_year_month = '2009-03'\n        \n        # 第一步：精确匹配关系和时间\n        filtered = df[(df['relation'] == target_relation) & \n                     (df['year_month'] == target_year_month)]\n        \n        # 第二步：精确匹配tail实体\"Iran\"\n        iran_exact = filtered[filtered['tail'] == 'Iran']\n        \n        # 第三步：如果精确匹配无结果，使用模糊匹配\n        if iran_exact.empty:\n            iran_exact = filtered[filtered['tail'].str.contains('Iran', case=False, na=False)]\n        \n        # 提取唯一head实体并返回列表\n        results = iran_exact['head'].drop_duplicates().tolist()\n        return results\n        \n    except Exception as e:\n        print(f\"查询执行错误: {e}\")\n        return []",
+    "answer_type": "entity",
+    "time_level": "month",
+    "qtype": "equal",
+    "evaluation": {
+      "precision": 0.4,
+      "recall": 0.4,
+      "f1": 0.4000000000000001,
+      "exact_match": false
+    }
+  },
+  {
+    "quid": "2000033",
+    "question": "Which country would want to cooperate with Japan first, after India's industry?",
+    "ground_truth": [
+      "South Korea"
+    ],
+    "predicted_answers": [],
+    "analysis": {
+      "question_type": "unknown",
+      "time_constraints": "unknown",
+      "key_entities": [],
+      "target_relation": "unknown",
+      "answer_type": "entity"
+    },
+    "query_code": "def query_kg(df):\n    import pandas as pd\n    import re\n    from datetime import datetime\n    \n    try:\n        # 转换时间戳为datetime类型\n        df = df.copy()\n        df['timestamp'] = pd.to_datetime(df['timestamp'])\n        \n        # 步骤1: 确定参考时间点 (India's industry相关事件的最近时间)\n        # 模糊匹配India's industry实体 (同时包含India和industry)\n        pattern = re.compile(r'India|industry', re.IGNORECASE)\n        def contains_keywords(text):\n            if pd.isna(text): \n                return False\n            return bool(pattern.search(text))\n        \n        # 筛选包含India或industry的实体\n        india_industry_mask = (\n            df['head'].apply(contains_keywords) | \n            df['tail'].apply(contains_keywords)\n        )\n        india_industry_df = df[india_industry_mask]\n        \n        # 获取最近时间戳作为参考点\n        ref_time = india_industry_df['timestamp'].max() if not india_industry_df.empty else None\n        \n        # 如果模糊匹配失败，使用India实体作为备选\n        if ref_time is None:\n            india_mask = (df['head'].str.contains('India', case=False, na=False) | \n                          df['tail'].str.contains('India', case=False, na=False))\n            india_df = df[india_mask]\n            ref_time = india_df['timestamp'].max() if not india_df.empty else None\n        \n        # 无参考时间则返回空\n        if ref_time is None:\n            return []\n        \n        # 步骤2: 在参考时间后筛选与日本合作的事件\n        # 精确匹配目标关系\n        relation_name = \"Express_intent_to_engage_in_diplomatic_cooperation_(such_as_policy_support)\"\n        coop_df = df[df['relation'] == relation_name]\n        \n        # 匹配tail为日本 (先精确后模糊)\n        japan_mask = (coop_df['tail'] == 'Japan')\n        if not japan_mask.any():\n            japan_mask = coop_df['tail'].str.contains('Japan', case=False, na=False)\n        \n        # 筛选参考时间后的事件并按时间排序\n        filtered = coop_df[japan_mask & (coop_df['timestamp'] > ref_time)]\n        filtered = filtered.sort_values('timestamp')\n        \n        # 返回第一个事件的head实体\n        return [filtered.iloc[0]['head']] if not filtered.empty else []\n        \n    except Exception as e:\n        print(f\"查询执行错误: {e}\")\n        return []",
+    "answer_type": "entity",
+    "time_level": "day",
+    "qtype": "after_first",
+    "evaluation": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "exact_match": false
+    }
+  },
+  {
+    "quid": "2000034",
+    "question": "Who made optimistic remarks about Colombia before May 2006?",
+    "ground_truth": [
+      "Mexico",
+      "Government (Ecuador)"
+    ],
+    "predicted_answers": [
+      "Head_of_Government_(Brazil)",
+      "China",
+      "Mexico",
+      "Aigars_Kalvitis",
+      "Government_(Ecuador)"
+    ],
+    "analysis": {
+      "question_type": "unknown",
+      "time_constraints": "unknown",
+      "key_entities": [],
+      "target_relation": "unknown",
+      "answer_type": "entity"
+    },
+    "query_code": "def query_kg(df):\n    import pandas as pd\n    \n    try:\n        # 定义时间约束：2006年5月之前 (year<2006 或 year=2006且month<5)\n        time_mask = (df['year'] < 2006) | ((df['year'] == 2006) & (df['month'] < 5))\n        \n        # 精确匹配目标关系\n        rel_mask = df['relation'] == 'Praise_or_endorse'\n        \n        # 分阶段实体匹配（先精确后模糊）\n        colombia_mask = df['tail'] == 'Colombia'\n        if not colombia_mask.any():  # 若无精确匹配结果\n            colombia_mask = df['tail'].str.contains('Colombia', case=False, na=False)\n        \n        # 应用所有过滤条件\n        results = df[time_mask & rel_mask & colombia_mask]['head'].unique().tolist()\n        \n        return results\n        \n    except Exception as e:\n        print(f\"查询执行错误: {e}\")\n        return []",
+    "answer_type": "entity",
+    "time_level": "month",
+    "qtype": "before_after",
+    "evaluation": {
+      "precision": 0.2,
+      "recall": 0.5,
+      "f1": 0.28571428571428575,
+      "exact_match": false
+    }
+  },
+  {
+    "quid": "2000035",
+    "question": "When did Jakaya Mrisho Kikwete support France?",
+    "ground_truth": [
+      "2013-04-02"
+    ],
+    "predicted_answers": [],
+    "analysis": {
+      "question_type": "specific_date",
+      "time_constraints": "无特定时间约束",
+      "key_entities": [
+        "Jakaya Mrisho Kikwete",
+        "France"
+      ],
+      "target_relation": "Praise_or_endorse 或 Express_intent_to_engage_in_diplomatic_cooperation_(such_as_policy_support)",
+      "answer_type": "time (具体日期)"
+    },
+    "query_code": "def query_kg(df):\n    import pandas as pd\n    import re\n    from datetime import datetime\n    \n    try:\n        # 定义目标关系 (支持类关系)\n        support_relations = [\n            'Praise_or_endorse',\n            'Express_intent_to_engage_in_diplomatic_cooperation_(such_as_policy_support)'\n        ]\n        \n        # 精确匹配实体和关系\n        exact_match = df[\n            (df['head'] == 'Jakaya Mrisho Kikwete') &\n            (df['tail'] == 'France') &\n            (df['relation'].isin(support_relations))\n        ]\n        \n        # 如果精确匹配无结果，尝试模糊匹配\n        if exact_match.empty:\n            fuzzy_match = df[\n                (df['head'].str.contains('Jakaya Mrisho Kikwete', case=False, na=False)) &\n                (df['tail'].str.contains('France', case=False, na=False)) &\n                (df['relation'].isin(support_relations))\n            ]\n            results_df = fuzzy_match\n        else:\n            results_df = exact_match\n        \n        # 提取时间戳并去重排序\n        if not results_df.empty:\n            # 转换为日期格式确保正确排序\n            results_df = results_df.copy()\n            results_df['date'] = pd.to_datetime(results_df['timestamp'])\n            results_df = results_df.sort_values('date')\n            results = results_df['timestamp'].unique().tolist()\n            return results\n        \n        return []  # 无结果时返回空列表\n        \n    except Exception as e:\n        print(f\"查询执行错误: {e}\")\n        return []",
+    "answer_type": "time",
+    "time_level": "day",
+    "qtype": "equal",
+    "evaluation": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "exact_match": false
+    }
+  },
+  {
+    "quid": "2000036",
+    "question": "Before 10 August 2005, which country was rejected by Iran?",
+    "ground_truth": [
+      "France",
+      "Lawyer/Attorney (Egypt)",
+      "Asylum Seeker (Iran)",
+      "Tony Blair",
+      "United Arab Emirates",
+      "Iraq"
+    ],
+    "predicted_answers": [
+      "Tony_Blair",
+      "Iraq",
+      "Lawyer/Attorney_(Egypt)",
+      "Asylum_Seeker_(Iran)",
+      "United_Arab_Emirates",
+      "France"
+    ],
+    "analysis": {
+      "question_type": "time_range",
+      "time_constraints": "timestamp before 2005-08-10",
+      "key_entities": [
+        "Iran"
+      ],
+      "target_relation": "Reject",
+      "answer_type": "entity (country names in tail position)"
+    },
+    "query_code": "def query_kg(df):\n    import pandas as pd\n    import re\n    from datetime import datetime\n    \n    try:\n        # 过滤有效时间戳和关系\n        time_threshold = '2005-08-10'\n        valid_df = df[df['timestamp'].notna() & (df['relation'] == 'Reject')]\n        \n        # 时间过滤 (字符串比较，格式为YYYY-MM-DD)\n        time_filtered = valid_df[valid_df['timestamp'] < time_threshold]\n        \n        # 伊朗实体匹配 (精确+模糊)\n        iran_pattern = r'\\bIran\\b'\n        iran_filtered = time_filtered[\n            time_filtered['head'].str.contains(iran_pattern, case=False, na=False)\n        ]\n        \n        # 如果初始匹配无结果，放宽匹配条件\n        if iran_filtered.empty:\n            iran_filtered = time_filtered[\n                time_filtered['head'].str.contains('Iran', case=False, na=False)\n            ]\n        \n        # 提取国家名称 (tail列) 并去重\n        results = iran_filtered['tail'].drop_duplicates().tolist()\n        return results\n        \n    except Exception as e:\n        print(f\"查询执行错误: {e}\")\n        return []",
+    "answer_type": "entity",
+    "time_level": "day",
+    "qtype": "before_after",
+    "evaluation": {
+      "precision": 0.3333333333333333,
+      "recall": 0.3333333333333333,
+      "f1": 0.3333333333333333,
+      "exact_match": false
+    }
+  },
+  {
+    "quid": "2000037",
+    "question": "When did Royal Dutch Shell first formally sign an agreement with Iran?",
+    "ground_truth": [
+      "2007-01-31"
+    ],
+    "predicted_answers": [],
+    "analysis": {
+      "question_type": "first_event",
+      "time_constraints": "无明确时间范围限制，但要求找出第一次发生的时间",
+      "key_entities": [
+        "Royal Dutch Shell",
+        "Iran"
+      ],
+      "target_relation": "Express_intent_to_engage_in_diplomatic_cooperation_(such_as_policy_support) 或类似表示正式协议的关系",
+      "answer_type": "time (具体日期)"
+    },
+    "query_code": "def query_kg(df):\n    import pandas as pd\n    import re\n    \n    try:\n        # 标准化实体名称\n        shell_aliases = [\"Royal Dutch Shell\", \"Royal_Dutch_Shell\"]\n        iran_aliases = [\"Iran\"]\n        \n        # 可能的关系列表（按优先级排序）\n        relations_to_try = [\n            \"Express_intent_to_engage_in_diplomatic_cooperation_(such_as_policy_support)\",\n            \"Express_intent_to_provide_economic_aid\",\n            \"Provide_aid\",\n            \"Make_statement\"\n        ]\n        \n        # 创建实体匹配掩码\n        head_mask = df['head'].apply(lambda x: any(alias in str(x) for alias in shell_aliases)\n        tail_mask = df['tail'].apply(lambda x: any(alias in str(x) for alias in iran_aliases)\n        \n        # 按优先级尝试不同关系\n        for relation in relations_to_try:\n            # 组合查询条件\n            relation_mask = (df['relation'] == relation)\n            combined_mask = head_mask & tail_mask & relation_mask\n            \n            if combined_mask.any():\n                # 按时间戳排序获取最早事件\n                result_df = df[combined_mask].sort_values('timestamp')\n                first_event = result_df.iloc[0]\n                return [first_event['timestamp']]\n        \n        # 所有关系都无结果时返回空\n        return []\n        \n    except Exception as e:\n        print(f\"查询执行错误: {e}\")\n        return []",
+    "answer_type": "time",
+    "time_level": "day",
+    "qtype": "first_last",
+    "evaluation": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "exact_match": false
+    }
+  },
+  {
+    "quid": "2000038",
+    "question": "Who wanted diplomatic cooperation with Japan before March 2005?",
+    "ground_truth": [
+      "South Korea",
+      "Roh Moo Hyun",
+      "China",
+      "Thailand",
+      "Mexico"
+    ],
+    "predicted_answers": [
+      "China",
+      "Thailand",
+      "Roh_Moo_Hyun",
+      "South_Korea",
+      "Mexico"
+    ],
+    "analysis": {
+      "question_type": "unknown",
+      "time_constraints": "unknown",
+      "key_entities": [],
+      "target_relation": "unknown",
+      "answer_type": "entity"
+    },
+    "query_code": "def query_kg(df):\n    import pandas as pd\n    import re\n    from datetime import datetime\n    \n    try:\n        # 定义目标关系和时间约束\n        target_relation = \"Express_intent_to_engage_in_diplomatic_cooperation_(such_as_policy_support)\"\n        time_cutoff = \"2005-03-01\"\n        \n        # 第一步：精确匹配\n        mask = (\n            (df['relation'] == target_relation) & \n            (df['tail'] == \"Japan\") & \n            (df['timestamp'] < time_cutoff)\n        )\n        results_df = df.loc[mask]\n        \n        # 第二步：如果结果为空，尝试模糊匹配tail\n        if results_df.empty:\n            mask = (\n                (df['relation'] == target_relation) &\n                (df['tail'].str.contains(\"Japan\", case=False, na=False)) & \n                (df['timestamp'] < time_cutoff)\n            )\n            results_df = df.loc[mask]\n        \n        # 提取去重的head实体列表\n        results = results_df['head'].unique().tolist()\n        return results\n        \n    except Exception as e:\n        print(f\"查询执行错误: {e}\")\n        return []",
+    "answer_type": "entity",
+    "time_level": "month",
+    "qtype": "before_after",
+    "evaluation": {
+      "precision": 0.6,
+      "recall": 0.6,
+      "f1": 0.6,
+      "exact_match": false
+    }
+  },
+  {
+    "quid": "2000039",
+    "question": "On 21 December 2009, which country announced its intention to cooperate with Iran?",
+    "ground_truth": [
+      "Iraq"
+    ],
+    "predicted_answers": [],
+    "analysis": {
+      "question_type": "unknown",
+      "time_constraints": "unknown",
+      "key_entities": [],
+      "target_relation": "unknown",
+      "answer_type": "entity"
+    },
+    "query_code": "def query_kg(df):\n    import pandas as pd\n    import re\n    from datetime import datetime\n    \n    try:\n        # 定义目标日期和关系\n        target_date = \"2009-12-21\"\n        target_relation = \"Express_intent_to_engage_in_diplomatic_cooperation_(such_as_policy_support)\"\n        \n        # 第一步：精确匹配日期和关系\n        date_filtered = df[(df['timestamp'] == target_date) & \n                          (df['relation'] == target_relation)]\n        \n        # 第二步：分层次匹配Iran实体（tail位置）\n        results = []\n        \n        # 层次1: 精确匹配\"Iran\"（大小写不敏感）\n        exact_match = date_filtered[date_filtered['tail'].str.lower() == 'iran']\n        if not exact_match.empty:\n            results = exact_match['head'].unique().tolist()\n        \n        # 层次2: 宽松匹配（包含\"iran\"子串）\n        if not results:\n            fuzzy_match = date_filtered[date_filtered['tail'].str.contains('iran', case=False, na=False)]\n            if not fuzzy_match.empty:\n                results = fuzzy_match['head'].unique().tolist()\n        \n        # 层次3: 更宽松的匹配（允许词干变化）\n        if not results:\n            pattern = r'\\biran(ian)?\\b'\n            regex_match = date_filtered[date_filtered['tail'].str.contains(pattern, case=False, na=False, regex=True)]\n            if not regex_match.empty:\n                results = regex_match['head'].unique().tolist()\n        \n        return results\n        \n    except Exception as e:\n        print(f\"查询执行错误: {e}\")\n        return []",
+    "answer_type": "entity",
+    "time_level": "day",
+    "qtype": "equal",
+    "evaluation": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "exact_match": false
+    }
+  },
+  {
+    "quid": "2000084",
+    "question": "Who hosted the visit of Abdelkader Messahel to Mauritania in the same year?",
+    "ground_truth": [
+      "Middle East"
+    ],
+    "predicted_answers": [
+      "代码生成失败"
+    ],
+    "analysis": {
+      "question_type": "unknown",
+      "time_constraints": "unknown",
+      "key_entities": [],
+      "target_relation": "unknown",
+      "answer_type": "entity"
+    },
+    "query_code": "",
+    "answer_type": "entity",
+    "time_level": "year",
+    "qtype": "equal_multi",
+    "evaluation": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "exact_match": false
+    }
+  },
+  {
+    "quid": "2000085",
+    "question": "Which country did the envoy of Sudan want to meet on the same day of Qatar?",
+    "ground_truth": [
+      "China",
+      "France"
+    ],
+    "predicted_answers": [
+      "Sudan",
+      "South_Korea",
+      "African_Union",
+      "Vietnam",
+      "Citizen_(Sudan)",
+      "Peace_and_Security_Council",
+      "China",
+      "Jakaya_Mrisho_Kikwete",
+      "Japan",
+      "United_Arab_Emirates",
+      "UN_Mission_in_Sudan",
+      "Ethiopia",
+      "Malaysia",
+      "Iran",
+      "Eritrea",
+      "South_Sudan",
+      "Transitional_Darfur_Regional_Authority",
+      "Government_(Sudan)",
+      "Envoy_(United_States)",
+      "Ministry_(Sudan)"
+    ],
+    "analysis": {
+      "question_type": "same_day_event",
+      "time_constraints": "需要找到与卡塔尔事件相同的日期",
+      "key_entities": [
+        "Sudan",
+        "Qatar"
+      ],
+      "target_relation": "Express_intent_to_engage_in_diplomatic_cooperation_(such_as_policy_support)",
+      "answer_type": "entity"
+    },
+    "query_code": "def query_kg(df):\n    import pandas as pd\n    \n    try:\n        # 步骤1: 获取所有卡塔尔相关事件的日期\n        qatar_dates = set(\n            df[(df['head'].str.contains('Qatar', case=False, na=False)) | \n               (df['tail'].str.contains('Qatar', case=False, na=False))]['timestamp']\n        )\n        \n        # 如果没有找到卡塔尔相关日期，返回空结果\n        if not qatar_dates:\n            return []\n        \n        # 步骤2: 查找苏丹特使在相同日期的外交合作意图事件\n        # 先尝试严格匹配 (head包含envoy和Sudan)\n        envoy_pattern = r'envoy|ambassador|representative|emissary'\n        strict_condition = (\n            (df['relation'] == 'Express_intent_to_engage_in_diplomatic_cooperation_(such_as_policy_support)') &\n            (df['head'].str.contains(envoy_pattern, case=False, na=False)) &\n            (df['head'].str.contains('Sudan', case=False, na=False)) &\n            (df['timestamp'].isin(qatar_dates))\n        )\n        \n        results = df[strict_condition]['tail'].dropna().unique().tolist()\n        \n        # 如果严格匹配无结果，尝试宽松匹配 (只要求head包含Sudan)\n        if not results:\n            loose_condition = (\n                (df['relation'] == 'Express_intent_to_engage_in_diplomatic_cooperation_(such_as_policy_support)') &\n                (df['head'].str.contains('Sudan', case=False, na=False)) &\n                (df['timestamp'].isin(qatar_dates))\n            )\n            results = df[loose_condition]['tail'].dropna().unique().tolist()\n        \n        return results\n        \n    except Exception as e:\n        print(f\"查询执行错误: {e}\")\n        return []",
+    "answer_type": "entity",
+    "time_level": "day",
+    "qtype": "equal_multi",
+    "evaluation": {
+      "precision": 0.05,
+      "recall": 0.5,
+      "f1": 0.09090909090909091,
+      "exact_match": false
+    }
+  },
+  {
+    "quid": "2000091",
+    "question": "Who was the first to accuse Iran after the head of government of Germany did?",
+    "ground_truth": [
+      "William J. Fallon"
+    ],
+    "predicted_answers": [],
+    "analysis": {
+      "question_type": "first_event",
+      "time_constraints": "在德国政府首脑指责伊朗之后的时间段",
+      "key_entities": [
+        "Iran",
+        "Head of Government (Germany)"
+      ],
+      "target_relation": "Make_pessimistic_comment（代表指责/负面评论）",
+      "answer_type": "entity"
+    },
+    "query_code": "def query_kg(df):\n    import pandas as pd\n    import re\n    \n    try:\n        # 1. 定义关键实体和关系\n        iran = \"Iran\"\n        germany_heads = [\"Head of Government (Germany)\", \"Chancellor of Germany\"]\n        accuse_relation = \"Make_pessimistic_comment\"  # 代表指责的关系\n        \n        # 2. 找到德国政府首脑指责伊朗的时间点\n        germany_event = df[\n            (df['head'].isin(germany_heads)) & \n            (df['relation'] == accuse_relation) & \n            (df['tail'] == iran)\n        ]\n        \n        # 如果精确匹配失败，尝试模糊匹配德国政府首脑\n        if germany_event.empty:\n            germany_pattern = r'Germany|German'\n            title_pattern = r'head of government|chancellor'\n            germany_cond = df['head'].str.contains(germany_pattern, case=False, na=False)\n            title_cond = df['head'].str.contains(title_pattern, case=False, na=False)\n            germany_event = df[germany_cond & title_cond & \n                              (df['relation'] == accuse_relation) & \n                              (df['tail'] == iran)]\n        \n        if germany_event.empty:\n            return []\n        \n        # 获取最早的时间戳\n        germany_event = germany_event.sort_values('timestamp')\n        germany",
+    "answer_type": "entity",
+    "time_level": "day",
+    "qtype": "after_first",
+    "evaluation": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "exact_match": false
+    }
+  },
+  {
+    "quid": "2000092",
+    "question": "Which country was the last to express optimism about the leader of Ukraine, before Iran?",
+    "ground_truth": [
+      "China"
+    ],
+    "predicted_answers": [
+      "代码生成失败"
+    ],
+    "analysis": {
+      "question_type": "unknown",
+      "time_constraints": "unknown",
+      "key_entities": [],
+      "target_relation": "unknown",
+      "answer_type": "entity"
+    },
+    "query_code": "",
+    "answer_type": "entity",
+    "time_level": "day",
+    "qtype": "before_last",
+    "evaluation": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "exact_match": false
+    }
+  },
+  {
+    "quid": "2000102",
+    "question": "With which country did France negotiate for the first time in 2013?",
+    "ground_truth": [
+      "United Arab Emirates"
+    ],
+    "predicted_answers": [
+      "代码生成失败"
+    ],
+    "analysis": {
+      "question_type": "unknown",
+      "time_constraints": "unknown",
+      "key_entities": [],
+      "target_relation": "unknown",
+      "answer_type": "entity"
+    },
+    "query_code": "",
+    "answer_type": "entity",
+    "time_level": "year",
+    "qtype": "equal_multi",
+    "evaluation": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "exact_match": false
+    }
+  }
+]

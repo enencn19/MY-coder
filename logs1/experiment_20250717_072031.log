@@ -1,0 +1,330 @@
+2025-07-17 07:20:31,667 - INFO - 日志系统初始化完成，日志文件: /mnt/nvme0n1/tyj/TKGQA/MY/logs/experiment_20250717_072031.log
+2025-07-17 07:20:31,699 - INFO - KG文件前3行: ['head\trelation\ttail\ttimestamp', 'Abdul_Kalam\tExpress_intent_to_engage_in_diplomatic_cooperation_(such_as_policy_support)\tSocial_Worker_(India)\t2005-01-01', 'Abdul_Kalam\tMake_statement\tSwraj_Paul\t2005-01-01']
+2025-07-17 07:20:32,042 - INFO - 加载KG数据: 461329行, 列名: ['head', 'relation', 'tail', 'timestamp']
+2025-07-17 07:20:32,043 - INFO - 时间戳列样例: ['2005-01-01', '2005-01-01', '2005-01-01', '2005-01-01', '2005-01-01']
+2025-07-17 07:20:32,046 - INFO - 加载了 10488 个实体映射和 251 个关系映射
+2025-07-17 07:20:32,047 - INFO - 时间戳列数据类型: object
+2025-07-17 07:20:32,062 - INFO - 时间戳列唯一值样例: ['2005-01-01' '2005-01-02' '2005-01-03' '2005-01-04' '2005-01-05']
+2025-07-17 07:20:33,832 - INFO - 知识图谱预处理完成，有效数据: 461329行
+2025-07-17 07:20:33,835 - INFO - 时间范围: 2005-01-01 00:00:00 到 2015-12-31 00:00:00
+2025-07-17 07:20:33,835 - INFO - 系统初始化完成 - 问题数: 30, KG四元组数: 461329
+2025-07-17 07:20:33,835 - INFO - 代码记录文件: /mnt/nvme0n1/tyj/TKGQA/MY/generated_codes_20250717_072032.py
+2025-07-17 07:20:33,835 - INFO - 分析温度: 1.0, 代码温度: 0.0
+2025-07-17 07:20:33,835 - INFO - 开始时序知识图谱问答实验...
+2025-07-17 07:20:33,835 - INFO - 问题总数: 30
+2025-07-17 07:20:33,835 - INFO - 知识图谱四元组数: 461329
+2025-07-17 07:20:33,835 - INFO - 分析温度: 1.0
+2025-07-17 07:20:33,835 - INFO - 代码温度: 0.0
+2025-07-17 07:20:33,835 - INFO - 
+==================================================
+2025-07-17 07:20:33,835 - INFO - 开始处理问题 2000014
+2025-07-17 07:20:33,835 - INFO - 问题: Who would wish to visit Ireland in July, the year of 2007?
+2025-07-17 07:20:33,835 - INFO - 标准答案: ['Bertie Ahern']
+2025-07-17 07:20:33,835 - INFO - ==================================================
+2025-07-17 07:20:33,835 - INFO - 第一步：问题分析
+2025-07-17 07:20:51,596 - INFO - 问题分析完成: {'question_type': 'entity_query', 'time_constraints': 'July 2007', 'key_entities': ['Ireland'], 'target_relations': ['Express_intent_to_meet_or_negotiate', 'Engage_in_diplomatic_cooperation', 'Make_statement', 'Praise_or_endorse'], 'answer_type': 'entity', 'query_strategy': "1. 首先筛选时间范围在2007年7月的所有事件\n2. 在这些事件中查找与'Ireland'相关的实体(head或tail)\n3. 重点关注表示'访问'意图或行为的关系类型\n4. 可能需要结合'Express_intent_to_meet_or_negotiate'等关系来推断访问意图\n5. 最终返回符合条件的实体列表"}
+2025-07-17 07:20:51,596 - INFO - 第二步：代码生成
+2025-07-17 07:20:51,596 - INFO - 代码生成成功
+2025-07-17 07:20:51,597 - INFO - 第三步：执行查询
+2025-07-17 07:20:51,597 - ERROR - 执行错误: unexpected indent (<string>, line 27)
+2025-07-17 07:20:51,599 - ERROR - 详细错误: Traceback (most recent call last):
+  File "/mnt/nvme0n1/tyj/TKGQA/MY/temporal_kgqa_experiment.py", line 558, in execute_query
+    exec(query_code, exec_globals)
+  File "<string>", line 27
+    if df.empty:
+IndentationError: unexpected indent
+
+2025-07-17 07:20:51,599 - INFO - 尝试自动修复代码
+2025-07-17 07:21:12,458 - INFO - 代码修复成功
+2025-07-17 07:21:12,458 - INFO - 尝试执行修复后的代码
+2025-07-17 07:21:13,021 - INFO - 修复后查询成功，返回 5 个结果: ['Ireland', 'Trevor Sargent', 'Green Party (Ireland)', 'Party Member (Ireland)', 'Bertie Ahern']
+2025-07-17 07:21:13,022 - INFO - 问题 2000014 处理完成
+2025-07-17 07:21:13,022 - INFO - 预测答案: ['Ireland', 'Trevor Sargent', 'Green Party (Ireland)', 'Party Member (Ireland)', 'Bertie Ahern']
+2025-07-17 07:21:13,022 - INFO - 标准化后的标准答案: ['Bertie Ahern']
+2025-07-17 07:21:13,022 - INFO - 标准化后的预测答案: ['Ireland', 'Trevor Sargent', 'Green Party (Ireland)', 'Party Member (Ireland)', 'Bertie Ahern']
+2025-07-17 07:21:13,022 - INFO - 交集: {'Bertie Ahern'}
+2025-07-17 07:21:13,022 - INFO - 评估结果: P=0.200, R=1.000, F1=0.333, EM=False
+2025-07-17 07:21:13,022 - INFO - 结果已保存到: /mnt/nvme0n1/tyj/TKGQA/MY/intermediate_results_1.json
+2025-07-17 07:21:14,024 - INFO - 
+==================================================
+2025-07-17 07:21:14,024 - INFO - 开始处理问题 2000015
+2025-07-17 07:21:14,024 - INFO - 问题: In which year did Viktor Orban visit Iran for the first time?
+2025-07-17 07:21:14,024 - INFO - 标准答案: ['2015']
+2025-07-17 07:21:14,024 - INFO - ==================================================
+2025-07-17 07:21:14,024 - INFO - 第一步：问题分析
+2025-07-17 07:21:24,246 - INFO - 问题分析完成: {'question_type': 'first_event', 'time_constraints': '时间范围: 2005-01-01 00:00:00 到 2015-12-31 00:00:00', 'key_entities': ['Viktor Orban', 'Iran'], 'target_relations': ['Express_intent_to_meet_or_negotiate', 'Engage_in_diplomatic_cooperation'], 'answer_type': 'time', 'query_strategy': '首先在知识图谱中查找Viktor Orban与Iran之间的所有事件，筛选出涉及访问或外交合作的事件。然后在这些事件中找出时间最早的一个，返回其年份。'}
+2025-07-17 07:21:24,246 - INFO - 第二步：代码生成
+2025-07-17 07:21:24,246 - INFO - 代码生成成功
+2025-07-17 07:21:24,246 - INFO - 第三步：执行查询
+2025-07-17 07:21:24,246 - ERROR - 执行错误: unexpected indent (<string>, line 33)
+2025-07-17 07:21:24,246 - ERROR - 详细错误: Traceback (most recent call last):
+  File "/mnt/nvme0n1/tyj/TKGQA/MY/temporal_kgqa_experiment.py", line 558, in execute_query
+    exec(query_code, exec_globals)
+  File "<string>", line 33
+    df_sorted = df.sort_values('timestamp')
+IndentationError: unexpected indent
+
+2025-07-17 07:21:24,246 - INFO - 尝试自动修复代码
+2025-07-17 07:21:47,765 - INFO - 代码修复成功
+2025-07-17 07:21:47,765 - INFO - 尝试执行修复后的代码
+2025-07-17 07:21:48,752 - INFO - 修复后查询成功，返回 1 个结果: ['2005']
+2025-07-17 07:21:48,752 - INFO - 问题 2000015 处理完成
+2025-07-17 07:21:48,752 - INFO - 预测答案: ['2005']
+2025-07-17 07:21:48,752 - INFO - 标准化后的标准答案: ['2015']
+2025-07-17 07:21:48,752 - INFO - 标准化后的预测答案: ['2005']
+2025-07-17 07:21:48,752 - INFO - 交集: set()
+2025-07-17 07:21:48,752 - INFO - 评估结果: P=0.000, R=0.000, F1=0.000, EM=False
+2025-07-17 07:21:49,753 - INFO - 
+==================================================
+2025-07-17 07:21:49,754 - INFO - 开始处理问题 2000016
+2025-07-17 07:21:49,754 - INFO - 问题: Who made optimistic remarks about Iran after the Organisation for Economic Cooperation and Development?
+2025-07-17 07:21:49,754 - INFO - 标准答案: ['South Korea', 'Party Member (Iraq)', 'France', 'China', 'Iraq', 'Member of Legislative (Govt) (Iran)', 'Japan', 'Head of Government (Ukraine)', 'Thailand', 'Kazakhstan']
+2025-07-17 07:21:49,754 - INFO - ==================================================
+2025-07-17 07:21:49,754 - INFO - 第一步：问题分析
+2025-07-17 07:22:01,350 - INFO - 问题分析完成: {'question_type': 'entity_query', 'time_constraints': '时间范围在2005-01-01到2015-12-31之间', 'key_entities': ['Iran', 'Organisation for Economic Cooperation and Development'], 'target_relations': ['Make_statement', 'Praise_or_endorse', 'Make_optimistic_comment'], 'answer_type': 'entity', 'query_strategy': "首先需要识别出与'Organisation for Economic Cooperation and Development'相关的实体，然后在给定的时间范围内查找与该实体有'Make_statement'、'Praise_or_endorse'或'Make_optimistic_comment'关系且指向'Iran'的实体。由于问题中提到了'optimistic remarks'，优先考虑'Praise_or_endorse'和'Make_optimistic_comment'关系。"}
+2025-07-17 07:22:01,350 - INFO - 第二步：代码生成
+2025-07-17 07:22:01,350 - INFO - 代码生成成功
+2025-07-17 07:22:01,350 - INFO - 第三步：执行查询
+2025-07-17 07:22:01,350 - ERROR - 执行错误: unexpected indent (<string>, line 33)
+2025-07-17 07:22:01,351 - ERROR - 详细错误: Traceback (most recent call last):
+  File "/mnt/nvme0n1/tyj/TKGQA/MY/temporal_kgqa_experiment.py", line 558, in execute_query
+    exec(query_code, exec_globals)
+  File "<string>", line 33
+    if df.empty:
+IndentationError: unexpected indent
+
+2025-07-17 07:22:01,351 - INFO - 尝试自动修复代码
+2025-07-17 07:22:24,343 - INFO - 代码修复成功
+2025-07-17 07:22:24,343 - INFO - 尝试执行修复后的代码
+2025-07-17 07:22:25,198 - INFO - 修复后查询成功，返回 10 个结果: ['Douglas Alexander', 'Head of Government (Slovenia)', 'Lawmaker (Middle East)', 'Defense / Security Ministry (Libya)', 'Head of Government (Bangladesh)', 'Viktor Orban', 'Media (Argentina)', 'Government (Germany)', 'Quds Force', 'Activist (Azerbaijan)']
+2025-07-17 07:22:25,199 - INFO - 问题 2000016 处理完成
+2025-07-17 07:22:25,199 - INFO - 预测答案: ['Douglas Alexander', 'Head of Government (Slovenia)', 'Lawmaker (Middle East)', 'Defense / Security Ministry (Libya)', 'Head of Government (Bangladesh)', 'Viktor Orban', 'Media (Argentina)', 'Government (Germany)', 'Quds Force', 'Activist (Azerbaijan)']
+2025-07-17 07:22:25,199 - INFO - 标准化后的标准答案: ['South Korea', 'Party Member (Iraq)', 'France', 'China', 'Iraq', 'Member of Legislative (Govt) (Iran)', 'Japan', 'Head of Government (Ukraine)', 'Thailand', 'Kazakhstan']
+2025-07-17 07:22:25,199 - INFO - 标准化后的预测答案: ['Douglas Alexander', 'Head of Government (Slovenia)', 'Lawmaker (Middle East)', 'Defense / Security Ministry (Libya)', 'Head of Government (Bangladesh)', 'Viktor Orban', 'Media (Argentina)', 'Government (Germany)', 'Quds Force', 'Activist (Azerbaijan)']
+2025-07-17 07:22:25,199 - INFO - 交集: set()
+2025-07-17 07:22:25,199 - INFO - 评估结果: P=0.000, R=0.000, F1=0.000, EM=False
+2025-07-17 07:22:26,200 - INFO - 
+==================================================
+2025-07-17 07:22:26,201 - INFO - 开始处理问题 2000017
+2025-07-17 07:22:26,201 - INFO - 问题: Who made optimistic remarks about Yasuo Fukuda after Japan?
+2025-07-17 07:22:26,201 - INFO - 标准答案: ['Government Official (Japan)', 'China']
+2025-07-17 07:22:26,201 - INFO - ==================================================
+2025-07-17 07:22:26,201 - INFO - 第一步：问题分析
+2025-07-17 07:22:41,049 - INFO - 问题分析完成: {'question_type': 'entity_query', 'time_constraints': '2005-01-01 00:00:00 到 2015-12-31 00:00:00', 'key_entities': ['Yasuo Fukuda', 'Japan'], 'target_relations': ['Praise_or_endorse', 'Make_statement', 'Make_optimistic_comment'], 'answer_type': 'entity', 'query_strategy': "1. 首先识别出关键实体'Yasuo Fukuda'和'Japan'。2. 由于问题询问的是'who made optimistic remarks'，目标关系应为'Praise_or_endorse'或'Make_statement'，但知识图谱中未明确列出'Make_optimistic_comment'，可能需要用'Praise_or_endorse'作为替代。3. 在给定时间范围内查找以'Yasuo Fukuda'为tail，关系为'Praise_or_endorse'或'Make_statement'的三元组，返回对应的head实体。4. 由于问题中'after Japan'可能暗示时间顺序，需确保结果事件发生在与Japan相关的事件之后。"}
+2025-07-17 07:22:41,049 - INFO - 第二步：代码生成
+2025-07-17 07:22:41,049 - INFO - 代码生成成功
+2025-07-17 07:22:41,049 - INFO - 第三步：执行查询
+2025-07-17 07:22:41,050 - ERROR - 执行错误: unexpected indent (<string>, line 33)
+2025-07-17 07:22:41,050 - ERROR - 详细错误: Traceback (most recent call last):
+  File "/mnt/nvme0n1/tyj/TKGQA/MY/temporal_kgqa_experiment.py", line 558, in execute_query
+    exec(query_code, exec_globals)
+  File "<string>", line 33
+    if df.empty:
+IndentationError: unexpected indent
+
+2025-07-17 07:22:41,050 - INFO - 尝试自动修复代码
+2025-07-17 07:23:03,717 - INFO - 代码修复成功
+2025-07-17 07:23:03,718 - INFO - 尝试执行修复后的代码
+2025-07-17 07:23:04,556 - INFO - 修复后查询成功，返回 10 个结果: ['Consultative Assembly (Japan)', 'Defector (Your Party)', 'Norodom Sihanouk', 'Head of Government (Bangladesh)', 'Sengoku Yoshito', 'Grand National Party', 'Michael Sata', 'Samsung', 'Director General (China)', 'Foreign Affairs (Romania)']
+2025-07-17 07:23:04,557 - INFO - 问题 2000017 处理完成
+2025-07-17 07:23:04,557 - INFO - 预测答案: ['Consultative Assembly (Japan)', 'Defector (Your Party)', 'Norodom Sihanouk', 'Head of Government (Bangladesh)', 'Sengoku Yoshito', 'Grand National Party', 'Michael Sata', 'Samsung', 'Director General (China)', 'Foreign Affairs (Romania)']
+2025-07-17 07:23:04,557 - INFO - 标准化后的标准答案: ['Government Official (Japan)', 'China']
+2025-07-17 07:23:04,557 - INFO - 标准化后的预测答案: ['Consultative Assembly (Japan)', 'Defector (Your Party)', 'Norodom Sihanouk', 'Head of Government (Bangladesh)', 'Sengoku Yoshito', 'Grand National Party', 'Michael Sata', 'Samsung', 'Director General (China)', 'Foreign Affairs (Romania)']
+2025-07-17 07:23:04,557 - INFO - 交集: set()
+2025-07-17 07:23:04,557 - INFO - 评估结果: P=0.000, R=0.000, F1=0.000, EM=False
+2025-07-17 07:23:05,558 - INFO - 
+==================================================
+2025-07-17 07:23:05,558 - INFO - 开始处理问题 2000018
+2025-07-17 07:23:05,559 - INFO - 问题: In which month did Xi Jinping praise the Bahamas?
+2025-07-17 07:23:05,559 - INFO - 标准答案: ['2015-01']
+2025-07-17 07:23:05,559 - INFO - ==================================================
+2025-07-17 07:23:05,559 - INFO - 第一步：问题分析
+2025-07-17 07:23:13,917 - INFO - 问题分析完成: {'question_type': 'time_query', 'time_constraints': '时间范围为2005-01-01到2015-12-31', 'key_entities': ['Xi Jinping', 'Bahamas'], 'target_relations': ['Praise_or_endorse'], 'answer_type': 'time', 'query_strategy': "首先在知识图谱中查找Xi Jinping与Bahamas之间的'Praise_or_endorse'关系，然后筛选出在给定时间范围内的事件，最后提取事件发生的具体月份。"}
+2025-07-17 07:23:13,917 - INFO - 第二步：代码生成
+2025-07-17 07:23:13,917 - INFO - 代码生成成功
+2025-07-17 07:23:13,917 - INFO - 第三步：执行查询
+2025-07-17 07:23:13,918 - ERROR - 执行错误: unexpected indent (<string>, line 33)
+2025-07-17 07:23:13,918 - ERROR - 详细错误: Traceback (most recent call last):
+  File "/mnt/nvme0n1/tyj/TKGQA/MY/temporal_kgqa_experiment.py", line 558, in execute_query
+    exec(query_code, exec_globals)
+  File "<string>", line 33
+    if df.empty:
+IndentationError: unexpected indent
+
+2025-07-17 07:23:13,918 - INFO - 尝试自动修复代码
+2025-07-17 07:23:36,914 - INFO - 代码修复成功
+2025-07-17 07:23:36,914 - INFO - 尝试执行修复后的代码
+2025-07-17 07:23:37,677 - INFO - 修复后查询成功，返回 10 个结果: ['Foreign Affairs (Cape Verde)', 'Government (Qatar)', 'Viktor Orban', 'Abdulla Yameen', 'Romania', 'Citizen (United Kingdom)', 'Ma Ying Jeou', 'Heinz Fischer', 'Elizabeth II', 'Cristina Fernández de Kirchner']
+2025-07-17 07:23:37,677 - INFO - 问题 2000018 处理完成
+2025-07-17 07:23:37,677 - INFO - 预测答案: ['Foreign Affairs (Cape Verde)', 'Government (Qatar)', 'Viktor Orban', 'Abdulla Yameen', 'Romania', 'Citizen (United Kingdom)', 'Ma Ying Jeou', 'Heinz Fischer', 'Elizabeth II', 'Cristina Fernández de Kirchner']
+2025-07-17 07:23:37,677 - INFO - 标准化后的标准答案: ['2015-01']
+2025-07-17 07:23:37,677 - INFO - 标准化后的预测答案: ['Foreign Affairs (Cape Verde)', 'Government (Qatar)', 'Viktor Orban', 'Abdulla Yameen', 'Romania', 'Citizen (United Kingdom)', 'Ma Ying Jeou', 'Heinz Fischer', 'Elizabeth II', 'Cristina Fernández de Kirchner']
+2025-07-17 07:23:37,677 - INFO - 交集: set()
+2025-07-17 07:23:37,677 - INFO - 评估结果: P=0.000, R=0.000, F1=0.000, EM=False
+2025-07-17 07:23:37,680 - INFO - 结果已保存到: /mnt/nvme0n1/tyj/TKGQA/MY/intermediate_results_5.json
+2025-07-17 07:23:38,681 - INFO - 
+==================================================
+2025-07-17 07:23:38,682 - INFO - 开始处理问题 2000019
+2025-07-17 07:23:38,682 - INFO - 问题: When did Iran last express its intention to meet with international governmental organisations?
+2025-07-17 07:23:38,682 - INFO - 标准答案: ['2006-05-27']
+2025-07-17 07:23:38,682 - INFO - ==================================================
+2025-07-17 07:23:38,682 - INFO - 第一步：问题分析
+2025-07-17 07:23:49,549 - INFO - 问题分析完成: {'question_type': 'last_event', 'time_constraints': '时间范围为2005-01-01到2015-12-31', 'key_entities': ['Iran', 'International_Government_Organizations'], 'target_relations': ['Express_intent_to_meet_or_negotiate'], 'answer_type': 'time', 'query_strategy': "1. 在知识图谱中查找头实体为'Iran'且尾实体为'International_Government_Organizations'的三元组 2. 筛选关系为'Express_intent_to_meet_or_negotiate'的三元组 3. 在这些三元组中找出时间最晚的事件"}
+2025-07-17 07:23:49,550 - INFO - 第二步：代码生成
+2025-07-17 07:23:49,550 - INFO - 代码生成成功
+2025-07-17 07:23:49,550 - INFO - 第三步：执行查询
+2025-07-17 07:23:49,550 - ERROR - 执行错误: unexpected indent (<string>, line 33)
+2025-07-17 07:23:49,550 - ERROR - 详细错误: Traceback (most recent call last):
+  File "/mnt/nvme0n1/tyj/TKGQA/MY/temporal_kgqa_experiment.py", line 558, in execute_query
+    exec(query_code, exec_globals)
+  File "<string>", line 33
+    df_sorted = df.sort_values('timestamp', ascending=False)
+IndentationError: unexpected indent
+
+2025-07-17 07:23:49,550 - INFO - 尝试自动修复代码
+2025-07-17 07:24:13,088 - INFO - 代码修复成功
+2025-07-17 07:24:13,088 - INFO - 尝试执行修复后的代码
+2025-07-17 07:24:13,936 - INFO - 修复后查询成功，返回 1 个结果: ['2015']
+2025-07-17 07:24:13,937 - INFO - 问题 2000019 处理完成
+2025-07-17 07:24:13,937 - INFO - 预测答案: ['2015']
+2025-07-17 07:24:13,937 - INFO - 标准化后的标准答案: ['2006-05-27']
+2025-07-17 07:24:13,937 - INFO - 标准化后的预测答案: ['2015']
+2025-07-17 07:24:13,937 - INFO - 交集: set()
+2025-07-17 07:24:13,937 - INFO - 评估结果: P=0.000, R=0.000, F1=0.000, EM=False
+2025-07-17 07:24:14,938 - INFO - 
+==================================================
+2025-07-17 07:24:14,938 - INFO - 开始处理问题 2000020
+2025-07-17 07:24:14,938 - INFO - 问题: In which country did Colombia release people before 23 February 2008?
+2025-07-17 07:24:14,939 - INFO - 标准答案: ['Guerrilla (Colombia)']
+2025-07-17 07:24:14,939 - INFO - ==================================================
+2025-07-17 07:24:14,939 - INFO - 第一步：问题分析
+2025-07-17 07:24:23,393 - INFO - 问题分析完成: {'question_type': 'entity_query', 'time_constraints': 'before 23 February 2008', 'key_entities': ['Colombia'], 'target_relations': ['Release'], 'answer_type': 'entity', 'query_strategy': "首先在知识图谱中查找与'Colombia'相关的实体，然后筛选出在2008年2月23日之前发生的事件，重点关注涉及'Release'关系的事件。最后确定被释放的人所在的国家。"}
+2025-07-17 07:24:23,394 - INFO - 第二步：代码生成
+2025-07-17 07:24:23,394 - INFO - 代码生成成功
+2025-07-17 07:24:23,394 - INFO - 第三步：执行查询
+2025-07-17 07:24:23,394 - ERROR - 执行错误: unexpected indent (<string>, line 27)
+2025-07-17 07:24:23,394 - ERROR - 详细错误: Traceback (most recent call last):
+  File "/mnt/nvme0n1/tyj/TKGQA/MY/temporal_kgqa_experiment.py", line 558, in execute_query
+    exec(query_code, exec_globals)
+  File "<string>", line 27
+    if df.empty:
+IndentationError: unexpected indent
+
+2025-07-17 07:24:23,394 - INFO - 尝试自动修复代码
+2025-07-17 07:24:41,190 - INFO - 代码修复成功
+2025-07-17 07:24:41,190 - INFO - 尝试执行修复后的代码
+2025-07-17 07:24:41,654 - INFO - 修复后查询成功，返回 7 个结果: ['Lawmaker (Colombia)', 'Guerrilla (Colombia)', 'Citizen (Unidentified State Actor)', 'Colombia', 'Citizen (Venezuela)', 'Ingrid Betancourt Pulecio', 'National Liberation Army']
+2025-07-17 07:24:41,654 - INFO - 问题 2000020 处理完成
+2025-07-17 07:24:41,654 - INFO - 预测答案: ['Lawmaker (Colombia)', 'Guerrilla (Colombia)', 'Citizen (Unidentified State Actor)', 'Colombia', 'Citizen (Venezuela)', 'Ingrid Betancourt Pulecio', 'National Liberation Army']
+2025-07-17 07:24:41,655 - INFO - 标准化后的标准答案: ['Guerrilla (Colombia)']
+2025-07-17 07:24:41,655 - INFO - 标准化后的预测答案: ['Lawmaker (Colombia)', 'Guerrilla (Colombia)', 'Citizen (Unidentified State Actor)', 'Colombia', 'Citizen (Venezuela)', 'Ingrid Betancourt Pulecio', 'National Liberation Army']
+2025-07-17 07:24:41,655 - INFO - 交集: {'Guerrilla (Colombia)'}
+2025-07-17 07:24:41,655 - INFO - 评估结果: P=0.143, R=1.000, F1=0.250, EM=False
+2025-07-17 07:24:42,656 - INFO - 
+==================================================
+2025-07-17 07:24:42,656 - INFO - 开始处理问题 2000021
+2025-07-17 07:24:42,656 - INFO - 问题: Who was the first country to express optimism about Barack Obama after Ireland?
+2025-07-17 07:24:42,656 - INFO - 标准答案: ['Angela Merkel']
+2025-07-17 07:24:42,656 - INFO - ==================================================
+2025-07-17 07:24:42,656 - INFO - 第一步：问题分析
+2025-07-17 07:24:54,006 - INFO - 问题分析完成: {'question_type': 'first_event', 'time_constraints': '时间范围: 2005-01-01 00:00:00 到 2015-12-31 00:00:00', 'key_entities': ['Ireland', 'Barack Obama'], 'target_relations': ['Express_intent_to_engage_in_diplomatic_cooperation_(such_as_policy_support)', 'Make_statement', 'Praise_or_endorse'], 'answer_type': 'entity', 'query_strategy': '1. 首先查询Ireland与Barack Obama之间的事件，确定Ireland表达乐观态度的具体时间点。2. 在该时间点之后，查询其他国家与Barack Obama之间的事件，筛选出表达乐观态度（如Praise_or_endorse等关系）的事件。3. 按时间顺序排序，选择最早的事件对应的国家作为答案。'}
+2025-07-17 07:24:54,006 - INFO - 第二步：代码生成
+2025-07-17 07:24:54,006 - INFO - 代码生成成功
+2025-07-17 07:24:54,007 - INFO - 第三步：执行查询
+2025-07-17 07:24:54,007 - ERROR - 执行错误: unexpected indent (<string>, line 33)
+2025-07-17 07:24:54,007 - ERROR - 详细错误: Traceback (most recent call last):
+  File "/mnt/nvme0n1/tyj/TKGQA/MY/temporal_kgqa_experiment.py", line 558, in execute_query
+    exec(query_code, exec_globals)
+  File "<string>", line 33
+    df_sorted = df.sort_values('timestamp')
+IndentationError: unexpected indent
+
+2025-07-17 07:24:54,007 - INFO - 尝试自动修复代码
+2025-07-17 07:25:18,648 - INFO - 代码修复成功
+2025-07-17 07:25:18,649 - INFO - 尝试执行修复后的代码
+2025-07-17 07:25:19,531 - INFO - 修复后查询成功，返回 2 个结果: ['Northern Ireland', 'Provisional Irish Republican Army']
+2025-07-17 07:25:19,532 - INFO - 问题 2000021 处理完成
+2025-07-17 07:25:19,532 - INFO - 预测答案: ['Northern Ireland', 'Provisional Irish Republican Army']
+2025-07-17 07:25:19,532 - INFO - 标准化后的标准答案: ['Angela Merkel']
+2025-07-17 07:25:19,532 - INFO - 标准化后的预测答案: ['Northern Ireland', 'Provisional Irish Republican Army']
+2025-07-17 07:25:19,532 - INFO - 交集: set()
+2025-07-17 07:25:19,532 - INFO - 评估结果: P=0.000, R=0.000, F1=0.000, EM=False
+2025-07-17 07:25:20,533 - INFO - 
+==================================================
+2025-07-17 07:25:20,533 - INFO - 开始处理问题 2000022
+2025-07-17 07:25:20,533 - INFO - 问题: Which was the first country to praise Colombia after Cristina Fernández de Kirchner?
+2025-07-17 07:25:20,533 - INFO - 标准答案: ['Barack Obama']
+2025-07-17 07:25:20,533 - INFO - ==================================================
+2025-07-17 07:25:20,534 - INFO - 第一步：问题分析
+2025-07-17 07:25:31,146 - INFO - 问题分析完成: {'question_type': 'first_event', 'time_constraints': "after Cristina Fernández de Kirchner's presidency (2007-2015), within the given time range 2005-2015", 'key_entities': ['Colombia', 'Cristina Fernández de Kirchner'], 'target_relations': ['Praise_or_endorse'], 'answer_type': 'entity', 'query_strategy': "1. Identify all 'Praise_or_endorse' events where Colombia is the tail (recipient) \n2. Filter events occurring after Cristina Fernández de Kirchner's presidency end (2015-12-10) \n3. Sort remaining events chronologically and select the earliest \n4. Return the head entity (country) of this first event"}
+2025-07-17 07:25:31,146 - INFO - 第二步：代码生成
+2025-07-17 07:25:31,146 - INFO - 代码生成成功
+2025-07-17 07:25:31,146 - INFO - 第三步：执行查询
+2025-07-17 07:25:31,147 - ERROR - 执行错误: unexpected indent (<string>, line 33)
+2025-07-17 07:25:31,147 - ERROR - 详细错误: Traceback (most recent call last):
+  File "/mnt/nvme0n1/tyj/TKGQA/MY/temporal_kgqa_experiment.py", line 558, in execute_query
+    exec(query_code, exec_globals)
+  File "<string>", line 33
+    df_sorted = df.sort_values('timestamp')
+IndentationError: unexpected indent
+
+2025-07-17 07:25:31,147 - INFO - 尝试自动修复代码
+2025-07-17 07:25:53,408 - INFO - 代码修复成功
+2025-07-17 07:25:53,409 - INFO - 尝试执行修复后的代码
+2025-07-17 07:25:54,106 - INFO - 修复后查询成功，返回 2 个结果: ['Head of Government (Brazil)', 'Colombia']
+2025-07-17 07:25:54,106 - INFO - 问题 2000022 处理完成
+2025-07-17 07:25:54,106 - INFO - 预测答案: ['Head of Government (Brazil)', 'Colombia']
+2025-07-17 07:25:54,106 - INFO - 标准化后的标准答案: ['Barack Obama']
+2025-07-17 07:25:54,106 - INFO - 标准化后的预测答案: ['Head of Government (Brazil)', 'Colombia']
+2025-07-17 07:25:54,106 - INFO - 交集: set()
+2025-07-17 07:25:54,107 - INFO - 评估结果: P=0.000, R=0.000, F1=0.000, EM=False
+2025-07-17 07:25:55,108 - INFO - 
+==================================================
+2025-07-17 07:25:55,108 - INFO - 开始处理问题 2000023
+2025-07-17 07:25:55,108 - INFO - 问题: Which country hosted the visit of Frank Bainimarama after Vanuatu?
+2025-07-17 07:25:55,108 - INFO - 标准答案: ['China']
+2025-07-17 07:25:55,108 - INFO - ==================================================
+2025-07-17 07:25:55,108 - INFO - 第一步：问题分析
+2025-07-17 07:26:06,147 - INFO - 问题分析完成: {'question_type': 'entity_query', 'time_constraints': '时间范围: 2005-01-01 00:00:00 到 2015-12-31 00:00:00', 'key_entities': ['Frank Bainimarama', 'Vanuatu'], 'target_relations': ['Engage_in_diplomatic_cooperation', 'Express_intent_to_meet_or_negotiate', 'Visit'], 'answer_type': 'entity', 'query_strategy': '1. 首先查找Frank Bainimarama访问Vanuatu的事件和时间点；2. 然后在Vanuatu访问之后的时间范围内，查找Frank Bainimarama的下一个访问事件；3. 确定访问的国家实体'}
+2025-07-17 07:26:06,147 - INFO - 第二步：代码生成
+2025-07-17 07:26:06,147 - INFO - 代码生成成功
+2025-07-17 07:26:06,147 - INFO - 第三步：执行查询
+2025-07-17 07:26:06,148 - ERROR - 执行错误: unexpected indent (<string>, line 33)
+2025-07-17 07:26:06,148 - ERROR - 详细错误: Traceback (most recent call last):
+  File "/mnt/nvme0n1/tyj/TKGQA/MY/temporal_kgqa_experiment.py", line 558, in execute_query
+    exec(query_code, exec_globals)
+  File "<string>", line 33
+    if df.empty:
+IndentationError: unexpected indent
+
+2025-07-17 07:26:06,148 - INFO - 尝试自动修复代码
+2025-07-17 07:26:30,348 - INFO - 代码修复成功
+2025-07-17 07:26:30,349 - INFO - 尝试执行修复后的代码
+2025-07-17 07:26:31,063 - INFO - 修复后查询成功，返回 10 个结果: ['Education Ministry (Fiji)', 'Congress (United States)', 'Julie Bishop', 'South Korea', 'Government Delegation (Fiji)', 'Government Official (Fiji)', 'Frank Bainimarama', 'Ministry (Vanuatu)', 'Winston Peters', 'Thailand']
+2025-07-17 07:26:31,063 - INFO - 问题 2000023 处理完成
+2025-07-17 07:26:31,063 - INFO - 预测答案: ['Education Ministry (Fiji)', 'Congress (United States)', 'Julie Bishop', 'South Korea', 'Government Delegation (Fiji)', 'Government Official (Fiji)', 'Frank Bainimarama', 'Ministry (Vanuatu)', 'Winston Peters', 'Thailand']
+2025-07-17 07:26:31,063 - INFO - 标准化后的标准答案: ['China']
+2025-07-17 07:26:31,063 - INFO - 标准化后的预测答案: ['Education Ministry (Fiji)', 'Congress (United States)', 'Julie Bishop', 'South Korea', 'Government Delegation (Fiji)', 'Government Official (Fiji)', 'Frank Bainimarama', 'Ministry (Vanuatu)', 'Winston Peters', 'Thailand']
+2025-07-17 07:26:31,063 - INFO - 交集: set()
+2025-07-17 07:26:31,063 - INFO - 评估结果: P=0.000, R=0.000, F1=0.000, EM=False
+2025-07-17 07:26:31,064 - INFO - 结果已保存到: /mnt/nvme0n1/tyj/TKGQA/MY/intermediate_results_10.json
+2025-07-17 07:26:32,066 - INFO - 
+==================================================
+2025-07-17 07:26:32,066 - INFO - 开始处理问题 2000024
+2025-07-17 07:26:32,066 - INFO - 问题: Who asked for Japan in October 2005?
+2025-07-17 07:26:32,066 - INFO - 标准答案: ['Wang Yi', 'Donald Rumsfeld', 'Finance / Economy / Commerce / Trade Ministry (New Zealand)', 'Robert Jones Portman', 'China', 'Iraq']
+2025-07-17 07:26:32,066 - INFO - ==================================================
+2025-07-17 07:26:32,066 - INFO - 第一步：问题分析
+2025-07-17 07:26:41,758 - INFO - 问题分析完成: {'question_type': 'entity_query', 'time_constraints': 'October 2005', 'key_entities': ['Japan'], 'target_relations': ['Make_an_appeal_or_request'], 'answer_type': 'entity', 'query_strategy': "查询在2005年10月期间，与'Japan'相关的'Make_an_appeal_or_request'关系的主体实体。首先筛选时间在2005-10-01至2005-10-31之间的三元组，然后查找关系为'Make_an_appeal_or_request'且tail实体为'Japan'的三元组，最后返回对应的head实体。"}
+2025-07-17 07:26:41,759 - INFO - 第二步：代码生成
+2025-07-17 07:26:41,759 - INFO - 代码生成成功
+2025-07-17 07:26:41,759 - INFO - 第三步：执行查询
+2025-07-17 07:26:41,759 - ERROR - 执行错误: unexpected indent (<string>, line 27)
+2025-07-17 07:26:41,759 - ERROR - 详细错误: Traceback (most recent call last):
+  File "/mnt/nvme0n1/tyj/TKGQA/MY/temporal_kgqa_experiment.py", line 558, in execute_query
+    exec(query_code, exec_globals)
+  File "<string>", line 27
+    if df.empty:
+IndentationError: unexpected indent
+
+2025-07-17 07:26:41,759 - INFO - 尝试自动修复代码

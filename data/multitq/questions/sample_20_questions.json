@@ -1,0 +1,700 @@
+[
+  {
+    "quid": 2056020,
+    "question": "When did Walker San Miguel first express interest in working with Bolivia?",
+    "answers": [
+      "2007-07-24"
+    ],
+    "answer_type": "time",
+    "time_level": "day",
+    "qtype": "first_last",
+    "qlabel": "Single",
+    "time": [],
+    "entities": [
+      "Walker San Miguel",
+      "Bolivia"
+    ],
+    "entity_positions": [
+      {
+        "entity": [
+          "Walker San Miguel"
+        ],
+        "position": [
+          9,
+          26
+        ]
+      },
+      {
+        "entity": [
+          "Bolivia"
+        ],
+        "position": [
+          66,
+          73
+        ]
+      }
+    ]
+  },
+  
+  {
+    "quid": 2027657,
+    "question": "Who wanted to cooperate with Japan on 23 August 2006?",
+    "answers": [
+      "Association of Southeast Asian Nations"
+    ],
+    "answer_type": "entity",
+    "time_level": "day",
+    "qtype": "equal",
+    "qlabel": "Single",
+    "time": [
+      "2006-08-23"
+    ],
+    "entities": [
+      "Japan"
+    ],
+    "entity_positions": [
+      {
+        "entity": [
+          "Japan"
+        ],
+        "position": [
+          29,
+          34
+        ]
+      }
+    ]
+  },
+  {
+    "quid": 2007873,
+    "question": "Before 11 December 2009, who used conventional military force against France?",
+    "answers": [
+      "Separatist (France)",
+      "Comoros",
+      "Royal Air Force",
+      "Bolivia",
+      "Colombia",
+      "Christian (France)",
+      "Member of Parliament (France)",
+      "Military (Russia)"
+    ],
+    "answer_type": "entity",
+    "time_level": "day",
+    "qtype": "before_after",
+    "qlabel": "Single",
+    "time": [
+      "2009-12-11"
+    ],
+    "entities": [
+      "France"
+    ],
+    "entity_positions": [
+      {
+        "entity": [
+          "France"
+        ],
+        "position": [
+          70,
+          76
+        ]
+      }
+    ]
+  },
+  {
+    "quid": 2044815,
+    "question": "Which country was the first to ask for France after the Algerian extremist?",
+    "answers": [
+      "Iran"
+    ],
+    "answer_type": "entity",
+    "time_level": "day",
+    "qtype": "after_first",
+    "qlabel": "Multiple",
+    "time": [],
+    "entities": [
+      "France",
+      "Anguel Marin"
+    ],
+    "entity_positions": [
+      {
+        "entity": [
+          "France"
+        ],
+        "position": [
+          39,
+          45
+        ]
+      },
+      {
+        "entity": [
+          "Anguel Marin"
+        ],
+        "position": [
+          56,
+          64
+        ]
+      }
+    ]
+  },
+  {
+    "quid": 2016117,
+    "question": "Before the Brazilian Ministry of Agriculture, Fishing and Forestry, which country was the last to condemn France?",
+    "answers": [
+      "Mexico"
+    ],
+    "answer_type": "entity",
+    "time_level": "day",
+    "qtype": "before_last",
+    "qlabel": "Multiple",
+    "time": [],
+    "entities": [
+      "Swaziland",
+      "Agriculture / Fishing / Forestry Ministry (Laos)",
+      "France"
+    ],
+    "entity_positions": [
+      {
+        "entity": [
+          "Swaziland"
+        ],
+        "position": [
+          11,
+          20
+        ]
+      },
+      {
+        "entity": [
+          "Agriculture / Fishing / Forestry Ministry (Laos)"
+        ],
+        "position": [
+          21,
+          66
+        ]
+      },
+      {
+        "entity": [
+          "France"
+        ],
+        "position": [
+          106,
+          112
+        ]
+      }
+    ]
+  },
+  {
+    "quid": 2018890,
+    "question": "Who received Juan Carlos I's visit from Juan Carlos I on the same month of Qatar?",
+    "answers": [
+      "Royal Administration (Spain)",
+      "Royal Administration (Jordan)",
+      "Royal Administration (Saudi Arabia)"
+    ],
+    "answer_type": "entity",
+    "time_level": "month",
+    "qtype": "equal_multi",
+    "qlabel": "Multiple",
+    "time": [],
+    "entities": [
+      "Juan Carlos I",
+      "Juan Carlos I",
+      "Qatar"
+    ],
+    "entity_positions": [
+      {
+        "entity": [
+          "Juan Carlos I"
+        ],
+        "position": [
+          13,
+          26
+        ]
+      },
+      {
+        "entity": [
+          "Juan Carlos I"
+        ],
+        "position": [
+          40,
+          53
+        ]
+      },
+      {
+        "entity": [
+          "Qatar"
+        ],
+        "position": [
+          75,
+          80
+        ]
+      }
+    ]
+  },
+  {
+    "quid": 2024585,
+    "question": "In February 2007, who wanted to negotiate with France?",
+    "answers": [
+      "Mahmoud Abbas",
+      "Citizen (Mauritania)",
+      "Activist (France)",
+      "Representatives (France)",
+      "China",
+      "Cristina Fernández de Kirchner"
+    ],
+    "answer_type": "entity",
+    "time_level": "month",
+    "qtype": "equal",
+    "qlabel": "Single",
+    "time": [
+      "2007-02"
+    ],
+    "entities": [
+      "France"
+    ],
+    "entity_positions": [
+      {
+        "entity": [
+          "France"
+        ],
+        "position": [
+          47,
+          53
+        ]
+      }
+    ]
+  },
+  {
+    "quid": 2009795,
+    "question": "When did Iran last negotiate with Federica Mogherini?",
+    "answers": [
+      "2015-07-28"
+    ],
+    "answer_type": "time",
+    "time_level": "day",
+    "qtype": "first_last",
+    "qlabel": "Single",
+    "time": [],
+    "entities": [
+      "Iran",
+      "Federica Mogherini"
+    ],
+    "entity_positions": [
+      {
+        "entity": [
+          "Iran"
+        ],
+        "position": [
+          9,
+          13
+        ]
+      },
+      {
+        "entity": [
+          "Federica Mogherini"
+        ],
+        "position": [
+          34,
+          52
+        ]
+      }
+    ]
+  },
+  {
+    "quid": 2002166,
+    "question": "In what year did the Prime Minister of India first express an intention to negotiate with Japan?",
+    "answers": [
+      "2008"
+    ],
+    "answer_type": "time",
+    "time_level": "year",
+    "qtype": "first_last",
+    "qlabel": "Single",
+    "time": [],
+    "entities": [
+      "Indosat",
+      "Japan"
+    ],
+    "entity_positions": [
+      {
+        "entity": [
+          "Indosat"
+        ],
+        "position": [
+          39,
+          44
+        ]
+      },
+      {
+        "entity": [
+          "Japan"
+        ],
+        "position": [
+          90,
+          95
+        ]
+      }
+    ]
+  },
+  {
+    "quid": 2022493,
+    "question": "Who visited France on 1 April 2014?",
+    "answers": [
+      "Xi Jinping"
+    ],
+    "answer_type": "entity",
+    "time_level": "day",
+    "qtype": "equal",
+    "qlabel": "Single",
+    "time": [
+      "2014-04-01"
+    ],
+    "entities": [
+      "France"
+    ],
+    "entity_positions": [
+      {
+        "entity": [
+          "France"
+        ],
+        "position": [
+          12,
+          18
+        ]
+      }
+    ]
+  },
+  {
+    "quid": 2013889,
+    "question": "Who would wish to visit Qatar in April 10th, 2007?",
+    "answers": [
+      "Ministry (Iran)"
+    ],
+    "answer_type": "entity",
+    "time_level": "day",
+    "qtype": "equal",
+    "qlabel": "Single",
+    "time": [
+      "2007"
+    ],
+    "entities": [
+      "Qatar"
+    ],
+    "entity_positions": [
+      {
+        "entity": [
+          "Qatar"
+        ],
+        "position": [
+          24,
+          29
+        ]
+      }
+    ]
+  },
+  
+  {
+    "quid": 2056386,
+    "question": "Before Tony Blair, with whom did France seek diplomatic cooperation?",
+    "answers": [
+      "Iran",
+      "Djibouti",
+      "Iraq",
+      "Japan",
+      "Scientist (Latvia)",
+      "Malaysia",
+      "Thailand",
+      "Surakiart Sathirathai",
+      "Edith Cresson",
+      "Romania",
+      "Cambodia"
+    ],
+    "answer_type": "entity",
+    "time_level": "day",
+    "qtype": "before_after",
+    "qlabel": "Single",
+    "time": [],
+    "entities": [
+      "Tony Blair",
+      "France"
+    ],
+    "entity_positions": [
+      {
+        "entity": [
+          "Tony Blair"
+        ],
+        "position": [
+          7,
+          17
+        ]
+      },
+      {
+        "entity": [
+          "France"
+        ],
+        "position": [
+          33,
+          39
+        ]
+      }
+    ]
+  },
+  {
+    "quid": 2045036,
+    "question": "Who was rejected by the Kuomintang after June, 2007?",
+    "answers": [
+      "Tsai Ing-wen",
+      "Wang Ching-feng"
+    ],
+    "answer_type": "entity",
+    "time_level": "month",
+    "qtype": "before_after",
+    "qlabel": "Single",
+    "time": [
+      "2007"
+    ],
+    "entities": [
+      "Kuomintang"
+    ],
+    "entity_positions": [
+      {
+        "entity": [
+          "Kuomintang"
+        ],
+        "position": [
+          24,
+          34
+        ]
+      }
+    ]
+  },
+  {
+    "quid": 2006643,
+    "question": "Who declined Iran after August, 2015?",
+    "answers": [
+      "Kuwait",
+      "Other Authorities / Officials (Somalia)",
+      "Congress (United States)"
+    ],
+    "answer_type": "entity",
+    "time_level": "month",
+    "qtype": "before_after",
+    "qlabel": "Single",
+    "time": [
+      "2015"
+    ],
+    "entities": [
+      "Iran"
+    ],
+    "entity_positions": [
+      {
+        "entity": [
+          "Iran"
+        ],
+        "position": [
+          13,
+          17
+        ]
+      }
+    ]
+  },
+  
+  {
+    "quid": 2031589,
+    "question": "Who was the first to visit Japan after the foreign minister of Nepal?",
+    "answers": [
+      "Student (Thailand)"
+    ],
+    "answer_type": "entity",
+    "time_level": "day",
+    "qtype": "after_first",
+    "qlabel": "Multiple",
+    "time": [],
+    "entities": [
+      "Japan",
+      "Mob (Nepal)"
+    ],
+    "entity_positions": [
+      {
+        "entity": [
+          "Japan"
+        ],
+        "position": [
+          27,
+          32
+        ]
+      },
+      {
+        "entity": [
+          "Mob (Nepal)"
+        ],
+        "position": [
+          63,
+          68
+        ]
+      }
+    ]
+  },
+  {
+    "quid": 2002487,
+    "question": "After France, who did the Greek Prime Minister appeal to first?",
+    "answers": [
+      "Cabinet / Council of Ministers / Advisors (Greece)"
+    ],
+    "answer_type": "entity",
+    "time_level": "day",
+    "qtype": "after_first",
+    "qlabel": "Multiple",
+    "time": [],
+    "entities": [
+      "France"
+    ],
+    "entity_positions": [
+      {
+        "entity": [
+          "France"
+        ],
+        "position": [
+          6,
+          12
+        ]
+      }
+    ]
+  },
+  {
+    "quid": 2002351,
+    "question": "Before Human Rights Watch, who was the last to visit Colombia?",
+    "answers": [
+      "John Dramani Mahama"
+    ],
+    "answer_type": "entity",
+    "time_level": "day",
+    "qtype": "before_last",
+    "qlabel": "Multiple",
+    "time": [],
+    "entities": [
+      "Human Rights Watch",
+      "Colombia"
+    ],
+    "entity_positions": [
+      {
+        "entity": [
+          "Human Rights Watch"
+        ],
+        "position": [
+          7,
+          25
+        ]
+      },
+      {
+        "entity": [
+          "Colombia"
+        ],
+        "position": [
+          53,
+          61
+        ]
+      }
+    ]
+  },
+  {
+    "quid": 2007215,
+    "question": "Who last would wish to visit Japan before Herman Van Rompuy did?",
+    "answers": [
+      "Envoy (United States)"
+    ],
+    "answer_type": "entity",
+    "time_level": "day",
+    "qtype": "before_last",
+    "qlabel": "Multiple",
+    "time": [],
+    "entities": [
+      "Japan",
+      "Herman Van Rompuy"
+    ],
+    "entity_positions": [
+      {
+        "entity": [
+          "Japan"
+        ],
+        "position": [
+          29,
+          34
+        ]
+      },
+      {
+        "entity": [
+          "Herman Van Rompuy"
+        ],
+        "position": [
+          42,
+          59
+        ]
+      }
+    ]
+  },
+  
+  {
+    "quid": 2039437,
+    "question": "Who wanted to establish diplomatic cooperation with Iran in the same month as Catherine Ashton?",
+    "answers": [
+      "Khalid bin Mohammad Al Attiyah",
+      "Christine Lagarde"
+    ],
+    "answer_type": "entity",
+    "time_level": "month",
+    "qtype": "equal_multi",
+    "qlabel": "Multiple",
+    "time": [],
+    "entities": [
+      "Iran",
+      "Catherine Ashton"
+    ],
+    "entity_positions": [
+      {
+        "entity": [
+          "Iran"
+        ],
+        "position": [
+          52,
+          56
+        ]
+      },
+      {
+        "entity": [
+          "Catherine Ashton"
+        ],
+        "position": [
+          78,
+          94
+        ]
+      }
+    ]
+  },
+  {
+    "quid": 2046028,
+    "question": "Who was the last person to enter into diplomatic cooperation with Colombia in 2014?",
+    "answers": [
+      "Chuck Hagel"
+    ],
+    "answer_type": "entity",
+    "time_level": "year",
+    "qtype": "equal_multi",
+    "qlabel": "Multiple",
+    "time": [
+      "2014"
+    ],
+    "entities": [
+      "Colombia"
+    ],
+    "entity_positions": [
+      {
+        "entity": [
+          "Colombia"
+        ],
+        "position": [
+          66,
+          74
+        ]
+      }
+    ]
+  }
+]

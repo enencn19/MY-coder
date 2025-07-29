@@ -1,0 +1,236 @@
+[
+  {
+    "quid": 2056020,
+    "question": "When did Walker San Miguel first express interest in working with Bolivia?",
+    "qtype": "first_last",
+    "answer_type": "time",
+    "time_level": "day",
+    "expected_answers": [
+      "2007-07-24"
+    ],
+    "predicted_answers": [
+      "2007-07-24"
+    ],
+    "analysis": {
+      "question_type": "first_last",
+      "qtype": "first_last",
+      "answer_type": "time",
+      "time_level": "day",
+      "key_entities": [
+        "Walker San Miguel",
+        "Bolivia"
+      ],
+      "entities": [
+        "Walker San Miguel",
+        "Bolivia"
+      ],
+      "time_constraints": [],
+      "time": [],
+      "target_relations": [],
+      "query_strategy": "使用first_last类型查询策略"
+    },
+    "query_code": "def query_kg(df):\n    import pandas as pd\n    try:\n        # 确保数据类型\n        for col in ['head', 'relation', 'tail', 'timestamp']:\n            if col in df.columns:\n                df[col] = df[col].astype(str)\n        \n        entities = ['Walker San Miguel', 'Bolivia']\n        relations = ['Express_intent_to_cooperate', 'Engage_in_diplomatic_cooperation']\n        answer_type = \"time\"\n        time_level = \"day\"\n        \n        results = []\n        \n        # First/Last查询: 找到最早或最晚的事件\n        if len(entities) >= 1:\n            target_entity = entities[0]\n            if len(entities) >= 2:\n                second_entity = entities[1]\n            else:\n                second_entity = None\n            \n            entity_patterns = [target_entity, target_entity.replace(' ', '_'), target_entity.replace('_', ' ')]\n            \n            all_records = []\n            \n            for pattern in entity_patterns:\n                for relation in relations:\n                    if second_entity:\n                        # 双实体查询: X first visit Y\n                        second_patterns = [second_entity, second_entity.replace(' ', '_'), second_entity.replace('_', ' ')]\n                        for second_pattern in second_patterns:\n                            mask = (\n                                (df['head'].str.contains(pattern, case=False, na=False)) &\n                                (df['tail'].str.contains(second_pattern, case=False, na=False)) &\n                                (df['relation'] == relation)\n                            )\n                            if mask.any():\n                                all_records.extend(df[mask].to_dict('records'))\n                    else:\n                        # 单实体查询: Who first visited X\n                        mask = (\n                            (df['tail'].str.contains(pattern, case=False, na=False)) &\n                            (df['relation'] == relation)\n                        )\n                        if mask.any():\n                            all_records.extend(df[mask].to_dict('records'))\n            \n            if all_records:\n                # 按时间排序，取最早的\n                sorted_records = sorted(all_records, key=lambda x: x['timestamp'])\n                first_record = sorted_records[0]\n                \n                if answer_type == 'time':\n                    # 返回时间，根据time_level截取\n                    timestamp = first_record['timestamp']\n                    if time_level == 'year':\n                        results.append(timestamp[:4])\n                    elif time_level == 'month':\n                        results.append(timestamp[:7])\n                    else:  # day\n                        results.append(timestamp[:10])\n                else:  # entity\n                    result = first_record['head'].replace('_', ' ')\n                    results.append(result)\n        \n        return results[:1]\n        \n    except Exception as e:\n        return []",
+    "exact_match": true,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0
+  },
+  {
+    "quid": 2027657,
+    "question": "Who wanted to cooperate with Japan on 23 August 2006?",
+    "qtype": "equal",
+    "answer_type": "entity",
+    "time_level": "day",
+    "expected_answers": [
+      "Association of Southeast Asian Nations"
+    ],
+    "predicted_answers": [
+      "Association of Southeast Asian Nations"
+    ],
+    "analysis": {
+      "question_type": "equal",
+      "qtype": "equal",
+      "answer_type": "entity",
+      "time_level": "day",
+      "key_entities": [
+        "Japan"
+      ],
+      "entities": [
+        "Japan"
+      ],
+      "time_constraints": [
+        "2006-08-23"
+      ],
+      "time": [
+        "2006-08-23"
+      ],
+      "target_relations": [],
+      "query_strategy": "使用equal类型查询策略"
+    },
+    "query_code": "def query_kg(df):\n    import pandas as pd\n    try:\n        # 确保数据类型\n        for col in ['head', 'relation', 'tail', 'timestamp']:\n            if col in df.columns:\n                df[col] = df[col].astype(str)\n        \n        entities = ['Japan']\n        relations = ['Express_intent_to_cooperate', 'Engage_in_diplomatic_cooperation']\n        time_constraints = ['2006-08-23']\n        \n        results = []\n        \n        # Equal查询: 在特定时间点的事件\n        if time_constraints:\n            target_time = time_constraints[0]\n            # 根据时间粒度匹配\n            time_filter = df['timestamp'].str.startswith(target_time[:10])\n        else:\n            time_filter = pd.Series([True] * len(df))\n        \n        # 实体和关系匹配\n        for entity in entities:\n            entity_patterns = [entity, entity.replace(' ', '_'), entity.replace('_', ' ')]\n            \n            for pattern in entity_patterns:\n                for relation in relations:\n                    # 查找 X -> relation -> entity 的记录\n                    mask = (\n                        time_filter &\n                        (df['tail'].str.contains(pattern, case=False, na=False)) &\n                        (df['relation'] == relation)\n                    )\n                    \n                    if mask.any():\n                        for _, row in df[mask].iterrows():\n                            result = row['head'].replace('_', ' ')\n                            if result not in results:\n                                results.append(result)\n        \n        return results[:1] if len(results) > 0 else []\n        \n    except Exception as e:\n        return []",
+    "exact_match": true,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0
+  },
+  {
+    "quid": 2007873,
+    "question": "Before 11 December 2009, who used conventional military force against France?",
+    "qtype": "before_after",
+    "answer_type": "entity",
+    "time_level": "day",
+    "expected_answers": [
+      "Separatist (France)",
+      "Comoros",
+      "Royal Air Force",
+      "Bolivia",
+      "Colombia",
+      "Christian (France)",
+      "Member of Parliament (France)",
+      "Military (Russia)"
+    ],
+    "predicted_answers": [
+      "Bolivia",
+      "Military Personnel - Special (France)",
+      "Colombia",
+      "Military (Russia)",
+      "Member of Parliament (France)",
+      "Military (Senegal)",
+      "Police (Cote d'Ivoire)",
+      "Religion (France)",
+      "Christian (France)",
+      "Royal Air Force"
+    ],
+    "analysis": {
+      "question_type": "before_after",
+      "qtype": "before_after",
+      "answer_type": "entity",
+      "time_level": "day",
+      "key_entities": [
+        "France"
+      ],
+      "entities": [
+        "France"
+      ],
+      "time_constraints": [
+        "2009-12-11"
+      ],
+      "time": [
+        "2009-12-11"
+      ],
+      "target_relations": [],
+      "query_strategy": "使用before_after类型查询策略"
+    },
+    "query_code": "def query_kg(df):\n    import pandas as pd\n    try:\n        # 确保数据类型\n        for col in ['head', 'relation', 'tail', 'timestamp']:\n            if col in df.columns:\n                df[col] = df[col].astype(str)\n        \n        entities = ['France']\n        relations = ['Use_conventional_military_force', 'Use_unconventional_violence', 'Fight_with_small_arms_and_light_weapons']\n        time_constraints = ['2009-12-11']\n        \n        results = []\n        \n        # Before/After查询\n        if time_constraints:\n            cutoff_time = time_constraints[0]\n            if 'before' in \"Before 11 December 2009, who used conventional military force against France?\".lower():\n                time_filter = df['timestamp'] < cutoff_time\n            else:  # after\n                time_filter = df['timestamp'] > cutoff_time\n        else:\n            time_filter = pd.Series([True] * len(df))\n        \n        # 实体和关系匹配 - 改进版\n        for entity in entities:\n            entity_patterns = [entity, entity.replace(' ', '_'), entity.replace('_', ' ')]\n            \n            for pattern in entity_patterns:\n                for relation in relations:\n                    mask = (\n                        time_filter &\n                        (df['tail'].str.contains(pattern, case=False, na=False, regex=False)) &\n                        (df['relation'] == relation)\n                    )\n                    \n                    if mask.any():\n                        for _, row in df[mask].iterrows():\n                            result = row['head'].replace('_', ' ')\n                            if result not in results and result != pattern:  # 避免自引用\n                                results.append(result)\n        \n        # 如果没有找到精确关系匹配，尝试模糊匹配\n        if not results and 'military force' in \"Before 11 December 2009, who used conventional military force against France?\".lower():\n            military_mask = (\n                time_filter &\n                (df['tail'].str.contains('France', case=False, na=False, regex=False)) &\n                (df['relation'].str.contains('military|force|fight|violence', case=False, na=False))\n            )\n            \n            if military_mask.any():\n                for _, row in df[military_mask].iterrows():\n                    result = row['head'].replace('_', ' ')\n                    if result not in results and result != 'France':\n                        results.append(result)\n        \n        return results[:10]  # 返回前10个结果\n        \n    except Exception as e:\n        return []",
+    "exact_match": false,
+    "precision": 0.6,
+    "recall": 0.75,
+    "f1": 0.6666666666666665
+  },
+  {
+    "quid": 2044815,
+    "question": "Which country was the first to ask for France after the Algerian extremist?",
+    "qtype": "after_first",
+    "answer_type": "entity",
+    "time_level": "day",
+    "expected_answers": [
+      "Iran"
+    ],
+    "predicted_answers": [],
+    "analysis": {
+      "question_type": "after_first",
+      "qtype": "after_first",
+      "answer_type": "entity",
+      "time_level": "day",
+      "key_entities": [
+        "France",
+        "Anguel Marin"
+      ],
+      "entities": [
+        "France",
+        "Anguel Marin"
+      ],
+      "time_constraints": [],
+      "time": [],
+      "target_relations": [],
+      "query_strategy": "使用after_first类型查询策略"
+    },
+    "query_code": "def query_kg(df):\n    import pandas as pd\n    try:\n        results = []\n        \n        # 确保数据类型\n        for col in ['head', 'relation', 'tail', 'timestamp']:\n            if col in df.columns:\n                df[col] = df[col].astype(str)\n        \n        # 实体和关系定义\n        entities = ['France', 'Anguel Marin']\n        relations = []\n        \n        filtered_df = df.copy()\n        \n        \n        # 查询逻辑\n        for entity in entities:\n            # 实体模式匹配\n            entity_patterns = [entity, entity.replace(' ', '_'), entity.replace('_', ' ')]\n            \n            for pattern in entity_patterns:\n                for relation in relations:\n                    # 模式1: X -> relation -> entity\n                    mask1 = (\n                        (filtered_df['tail'].str.contains(pattern, case=False, na=False)) & \n                        (filtered_df['relation'] == relation)\n                    )\n                    \n                    if mask1.any():\n                        for _, row in filtered_df[mask1].iterrows():\n                            result = row['head'].replace('_', ' ')\n                            if result not in results:\n                                results.append(result)\n                    \n                    # 模式2: entity -> relation -> X\n                    mask2 = (\n                        (filtered_df['head'].str.contains(pattern, case=False, na=False)) & \n                        (filtered_df['relation'] == relation)\n                    )\n                    \n                    if mask2.any():\n                        for _, row in filtered_df[mask2].iterrows():\n                            result = row['tail'].replace('_', ' ')\n                            if result not in results:\n                                results.append(result)\n        \n        return results[:15]\n        \n    except Exception as e:\n        return [f\"查询错误: {str(e)}\"]",
+    "exact_match": false,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0
+  },
+  {
+    "quid": 2016117,
+    "question": "Before the Brazilian Ministry of Agriculture, Fishing and Forestry, which country was the last to condemn France?",
+    "qtype": "before_last",
+    "answer_type": "entity",
+    "time_level": "day",
+    "expected_answers": [
+      "Mexico"
+    ],
+    "predicted_answers": [],
+    "analysis": {
+      "question_type": "before_last",
+      "qtype": "before_last",
+      "answer_type": "entity",
+      "time_level": "day",
+      "key_entities": [
+        "Swaziland",
+        "Agriculture / Fishing / Forestry Ministry (Laos)",
+        "France"
+      ],
+      "entities": [
+        "Swaziland",
+        "Agriculture / Fishing / Forestry Ministry (Laos)",
+        "France"
+      ],
+      "time_constraints": [],
+      "time": [],
+      "target_relations": [],
+      "query_strategy": "使用before_last类型查询策略"
+    },
+    "query_code": "def query_kg(df):\n    import pandas as pd\n    try:\n        results = []\n        \n        # 确保数据类型\n        for col in ['head', 'relation', 'tail', 'timestamp']:\n            if col in df.columns:\n                df[col] = df[col].astype(str)\n        \n        # 实体和关系定义\n        entities = ['Swaziland', 'Agriculture / Fishing / Forestry Ministry (Laos)', 'France']\n        relations = []\n        \n        filtered_df = df.copy()\n        \n        \n        # 查询逻辑\n        for entity in entities:\n            # 实体模式匹配\n            entity_patterns = [entity, entity.replace(' ', '_'), entity.replace('_', ' ')]\n            \n            for pattern in entity_patterns:\n                for relation in relations:\n                    # 模式1: X -> relation -> entity\n                    mask1 = (\n                        (filtered_df['tail'].str.contains(pattern, case=False, na=False)) & \n                        (filtered_df['relation'] == relation)\n                    )\n                    \n                    if mask1.any():\n                        for _, row in filtered_df[mask1].iterrows():\n                            result = row['head'].replace('_', ' ')\n                            if result not in results:\n                                results.append(result)\n                    \n                    # 模式2: entity -> relation -> X\n                    mask2 = (\n                        (filtered_df['head'].str.contains(pattern, case=False, na=False)) & \n                        (filtered_df['relation'] == relation)\n                    )\n                    \n                    if mask2.any():\n                        for _, row in filtered_df[mask2].iterrows():\n                            result = row['tail'].replace('_', ' ')\n                            if result not in results:\n                                results.append(result)\n        \n        return results[:15]\n        \n    except Exception as e:\n        return [f\"查询错误: {str(e)}\"]",
+    "exact_match": false,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0
+  },
+  {
+    "quid": 2018890,
+    "question": "Who received Juan Carlos I's visit from Juan Carlos I on the same month of Qatar?",
+    "qtype": "equal_multi",
+    "answer_type": "entity",
+    "time_level": "month",
+    "expected_answers": [
+      "Royal Administration (Spain)",
+      "Royal Administration (Jordan)",
+      "Royal Administration (Saudi Arabia)"
+    ],
+    "predicted_answers": [],
+    "analysis": {
+      "question_type": "equal_multi",
+      "qtype": "equal_multi",
+      "answer_type": "entity",
+      "time_level": "month",
+      "key_entities": [
+        "Juan Carlos I",
+        "Qatar"
+      ],
+      "entities": [
+        "Juan Carlos I",
+        "Qatar"
+      ],
+      "time_constraints": [],
+      "time": [],
+      "target_relations": [],
+      "query_strategy": "使用equal_multi类型查询策略"
+    },
+    "query_code": "def query_kg(df):\n    import pandas as pd\n    try:\n        results = []\n        \n        # 确保数据类型\n        for col in ['head', 'relation', 'tail', 'timestamp']:\n            if col in df.columns:\n                df[col] = df[col].astype(str)\n        \n        # 实体和关系定义\n        entities = ['Juan Carlos I', 'Qatar']\n        relations = []\n        \n        filtered_df = df.copy()\n        \n        \n        # 查询逻辑\n        for entity in entities:\n            # 实体模式匹配\n            entity_patterns = [entity, entity.replace(' ', '_'), entity.replace('_', ' ')]\n            \n            for pattern in entity_patterns:\n                for relation in relations:\n                    # 模式1: X -> relation -> entity\n                    mask1 = (\n                        (filtered_df['tail'].str.contains(pattern, case=False, na=False)) & \n                        (filtered_df['relation'] == relation)\n                    )\n                    \n                    if mask1.any():\n                        for _, row in filtered_df[mask1].iterrows():\n                            result = row['head'].replace('_', ' ')\n                            if result not in results:\n                                results.append(result)\n                    \n                    # 模式2: entity -> relation -> X\n                    mask2 = (\n                        (filtered_df['head'].str.contains(pattern, case=False, na=False)) & \n                        (filtered_df['relation'] == relation)\n                    )\n                    \n                    if mask2.any():\n                        for _, row in filtered_df[mask2].iterrows():\n                            result = row['tail'].replace('_', ' ')\n                            if result not in results:\n                                results.append(result)\n        \n        return results[:15]\n        \n    except Exception as e:\n        return [f\"查询错误: {str(e)}\"]",
+    "exact_match": false,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0
+  }
+]

@@ -1,0 +1,1039 @@
+[
+     {
+        "quid": 2000014,
+        "question": "Who would wish to visit Ireland in July, the year of 2007?",
+        "answers": [
+            "Bertie Ahern"
+        ],
+        "answer_type": "entity",
+        "time_level": "month",
+        "qtype": "equal",
+        "qlabel": "Single",
+        "time": [
+            "2007"
+        ],
+        "entities": [
+            "Ireland"
+        ],
+        "entity_positions": [
+            {
+                "entity": [
+                    "Ireland"
+                ],
+                "position": [
+                    24,
+                    31
+                ]
+            }
+        ]
+    },
+    {
+        "quid": 2000015,
+        "question": "In which year did Viktor Orban visit Iran for the first time?",
+        "answers": [
+            "2015"
+        ],
+        "answer_type": "time",
+        "time_level": "year",
+        "qtype": "first_last",
+        "qlabel": "Single",
+        "time": [],
+        "entities": [
+            "Viktor Orban",
+            "Iran"
+        ],
+        "entity_positions": [
+            {
+                "entity": [
+                    "Viktor Orban"
+                ],
+                "position": [
+                    18,
+                    30
+                ]
+            },
+            {
+                "entity": [
+                    "Iran"
+                ],
+                "position": [
+                    37,
+                    41
+                ]
+            }
+        ]
+    },
+    {
+        "quid": 2000016,
+        "question": "Who made optimistic remarks about Iran after the Organisation for Economic Cooperation and Development?",
+        "answers": [
+            "South Korea",
+            "Party Member (Iraq)",
+            "France",
+            "China",
+            "Iraq",
+            "Member of Legislative (Govt) (Iran)",
+            "Japan",
+            "Head of Government (Ukraine)",
+            "Thailand",
+            "Kazakhstan"
+        ],
+        "answer_type": "entity",
+        "time_level": "day",
+        "qtype": "before_after",
+        "qlabel": "Single",
+        "time": [],
+        "entities": [
+            "Iran",
+            "Union for Peace and Development"
+        ],
+        "entity_positions": [
+            {
+                "entity": [
+                    "Iran"
+                ],
+                "position": [
+                    34,
+                    38
+                ]
+            },
+            {
+                "entity": [
+                    "Union for Peace and Development"
+                ],
+                "position": [
+                    49,
+                    102
+                ]
+            }
+        ]
+    },
+    {
+        "quid": 2000017,
+        "question": "Who made optimistic remarks about Yasuo Fukuda after Japan?",
+        "answers": [
+            "Government Official (Japan)",
+            "China"
+        ],
+        "answer_type": "entity",
+        "time_level": "day",
+        "qtype": "before_after",
+        "qlabel": "Single",
+        "time": [],
+        "entities": [
+            "Yasuo Fukuda",
+            "Japan"
+        ],
+        "entity_positions": [
+            {
+                "entity": [
+                    "Yasuo Fukuda"
+                ],
+                "position": [
+                    34,
+                    46
+                ]
+            },
+            {
+                "entity": [
+                    "Japan"
+                ],
+                "position": [
+                    53,
+                    58
+                ]
+            }
+        ]
+    },
+    {
+        "quid": 2000018,
+        "question": "In which month did Xi Jinping praise the Bahamas?",
+        "answers": [
+            "2015-01"
+        ],
+        "answer_type": "time",
+        "time_level": "month",
+        "qtype": "equal",
+        "qlabel": "Single",
+        "time": [],
+        "entities": [
+            "Xi Jinping",
+            "Bahamas"
+        ],
+        "entity_positions": [
+            {
+                "entity": [
+                    "Xi Jinping"
+                ],
+                "position": [
+                    19,
+                    29
+                ]
+            },
+            {
+                "entity": [
+                    "Bahamas"
+                ],
+                "position": [
+                    41,
+                    48
+                ]
+            }
+        ]
+    },
+    {
+        "quid": 2000019,
+        "question": "When did Iran last express its intention to meet with international governmental organisations?",
+        "answers": [
+            "2006-05-27"
+        ],
+        "answer_type": "time",
+        "time_level": "day",
+        "qtype": "first_last",
+        "qlabel": "Single",
+        "time": [],
+        "entities": [
+            "Iran"
+        ],
+        "entity_positions": [
+            {
+                "entity": [
+                    "Iran"
+                ],
+                "position": [
+                    9,
+                    13
+                ]
+            }
+        ]
+    },
+    {
+        "quid": 2000020,
+        "question": "In which country did Colombia release people before 23 February 2008?",
+        "answers": [
+            "Guerrilla (Colombia)"
+        ],
+        "answer_type": "entity",
+        "time_level": "day",
+        "qtype": "before_after",
+        "qlabel": "Single",
+        "time": [
+            "2008-02-23"
+        ],
+        "entities": [
+            "Colombia"
+        ],
+        "entity_positions": [
+            {
+                "entity": [
+                    "Colombia"
+                ],
+                "position": [
+                    21,
+                    29
+                ]
+            }
+        ]
+    },
+    {
+        "quid": 2000021,
+        "question": "Who was the first country to express optimism about Barack Obama after Ireland?",
+        "answers": [
+            "Angela Merkel"
+        ],
+        "answer_type": "entity",
+        "time_level": "day",
+        "qtype": "after_first",
+        "qlabel": "Multiple",
+        "time": [],
+        "entities": [
+            "Barack Obama",
+            "Ireland"
+        ],
+        "entity_positions": [
+            {
+                "entity": [
+                    "Barack Obama"
+                ],
+                "position": [
+                    52,
+                    64
+                ]
+            },
+            {
+                "entity": [
+                    "Ireland"
+                ],
+                "position": [
+                    71,
+                    78
+                ]
+            }
+        ]
+    },
+    {
+        "quid": 2000022,
+        "question": "Which was the first country to praise Colombia after Cristina Fernández de Kirchner?",
+        "answers": [
+            "Barack Obama"
+        ],
+        "answer_type": "entity",
+        "time_level": "day",
+        "qtype": "after_first",
+        "qlabel": "Multiple",
+        "time": [],
+        "entities": [
+            "Colombia",
+            "Cristina Fernández de Kirchner"
+        ],
+        "entity_positions": [
+            {
+                "entity": [
+                    "Colombia"
+                ],
+                "position": [
+                    38,
+                    46
+                ]
+            },
+            {
+                "entity": [
+                    "Cristina Fernández de Kirchner"
+                ],
+                "position": [
+                    53,
+                    83
+                ]
+            }
+        ]
+    },
+    {
+        "quid": 2000023,
+        "question": "Which country hosted the visit of Frank Bainimarama after Vanuatu?",
+        "answers": [
+            "China"
+        ],
+        "answer_type": "entity",
+        "time_level": "day",
+        "qtype": "before_after",
+        "qlabel": "Single",
+        "time": [],
+        "entities": [
+            "Frank Bainimarama",
+            "Vanuatu"
+        ],
+        "entity_positions": [
+            {
+                "entity": [
+                    "Frank Bainimarama"
+                ],
+                "position": [
+                    34,
+                    51
+                ]
+            },
+            {
+                "entity": [
+                    "Vanuatu"
+                ],
+                "position": [
+                    58,
+                    65
+                ]
+            }
+        ]
+    },
+    {
+        "quid": 2000024,
+        "question": "Who asked for Japan in October 2005?",
+        "answers": [
+            "Wang Yi",
+            "Donald Rumsfeld",
+            "Finance / Economy / Commerce / Trade Ministry (New Zealand)",
+            "Robert Jones Portman",
+            "China",
+            "Iraq"
+        ],
+        "answer_type": "entity",
+        "time_level": "month",
+        "qtype": "equal",
+        "qlabel": "Single",
+        "time": [
+            "2005-10"
+        ],
+        "entities": [
+            "Japan"
+        ],
+        "entity_positions": [
+            {
+                "entity": [
+                    "Japan"
+                ],
+                "position": [
+                    14,
+                    19
+                ]
+            }
+        ]
+    },
+    {
+        "quid": 2000025,
+        "question": "Which country criticised Colombia after 8 February 2015?",
+        "answers": [
+            "National Liberation Army"
+        ],
+        "answer_type": "entity",
+        "time_level": "day",
+        "qtype": "before_after",
+        "qlabel": "Single",
+        "time": [
+            "2015-02-08"
+        ],
+        "entities": [
+            "Colombia"
+        ],
+        "entity_positions": [
+            {
+                "entity": [
+                    "Colombia"
+                ],
+                "position": [
+                    25,
+                    33
+                ]
+            }
+        ]
+    },
+    {
+        "quid": 2000026,
+        "question": "Before December 9, 2008, who did Timor-Leste request for?",
+        "answers": [
+            "Malaysia",
+            "Portugal",
+            "UN Security Council"
+        ],
+        "answer_type": "entity",
+        "time_level": "day",
+        "qtype": "before_after",
+        "qlabel": "Single",
+        "time": [
+            "2008-12-09"
+        ],
+        "entities": [
+            "Timor-Leste"
+        ],
+        "entity_positions": [
+            {
+                "entity": [
+                    "Timor-Leste"
+                ],
+                "position": [
+                    33,
+                    44
+                ]
+            }
+        ]
+    },
+    {
+        "quid": 2000028,
+        "question": "After 2009-12-3, who received Bolivia's visit from Bolivia?",
+        "answers": [
+            "Iran",
+            "International Court of Justice",
+            "Mahmoud Ahmadinejad",
+            "Colombia",
+            "France",
+            "The Hague",
+            "Majid Takht Ravanchi"
+        ],
+        "answer_type": "entity",
+        "time_level": "day",
+        "qtype": "before_after",
+        "qlabel": "Single",
+        "time": [
+            "2009"
+        ],
+        "entities": [
+            "Bolivia",
+            "Bolivia"
+        ],
+        "entity_positions": [
+            {
+                "entity": [
+                    "Bolivia"
+                ],
+                "position": [
+                    30,
+                    37
+                ]
+            },
+            {
+                "entity": [
+                    "Bolivia"
+                ],
+                "position": [
+                    51,
+                    58
+                ]
+            }
+        ]
+    },
+    {
+        "quid": 2000029,
+        "question": "After May, 2015, who gave a condemnation to France?",
+        "answers": [
+            "Iran",
+            "Ahmed el-Tayeb",
+            "Benjamin Netanyahu",
+            "Police (Syria)",
+            "Royal Administration (Spain)",
+            "Foreign Affairs (Lebanon)",
+            "Heinz Fischer",
+            "China",
+            "Member of Parliament (France)",
+            "Other Authorities / Officials (Libya)",
+            "Media Personnel (Iran)",
+            "Foreign Affairs (France)",
+            "Citizen (International)",
+            "Citizen (United Kingdom)",
+            "Lawmaker (Syria)",
+            "Uhuru Muigai Kenyatta",
+            "Citizen (Venezuela)"
+        ],
+        "answer_type": "entity",
+        "time_level": "month",
+        "qtype": "before_after",
+        "qlabel": "Single",
+        "time": [
+            "2015"
+        ],
+        "entities": [
+            "France"
+        ],
+        "entity_positions": [
+            {
+                "entity": [
+                    "France"
+                ],
+                "position": [
+                    44,
+                    50
+                ]
+            }
+        ]
+    },
+     {
+        "quid": 2000030,
+        "question": "Which country was the first to receive optimistic remarks from Japan after the children of the Philippines?",
+        "answers": [
+            "Iraq"
+        ],
+        "answer_type": "entity",
+        "time_level": "day",
+        "qtype": "after_first",
+        "qlabel": "Multiple",
+        "time": [],
+        "entities": [
+            "Japan",
+            "Men (Philippines)"
+        ],
+        "entity_positions": [
+            {
+                "entity": [
+                    "Japan"
+                ],
+                "position": [
+                    63,
+                    68
+                ]
+            },
+            {
+                "entity": [
+                    "Men (Philippines)"
+                ],
+                "position": [
+                    95,
+                    106
+                ]
+            }
+        ]
+    },
+    {
+        "quid": 2000031,
+        "question": "Who visited Qatar after 8 March 2015?",
+        "answers": [
+            "Nuri al-Maliki",
+            "Iran",
+            "Daniel Constantin",
+            "Habib Essid",
+            "Mahmoud Abbas",
+            "Chongwadai",
+            "Nicos Anastasiades",
+            "Philip Hammond",
+            "Presidential Family (United States)",
+            "Shura Council",
+            "Isaias Afewerki",
+            "Khaled Bahah",
+            "Violeta Bulc",
+            "Cabinet / Council of Ministers / Advisors (United States)",
+            "Ministry (Iran)",
+            "Barack Obama"
+        ],
+        "answer_type": "entity",
+        "time_level": "day",
+        "qtype": "before_after",
+        "qlabel": "Single",
+        "time": [
+            "2015-03-08"
+        ],
+        "entities": [
+            "Qatar"
+        ],
+        "entity_positions": [
+            {
+                "entity": [
+                    "Qatar"
+                ],
+                "position": [
+                    12,
+                    17
+                ]
+            }
+        ]
+    },
+    {
+        "quid": 2000032,
+        "question": "Who would want to have diplomatic cooperation with Iran in March, 2009?",
+        "answers": [
+            "Barack Obama",
+            "Lee Myung Bak",
+            "Business (Tunisia)",
+            "Iraq",
+            "Mauritania"
+        ],
+        "answer_type": "entity",
+        "time_level": "month",
+        "qtype": "equal",
+        "qlabel": "Single",
+        "time": [
+            "2009"
+        ],
+        "entities": [
+            "Iran"
+        ],
+        "entity_positions": [
+            {
+                "entity": [
+                    "Iran"
+                ],
+                "position": [
+                    51,
+                    55
+                ]
+            }
+        ]
+    },
+    {
+        "quid": 2000033,
+        "question": "Which country would want to cooperate with Japan first, after India's industry?",
+        "answers": [
+            "South Korea"
+        ],
+        "answer_type": "entity",
+        "time_level": "day",
+        "qtype": "after_first",
+        "qlabel": "Multiple",
+        "time": [],
+        "entities": [
+            "Japan",
+            "Indosat"
+        ],
+        "entity_positions": [
+            {
+                "entity": [
+                    "Japan"
+                ],
+                "position": [
+                    43,
+                    48
+                ]
+            },
+            {
+                "entity": [
+                    "Indosat"
+                ],
+                "position": [
+                    62,
+                    67
+                ]
+            }
+        ]
+    },
+    {
+        "quid": 2000034,
+        "question": "Who made optimistic remarks about Colombia before May 2006?",
+        "answers": [
+            "Mexico",
+            "Government (Ecuador)"
+        ],
+        "answer_type": "entity",
+        "time_level": "month",
+        "qtype": "before_after",
+        "qlabel": "Single",
+        "time": [
+            "2006-05"
+        ],
+        "entities": [
+            "Colombia"
+        ],
+        "entity_positions": [
+            {
+                "entity": [
+                    "Colombia"
+                ],
+                "position": [
+                    34,
+                    42
+                ]
+            }
+        ]
+    },
+    {
+        "quid": 2000035,
+        "question": "When did Jakaya Mrisho Kikwete support France?",
+        "answers": [
+            "2013-04-02"
+        ],
+        "answer_type": "time",
+        "time_level": "day",
+        "qtype": "equal",
+        "qlabel": "Single",
+        "time": [],
+        "entities": [
+            "Jakaya Mrisho Kikwete",
+            "France"
+        ],
+        "entity_positions": [
+            {
+                "entity": [
+                    "Jakaya Mrisho Kikwete"
+                ],
+                "position": [
+                    9,
+                    30
+                ]
+            },
+            {
+                "entity": [
+                    "France"
+                ],
+                "position": [
+                    39,
+                    45
+                ]
+            }
+        ]
+    },
+    {
+        "quid": 2000036,
+        "question": "Before 10 August 2005, which country was rejected by Iran?",
+        "answers": [
+            "France",
+            "Lawyer/Attorney (Egypt)",
+            "Asylum Seeker (Iran)",
+            "Tony Blair",
+            "United Arab Emirates",
+            "Iraq"
+        ],
+        "answer_type": "entity",
+        "time_level": "day",
+        "qtype": "before_after",
+        "qlabel": "Single",
+        "time": [
+            "2005-08-10"
+        ],
+        "entities": [
+            "Iran"
+        ],
+        "entity_positions": [
+            {
+                "entity": [
+                    "Iran"
+                ],
+                "position": [
+                    53,
+                    57
+                ]
+            }
+        ]
+    },
+    {
+        "quid": 2000037,
+        "question": "When did Royal Dutch Shell first formally sign an agreement with Iran?",
+        "answers": [
+            "2007-01-31"
+        ],
+        "answer_type": "time",
+        "time_level": "day",
+        "qtype": "first_last",
+        "qlabel": "Single",
+        "time": [],
+        "entities": [
+            "Royal Dutch Shell",
+            "Iran"
+        ],
+        "entity_positions": [
+            {
+                "entity": [
+                    "Royal Dutch Shell"
+                ],
+                "position": [
+                    9,
+                    26
+                ]
+            },
+            {
+                "entity": [
+                    "Iran"
+                ],
+                "position": [
+                    65,
+                    69
+                ]
+            }
+        ]
+    },
+    {
+        "quid": 2000038,
+        "question": "Who wanted diplomatic cooperation with Japan before March 2005?",
+        "answers": [
+            "South Korea",
+            "Roh Moo Hyun",
+            "China",
+            "Thailand",
+            "Mexico"
+        ],
+        "answer_type": "entity",
+        "time_level": "month",
+        "qtype": "before_after",
+        "qlabel": "Single",
+        "time": [
+            "2005-03"
+        ],
+        "entities": [
+            "Japan"
+        ],
+        "entity_positions": [
+            {
+                "entity": [
+                    "Japan"
+                ],
+                "position": [
+                    39,
+                    44
+                ]
+            }
+        ]
+    },
+    {
+        "quid": 2000039,
+        "question": "On 21 December 2009, which country announced its intention to cooperate with Iran?",
+        "answers": [
+            "Iraq"
+        ],
+        "answer_type": "entity",
+        "time_level": "day",
+        "qtype": "equal",
+        "qlabel": "Single",
+        "time": [
+            "2009-12-21"
+        ],
+        "entities": [
+            "Iran"
+        ],
+        "entity_positions": [
+            {
+                "entity": [
+                    "Iran"
+                ],
+                "position": [
+                    77,
+                    81
+                ]
+            }
+        ]
+    },
+    {
+        "quid": 2000084,
+        "question": "Who hosted the visit of Abdelkader Messahel to Mauritania in the same year?",
+        "answers": [
+            "Middle East"
+        ],
+        "answer_type": "entity",
+        "time_level": "year",
+        "qtype": "equal_multi",
+        "qlabel": "Multiple",
+        "time": [],
+        "entities": [
+            "Abdelkader Messahel",
+            "Mauritania"
+        ],
+        "entity_positions": [
+            {
+                "entity": [
+                    "Abdelkader Messahel"
+                ],
+                "position": [
+                    24,
+                    43
+                ]
+            },
+            {
+                "entity": [
+                    "Mauritania"
+                ],
+                "position": [
+                    47,
+                    57
+                ]
+            }
+        ]
+    },
+    {
+        "quid": 2000085,
+        "question": "Which country did the envoy of Sudan want to meet on the same day of Qatar?",
+        "answers": [
+            "China",
+            "France"
+        ],
+        "answer_type": "entity",
+        "time_level": "day",
+        "qtype": "equal_multi",
+        "qlabel": "Multiple",
+        "time": [],
+        "entities": [
+            "Sudan",
+            "Qatar"
+        ],
+        "entity_positions": [
+            {
+                "entity": [
+                    "Sudan"
+                ],
+                "position": [
+                    31,
+                    36
+                ]
+            },
+            {
+                "entity": [
+                    "Qatar"
+                ],
+                "position": [
+                    69,
+                    74
+                ]
+            }
+        ]
+    },
+    {
+        "quid": 2000091,
+        "question": "Who was the first to accuse Iran after the head of government of Germany did?",
+        "answers": [
+            "William J. Fallon"
+        ],
+        "answer_type": "entity",
+        "time_level": "day",
+        "qtype": "after_first",
+        "qlabel": "Multiple",
+        "time": [],
+        "entities": [
+            "Iran",
+            "Nurse (Germany)"
+        ],
+        "entity_positions": [
+            {
+                "entity": [
+                    "Iran"
+                ],
+                "position": [
+                    28,
+                    32
+                ]
+            },
+            {
+                "entity": [
+                    "Nurse (Germany)"
+                ],
+                "position": [
+                    65,
+                    72
+                ]
+            }
+        ]
+    },
+    {
+        "quid": 2000092,
+        "question": "Which country was the last to express optimism about the leader of Ukraine, before Iran?",
+        "answers": [
+            "China"
+        ],
+        "answer_type": "entity",
+        "time_level": "day",
+        "qtype": "before_last",
+        "qlabel": "Multiple",
+        "time": [],
+        "entities": [
+            "Our Ukraine",
+            "Iran"
+        ],
+        "entity_positions": [
+            {
+                "entity": [
+                    "Our Ukraine"
+                ],
+                "position": [
+                    67,
+                    74
+                ]
+            },
+            {
+                "entity": [
+                    "Iran"
+                ],
+                "position": [
+                    83,
+                    87
+                ]
+            }
+        ]
+    },
+    {
+        "quid": 2000102,
+        "question": "With which country did France negotiate for the first time in 2013?",
+        "answers": [
+            "United Arab Emirates"
+        ],
+        "answer_type": "entity",
+        "time_level": "year",
+        "qtype": "equal_multi",
+        "qlabel": "Multiple",
+        "time": [
+            "2013"
+        ],
+        "entities": [
+            "France"
+        ],
+        "entity_positions": [
+            {
+                "entity": [
+                    "France"
+                ],
+                "position": [
+                    23,
+                    29
+                ]
+            }
+        ]
+    }
+]

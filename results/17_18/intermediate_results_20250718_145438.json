@@ -1,0 +1,152 @@
+[
+  {
+    "quid": 2000014,
+    "question": "Who would wish to visit Ireland in July, the year of 2007?",
+    "ground_truth": [
+      "Bertie Ahern"
+    ],
+    "analysis": {
+      "question_type": "entity_query",
+      "time_constraints": "",
+      "key_entities": [],
+      "target_relations": [],
+      "answer_type": "entity",
+      "query_strategy": ""
+    },
+    "generated_code": "",
+    "predicted_answers": [
+      "代码生成失败"
+    ],
+    "evaluation": {
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "predicted_count": 1,
+      "ground_truth_count": 1,
+      "intersection_count": 0
+    }
+  },
+  {
+    "quid": 2000015,
+    "question": "In which year did Viktor Orban visit Iran for the first time?",
+    "ground_truth": [
+      "2015"
+    ],
+    "analysis": {
+      "question_type": "entity_query",
+      "time_constraints": "",
+      "key_entities": [],
+      "target_relations": [],
+      "answer_type": "entity",
+      "query_strategy": ""
+    },
+    "generated_code": "",
+    "predicted_answers": [
+      "代码生成失败"
+    ],
+    "evaluation": {
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "predicted_count": 1,
+      "ground_truth_count": 1,
+      "intersection_count": 0
+    }
+  },
+  {
+    "quid": 2000016,
+    "question": "Who made optimistic remarks about Iran after the Organisation for Economic Cooperation and Development?",
+    "ground_truth": [
+      "South Korea",
+      "Party Member (Iraq)",
+      "France",
+      "China",
+      "Iraq",
+      "Member of Legislative (Govt) (Iran)",
+      "Japan",
+      "Head of Government (Ukraine)",
+      "Thailand",
+      "Kazakhstan"
+    ],
+    "analysis": {
+      "question_type": "entity_query",
+      "time_constraints": "",
+      "key_entities": [],
+      "target_relations": [],
+      "answer_type": "entity",
+      "query_strategy": ""
+    },
+    "generated_code": "",
+    "predicted_answers": [
+      "代码生成失败"
+    ],
+    "evaluation": {
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "predicted_count": 1,
+      "ground_truth_count": 10,
+      "intersection_count": 0
+    }
+  },
+  {
+    "quid": 2000017,
+    "question": "Who made optimistic remarks about Yasuo Fukuda after Japan?",
+    "ground_truth": [
+      "Government Official (Japan)",
+      "China"
+    ],
+    "analysis": {
+      "question_type": "entity_query",
+      "time_constraints": "",
+      "key_entities": [],
+      "target_relations": [],
+      "answer_type": "entity",
+      "query_strategy": ""
+    },
+    "generated_code": "",
+    "predicted_answers": [
+      "代码生成失败"
+    ],
+    "evaluation": {
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "predicted_count": 1,
+      "ground_truth_count": 2,
+      "intersection_count": 0
+    }
+  },
+  {
+    "quid": 2000018,
+    "question": "In which month did Xi Jinping praise the Bahamas?",
+    "ground_truth": [
+      "2015-01"
+    ],
+    "analysis": {
+      "question_type": "entity_query",
+      "time_constraints": "",
+      "key_entities": [],
+      "target_relations": [],
+      "answer_type": "entity",
+      "query_strategy": ""
+    },
+    "generated_code": "",
+    "predicted_answers": [
+      "代码生成失败"
+    ],
+    "evaluation": {
+      "exact_match": false,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "predicted_count": 1,
+      "ground_truth_count": 1,
+      "intersection_count": 0
+    }
+  }
+]

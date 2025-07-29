@@ -1,0 +1,116 @@
+2025-07-21 13:10:36,877 - INFO - 日志系统初始化完成，日志文件: /mnt/nvme0n1/tyj/TKGQA/MY/logs/experiment_20250721_131036.log
+2025-07-21 13:10:36,909 - INFO - TemporalKGQASystem 初始化完成
+2025-07-21 13:10:36,909 - INFO - 加载知识图谱: MY/data/output/full_df.txt
+2025-07-21 13:10:37,294 - INFO - 数据形状: (461329, 4)
+2025-07-21 13:10:37,294 - INFO - 列名: ['head', 'relation', 'tail', 'timestamp']
+2025-07-21 13:10:37,331 - INFO - 知识图谱加载完成，共 461329 条记录
+2025-07-21 13:10:37,331 - INFO - 时间范围: 2005-01-01 00:00:00 到 2015-12-31 00:00:00
+2025-07-21 13:10:37,331 - INFO - 加载问题数据: MY/data/multitq/questions/question_6.json
+2025-07-21 13:10:37,332 - INFO - 问题数据加载完成，共 6 个问题
+2025-07-21 13:10:37,332 - INFO - 开始处理 6 个问题
+2025-07-21 13:10:37,332 - INFO - 
+============================================================
+2025-07-21 13:10:37,332 - INFO - 进度: 1/6
+2025-07-21 13:10:37,332 - INFO - 
+==================================================
+2025-07-21 13:10:37,332 - INFO - 处理问题 2056020: When did Walker San Miguel first express interest in working with Bolivia?
+2025-07-21 13:10:37,332 - INFO - 预期答案: ['2007-07-24']
+2025-07-21 13:10:37,332 - INFO - 问题类型: first_last
+2025-07-21 13:10:37,332 - INFO - 答案类型: time
+2025-07-21 13:10:37,333 - INFO - 代码生成成功
+2025-07-21 13:10:37,333 - INFO - 生成的代码长度: 2954 字符
+2025-07-21 13:10:43,417 - INFO - 原始查询结果类型: <class 'list'>
+2025-07-21 13:10:43,417 - INFO - 原始查询结果: ['2007-07-24']
+2025-07-21 13:10:43,417 - INFO - 查询返回 1 个结果: ['2007-07-24']
+2025-07-21 13:10:43,418 - INFO - 预测答案: ['2007-07-24']
+2025-07-21 13:10:43,418 - INFO - F1: 1.000, 精确率: 1.000, 召回率: 1.000
+2025-07-21 13:10:43,418 - INFO - 结果已更新到: /mnt/nvme0n1/tyj/TKGQA/MY/final_results_20250721_131037.json
+2025-07-21 13:10:43,418 - INFO - 
+============================================================
+2025-07-21 13:10:43,418 - INFO - 进度: 2/6
+2025-07-21 13:10:43,418 - INFO - 
+==================================================
+2025-07-21 13:10:43,419 - INFO - 处理问题 2027657: Who wanted to cooperate with Japan on 23 August 2006?
+2025-07-21 13:10:43,419 - INFO - 预期答案: ['Association of Southeast Asian Nations']
+2025-07-21 13:10:43,419 - INFO - 问题类型: equal
+2025-07-21 13:10:43,419 - INFO - 答案类型: entity
+2025-07-21 13:10:43,419 - INFO - 代码生成成功
+2025-07-21 13:10:43,419 - INFO - 生成的代码长度: 1623 字符
+2025-07-21 13:10:44,836 - INFO - 原始查询结果类型: <class 'list'>
+2025-07-21 13:10:44,836 - INFO - 原始查询结果: ['Association of Southeast Asian Nations']
+2025-07-21 13:10:44,836 - INFO - 查询返回 1 个结果: ['Association of Southeast Asian Nations']
+2025-07-21 13:10:44,836 - INFO - 预测答案: ['Association of Southeast Asian Nations']
+2025-07-21 13:10:44,836 - INFO - F1: 1.000, 精确率: 1.000, 召回率: 1.000
+2025-07-21 13:10:44,837 - INFO - 结果已更新到: /mnt/nvme0n1/tyj/TKGQA/MY/final_results_20250721_131037.json
+2025-07-21 13:10:44,837 - INFO - 
+============================================================
+2025-07-21 13:10:44,837 - INFO - 进度: 3/6
+2025-07-21 13:10:44,837 - INFO - 
+==================================================
+2025-07-21 13:10:44,837 - INFO - 处理问题 2007873: Before 11 December 2009, who used conventional military force against France?
+2025-07-21 13:10:44,837 - INFO - 预期答案: ['Separatist (France)', 'Comoros', 'Royal Air Force', 'Bolivia', 'Colombia', 'Christian (France)', 'Member of Parliament (France)', 'Military (Russia)']
+2025-07-21 13:10:44,837 - INFO - 问题类型: before_after
+2025-07-21 13:10:44,837 - INFO - 答案类型: entity
+2025-07-21 13:10:44,838 - INFO - 代码生成成功
+2025-07-21 13:10:44,838 - INFO - 生成的代码长度: 2532 字符
+2025-07-21 13:10:46,016 - INFO - 原始查询结果类型: <class 'list'>
+2025-07-21 13:10:46,017 - INFO - 原始查询结果: ['Bolivia', 'Military Personnel - Special (France)', 'Colombia', 'Military (Russia)', 'Member of Parliament (France)', 'Military (Senegal)', "Police (Cote d'Ivoire)", 'Religion (France)', 'Christian (France)', 'Royal Air Force']
+2025-07-21 13:10:46,017 - INFO - 查询返回 10 个结果: ['Bolivia', 'Military Personnel - Special (France)', 'Colombia', 'Military (Russia)', 'Member of Parliament (France)', 'Military (Senegal)', "Police (Cote d'Ivoire)", 'Religion (France)', 'Christian (France)', 'Royal Air Force']
+2025-07-21 13:10:46,017 - INFO - 预测答案: ['Bolivia', 'Military Personnel - Special (France)', 'Colombia', 'Military (Russia)', 'Member of Parliament (France)', 'Military (Senegal)', "Police (Cote d'Ivoire)", 'Religion (France)', 'Christian (France)', 'Royal Air Force']
+2025-07-21 13:10:46,017 - INFO - F1: 0.667, 精确率: 0.600, 召回率: 0.750
+2025-07-21 13:10:46,018 - INFO - 结果已更新到: /mnt/nvme0n1/tyj/TKGQA/MY/final_results_20250721_131037.json
+2025-07-21 13:10:46,018 - INFO - 
+============================================================
+2025-07-21 13:10:46,018 - INFO - 进度: 4/6
+2025-07-21 13:10:46,018 - INFO - 
+==================================================
+2025-07-21 13:10:46,018 - INFO - 处理问题 2044815: Which country was the first to ask for France after the Algerian extremist?
+2025-07-21 13:10:46,018 - INFO - 预期答案: ['Iran']
+2025-07-21 13:10:46,018 - INFO - 问题类型: after_first
+2025-07-21 13:10:46,018 - INFO - 答案类型: entity
+2025-07-21 13:10:46,019 - ERROR - 代码生成失败: 'CodeGenerator' object has no attribute '_generate_after_first_code'
+2025-07-21 13:10:46,096 - INFO - 原始查询结果类型: <class 'list'>
+2025-07-21 13:10:46,096 - INFO - 原始查询结果: []
+2025-07-21 13:10:46,096 - INFO - 查询返回 0 个结果: []
+2025-07-21 13:10:46,097 - INFO - 预测答案: []
+2025-07-21 13:10:46,097 - INFO - F1: 0.000, 精确率: 0.000, 召回率: 0.000
+2025-07-21 13:10:46,097 - INFO - 结果已更新到: /mnt/nvme0n1/tyj/TKGQA/MY/final_results_20250721_131037.json
+2025-07-21 13:10:46,097 - INFO - 
+============================================================
+2025-07-21 13:10:46,097 - INFO - 进度: 5/6
+2025-07-21 13:10:46,097 - INFO - 
+==================================================
+2025-07-21 13:10:46,097 - INFO - 处理问题 2016117: Before the Brazilian Ministry of Agriculture, Fishing and Forestry, which country was the last to condemn France?
+2025-07-21 13:10:46,097 - INFO - 预期答案: ['Mexico']
+2025-07-21 13:10:46,098 - INFO - 问题类型: before_last
+2025-07-21 13:10:46,098 - INFO - 答案类型: entity
+2025-07-21 13:10:46,098 - ERROR - 代码生成失败: 'CodeGenerator' object has no attribute '_generate_before_last_code'
+2025-07-21 13:10:46,165 - INFO - 原始查询结果类型: <class 'list'>
+2025-07-21 13:10:46,165 - INFO - 原始查询结果: []
+2025-07-21 13:10:46,165 - INFO - 查询返回 0 个结果: []
+2025-07-21 13:10:46,165 - INFO - 预测答案: []
+2025-07-21 13:10:46,165 - INFO - F1: 0.000, 精确率: 0.000, 召回率: 0.000
+2025-07-21 13:10:46,167 - INFO - 结果已更新到: /mnt/nvme0n1/tyj/TKGQA/MY/final_results_20250721_131037.json
+2025-07-21 13:10:46,167 - INFO - 
+============================================================
+2025-07-21 13:10:46,167 - INFO - 进度: 6/6
+2025-07-21 13:10:46,167 - INFO - 
+==================================================
+2025-07-21 13:10:46,167 - INFO - 处理问题 2018890: Who received Juan Carlos I's visit from Juan Carlos I on the same month of Qatar?
+2025-07-21 13:10:46,167 - INFO - 预期答案: ['Royal Administration (Spain)', 'Royal Administration (Jordan)', 'Royal Administration (Saudi Arabia)']
+2025-07-21 13:10:46,167 - INFO - 问题类型: equal_multi
+2025-07-21 13:10:46,167 - INFO - 答案类型: entity
+2025-07-21 13:10:46,168 - ERROR - 代码生成失败: 'CodeGenerator' object has no attribute '_generate_equal_multi_code'
+2025-07-21 13:10:46,234 - INFO - 原始查询结果类型: <class 'list'>
+2025-07-21 13:10:46,234 - INFO - 原始查询结果: []
+2025-07-21 13:10:46,234 - INFO - 查询返回 0 个结果: []
+2025-07-21 13:10:46,234 - INFO - 预测答案: []
+2025-07-21 13:10:46,234 - INFO - F1: 0.000, 精确率: 0.000, 召回率: 0.000
+2025-07-21 13:10:46,235 - INFO - 结果已更新到: /mnt/nvme0n1/tyj/TKGQA/MY/final_results_20250721_131037.json
+2025-07-21 13:10:46,235 - ERROR - 实验执行失败: TemporalKGQASystem.print_final_stats() takes 1 positional argument but 2 were given
+2025-07-21 13:10:46,235 - ERROR - Traceback (most recent call last):
+  File "/mnt/nvme0n1/tyj/TKGQA/MY/main/run_experiment.py", line 77, in run_complete_experiment
+    system.print_final_stats(results)
+TypeError: TemporalKGQASystem.print_final_stats() takes 1 positional argument but 2 were given
+
+2025-07-21 13:10:46,236 - ERROR - ❌ 实验运行失败: TemporalKGQASystem.print_final_stats() takes 1 positional argument but 2 were given

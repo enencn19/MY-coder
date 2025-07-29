@@ -1,0 +1,255 @@
+[
+  {
+    "quid": 2045036,
+    "question": "Who was rejected by the Kuomintang after June, 2007?",
+    "answers": [
+      "Tsai Ing-wen",
+      "Wang Ching-feng"
+    ],
+    "answer_type": "entity",
+    "time_level": "month",
+    "qtype": "before_after",
+    "qlabel": "Single",
+    "time": [
+      "2007"
+    ],
+    "entities": [
+      "Kuomintang"
+    ],
+    "entity_positions": [
+      {
+        "entity": [
+          "Kuomintang"
+        ],
+        "position": [
+          24,
+          34
+        ]
+      }
+    ]
+  },
+  {
+    "quid": 2006643,
+    "question": "Who declined Iran after August, 2015?",
+    "answers": [
+      "Kuwait",
+      "Other Authorities / Officials (Somalia)",
+      "Congress (United States)"
+    ],
+    "answer_type": "entity",
+    "time_level": "month",
+    "qtype": "before_after",
+    "qlabel": "Single",
+    "time": [
+      "2015"
+    ],
+    "entities": [
+      "Iran"
+    ],
+    "entity_positions": [
+      {
+        "entity": [
+          "Iran"
+        ],
+        "position": [
+          13,
+          17
+        ]
+      }
+    ]
+  },
+  
+  {
+    "quid": 2027657,
+    "question": "Who wanted to cooperate with Japan on 23 August 2006?",
+    "answers": [
+      "Association of Southeast Asian Nations"
+    ],
+    "answer_type": "entity",
+    "time_level": "day",
+    "qtype": "equal",
+    "qlabel": "Single",
+    "time": [
+      "2006-08-23"
+    ],
+    "entities": [
+      "Japan"
+    ],
+    "entity_positions": [
+      {
+        "entity": [
+          "Japan"
+        ],
+        "position": [
+          29,
+          34
+        ]
+      }
+    ]
+  },
+  {
+    "quid": 2007873,
+    "question": "Before 11 December 2009, who used conventional military force against France?",
+    "answers": [
+      "Separatist (France)",
+      "Comoros",
+      "Royal Air Force",
+      "Bolivia",
+      "Colombia",
+      "Christian (France)",
+      "Member of Parliament (France)",
+      "Military (Russia)"
+    ],
+    "answer_type": "entity",
+    "time_level": "day",
+    "qtype": "before_after",
+    "qlabel": "Single",
+    "time": [
+      "2009-12-11"
+    ],
+    "entities": [
+      "France"
+    ],
+    "entity_positions": [
+      {
+        "entity": [
+          "France"
+        ],
+        "position": [
+          70,
+          76
+        ]
+      }
+    ]
+  },
+  {
+    "quid": 2044815,
+    "question": "Which country was the first to ask for France after the Algerian extremist?",
+    "answers": [
+      "Iran"
+    ],
+    "answer_type": "entity",
+    "time_level": "day",
+    "qtype": "after_first",
+    "qlabel": "Multiple",
+    "time": [],
+    "entities": [
+      "France",
+      "Anguel Marin"
+    ],
+    "entity_positions": [
+      {
+        "entity": [
+          "France"
+        ],
+        "position": [
+          39,
+          45
+        ]
+      },
+      {
+        "entity": [
+          "Anguel Marin"
+        ],
+        "position": [
+          56,
+          64
+        ]
+      }
+    ]
+  },
+  {
+    "quid": 2016117,
+    "question": "Before the Brazilian Ministry of Agriculture, Fishing and Forestry, which country was the last to condemn France?",
+    "answers": [
+      "Mexico"
+    ],
+    "answer_type": "entity",
+    "time_level": "day",
+    "qtype": "before_last",
+    "qlabel": "Multiple",
+    "time": [],
+    "entities": [
+      "Swaziland",
+      "Agriculture / Fishing / Forestry Ministry (Laos)",
+      "France"
+    ],
+    "entity_positions": [
+      {
+        "entity": [
+          "Swaziland"
+        ],
+        "position": [
+          11,
+          20
+        ]
+      },
+      {
+        "entity": [
+          "Agriculture / Fishing / Forestry Ministry (Laos)"
+        ],
+        "position": [
+          21,
+          66
+        ]
+      },
+      {
+        "entity": [
+          "France"
+        ],
+        "position": [
+          106,
+          112
+        ]
+      }
+    ]
+  },
+  {
+    "quid": 2018890,
+    "question": "Who received Juan Carlos I's visit from Juan Carlos I on the same month of Qatar?",
+    "answers": [
+      "Royal Administration (Spain)",
+      "Royal Administration (Jordan)",
+      "Royal Administration (Saudi Arabia)"
+    ],
+    "answer_type": "entity",
+    "time_level": "month",
+    "qtype": "equal_multi",
+    "qlabel": "Multiple",
+    "time": [],
+    "entities": [
+      "Juan Carlos I",
+      "Juan Carlos I",
+      "Qatar"
+    ],
+    "entity_positions": [
+      {
+        "entity": [
+          "Juan Carlos I"
+        ],
+        "position": [
+          13,
+          26
+        ]
+      },
+      {
+        "entity": [
+          "Juan Carlos I"
+        ],
+        "position": [
+          40,
+          53
+        ]
+      },
+      {
+        "entity": [
+          "Qatar"
+        ],
+        "position": [
+          75,
+          80
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,119 @@
+2025-07-21 13:41:29,444 - INFO - 日志系统初始化完成，日志文件: /mnt/nvme0n1/tyj/TKGQA/MY/logs/experiment_20250721_134129.log
+2025-07-21 13:41:29,477 - INFO - TemporalKGQASystem 初始化完成
+2025-07-21 13:41:29,477 - INFO - 加载知识图谱: MY/data/output/full_df.txt
+2025-07-21 13:41:29,864 - INFO - 数据形状: (461329, 4)
+2025-07-21 13:41:29,864 - INFO - 列名: ['head', 'relation', 'tail', 'timestamp']
+2025-07-21 13:41:29,902 - INFO - 知识图谱加载完成，共 461329 条记录
+2025-07-21 13:41:29,902 - INFO - 时间范围: 2005-01-01 00:00:00 到 2015-12-31 00:00:00
+2025-07-21 13:41:29,902 - INFO - 加载问题数据: MY/data/multitq/questions/question_6.json
+2025-07-21 13:41:29,902 - INFO - 问题数据加载完成，共 6 个问题
+2025-07-21 13:41:29,903 - INFO - 开始处理 6 个问题
+2025-07-21 13:41:29,903 - INFO - 
+============================================================
+2025-07-21 13:41:29,903 - INFO - 进度: 1/6
+2025-07-21 13:41:29,903 - INFO - 
+==================================================
+2025-07-21 13:41:29,903 - INFO - 处理问题 2056020: When did Walker San Miguel first express interest in working with Bolivia?
+2025-07-21 13:41:29,903 - INFO - 预期答案: ['2007-07-24']
+2025-07-21 13:41:29,903 - INFO - 问题类型: first_last
+2025-07-21 13:41:29,903 - INFO - 答案类型: time
+2025-07-21 13:41:29,904 - INFO - 代码生成成功
+2025-07-21 13:41:29,904 - INFO - 生成的代码长度: 2954 字符
+2025-07-21 13:41:35,966 - INFO - 原始查询结果类型: <class 'list'>
+2025-07-21 13:41:35,967 - INFO - 原始查询结果: ['2007-07-24']
+2025-07-21 13:41:35,967 - INFO - 查询返回 1 个结果: ['2007-07-24']
+2025-07-21 13:41:35,967 - INFO - 预测答案: ['2007-07-24']
+2025-07-21 13:41:35,967 - INFO - F1: 1.000, 精确率: 1.000, 召回率: 1.000
+2025-07-21 13:41:35,967 - INFO - 结果已更新到: /mnt/nvme0n1/tyj/TKGQA/MY/final_results_20250721_134129.json
+2025-07-21 13:41:35,967 - INFO - 
+============================================================
+2025-07-21 13:41:35,967 - INFO - 进度: 2/6
+2025-07-21 13:41:35,968 - INFO - 
+==================================================
+2025-07-21 13:41:35,968 - INFO - 处理问题 2027657: Who wanted to cooperate with Japan on 23 August 2006?
+2025-07-21 13:41:35,968 - INFO - 预期答案: ['Association of Southeast Asian Nations']
+2025-07-21 13:41:35,968 - INFO - 问题类型: equal
+2025-07-21 13:41:35,968 - INFO - 答案类型: entity
+2025-07-21 13:41:35,968 - INFO - 代码生成成功
+2025-07-21 13:41:35,968 - INFO - 生成的代码长度: 1623 字符
+2025-07-21 13:41:37,391 - INFO - 原始查询结果类型: <class 'list'>
+2025-07-21 13:41:37,392 - INFO - 原始查询结果: ['Association of Southeast Asian Nations']
+2025-07-21 13:41:37,392 - INFO - 查询返回 1 个结果: ['Association of Southeast Asian Nations']
+2025-07-21 13:41:37,392 - INFO - 预测答案: ['Association of Southeast Asian Nations']
+2025-07-21 13:41:37,392 - INFO - F1: 1.000, 精确率: 1.000, 召回率: 1.000
+2025-07-21 13:41:37,392 - INFO - 结果已更新到: /mnt/nvme0n1/tyj/TKGQA/MY/final_results_20250721_134129.json
+2025-07-21 13:41:37,393 - INFO - 
+============================================================
+2025-07-21 13:41:37,393 - INFO - 进度: 3/6
+2025-07-21 13:41:37,393 - INFO - 
+==================================================
+2025-07-21 13:41:37,393 - INFO - 处理问题 2007873: Before 11 December 2009, who used conventional military force against France?
+2025-07-21 13:41:37,393 - INFO - 预期答案: ['Separatist (France)', 'Comoros', 'Royal Air Force', 'Bolivia', 'Colombia', 'Christian (France)', 'Member of Parliament (France)', 'Military (Russia)']
+2025-07-21 13:41:37,393 - INFO - 问题类型: before_after
+2025-07-21 13:41:37,393 - INFO - 答案类型: entity
+2025-07-21 13:41:37,393 - INFO - 代码生成成功
+2025-07-21 13:41:37,393 - INFO - 生成的代码长度: 2532 字符
+2025-07-21 13:41:38,525 - INFO - 原始查询结果类型: <class 'list'>
+2025-07-21 13:41:38,525 - INFO - 原始查询结果: ['Bolivia', 'Military Personnel - Special (France)', 'Colombia', 'Military (Russia)', 'Member of Parliament (France)', 'Military (Senegal)', "Police (Cote d'Ivoire)", 'Religion (France)', 'Christian (France)', 'Royal Air Force']
+2025-07-21 13:41:38,525 - INFO - 查询返回 10 个结果: ['Bolivia', 'Military Personnel - Special (France)', 'Colombia', 'Military (Russia)', 'Member of Parliament (France)', 'Military (Senegal)', "Police (Cote d'Ivoire)", 'Religion (France)', 'Christian (France)', 'Royal Air Force']
+2025-07-21 13:41:38,525 - INFO - 预测答案: ['Bolivia', 'Military Personnel - Special (France)', 'Colombia', 'Military (Russia)', 'Member of Parliament (France)', 'Military (Senegal)', "Police (Cote d'Ivoire)", 'Religion (France)', 'Christian (France)', 'Royal Air Force']
+2025-07-21 13:41:38,525 - INFO - F1: 0.667, 精确率: 0.600, 召回率: 0.750
+2025-07-21 13:41:38,526 - INFO - 结果已更新到: /mnt/nvme0n1/tyj/TKGQA/MY/final_results_20250721_134129.json
+2025-07-21 13:41:38,526 - INFO - 
+============================================================
+2025-07-21 13:41:38,526 - INFO - 进度: 4/6
+2025-07-21 13:41:38,526 - INFO - 
+==================================================
+2025-07-21 13:41:38,526 - INFO - 处理问题 2044815: Which country was the first to ask for France after the Algerian extremist?
+2025-07-21 13:41:38,526 - INFO - 预期答案: ['Iran']
+2025-07-21 13:41:38,526 - INFO - 问题类型: after_first
+2025-07-21 13:41:38,526 - INFO - 答案类型: entity
+2025-07-21 13:41:38,527 - INFO - 代码生成成功
+2025-07-21 13:41:38,527 - INFO - 生成的代码长度: 1396 字符
+2025-07-21 13:41:39,905 - INFO - 原始查询结果类型: <class 'list'>
+2025-07-21 13:41:39,905 - INFO - 原始查询结果: ['Pervez Musharraf']
+2025-07-21 13:41:39,905 - INFO - 查询返回 1 个结果: ['Pervez Musharraf']
+2025-07-21 13:41:39,905 - INFO - 预测答案: ['Pervez Musharraf']
+2025-07-21 13:41:39,906 - INFO - F1: 0.000, 精确率: 0.000, 召回率: 0.000
+2025-07-21 13:41:39,906 - INFO - 结果已更新到: /mnt/nvme0n1/tyj/TKGQA/MY/final_results_20250721_134129.json
+2025-07-21 13:41:39,906 - INFO - 
+============================================================
+2025-07-21 13:41:39,906 - INFO - 进度: 5/6
+2025-07-21 13:41:39,906 - INFO - 
+==================================================
+2025-07-21 13:41:39,906 - INFO - 处理问题 2016117: Before the Brazilian Ministry of Agriculture, Fishing and Forestry, which country was the last to condemn France?
+2025-07-21 13:41:39,906 - INFO - 预期答案: ['Mexico']
+2025-07-21 13:41:39,906 - INFO - 问题类型: before_last
+2025-07-21 13:41:39,906 - INFO - 答案类型: entity
+2025-07-21 13:41:39,907 - INFO - 代码生成成功
+2025-07-21 13:41:39,907 - INFO - 生成的代码长度: 1268 字符
+2025-07-21 13:41:40,742 - INFO - 原始查询结果类型: <class 'list'>
+2025-07-21 13:41:40,742 - INFO - 原始查询结果: []
+2025-07-21 13:41:40,742 - INFO - 查询返回 0 个结果: []
+2025-07-21 13:41:40,742 - INFO - 预测答案: []
+2025-07-21 13:41:40,742 - INFO - F1: 0.000, 精确率: 0.000, 召回率: 0.000
+2025-07-21 13:41:40,742 - INFO - 结果已更新到: /mnt/nvme0n1/tyj/TKGQA/MY/final_results_20250721_134129.json
+2025-07-21 13:41:40,743 - INFO - 
+============================================================
+2025-07-21 13:41:40,743 - INFO - 进度: 6/6
+2025-07-21 13:41:40,743 - INFO - 
+==================================================
+2025-07-21 13:41:40,743 - INFO - 处理问题 2018890: Who received Juan Carlos I's visit from Juan Carlos I on the same month of Qatar?
+2025-07-21 13:41:40,743 - INFO - 预期答案: ['Royal Administration (Spain)', 'Royal Administration (Jordan)', 'Royal Administration (Saudi Arabia)']
+2025-07-21 13:41:40,743 - INFO - 问题类型: equal_multi
+2025-07-21 13:41:40,743 - INFO - 答案类型: entity
+2025-07-21 13:41:40,743 - INFO - 代码生成成功
+2025-07-21 13:41:40,743 - INFO - 生成的代码长度: 1403 字符
+2025-07-21 13:41:41,352 - INFO - 原始查询结果类型: <class 'list'>
+2025-07-21 13:41:41,352 - INFO - 原始查询结果: []
+2025-07-21 13:41:41,352 - INFO - 查询返回 0 个结果: []
+2025-07-21 13:41:41,352 - INFO - 预测答案: []
+2025-07-21 13:41:41,352 - INFO - F1: 0.000, 精确率: 0.000, 召回率: 0.000
+2025-07-21 13:41:41,354 - INFO - 结果已更新到: /mnt/nvme0n1/tyj/TKGQA/MY/final_results_20250721_134129.json
+2025-07-21 13:41:41,354 - ERROR - 实验执行失败: TemporalKGQASystem.print_final_stats() takes 1 positional argument but 2 were given
+2025-07-21 13:41:41,355 - ERROR - Traceback (most recent call last):
+  File "/mnt/nvme0n1/tyj/TKGQA/MY/main/run_experiment.py", line 77, in run_complete_experiment
+    system.print_final_stats(results)
+TypeError: TemporalKGQASystem.print_final_stats() takes 1 positional argument but 2 were given
+
+2025-07-21 13:41:41,355 - ERROR - ❌ 实验运行失败: TemporalKGQASystem.print_final_stats() takes 1 positional argument but 2 were given

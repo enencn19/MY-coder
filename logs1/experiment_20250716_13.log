@@ -1,0 +1,239 @@
+2025-07-16 08:52:42,483 - INFO - 日志系统初始化完成，日志文件: /mnt/nvme0n1/tyj/TKGQA/MY/logs/experiment_20250716_085242.log
+2025-07-16 08:52:42,517 - INFO - KG文件前3行: ['head\trelation\ttail\ttimestamp', 'Abdul_Kalam\tExpress_intent_to_engage_in_diplomatic_cooperation_(such_as_policy_support)\tSocial_Worker_(India)\t2005-01-01', 'Abdul_Kalam\tMake_statement\tSwraj_Paul\t2005-01-01']
+2025-07-16 08:52:42,874 - INFO - 加载KG数据: 461329行, 列名: ['head', 'relation', 'tail', 'timestamp']
+2025-07-16 08:52:42,875 - INFO - 时间戳列样例: ['2005-01-01', '2005-01-01', '2005-01-01', '2005-01-01', '2005-01-01']
+2025-07-16 08:52:42,879 - INFO - 加载了 10488 个实体映射和 251 个关系映射
+2025-07-16 08:52:42,879 - INFO - 时间戳列数据类型: object
+2025-07-16 08:52:42,897 - INFO - 时间戳列唯一值样例: ['2005-01-01' '2005-01-02' '2005-01-03' '2005-01-04' '2005-01-05']
+2025-07-16 08:52:44,686 - INFO - 知识图谱预处理完成，有效数据: 461329行
+2025-07-16 08:52:44,688 - INFO - 时间范围: 2005-01-01 00:00:00 到 2015-12-31 00:00:00
+2025-07-16 08:52:44,688 - INFO - 系统初始化完成 - 问题数: 25, KG四元组数: 461329
+2025-07-16 08:52:44,688 - INFO - 代码记录文件: /mnt/nvme0n1/tyj/TKGQA/MY/generated_codes_20250716_085242.py
+2025-07-16 08:52:44,688 - INFO - 开始时序知识图谱问答实验...
+2025-07-16 08:52:44,688 - INFO - 问题总数: 25
+2025-07-16 08:52:44,688 - INFO - 知识图谱四元组数: 461329
+2025-07-16 08:52:44,688 - INFO - 
+==================================================
+2025-07-16 08:52:44,688 - INFO - 开始处理问题 2000000
+2025-07-16 08:52:44,688 - INFO - 问题: Who was the first to request a meeting with Togo in 2005?
+2025-07-16 08:52:44,688 - INFO - 标准答案: ['Head of Government (Togo)']
+2025-07-16 08:52:44,688 - INFO - ==================================================
+2025-07-16 08:55:36,091 - INFO - 问题分析: {'question_type': 'unknown', 'time_constraints': 'unknown', 'key_entities': [], 'target_relation': 'unknown', 'answer_type': 'entity'}
+2025-07-16 08:55:36,091 - INFO - 代码生成成功，开始执行查询
+2025-07-16 08:55:36,173 - INFO - 查询成功，返回 1 个结果: ['South Africa']
+2025-07-16 08:55:36,173 - INFO - 问题 2000000 处理完成
+2025-07-16 08:55:36,174 - INFO - 预测答案: ['South Africa']
+2025-07-16 08:55:36,174 - INFO - 标准化后的标准答案: ['Head of Government (Togo)']
+2025-07-16 08:55:36,174 - INFO - 标准化后的预测答案: ['South Africa']
+2025-07-16 08:55:36,174 - INFO - 交集: set()
+2025-07-16 08:55:36,174 - INFO - 评估结果: P=0.000, R=0.000, F1=0.000, EM=False
+2025-07-16 08:55:36,174 - INFO - 结果已保存到: /mnt/nvme0n1/tyj/TKGQA/MY/intermediate_results_1.json
+2025-07-16 08:55:37,175 - INFO - 
+==================================================
+2025-07-16 08:55:37,175 - INFO - 开始处理问题 2000001
+2025-07-16 08:55:37,175 - INFO - 问题: In which month did the head of Turkmenistan last praise Iran?
+2025-07-16 08:55:37,175 - INFO - 标准答案: ['2014-11']
+2025-07-16 08:55:37,175 - INFO - ==================================================
+2025-07-16 08:57:55,395 - INFO - 问题分析: {'question_type': 'last_event', 'time_constraints': '无特定时间范围限制，需获取最近事件', 'key_entities': ['head of Turkmenistan', 'Iran'], 'target_relation': 'Praise_or_endorse', 'answer_type': 'time (year_month)'}
+2025-07-16 08:57:55,395 - INFO - 代码生成成功，开始执行查询
+2025-07-16 08:57:55,520 - INFO - 查询成功，返回 1 个结果: ['2014-11']
+2025-07-16 08:57:55,520 - INFO - 问题 2000001 处理完成
+2025-07-16 08:57:55,520 - INFO - 预测答案: ['2014-11']
+2025-07-16 08:57:55,520 - INFO - 标准化后的标准答案: ['2014-11']
+2025-07-16 08:57:55,520 - INFO - 标准化后的预测答案: ['2014-11']
+2025-07-16 08:57:55,520 - INFO - 交集: {'2014-11'}
+2025-07-16 08:57:55,520 - INFO - 评估结果: P=1.000, R=1.000, F1=1.000, EM=True
+2025-07-16 08:57:56,521 - INFO - 
+==================================================
+2025-07-16 08:57:56,522 - INFO - 开始处理问题 2000002
+2025-07-16 08:57:56,522 - INFO - 问题: Who visited Japan on 27 February 2007?
+2025-07-16 08:57:56,522 - INFO - 标准答案: ['Mikhail Yefimovich Fradkov', 'Sergey Vladilenovich Kiriyenko']
+2025-07-16 08:57:56,522 - INFO - ==================================================
+2025-07-16 08:59:55,351 - WARNING - 分析提取失败: Extra data: line 1 column 16 (char 15)
+2025-07-16 08:59:55,352 - INFO - 问题分析: {'question_type': 'unknown', 'time_constraints': 'unknown', 'key_entities': [], 'target_relation': 'unknown', 'answer_type': 'entity'}
+2025-07-16 08:59:55,352 - INFO - 代码生成成功，开始执行查询
+2025-07-16 08:59:55,687 - INFO - 查询成功，返回 2 个结果: ['Mikhail Yefimovich Fradkov', 'Sergey Vladilenovich Kiriyenko']
+2025-07-16 08:59:55,687 - INFO - 问题 2000002 处理完成
+2025-07-16 08:59:55,687 - INFO - 预测答案: ['Mikhail Yefimovich Fradkov', 'Sergey Vladilenovich Kiriyenko']
+2025-07-16 08:59:55,687 - INFO - 标准化后的标准答案: ['Mikhail Yefimovich Fradkov', 'Sergey Vladilenovich Kiriyenko']
+2025-07-16 08:59:55,687 - INFO - 标准化后的预测答案: ['Mikhail Yefimovich Fradkov', 'Sergey Vladilenovich Kiriyenko']
+2025-07-16 08:59:55,687 - INFO - 交集: {'Sergey Vladilenovich Kiriyenko', 'Mikhail Yefimovich Fradkov'}
+2025-07-16 08:59:55,687 - INFO - 评估结果: P=1.000, R=1.000, F1=1.000, EM=True
+2025-07-16 08:59:56,689 - INFO - 
+==================================================
+2025-07-16 08:59:56,689 - INFO - 开始处理问题 2000003
+2025-07-16 08:59:56,689 - INFO - 问题: Who denounced Bolivia after 2 May 2015?
+2025-07-16 08:59:56,689 - INFO - 标准答案: ['Evo Morales', 'Heraldo Muñoz']
+2025-07-16 08:59:56,689 - INFO - ==================================================
+2025-07-16 09:02:27,478 - WARNING - 分析提取失败: Extra data: line 1 column 16 (char 15)
+2025-07-16 09:02:27,478 - INFO - 问题分析: {'question_type': 'unknown', 'time_constraints': 'unknown', 'key_entities': [], 'target_relation': 'unknown', 'answer_type': 'entity'}
+2025-07-16 09:02:27,478 - INFO - 代码生成成功，开始执行查询
+2025-07-16 09:02:27,603 - INFO - 查询成功，返回 0 个结果: []
+2025-07-16 09:02:27,604 - INFO - 问题 2000003 处理完成
+2025-07-16 09:02:27,604 - INFO - 预测答案: []
+2025-07-16 09:02:27,604 - INFO - 标准化后的标准答案: ['Evo Morales', 'Heraldo Muñoz']
+2025-07-16 09:02:27,604 - INFO - 标准化后的预测答案: []
+2025-07-16 09:02:27,604 - INFO - 评估结果: P=0.000, R=0.000, F1=0.000, EM=False
+2025-07-16 09:02:28,604 - INFO - 
+==================================================
+2025-07-16 09:02:28,604 - INFO - 开始处理问题 2000004
+2025-07-16 09:02:28,604 - INFO - 问题: Which country praised Togo on 12 November 2009?
+2025-07-16 09:02:28,605 - INFO - 标准答案: ['China']
+2025-07-16 09:02:28,605 - INFO - ==================================================
+2025-07-16 09:04:41,678 - INFO - 问题分析: {'question_type': 'specific_date', 'time_constraints': '精确日期 2009-11-12', 'key_entities': ['Togo'], 'target_relation': 'Praise_or_endorse', 'answer_type': 'entity'}
+2025-07-16 09:04:41,678 - INFO - 代码生成成功，开始执行查询
+2025-07-16 09:04:41,792 - INFO - 查询成功，返回 1 个结果: ['China']
+2025-07-16 09:04:41,793 - INFO - 问题 2000004 处理完成
+2025-07-16 09:04:41,793 - INFO - 预测答案: ['China']
+2025-07-16 09:04:41,793 - INFO - 标准化后的标准答案: ['China']
+2025-07-16 09:04:41,793 - INFO - 标准化后的预测答案: ['China']
+2025-07-16 09:04:41,793 - INFO - 交集: {'China'}
+2025-07-16 09:04:41,793 - INFO - 评估结果: P=1.000, R=1.000, F1=1.000, EM=True
+2025-07-16 09:04:41,794 - INFO - 结果已保存到: /mnt/nvme0n1/tyj/TKGQA/MY/intermediate_results_5.json
+2025-07-16 09:04:42,795 - INFO - 
+==================================================
+2025-07-16 09:04:42,795 - INFO - 开始处理问题 2000005
+2025-07-16 09:04:42,795 - INFO - 问题: Which country last praised Iran in 2009?
+2025-07-16 09:04:42,795 - INFO - 标准答案: ['Vietnam']
+2025-07-16 09:04:42,795 - INFO - ==================================================
+2025-07-16 09:08:07,984 - ERROR - 无法提取有效的query_kg函数
+2025-07-16 09:08:07,984 - WARNING - 初次代码生成失败或有语法错误，尝试重新生成
+2025-07-16 09:10:59,726 - INFO - 问题分析: {'question_type': 'unknown', 'time_constraints': 'unknown', 'key_entities': [], 'target_relation': 'unknown', 'answer_type': 'entity'}
+2025-07-16 09:10:59,727 - INFO - 代码生成成功，开始执行查询
+2025-07-16 09:10:59,936 - INFO - 查询成功，返回 1 个结果: ['Vietnam']
+2025-07-16 09:10:59,937 - INFO - 问题 2000005 处理完成
+2025-07-16 09:10:59,937 - INFO - 预测答案: ['Vietnam']
+2025-07-16 09:10:59,937 - INFO - 标准化后的标准答案: ['Vietnam']
+2025-07-16 09:10:59,937 - INFO - 标准化后的预测答案: ['Vietnam']
+2025-07-16 09:10:59,937 - INFO - 交集: {'Vietnam'}
+2025-07-16 09:10:59,937 - INFO - 评估结果: P=1.000, R=1.000, F1=1.000, EM=True
+2025-07-16 09:11:00,938 - INFO - 
+==================================================
+2025-07-16 09:11:00,938 - INFO - 开始处理问题 2000006
+2025-07-16 09:11:00,938 - INFO - 问题: Before the Middle East, with whom did Mauritania express an interest in cooperation?
+2025-07-16 09:11:00,938 - INFO - 标准答案: ['Yemen', 'Kuwait', 'Niger', 'France', 'Japan']
+2025-07-16 09:11:00,938 - INFO - ==================================================
+2025-07-16 09:14:25,912 - ERROR - 无法提取有效的query_kg函数
+2025-07-16 09:14:25,912 - WARNING - 初次代码生成失败或有语法错误，尝试重新生成
+2025-07-16 09:17:51,318 - ERROR - 无法提取有效的query_kg函数
+2025-07-16 09:17:51,318 - INFO - 问题分析: {'question_type': 'unknown', 'time_constraints': 'unknown', 'key_entities': [], 'target_relation': 'unknown', 'answer_type': 'entity'}
+2025-07-16 09:17:51,318 - ERROR - 代码生成失败
+2025-07-16 09:17:51,318 - INFO - 问题 2000006 处理完成
+2025-07-16 09:17:51,318 - INFO - 预测答案: ['代码生成失败']
+2025-07-16 09:17:51,318 - INFO - 标准化后的标准答案: ['Yemen', 'Kuwait', 'Niger', 'France', 'Japan']
+2025-07-16 09:17:51,318 - INFO - 标准化后的预测答案: []
+2025-07-16 09:17:51,318 - INFO - 评估结果: P=0.000, R=0.000, F1=0.000, EM=False
+2025-07-16 09:17:52,319 - INFO - 
+==================================================
+2025-07-16 09:17:52,320 - INFO - 开始处理问题 2000007
+2025-07-16 09:17:52,320 - INFO - 问题: After Mahmoud Abbas, with whom did France want to engage in diplomatic cooperation?
+2025-07-16 09:17:52,320 - INFO - 标准答案: ['Ministry (Iran)', 'Iran', 'South Korea']
+2025-07-16 09:17:52,320 - INFO - ==================================================
+2025-07-16 09:20:10,228 - INFO - 问题分析: {'question_type': 'event_after_another', 'time_constraints': '在Mahmoud_Abbas最近事件之后的时间范围', 'key_entities': ['France', 'Mahmoud_Abbas'], 'target_relation': 'Express_intent_to_engage_in_diplomatic_cooperation_(such_as_policy_support)', 'answer_type': 'entity'}
+2025-07-16 09:20:10,228 - INFO - 代码生成成功，开始执行查询
+2025-07-16 09:20:10,460 - INFO - 查询成功，返回 0 个结果: []
+2025-07-16 09:20:10,460 - INFO - 问题 2000007 处理完成
+2025-07-16 09:20:10,460 - INFO - 预测答案: []
+2025-07-16 09:20:10,460 - INFO - 标准化后的标准答案: ['Ministry (Iran)', 'Iran', 'South Korea']
+2025-07-16 09:20:10,460 - INFO - 标准化后的预测答案: []
+2025-07-16 09:20:10,460 - INFO - 评估结果: P=0.000, R=0.000, F1=0.000, EM=False
+2025-07-16 09:20:11,462 - INFO - 
+==================================================
+2025-07-16 09:20:11,462 - INFO - 开始处理问题 2000008
+2025-07-16 09:20:11,462 - INFO - 问题: Which country did Bolivia ask about before September 2009?
+2025-07-16 09:20:11,462 - INFO - 标准答案: ['Colombia', 'Military (Bolivia)', 'Evo Morales', 'Envoy (United States)', 'Andean Community', 'Mexico']
+2025-07-16 09:20:11,462 - INFO - ==================================================
+2025-07-16 09:23:37,158 - ERROR - 无法提取有效的query_kg函数
+2025-07-16 09:23:37,158 - WARNING - 初次代码生成失败或有语法错误，尝试重新生成
+2025-07-16 09:25:59,415 - INFO - 问题分析: {'question_type': 'unknown', 'time_constraints': 'unknown', 'key_entities': [], 'target_relation': 'unknown', 'answer_type': 'entity'}
+2025-07-16 09:25:59,415 - INFO - 代码生成成功，开始执行查询
+2025-07-16 09:25:59,567 - INFO - 查询成功，返回 16 个结果: ['China', 'José Miguel Insulza', 'Eduardo Rodríguez', 'Colombia', 'Armando Loaiza', 'Evo Morales', 'Cabinet / Council of Ministers / Advisors (United States)', 'Guatemala', 'Álvaro García', 'Walker San Miguel', 'Daniel Ortega', 'Mexico', 'Mahmoud Ahmadinejad', 'Cristina Fernández de Kirchner', 'Nelson Azevedo Jobim', 'Belize']
+2025-07-16 09:25:59,567 - INFO - 问题 2000008 处理完成
+2025-07-16 09:25:59,567 - INFO - 预测答案: ['China', 'José Miguel Insulza', 'Eduardo Rodríguez', 'Colombia', 'Armando Loaiza', 'Evo Morales', 'Cabinet / Council of Ministers / Advisors (United States)', 'Guatemala', 'Álvaro García', 'Walker San Miguel', 'Daniel Ortega', 'Mexico', 'Mahmoud Ahmadinejad', 'Cristina Fernández de Kirchner', 'Nelson Azevedo Jobim', 'Belize']
+2025-07-16 09:25:59,567 - INFO - 标准化后的标准答案: ['Colombia', 'Military (Bolivia)', 'Evo Morales', 'Envoy (United States)', 'Andean Community', 'Mexico']
+2025-07-16 09:25:59,567 - INFO - 标准化后的预测答案: ['China', 'José Miguel Insulza', 'Eduardo Rodríguez', 'Colombia', 'Armando Loaiza', 'Evo Morales', 'Cabinet / Council of Ministers / Advisors (United States)', 'Guatemala', 'Álvaro García', 'Walker San Miguel', 'Daniel Ortega', 'Mexico', 'Mahmoud Ahmadinejad', 'Cristina Fernández de Kirchner', 'Nelson Azevedo Jobim', 'Belize']
+2025-07-16 09:25:59,567 - INFO - 交集: {'Colombia', 'Mexico', 'Evo Morales'}
+2025-07-16 09:25:59,567 - INFO - 评估结果: P=0.188, R=0.500, F1=0.273, EM=False
+2025-07-16 09:26:00,569 - INFO - 
+==================================================
+2025-07-16 09:26:00,569 - INFO - 开始处理问题 2000009
+2025-07-16 09:26:00,569 - INFO - 问题: Who was the first country to sign formal agreements with Iran in 2007?
+2025-07-16 09:26:00,569 - INFO - 标准答案: ['UN Security Council']
+2025-07-16 09:26:00,569 - INFO - ==================================================
+2025-07-16 09:29:25,673 - ERROR - 无法提取有效的query_kg函数
+2025-07-16 09:29:25,674 - WARNING - 初次代码生成失败或有语法错误，尝试重新生成
+2025-07-16 09:32:12,386 - INFO - 问题分析: {'question_type': 'unknown', 'time_constraints': 'unknown', 'key_entities': [], 'target_relation': 'unknown', 'answer_type': 'entity'}
+2025-07-16 09:32:12,386 - INFO - 代码生成成功，开始执行查询
+2025-07-16 09:32:12,744 - INFO - 查询成功，返回 1 个结果: ['Vietnam']
+2025-07-16 09:32:12,744 - INFO - 问题 2000009 处理完成
+2025-07-16 09:32:12,744 - INFO - 预测答案: ['Vietnam']
+2025-07-16 09:32:12,744 - INFO - 标准化后的标准答案: ['UN Security Council']
+2025-07-16 09:32:12,744 - INFO - 标准化后的预测答案: ['Vietnam']
+2025-07-16 09:32:12,744 - INFO - 交集: set()
+2025-07-16 09:32:12,744 - INFO - 评估结果: P=0.000, R=0.000, F1=0.000, EM=False
+2025-07-16 09:32:12,745 - INFO - 结果已保存到: /mnt/nvme0n1/tyj/TKGQA/MY/intermediate_results_10.json
+2025-07-16 09:32:13,746 - INFO - 
+==================================================
+2025-07-16 09:32:13,746 - INFO - 开始处理问题 2000010
+2025-07-16 09:32:13,746 - INFO - 问题: Who did Bhutan negotiate with after June 2014?
+2025-07-16 09:32:13,746 - INFO - 标准答案: ['China', 'Maldives']
+2025-07-16 09:32:13,746 - INFO - ==================================================
+2025-07-16 09:35:30,124 - WARNING - 分析提取失败: Expecting ',' delimiter: line 3 column 33 (char 69)
+2025-07-16 09:35:30,124 - INFO - 问题分析: {'question_type': 'unknown', 'time_constraints': 'unknown', 'key_entities': [], 'target_relation': 'unknown', 'answer_type': 'entity'}
+2025-07-16 09:35:30,124 - INFO - 代码生成成功，开始执行查询
+2025-07-16 09:35:30,306 - INFO - 查询成功，返回 0 个结果: []
+2025-07-16 09:35:30,306 - INFO - 问题 2000010 处理完成
+2025-07-16 09:35:30,306 - INFO - 预测答案: []
+2025-07-16 09:35:30,306 - INFO - 标准化后的标准答案: ['China', 'Maldives']
+2025-07-16 09:35:30,306 - INFO - 标准化后的预测答案: []
+2025-07-16 09:35:30,306 - INFO - 评估结果: P=0.000, R=0.000, F1=0.000, EM=False
+2025-07-16 09:35:31,308 - INFO - 
+==================================================
+2025-07-16 09:35:31,308 - INFO - 开始处理问题 2000011
+2025-07-16 09:35:31,308 - INFO - 问题: Who wanted to negotiate with Qatar on 2 December 2007?
+2025-07-16 09:35:31,308 - INFO - 标准答案: ['Mahmoud Ahmadinejad']
+2025-07-16 09:35:31,308 - INFO - ==================================================
+2025-07-16 09:38:28,383 - INFO - 问题分析: {'question_type': 'specific_date', 'time_constraints': '精确日期2007年12月2日（2007-12-02）', 'key_entities': ['Qatar'], 'target_relation': 'Express_intent_to_engage_in_diplomatic_cooperation_(such_as_policy_support)', 'answer_type': 'entity'}
+2025-07-16 09:38:28,383 - INFO - 代码生成成功，开始执行查询
+2025-07-16 09:38:28,453 - INFO - 查询成功，返回 0 个结果: []
+2025-07-16 09:38:28,453 - INFO - 问题 2000011 处理完成
+2025-07-16 09:38:28,453 - INFO - 预测答案: []
+2025-07-16 09:38:28,453 - INFO - 标准化后的标准答案: ['Mahmoud Ahmadinejad']
+2025-07-16 09:38:28,453 - INFO - 标准化后的预测答案: []
+2025-07-16 09:38:28,453 - INFO - 评估结果: P=0.000, R=0.000, F1=0.000, EM=False
+2025-07-16 09:38:29,454 - INFO - 
+==================================================
+2025-07-16 09:38:29,454 - INFO - 开始处理问题 2000012
+2025-07-16 09:38:29,454 - INFO - 问题: On 19 October 2012, which country made a request to Japan?
+2025-07-16 09:38:29,454 - INFO - 标准答案: ['South Korea']
+2025-07-16 09:38:29,454 - INFO - ==================================================
+2025-07-16 09:41:00,033 - INFO - 问题分析: {'question_type': 'unknown', 'time_constraints': 'unknown', 'key_entities': [], 'target_relation': 'unknown', 'answer_type': 'entity'}
+2025-07-16 09:41:00,033 - INFO - 代码生成成功，开始执行查询
+2025-07-16 09:41:00,231 - INFO - 查询成功，返回 1 个结果: ['South Korea']
+2025-07-16 09:41:00,231 - INFO - 问题 2000012 处理完成
+2025-07-16 09:41:00,231 - INFO - 预测答案: ['South Korea']
+2025-07-16 09:41:00,231 - INFO - 标准化后的标准答案: ['South Korea']
+2025-07-16 09:41:00,231 - INFO - 标准化后的预测答案: ['South Korea']
+2025-07-16 09:41:00,231 - INFO - 交集: {'South Korea'}
+2025-07-16 09:41:00,231 - INFO - 评估结果: P=1.000, R=1.000, F1=1.000, EM=True
+2025-07-16 09:41:01,233 - INFO - 
+==================================================
+2025-07-16 09:41:01,233 - INFO - 开始处理问题 2000013
+2025-07-16 09:41:01,233 - INFO - 问题: After the International Monetary Fund, with which country did Japan first express its intention to negotiate?
+2025-07-16 09:41:01,233 - INFO - 标准答案: ['Cambodia']
+2025-07-16 09:41:01,233 - INFO - ==================================================
+2025-07-16 09:43:34,795 - INFO - 问题分析: {'question_type': 'first_event_with_time_constraint', 'time_constraints': '事件必须发生在International Monetary Fund相关事件之后', 'key_entities': ['International_Monetary_Fund', 'Japan'], 'target_relation': 'Express_intent_to_engage_in_diplomatic_cooperation_(such_as_policy_support)', 'answer_type': 'entity (tail)'}
+2025-07-16 09:43:34,795 - INFO - 代码生成成功，开始执行查询
+2025-07-16 09:43:34,988 - INFO - 查询成功，返回 1 个结果: ['China']
+2025-07-16 09:43:34,988 - INFO - 问题 2000013 处理完成
+2025-07-16 09:43:34,988 - INFO - 预测答案: ['China']
+2025-07-16 09:43:34,988 - INFO - 标准化后的标准答案: ['Cambodia']
+2025-07-16 09:43:34,989 - INFO - 标准化后的预测答案: ['China']
+2025-07-16 09:43:34,989 - INFO - 交集: set()
+2025-07-16 09:43:34,989 - INFO - 评估结果: P=0.000, R=0.000, F1=0.000, EM=False
+2025-07-16 09:43:35,990 - INFO - 
+==================================================
+2025-07-16 09:43:35,990 - INFO - 开始处理问题 2000014
+2025-07-16 09:43:35,990 - INFO - 问题: Who would wish to visit Ireland in July, the year of 2007?
+2025-07-16 09:43:35,990 - INFO - 标准答案: ['Bertie Ahern']
+2025-07-16 09:43:35,990 - INFO - ==================================================
