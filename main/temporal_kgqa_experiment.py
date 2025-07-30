@@ -8,9 +8,9 @@ from datetime import datetime
 from typing import List, Dict, Any
 
 # 导入自定义模块
-from MY.main.utils import extract_json, extract_query_code, normalize_answer, evaluate_answers, analyze_question_simple
-from MY.main.code_generator import CodeGenerator
-from MY.main.query_executor import QueryExecutor
+from .utils import extract_json, extract_query_code, normalize_answer, evaluate_answers, analyze_question_simple
+from .code_generator import CodeGenerator
+from .query_executor import QueryExecutor
 
 class TemporalKGQASystem:
     

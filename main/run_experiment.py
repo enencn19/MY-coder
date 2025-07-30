@@ -10,8 +10,8 @@ import json
 from datetime import datetime
 sys.path.append('/mnt/nvme0n1/tyj/TKGQA')
 
-from MY.main.temporal_kgqa_experiment import TemporalKGQASystem
-from MY.main.config import DEEPSEEK_CONFIG, PATHS, EXPERIMENT_CONFIG
+from .temporal_kgqa_experiment import TemporalKGQASystem
+from .config import DEEPSEEK_CONFIG, PATHS, EXPERIMENT_CONFIG
 
 def setup_logging():
     """设置日志系统"""
